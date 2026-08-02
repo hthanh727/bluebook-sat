@@ -1055,23 +1055,23 @@ body {
 }
 
 .text-highlight.yellow {
-    background: var(--highlight-yellow);
+    background: rgba(253, 224, 71, 0.35);
 }
 
 .text-highlight.blue {
-    background: var(--highlight-blue);
+    background: rgba(147, 197, 253, 0.35);
 }
 
 .text-highlight.pink {
-    background: var(--highlight-pink);
+    background: rgba(249, 168, 212, 0.35);
 }
 
 .text-highlight.green {
-    background: var(--highlight-green);
+    background: rgba(134, 239, 172, 0.35);
 }
 
 .text-highlight.orange {
-    background: var(--highlight-orange);
+    background: rgba(253, 186, 116, 0.35);
 }
 
 /* Note indicator on highlighted text */
