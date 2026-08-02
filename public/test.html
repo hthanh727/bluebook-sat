@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Mock Test</title>
+    <meta name="description" content="Digital SAT Practice Test - Bluebook Style Interface">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- html2pdf for Export PDF feature -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <!-- Top Header Bar -->
+    <header class="header" id="header">
+        <div class="header-left">
+            <div class="section-indicator"></div>
+            <span class="section-title">Section 1: Reading and Writing</span>
+        </div>
+        <div class="header-center">
+            <div class="timer-container" id="timerContainer">
+                <span class="timer-display" id="timerDisplay">32:00</span>
+                <button class="btn-hide" id="btnHideTimer">Hide</button>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="btn-header-tool" id="btnCalculator" style="display: none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                    <line x1="8" y1="6" x2="16" y2="6"></line>
+                    <line x1="8" y1="10" x2="16" y2="10"></line>
+                    <line x1="8" y1="14" x2="16" y2="14"></line>
+                </svg>
+                Calculator
+            </button>
+            <button class="theme-toggle-test" id="themeToggleTest" title="Toggle dark/light mode">
+                <svg class="toggle-icon icon-sun-t" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.894 6.166a.75.75 0 0 0-1.06-1.06l-1.591 1.59a.75.75 0 1 0 1.06 1.061l1.591-1.59ZM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5H21a.75.75 0 0 1 .75.75ZM17.834 18.894a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 1 0-1.061 1.06l1.59 1.591ZM12 18a.75.75 0 0 1 .75.75V21a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18ZM7.758 17.303a.75.75 0 0 0-1.061-1.06l-1.591 1.59a.75.75 0 0 0 1.06 1.061l1.591-1.59ZM6 12a.75.75 0 0 1-.75.75H3a.75.75 0 0 1 0-1.5h2.25A.75.75 0 0 1 6 12ZM6.697 7.757a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 0 0-1.061 1.06l1.59 1.591Z" />
+                </svg>
+                <svg class="toggle-icon icon-moon-t" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M21.752 15.002A9.718 9.718 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                </svg>
+            </button>
+            <button class="btn-more" id="btnMore">More</button>
+            <div class="more-dropdown" id="moreDropdown">
+                <button class="dropdown-item" id="btnAnnotate">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 20h9" />
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                    </svg>
+                    Highlight mode
+                </button>
+
+                <button class="dropdown-item" id="btnExitTest">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" y1="12" x2="9" y2="12" />
+                    </svg>
+                    Exit to Dashboard
+                </button>
+                <button class="dropdown-item" id="btnHelp">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    Help
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Directions Banner -->
+    <div class="directions-banner" id="directionsBanner">
+        <div class="directions-content">
+            <strong>Directions:</strong> Read each passage and question carefully, and then choose the best answer to
+            the question based on the passage.
+        </div>
+        <button class="directions-close" id="directionsClose">✕</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <div class="content-wrapper">
+            <!-- Left Panel - Passage -->
+            <div class="panel panel-left" id="panelLeft">
+                <div class="passage-container" id="passageContainer">
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="panel-divider" id="panelDivider">
+                <div class="divider-handle"></div>
+            </div>
+
+            <!-- Right Panel - Question -->
+            <div class="panel panel-right" id="panelRight">
+                <div class="question-container" id="questionContainer">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="footer-left">
+            <button class="btn-nav btn-back" id="btnBack">Back</button>
+        </div>
+        <div class="footer-center">
+            <button class="btn-question-nav" id="btnQuestionNav">
+                <span id="questionNavLabel">Question 1 of 28</span>
+                <svg class="nav-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                    <path d="M2 4L6 8L10 4" />
+                </svg>
+            </button>
+        </div>
+        <div class="footer-right">
+            <button class="btn-nav btn-next" id="btnNext">Next</button>
+        </div>
+    </footer>
+
+    <!-- Question Navigator Modal -->
+    <div class="question-nav-overlay" id="questionNavOverlay">
+        <div class="question-nav-modal" id="questionNavModal">
+            <div class="nav-modal-header">
+                <h3>Section 1: Reading and Writing</h3>
+                <button class="nav-modal-close" id="navModalClose">✕</button>
+            </div>
+            <div class="nav-modal-body">
+                <div class="question-grid" id="questionGrid">
+                </div>
+            </div>
+            <div class="nav-modal-footer">
+                <div class="nav-legend">
+                    <span class="legend-item"><span class="legend-dot current"></span> Current</span>
+                    <span class="legend-item"><span class="legend-dot answered"></span> Answered</span>
+                    <span class="legend-item"><span class="legend-dot unanswered"></span> Unanswered</span>
+                    <span class="legend-item"><span class="legend-dot flagged"></span> For Review</span>
+                </div>
+                <button class="btn-go-to" id="btnGoTo">Go to Question</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calculator Modal -->
+    <div class="modal-overlay" id="calcOverlay" style="pointer-events:none;">
+        <div class="modal-window" id="calcModal" style="width:640px;height:520px;pointer-events:auto;">
+            <div class="modal-dark-header" id="calcHeader">
+                <span class="modal-title">Calculator</span>
+                <button class="modal-close" id="calcClose">&#x2715;</button>
+            </div>
+            <div class="modal-body" style="padding:0; overflow:hidden; position:relative; background: #fff;">
+                <iframe src="https://www.desmos.com/testing/cb-digital-sat/graphing" style="width:100%; height:100%; border:none; display:block;"></iframe>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Highlight Toolbar (Bluebook style) -->
+    <div class="highlight-toolbar" id="highlightToolbar">
+        <div class="highlight-toolbar-inner">
+            <button class="hl-color-btn hl-yellow active" data-color="yellow" title="Yellow highlight"></button>
+            <button class="hl-color-btn hl-blue" data-color="blue" title="Blue highlight"></button>
+            <button class="hl-color-btn hl-pink" data-color="pink" title="Pink highlight"></button>
+            <button class="hl-color-btn hl-green" data-color="green" title="Green highlight"></button>
+            <button class="hl-color-btn hl-orange" data-color="orange" title="Orange highlight"></button>
+            <div class="hl-divider"></div>
+            <button class="hl-action-btn" id="hlApply" title="Highlight selection">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M15.24 2.86l5.9 5.9a1 1 0 010 1.41l-8.49 8.49a1 1 0 01-.7.29H6.76a1 1 0 01-.7-.29l-2.9-2.9a1 1 0 010-1.41l8.49-8.49 1.06-1.06a2 2 0 012.53.06zM3 20h18v2H3v-2z" />
+                </svg>
+            </button>
+            <button class="hl-action-btn" id="hlNote" title="Add note">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10 9 9 9 8 9" />
+                </svg>
+            </button>
+            <button class="hl-action-btn hl-remove-btn" id="hlRemove" title="Remove highlight">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                </svg>
+            </button>
+        </div>
+        <div class="hl-arrow"></div>
+    </div>
+
+    <!-- Annotation Note Popup -->
+    <div class="annotation-popup" id="annotationPopup">
+        <div class="annotation-popup-inner">
+            <div class="annotation-popup-header">
+                <span class="annotation-popup-title">Add Note</span>
+                <button class="annotation-popup-close" id="annotationClose">✕</button>
+            </div>
+            <textarea class="annotation-textarea" id="annotationTextarea" placeholder="Type your note here..."
+                rows="4"></textarea>
+            <div class="annotation-popup-actions">
+                <button class="annotation-btn-cancel" id="annotationCancel">Cancel</button>
+                <button class="annotation-btn-save" id="annotationSave">Save Note</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">
+        <span class="toast-icon">✓</span>
+        <span class="toast-message" id="toastMessage">Word saved to vocabulary!</span>
+    </div>
+
+    <!-- Transition Overlay -->
+    <div class="transition-overlay" id="transitionOverlay">
+        <div class="spinner"></div>
+        <h2 style="margin-bottom: 10px; font-weight: 600;">Moving to Module 2</h2>
+        <p style="color: #94a3b8;">Please wait while we load your next module.</p>
+    </div>
+
+    <!-- Score Overlay -->
+    <div class="score-overlay" id="scoreOverlay">
+        <div class="score-card">
+            <h2 class="score-title">Practice Completed</h2>
+
+            <div class="score-visual-container">
+                <div class="score-circle-wrapper">
+                    <svg class="score-circle-svg" width="180" height="180">
+                        <circle class="score-circle-bg" cx="90" cy="90" r="70" stroke="rgba(255,255,255,0.06)"
+                            stroke-width="10" fill="transparent"></circle>
+                        <circle class="score-circle-bar" id="scoreCircleBar" cx="90" cy="90" r="70"
+                            stroke="url(#scoreGrad)" stroke-width="12" fill="transparent" stroke-dasharray="439.8"
+                            stroke-dashoffset="439.8" stroke-linecap="round" transform="rotate(-90 90 90)"></circle>
+                        <defs>
+                            <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#3b82f6" />
+                                <stop offset="100%" stop-color="#8b5cf6" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="score-circle-text">
+                        <div class="score-number-big" id="scoreCorrect">0</div>
+                        <div class="score-number-divider"></div>
+                        <div class="score-number-total" id="scoreTotal">54</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="score-feedback" id="scoreFeedback">Practice makes perfect! Keep going!</div>
+            <div class="score-percentage" id="scorePercent">0% Correct</div>
+
+            <div class="score-buttons">
+                <button class="score-btn home" id="btnScoreHome">Return to Dashboard</button>
+                <button class="score-btn review" id="btnScoreReview">View Error Log</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Log Overlay -->
+    <div class="error-log-overlay" id="errorLogOverlay" style="display: none;">
+        <div class="error-log-header">
+            <h2 class="error-log-title">Error Log (Reading & Writing)</h2>
+            <div class="error-log-actions">
+                <button class="error-log-btn pdf-btn" id="btnExportPDF">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Export to PDF
+                </button>
+                <button class="error-log-btn close-btn" id="btnCloseErrorLog">Close</button>
+            </div>
+        </div>
+        <div class="error-log-content-wrapper">
+            <div id="error-log-content">
+                <!-- Incorrect answers will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="app.js?v=8"></script>
+</body>
+
+</html>

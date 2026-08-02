@@ -1,0 +1,6 @@
+section,module,question_number,passage,prompt,question_type,option_a,option_b,option_c,option_d,correct_answer,correct_answer_text,image_url
+reading,1,1,"This is a sample passage for reading.","What is the main idea of the passage?","mcq","Idea A","Idea B","Idea C","Idea D",A,"",""
+reading,2,1,"This is a sample passage for module 2.","What is the tone?","mcq","Joyful","Sad","Angry","Neutral",A,"",""
+math,1,1,"","What is 2x if x=5?","mcq","5","10","15","20",B,"",""
+math,1,2,"","What is 2+2?","mcq","1","2","3","4",D,"",""
+math,2,1,"","Solve for x: x - 3 = 7","spr","","","","",,"10",""

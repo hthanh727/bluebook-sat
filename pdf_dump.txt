@@ -1,0 +1,658 @@
+
+--- PAGE 1 ---
+2026 May II
+Tg: DigitSAT
+2026 May II
+Module 1
+@abusat 760
+1
+
+--- PAGE 2 ---
+2026 May II
+Tg: DigitSAT
+Question N. 1
+An artist made 12 pieces of pottery using 42 pounds of clay. The pottery included only
+bowls and vases. Each bowl used 2 pounds of clay and each vase used 4 pounds of clay.
+How many vases did the artist make?
+A) 3
+B) 5
+C) 7
+D) 9
+Question N. 2
+One gallon of paint will cover 10 square feet of a surface. A room has a total wall area of
+w square feet. Which equation represents the total amount of paint P, in gallons, needed
+to paint the walls of the room twice?
+A) P = 20w
+B) P = 10w
+C) P = w
+5
+D) P = w
+10
+Question N. 3
+x
+y
+−4
+3
+0
+0
+−128
+4
+0
+The table shows three values of x and their corresponding values of y. There is a quadratic
+relationship between x and y. An equation that represents this relationship can be written
+as y = 24x2 −bx −128, where b is a constant. What is the value of b?
+Question N. 4
+The equation E(t) = 5(1.2)t gives the estimated number of employees at a certain busi-
+ness, where t is the number of years since the business opened. Which of the following is
+the best interpretation of the number 5 in this context?
+A) The increase in the estimated number of employees each year
+B) The estimated number of employees when the business opened
+C) The percent increase in the estimated number of employees each year
+D) The number of years the business has been open
+@abusat 760
+2
+
+--- PAGE 3 ---
+2026 May II
+Tg: DigitSAT
+Question N. 5
+Line t in the xy-plane has a slope of 1
+7 and passes through the point (35, −8). Which
+equation defines line t?
+A) y = −13x + 1
+7
+B) y = x
+7 −13
+C) y = x
+7 −8
+D) y = 35x −8
+Question N. 6
+The area of a rectangular region is increasing at a rate of 210 square feet per hour. Which
+of the following is closest to this rate in square meters per minute? (Use 1 meter = 3.28
+feet.)
+A) 0.33
+B) 1.07
+C) 11.48
+D) 19.52
+Question N. 7
+The scatterplot shows the relationship between x and y for the 9 data points in data set
+A.
+−8
+−6
+−4
+−2
+2
+4
+6
+8
+2
+4
+6
+8
+10
+12
+14
+x
+y
+@abusat 760
+3
+
+--- PAGE 4 ---
+2026 May II
+Tg: DigitSAT
+A quadratic model for the data in data set A can be written as y = 0.04x2 −0.07x+6.59.
+The graph of this model is shown in the xy-plane. The data point at x = 0 was found
+to be the result of a recording error and was removed from data set A to create data set
+B, consisting of the remaining 8 data points. A quadratic model for the data in data set
+B can be written as y = ax2 + bx + c, where a, b, and c are constants. If the quadratic
+models for data sets A and B are calculated in the same way, which of the following
+statements must be true?
+I. a > 0.04
+II. c < 6.59
+A) I only
+B) II only
+C) I and II
+D) Neither I nor II
+Question N. 8
+f(x) = (2x −7)(2x + 5)
+What is the minimum value of the given function?
+A) −36
+B) −5
+2
+C) 1
+2
+D) 2
+Question N. 9
+2x2 + 18x + 2y2 + 12y = 15
+2
+The given equation defines a circle in the xy-plane. What is the radius of the circle?
+A)
+√
+30
+2
+B)
+√
+15
+C)
+√
+33
+D)
+√
+498
+2
+@abusat 760
+4
+
+--- PAGE 5 ---
+2026 May II
+Tg: DigitSAT
+Question N. 10
+4
+6
+Note: Figure not drawn to scale.
+A right triangle has the dimensions shown, in centimeters (cm). What is the area of this
+triangle, in cm2?
+Question N. 11
+A
+B
+y◦
+C
+D
+z◦
+E
+x◦
+In the figure, line AB is parallel to line CD, and line AD intersects line BC at point E.
+If y = 119 and z = 113, what is the value of x?
+A) 52
+B) 67
+C) 128
+D) 142
+Question N. 12
+A researcher investigated two species of mites: a predator and its prey. At the start of a
+week, there was an equal number of the two species. At the end of the week, the number
+of prey had increased by 1900% of the number of prey at the start of the week, and the
+number of predators had increased by 240% of the number of predators at the start of
+the week. The number of predators at the end of the week was p% less than the number
+of prey at the end of the week. What is the value of p?
+@abusat 760
+5
+
+--- PAGE 6 ---
+2026 May II
+Tg: DigitSAT
+Question N. 13
+Which expression is NOT a factor of 6,480x4 −1,280?
+A) 9x2 + 4
+B) 3x2 −2
+C) 3x + 2
+D) 80
+Question N. 14
+−4x + 24px = 72
+In the given equation, p is a constant. The equation has no solution. What is the value
+of p?
+A) 0
+B) 1
+6
+C) 3
+4
+D) 3
+Question N. 15
+A zoologist observed the nests of wood ducks in an area. Each year, the zoologist recorded
+the number of eggs in each of the first 35 nests that were observed and created a frequency
+table for the data set. Which of the following frequency tables represents the data set
+with the smallest standard deviation?
+A)
+Number of eggs
+Frequency
+10
+8
+11
+7
+12
+5
+13
+7
+14
+8
+B)
+Number of eggs
+Frequency
+10
+7
+11
+7
+12
+7
+13
+7
+14
+7
+@abusat 760
+6
+
+--- PAGE 7 ---
+2026 May II
+Tg: DigitSAT
+C)
+Number of eggs
+Frequency
+10
+2
+11
+8
+12
+15
+13
+8
+14
+2
+D)
+Number of eggs
+Frequency
+8
+0
+9
+5
+10
+35
+11
+5
+12
+0
+Question N. 16
+(x + 2)(x −12) = 0
+What is the positive solution to the given equation?
+Question N. 17
+The function f is a quadratic function. In the xy-plane, the graph of y = f(x) has a
+vertex at (1, 4) and passes through the points (2, 28) and (−1, 100). What is the value of
+f(−2) −f(0)?
+A) 76
+B) 124
+C) 192
+D) 220
+Question N. 18
+2x2 + 14x + 2y2 + 20y = 15
+2
+The given equation defines a circle in the xy-plane. What is the radius of the circle?
+A)
+√
+30
+2
+B)
+√
+15
+C)
+√
+41
+D)
+√
+626
+2
+@abusat 760
+7
+
+--- PAGE 8 ---
+2026 May II
+Tg: DigitSAT
+Question N. 19
+y = 6x2 −48x + 99
+y + 4 = 0
+How many solutions are there to the given system of equations?
+A) There is exactly 1 solution.
+B) There are exactly 2 solutions.
+C) There are exactly 3 solutions.
+D) There are no solutions.
+Question N. 20
+2x
+4
+3
+Note: Figure not drawn to scale.
+The triangle in the figure above has side lengths 3, 4, and 2x. Which of the following is
+NOT a possible value of x?
+A) 1
+B) 2.5
+C) 3
+D) 5
+Question N. 21
+Line p in the xy-plane contains the points (6, 0) and (6, 6). Which equation defines line
+p?
+A) x = 0
+B) x = 6
+C) y = 0
+D) y = 6
+@abusat 760
+8
+
+--- PAGE 9 ---
+2026 May II
+Tg: DigitSAT
+Question N. 22
+The function f is defined by f(z) = 3z. Which of the following is equivalent to f(z −7)?
+A) −3z
+B) 3z −7
+C) 3z −21
+D) −3z + 21
+@abusat 760
+9
+
+--- PAGE 10 ---
+2026 May II
+Tg: DigitSAT
+Module 2
+@abusat 760
+10
+
+--- PAGE 11 ---
+2026 May II
+Tg: DigitSAT
+Question N. 1
+The expression
+kx −17
+2x2 −11x + 15 is equivalent to
+p
+x −3 −
+1
+2x −5, where k and p are con-
+stants. What is the value of p?
+A) −16
+B) 14
+5
+C) 4
+D) 7
+Question N. 2
+The measure of angle F is π
+12 radians. If the measure of angle F is 3n degrees, where n
+is a constant, what is the value of n?
+A) 3
+B) 5
+C) 12
+D) 15
+Question N. 3
+The function g is defined by g(x) = −2x(x + 4)(x −k)2 + r, where k and r are integer
+constants. In the xy-plane, the graph of y = g(x) passes through the point (8, 17), and
+g(0) = 17. What is the value of r + k?
+A) −8
+B) 0
+C) 17
+D) 25
+Question N. 4
+The function f is defined by f(x) = 41(0.26)x. For any positive integer n, the value of
+f(n) is p% less than the value of f(n −1). What is the value of p?
+A) 74
+B) 59
+C) 41
+D) 26
+@abusat 760
+11
+
+--- PAGE 12 ---
+2026 May II
+Tg: DigitSAT
+Question N. 5
+−6
+−4
+−2
+2
+4
+6
+−4
+−2
+2
+4
+6
+8
+10
+x
+y
+The shaded region shown represents the solutions to which inequality?
+A) y ≥−2x + 4
+B) y > 4x −2
+C) y ≤−2x + 4
+D) y ≤4x −2
+Question N. 6
+f(x) = 21(1.20)
+x
+3
+For the given function f, the value of f(x) increases by p% for every increase of x by 6.
+What is the value of p?
+Question N. 7
+A company developed a plan to set the selling price of a product. The company deter-
+mined that for a selling price of $90.00, zero products would be sold. For each $1.50
+decrease in the selling price, the number of products sold would increase by one. For
+a revenue of exactly $1,336.50, which of the following could be the number of products
+sold? (revenue = price × number of products sold)
+A) 27
+B) 30
+C) 831
+D) 1,350
+@abusat 760
+12
+
+--- PAGE 13 ---
+2026 May II
+Tg: DigitSAT
+Question N. 8
+y = 4x2 −24x + 38
+y + 3 = 0
+How many solutions are there to the given system of equations?
+A) There is exactly 1 solution.
+B) There are exactly 2 solutions.
+C) There are exactly 3 solutions.
+D) There are no solutions.
+Question N. 9
+−7x2 + bx −63 = 0
+In the given equation, b is a positive integer. The equation has no real solution. What is
+the largest possible value of b?
+Question N. 10
+If 5 + 2(13 −x)
+7
+= 3(13 −x) + 5, what is the value of 13 + x?
+Question N. 11
+The area of a rectangle is 60 square inches. The length of the longest side of the rectangle
+is 15 inches. What is the length, in inches, of the shortest side of this rectangle?
+A) 4
+B) 15
+C) 30
+D) 45
+Question N. 12
+For the linear function g, g(9) = 11 and g(x + 1) −g(x) = 2. Which equation defines g?
+A) g(x) = 9x + 2
+B) g(x) = 9x + 11
+C) g(x) = 2x −18
+D) g(x) = 2x −7
+@abusat 760
+13
+
+--- PAGE 14 ---
+2026 May II
+Tg: DigitSAT
+Question N. 13
+x
+f(x)
+−9
+78
+9
+−156
+27
+−390
+For the linear function f, the table shows three values of x and their corresponding values
+of f(x). Function f is defined by f(x) = rx + s, where r and s are constants. What is
+the value of rs?
+Question N. 14
+57x18 + bx9 + 34
+The given expression, where b is a constant, is equivalent to (3x9 + q)(rx9 + 2), where q
+and r are constants. What is the value of b?
+Question N. 15
+g(x) = x3 + ax2 + bx + c
+The function g is defined by the given equation, where a, b, and c are integer constants.
+The zeros of the function are −2, −7, and 3. What is the value of a?
+A) −42
+B) −6
+C) 6
+D) 42
+Question N. 16
+A circle in the xy-plane has its center at (−4, 4) and has a radius of 6. An equation of
+this circle is x2 + y2 + ax + by + c = 0, where a, b, and c are constants. What is the value
+of c?
+Question N. 17
+A model estimates that the population of a state was 4 million in 1980 and increased
+by 0.041 million each year until 2007. According to the model, what was the estimated
+population of this state, in millions, 10 years after 1980?
+Question N. 18
+In triangle RST, angle T is a right angle, point L lies on RS, point K lies on ST, and
+LK is parallel to RT. If the length of RT is 63 units, the length of LK is 21 units, and
+the area of triangle RST is 252 square units, what is the length of KT, in units?
+@abusat 760
+14
+
+--- PAGE 15 ---
+2026 May II
+Tg: DigitSAT
+Question N. 19
+A car dealership has only sedans, SUVs, and minivans for sale. On Monday, 20% of the
+vehicles for sale were sedans and 50% were SUVs. If there were 62 sedans for sale at the
+dealership on Monday, how many minivans were for sale?
+A) 93
+B) 310
+C) 9
+D) 36
+Question N. 20
+An exponential function f gives the estimated amount of an X-ray beam’s initial intensity
+remaining after passing through a w-centimeter-thick window made of beryllium. The
+function estimates that after passing through a 1.8-centimeter-thick window, the amount
+of the X-ray beam’s initial intensity remaining is 0.65. Which equation could define f?
+A) f(w) = 0.65(0.79)w−1.8
+B) f(w) = 0.65(0.79)
+w
+1.8
+C) f(w) = 0.65(1.8)w
+D) f(w) = 1.8(0.65)w
+Question N. 21
+A
+B
+C
+D
+E
+x◦
+Note: Figure not drawn to scale.
+In the figure, BC is parallel to DE. If the length of DE is 162 and the length of AE is
+270, what is the value of tan x◦?
+A) 270
+162
+@abusat 760
+15
+
+--- PAGE 16 ---
+2026 May II
+Tg: DigitSAT
+B) 216
+162
+C) 162
+270
+D) 162
+216
+Question N. 22
+The function f is defined by f(x) = |x−6x|. What value of a satisfies f(1)−f(a) = −15?
+A) −16
+B) 3
+C) 4
+D) 75
+@abusat 760
+16
+
+--- PAGE 17 ---
+2026 May II
+Tg: DigitSAT
+Answer Sheet
+Module 1
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+D
+C
+64
+B
+B
+A
+C
+A
+C
+12
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+C
+83
+B
+B
+D
+12
+C
+C
+D
+D
+21
+22
+B
+C
+Module 2
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+C
+D
+D
+A
+A
+44
+A
+D
+41
+26
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+A
+D
+507
+36
+C
+−4
+4.41
+112/21
+A
+A
+21
+22
+B
+C
+@abusat 760
+17

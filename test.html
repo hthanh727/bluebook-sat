@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital SAT Practice - Test 1</title>
+    <meta name="description" content="Digital SAT Practice Test - Bluebook Style Interface">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Top Header Bar -->
+    <header class="header" id="header">
+        <div class="header-left">
+            <div class="section-indicator"></div>
+            <span class="section-title">Section 1: Reading and Writing</span>
+        </div>
+        <div class="header-center">
+            <div class="timer-container" id="timerContainer">
+                <span class="timer-display" id="timerDisplay">32:00</span>
+                <button class="btn-hide" id="btnHideTimer">Hide</button>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="btn-more" id="btnMore">More</button>
+            <div class="more-dropdown" id="moreDropdown">
+                <button class="dropdown-item" id="btnAnnotate">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 20h9" />
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                    </svg>
+                    Highlight mode
+                </button>
+                <button class="dropdown-item" id="btnVocabOpen">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                    </svg>
+                    Vocabulary List
+                </button>
+                <button class="dropdown-item" id="btnExitTest">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" y1="12" x2="9" y2="12" />
+                    </svg>
+                    Exit to Dashboard
+                </button>
+                <button class="dropdown-item" id="btnHelp">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    Help
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Directions Banner -->
+    <div class="directions-banner" id="directionsBanner">
+        <div class="directions-content">
+            <strong>Directions:</strong> Read each passage and question carefully, and then choose the best answer to
+            the question based on the passage.
+        </div>
+        <button class="directions-close" id="directionsClose">✕</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <div class="content-wrapper">
+            <!-- Left Panel - Passage -->
+            <div class="panel panel-left" id="panelLeft">
+                <div class="passage-container" id="passageContainer">
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="panel-divider" id="panelDivider">
+                <div class="divider-handle"></div>
+            </div>
+
+            <!-- Right Panel - Question -->
+            <div class="panel panel-right" id="panelRight">
+                <div class="question-container" id="questionContainer">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="footer-left">
+            <button class="btn-nav btn-back" id="btnBack">Back</button>
+        </div>
+        <div class="footer-center">
+            <button class="btn-question-nav" id="btnQuestionNav">
+                <span id="questionNavLabel">Question 1 of 28</span>
+                <svg class="nav-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                    <path d="M2 4L6 8L10 4" />
+                </svg>
+            </button>
+        </div>
+        <div class="footer-right">
+            <button class="btn-nav btn-next" id="btnNext">Next</button>
+        </div>
+    </footer>
+
+    <!-- Question Navigator Modal -->
+    <div class="question-nav-overlay" id="questionNavOverlay">
+        <div class="question-nav-modal" id="questionNavModal">
+            <div class="nav-modal-header">
+                <h3>Section 1: Reading and Writing</h3>
+                <button class="nav-modal-close" id="navModalClose">✕</button>
+            </div>
+            <div class="nav-modal-body">
+                <div class="question-grid" id="questionGrid">
+                </div>
+            </div>
+            <div class="nav-modal-footer">
+                <div class="nav-legend">
+                    <span class="legend-item"><span class="legend-dot current"></span> Current</span>
+                    <span class="legend-item"><span class="legend-dot answered"></span> Answered</span>
+                    <span class="legend-item"><span class="legend-dot unanswered"></span> Unanswered</span>
+                    <span class="legend-item"><span class="legend-dot flagged"></span> For Review</span>
+                </div>
+                <button class="btn-go-to" id="btnGoTo">Go to Question</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vocabulary Panel -->
+    <div class="vocab-overlay" id="vocabOverlay">
+        <div class="vocab-panel" id="vocabPanel">
+            <div class="vocab-header">
+                <h3>📖 Vocabulary List</h3>
+                <span class="vocab-hint">Ctrl + Shift + C to save highlighted word</span>
+                <button class="vocab-close" id="vocabClose">✕</button>
+            </div>
+            <div class="vocab-body" id="vocabBody">
+                <div class="vocab-empty" id="vocabEmpty">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.5">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                    </svg>
+                    <p>No words saved yet.</p>
+                    <p class="vocab-hint-small">Highlight any word in the passage and press<br><kbd>Ctrl</kbd> +
+                        <kbd>Shift</kbd> + <kbd>C</kbd> to save it.
+                    </p>
+                </div>
+                <ul class="vocab-list" id="vocabList">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Highlight Toolbar (Bluebook style) -->
+    <div class="highlight-toolbar" id="highlightToolbar">
+        <div class="highlight-toolbar-inner">
+            <button class="hl-color-btn hl-yellow active" data-color="yellow" title="Yellow highlight"></button>
+            <button class="hl-color-btn hl-blue" data-color="blue" title="Blue highlight"></button>
+            <button class="hl-color-btn hl-pink" data-color="pink" title="Pink highlight"></button>
+            <button class="hl-color-btn hl-green" data-color="green" title="Green highlight"></button>
+            <button class="hl-color-btn hl-orange" data-color="orange" title="Orange highlight"></button>
+            <div class="hl-divider"></div>
+            <button class="hl-action-btn" id="hlApply" title="Highlight selection">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M15.24 2.86l5.9 5.9a1 1 0 010 1.41l-8.49 8.49a1 1 0 01-.7.29H6.76a1 1 0 01-.7-.29l-2.9-2.9a1 1 0 010-1.41l8.49-8.49 1.06-1.06a2 2 0 012.53.06zM3 20h18v2H3v-2z" />
+                </svg>
+            </button>
+            <button class="hl-action-btn" id="hlNote" title="Add note">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10 9 9 9 8 9" />
+                </svg>
+            </button>
+            <button class="hl-action-btn hl-remove-btn" id="hlRemove" title="Remove highlight">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                </svg>
+            </button>
+        </div>
+        <div class="hl-arrow"></div>
+    </div>
+
+    <!-- Annotation Note Popup -->
+    <div class="annotation-popup" id="annotationPopup">
+        <div class="annotation-popup-inner">
+            <div class="annotation-popup-header">
+                <span class="annotation-popup-title">Add Note</span>
+                <button class="annotation-popup-close" id="annotationClose">✕</button>
+            </div>
+            <textarea class="annotation-textarea" id="annotationTextarea" placeholder="Type your note here..."
+                rows="4"></textarea>
+            <div class="annotation-popup-actions">
+                <button class="annotation-btn-cancel" id="annotationCancel">Cancel</button>
+                <button class="annotation-btn-save" id="annotationSave">Save Note</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">
+        <span class="toast-icon">✓</span>
+        <span class="toast-message" id="toastMessage">Word saved to vocabulary!</span>
+    </div>
+
+    <!-- Transition Overlay -->
+    <div class="transition-overlay" id="transitionOverlay">
+        <div class="spinner"></div>
+        <h2 style="margin-bottom: 10px; font-weight: 600;">Moving to Module 2</h2>
+        <p style="color: #94a3b8;">Please wait while we load your next module.</p>
+    </div>
+
+    <!-- Score Overlay -->
+    <div class="score-overlay" id="scoreOverlay">
+        <div class="score-card">
+            <h2 class="score-title">Test Completed</h2>
+            <div class="score-box">
+                <div class="score-label">FINAL SCORE</div>
+                <div class="score-number">
+                    <span id="scoreCorrect">0</span>
+                    <span class="score-total">/ <span id="scoreTotal">54</span></span>
+                </div>
+            </div>
+            <div class="score-buttons">
+                <button class="score-btn home" id="btnScoreHome">RETURN HOME</button>
+                <button class="score-btn review" id="btnScoreReview">REVIEW ANSWERS</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

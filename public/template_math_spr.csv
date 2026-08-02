@@ -1,0 +1,3 @@
+module,question_number,prompt,correct_answer_text,image_url,question_type
+1,1,"If 5x = 25, what is the value of x?","5","","spr"
+1,2,"Evaluate 1/2 + 1/4",".75","https://i.imgur.com/example.png","spr"

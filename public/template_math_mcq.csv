@@ -1,0 +1,3 @@
+module,question_number,prompt,option_a,option_b,option_c,option_d,correct_answer_index,image_url,question_type
+1,1,"If 3x = 12, what is the value of x?","2","3","4","5",2,"","mcq"
+1,2,"Solve for y: 2y + 4 = 10","1","2","3","4",2,"https://i.imgur.com/example.png","mcq"

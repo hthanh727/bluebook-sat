@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-header {
+            background: #0f172a;
+            color: white;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .admin-main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 24px;
+        }
+        .admin-section {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 24px;
+        }
+        .tests-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+        .tests-table th, .tests-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .tests-table th {
+            background: #f8fafc;
+            font-weight: 600;
+        }
+        .btn-admin {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .btn-admin:hover {
+            background: #1d4ed8;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .form-control {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            width: 600px;
+            max-width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body style="background: #f1f5f9;">
+
+    <header class="admin-header">
+        <h2>SAT Admin Panel</h2>
+        <div>
+            <a href="dashboard.html" style="color: white; text-decoration: none; margin-right: 20px;">Back to App</a>
+            <button class="btn-admin" id="btnLogout" style="background: #dc2626;">Logout</button>
+        </div>
+    </header>
+
+    <main class="admin-main">
+        <div class="admin-section">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3>Manage Tests</h3>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <a href="template_reading.csv" download class="btn-admin" style="background: #e2e8f0; color: #334155; font-size: 13px; text-decoration: none;">⬇️ Reading Template</a>
+                    <a href="template_math.csv" download class="btn-admin" style="background: #e2e8f0; color: #334155; font-size: 13px; text-decoration: none;">⬇️ Math Template</a>
+                    <a href="template_full.csv" download class="btn-admin" style="background: #e2e8f0; color: #334155; font-size: 13px; text-decoration: none;">⬇️ Full Template</a>
+                    <button class="btn-admin" id="btnCreateTest">Create New Test</button>
+                </div>
+            </div>
+            
+            <table class="tests-table" id="testsTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Type</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="testsTableBody">
+                    <!-- Tests will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Create Test Modal -->
+    <div class="modal hidden" id="testModal">
+        <div class="modal-content">
+            <h3>Create New Test</h3>
+            <form id="testForm" style="margin-top: 20px;">
+                <div class="form-group">
+                    <label>Test Title</label>
+                    <input type="text" class="form-control" id="testTitle" required placeholder="e.g. SAT Practice Test 2 - Reading">
+                </div>
+                <div class="form-group">
+                    <label>Test Type</label>
+                    <select id="testType" class="form-control" required>
+                        <option value="reading">Reading & Writing</option>
+                        <option value="math">Math</option>
+                        <option value="full">Full Mock Test</option>
+                    </select>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+                    <button type="button" class="btn-admin" style="background: #64748b;" id="btnCancelTest">Cancel</button>
+                    <button type="submit" class="btn-admin">Save Test</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Question Modal -->
+    <div class="modal hidden" id="questionModal">
+        <div class="modal-content">
+            <h3>Add Question</h3>
+            <form id="questionForm" style="margin-top: 20px;">
+                <input type="hidden" id="qTestId">
+                
+                <div class="form-group">
+                    <label>Module (1 or 2)</label>
+                    <input type="number" class="form-control" id="qModule" min="1" max="2" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Question Type</label>
+                    <select class="form-control" id="qType" required>
+                        <option value="mcq">Multiple Choice (MCQ)</option>
+                        <option value="spr">Student-Produced Response (SPR)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Question Number</label>
+                    <input type="number" class="form-control" id="qNumber" required>
+                </div>
+                <div class="form-group" id="passageGroup">
+                    <label>Passage (Optional)</label>
+                    <textarea class="form-control" id="qPassage" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Image URL (Optional - for graphs/diagrams)</label>
+                    <input type="text" id="qImageUrl" placeholder="e.g. https://imgur.com/xyz.png">
+                </div>
+
+                <div class="form-group">
+                    <label>Prompt</label>
+                    <textarea class="form-control" id="qPrompt" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group" id="mcqOptionsGroup">
+                    <label>Options (A, B, C, D)</label>
+                    <input type="text" class="form-control" id="qOptA" placeholder="Option A" style="margin-bottom: 8px;">
+                    <input type="text" class="form-control" id="qOptB" placeholder="Option B" style="margin-bottom: 8px;">
+                    <input type="text" class="form-control" id="qOptC" placeholder="Option C" style="margin-bottom: 8px;">
+                    <input type="text" class="form-control" id="qOptD" placeholder="Option D" style="margin-bottom: 8px;">
+                </div>
+
+                <div class="form-group" id="mcqCorrectGroup">
+                    <label>Correct Answer (MCQ)</label>
+                    <select class="form-control" id="qCorrect">
+                        <option value="0">A</option>
+                        <option value="1">B</option>
+                        <option value="2">C</option>
+                        <option value="3">D</option>
+                    </select>
+                </div>
+                
+                <div class="form-group hidden" id="sprCorrectGroup">
+                    <label>Correct Answer (Exact text for SPR)</label>
+                    <input type="text" class="form-control" id="qCorrectText" placeholder="e.g. 5, 2/3, 3.5">
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+                    <button type="button" class="btn-admin" style="background: #64748b;" id="btnCancelQuestion">Cancel</button>
+                    <button type="submit" class="btn-admin">Save Question</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Hidden file input for CSV Upload -->
+    <input type="file" id="csvFileInput" accept=".csv" style="display: none;">
+
+    <script src="admin.js?v=2"></script>
+</body>
+</html>
