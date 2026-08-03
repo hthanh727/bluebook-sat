@@ -51,7 +51,29 @@
         rawCsvTextArea: document.getElementById('rawCsvTextArea'),
         csvQuestionCountLabel: document.getElementById('csvQuestionCountLabel'),
         btnSaveCsvChanges: document.getElementById('btnSaveCsvChanges'),
-        btnExportCurrentCsv: document.getElementById('btnExportCurrentCsv')
+        btnExportCurrentCsv: document.getElementById('btnExportCurrentCsv'),
+
+        // Single Question Editor elements
+        singleQuestionModal: document.getElementById('singleQuestionModal'),
+        singleQuestionModalTitle: document.getElementById('singleQuestionModalTitle'),
+        singleQuestionForm: document.getElementById('singleQuestionForm'),
+        btnCloseSingleQuestion: document.getElementById('btnCloseSingleQuestion'),
+        btnCancelSingleQuestion: document.getElementById('btnCancelSingleQuestion'),
+        sqModule: document.getElementById('sqModule'),
+        sqQNum: document.getElementById('sqQNum'),
+        sqType: document.getElementById('sqType'),
+        sqImageUrl: document.getElementById('sqImageUrl'),
+        sqPrompt: document.getElementById('sqPrompt'),
+        sqPassageGroup: document.getElementById('sqPassageGroup'),
+        sqPassage: document.getElementById('sqPassage'),
+        sqMcqSection: document.getElementById('sqMcqSection'),
+        sqOptA: document.getElementById('sqOptA'),
+        sqOptB: document.getElementById('sqOptB'),
+        sqOptC: document.getElementById('sqOptC'),
+        sqOptD: document.getElementById('sqOptD'),
+        sqCorrectIndex: document.getElementById('sqCorrectIndex'),
+        sqSprSection: document.getElementById('sqSprSection'),
+        sqCorrectText: document.getElementById('sqCorrectText')
     };
     
     let currentUploadTestId = null;
@@ -664,13 +686,16 @@
 
                 const statusClass = p.completed ? 'status-completed' : 'status-progress';
                 const statusText = p.completed ? 'Completed' : 'In Progress';
+                const roleBadge = p.student_role === 'admin' 
+                    ? ' <span style="background:#8b5cf6;color:white;font-size:10px;padding:2px 6px;border-radius:4px;font-weight:600;">ADMIN</span>' 
+                    : '';
 
                 tr.innerHTML = `
-                    <td><strong>${p.student_name}</strong></td>
+                    <td><strong>${p.student_name}</strong>${roleBadge}</td>
                     <td>${p.student_email}</td>
                     <td>${p.test_title}</td>
                     <td>${typeLabel}</td>
-                    <td><strong>${p.score}</strong></td>
+                    <td><strong style="color: #10b981; font-size: 15px;">${p.score !== null ? p.score : 0}</strong></td>
                     <td><span class="status-badge ${statusClass}">${statusText}</span></td>
                     <td>${new Date(p.updated_at).toLocaleString()}</td>
                 `;
@@ -940,12 +965,22 @@
                 <td style="color:#334155;">${cleanPrompt}${cleanPrompt.length >= 100 ? '...' : ''}</td>
                 <td>${correctText}</td>
                 <td style="text-align:center; white-space:nowrap;">
+                    <button class="btn-admin btn-edit-single-q" data-index="${idx}" style="background:#2563eb;padding:4px 8px;font-size:12px;margin-right:6px;">
+                        ✏️ Sửa
+                    </button>
                     <button class="btn-admin btn-delete-q-inline" data-index="${idx}" style="background:#ef4444;padding:4px 8px;font-size:12px;">
                         🗑️ Xóa
                     </button>
                 </td>
             `;
             dom.csvTableBody.appendChild(tr);
+        });
+
+        document.querySelectorAll('.btn-edit-single-q').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const index = parseInt(e.currentTarget.getAttribute('data-index'), 10);
+                openSingleQuestionEditModal(index);
+            });
         });
 
         document.querySelectorAll('.btn-delete-q-inline').forEach(btn => {
@@ -1133,6 +1168,101 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
+        });
+    }
+
+    // --- Single Question Form Editor Logic ---
+    let currentEditingSingleQIndex = null;
+
+    function openSingleQuestionEditModal(index) {
+        const q = currentCsvQuestions[index];
+        if (!q) return;
+
+        currentEditingSingleQIndex = index;
+        dom.singleQuestionModalTitle.textContent = `✏️ Sửa chi tiết câu Q${q.question_number || (index + 1)} (Module ${q.module || 1})`;
+        
+        dom.sqModule.value = q.module || 1;
+        dom.sqQNum.value = q.question_number || (index + 1);
+        dom.sqType.value = q.question_type || 'mcq';
+        dom.sqImageUrl.value = q.image_url || '';
+        dom.sqPrompt.value = q.prompt || '';
+        dom.sqPassage.value = q.passage || '';
+
+        let opts = q.options;
+        if (typeof opts === 'string') {
+            try { opts = JSON.parse(opts); } catch(e) { opts = []; }
+        }
+        if (!Array.isArray(opts)) opts = [];
+
+        dom.sqOptA.value = opts[0] || '';
+        dom.sqOptB.value = opts[1] || '';
+        dom.sqOptC.value = opts[2] || '';
+        dom.sqOptD.value = opts[3] || '';
+        dom.sqCorrectIndex.value = q.correct_answer_index !== undefined && q.correct_answer_index !== null ? q.correct_answer_index : 0;
+        dom.sqCorrectText.value = q.correct_answer_text || '';
+
+        toggleSqFormType(dom.sqType.value);
+        dom.singleQuestionModal.classList.remove('hidden');
+    }
+
+    function toggleSqFormType(type) {
+        if (type === 'spr') {
+            dom.sqMcqSection.style.display = 'none';
+            dom.sqSprSection.style.display = 'block';
+        } else {
+            dom.sqMcqSection.style.display = 'block';
+            dom.sqSprSection.style.display = 'none';
+        }
+    }
+
+    if (dom.sqType) {
+        dom.sqType.addEventListener('change', (e) => toggleSqFormType(e.target.value));
+    }
+
+    if (dom.btnCloseSingleQuestion) {
+        dom.btnCloseSingleQuestion.addEventListener('click', () => dom.singleQuestionModal.classList.add('hidden'));
+    }
+    if (dom.btnCancelSingleQuestion) {
+        dom.btnCancelSingleQuestion.addEventListener('click', () => dom.singleQuestionModal.classList.add('hidden'));
+    }
+
+    if (dom.singleQuestionForm) {
+        dom.singleQuestionForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (currentEditingSingleQIndex === null || !currentCsvQuestions[currentEditingSingleQIndex]) return;
+
+            const qType = dom.sqType.value;
+            const updatedQ = {
+                ...currentCsvQuestions[currentEditingSingleQIndex],
+                module: parseInt(dom.sqModule.value, 10) || 1,
+                question_number: parseInt(dom.sqQNum.value, 10) || 1,
+                question_type: qType,
+                image_url: dom.sqImageUrl.value.trim() || null,
+                prompt: dom.sqPrompt.value,
+                passage: dom.sqPassage.value ? dom.sqPassage.value : null
+            };
+
+            if (qType === 'mcq') {
+                updatedQ.options = [
+                    dom.sqOptA.value,
+                    dom.sqOptB.value,
+                    dom.sqOptC.value,
+                    dom.sqOptD.value
+                ];
+                updatedQ.correct_answer_index = parseInt(dom.sqCorrectIndex.value, 10);
+                updatedQ.correct_answer_text = null;
+            } else {
+                updatedQ.options = [];
+                updatedQ.correct_answer_index = null;
+                updatedQ.correct_answer_text = dom.sqCorrectText.value.trim();
+            }
+
+            currentCsvQuestions[currentEditingSingleQIndex] = updatedQ;
+
+            renderCsvQuestionsTable();
+            updateRawCsvTextArea();
+
+            dom.singleQuestionModal.classList.add('hidden');
         });
     }
 

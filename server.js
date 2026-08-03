@@ -191,13 +191,12 @@ app.get('/api/admin/student-progress', authenticateAdmin, async (req, res) => {
     try {
         const query = `
             SELECT 
-                u.id as student_id, u.name as student_name, u.email as student_email,
+                u.id as student_id, u.name as student_name, u.email as student_email, u.role as student_role,
                 t.title as test_title, t.type as test_type,
                 p.score, p.completed, p.updated_at
             FROM users u
             JOIN progress p ON u.id = p.user_id
             JOIN tests t ON p.test_id = t.id
-            WHERE u.role = 'student'
             ORDER BY p.updated_at DESC
         `;
         const [rows] = await pool.query(query);
@@ -278,16 +277,23 @@ app.post('/api/admin/tests/:id/locks', authenticateAdmin, async (req, res) => {
     }
 });
 
+const sanitizeQType = (t, text) => {
+    if (t && String(t).toLowerCase().trim() === 'spr') return 'spr';
+    if (text && String(text).trim() !== '') return 'spr';
+    return 'mcq';
+};
+
 app.post('/api/admin/upload-questions', authenticateAdmin, async (req, res) => {
     const { test_id, question_number, passage, prompt, options, correct_answer_index, module, image_url, question_type, correct_answer_text, section } = req.body;
     try {
         await pool.query(
             'INSERT INTO questions (test_id, question_number, passage, prompt, options, correct_answer_index, module, image_url, question_type, correct_answer_text, section) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            [test_id, question_number, passage, prompt, options ? JSON.stringify(options) : null, correct_answer_index, module, image_url || null, question_type || 'mcq', correct_answer_text || null, section || 'reading']
+            [test_id, question_number, passage, prompt, options ? JSON.stringify(options) : null, correct_answer_index, module, image_url || null, sanitizeQType(question_type, correct_answer_text), correct_answer_text || null, section || 'reading']
         );
         res.json({ success: true });
     } catch (err) {
         console.error(err);
+        res.status(500).json({ message: 'Server error' });
     }
 });
 
@@ -314,7 +320,7 @@ app.post('/api/admin/tests/:id/questions/bulk', authenticateAdmin, async (req, r
                     q.correct_answer_index,
                     q.module || 1,
                     q.image_url || null,
-                    q.question_type || 'mcq',
+                    sanitizeQType(q.question_type, q.correct_answer_text),
                     q.correct_answer_text || null,
                     q.section || 'reading'
                 ]
@@ -374,7 +380,7 @@ app.post('/api/admin/tests/:id/questions/replace-all', authenticateAdmin, async 
                     q.correct_answer_index !== undefined ? q.correct_answer_index : null,
                     q.module || 1,
                     q.image_url || null,
-                    q.question_type || 'mcq',
+                    sanitizeQType(q.question_type, q.correct_answer_text),
                     q.correct_answer_text || null,
                     q.section || 'reading'
                 ]

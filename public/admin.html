@@ -477,9 +477,102 @@
         </div>
     </div>
 
+    <!-- Single Question Editor Modal -->
+    <div class="modal hidden" id="singleQuestionModal">
+        <div class="modal-content" style="width: 750px; max-width: 95vw; max-height: 90vh;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                <h3 style="margin: 0; font-size: 18px;" id="singleQuestionModalTitle">✏️ Sửa chi tiết câu hỏi</h3>
+                <button class="btn-admin" id="btnCloseSingleQuestion" style="background: #64748b; padding: 4px 12px;">Close</button>
+            </div>
+
+            <form id="singleQuestionForm">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
+                    <div class="form-group">
+                        <label>Module</label>
+                        <select class="form-control" id="sqModule">
+                            <option value="1">Module 1</option>
+                            <option value="2">Module 2</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Số thứ tự câu (Q#)</label>
+                        <input type="number" class="form-control" id="sqQNum" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Loại câu hỏi</label>
+                        <select class="form-control" id="sqType">
+                            <option value="mcq">MCQ (Trắc nghiệm 4 đáp án)</option>
+                            <option value="spr">SPR (Điền đáp số / Tự luận)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Link ảnh (Image URL - Nếu có)</label>
+                    <input type="text" class="form-control" id="sqImageUrl" placeholder="https://i.postimg.cc/...">
+                </div>
+
+                <div class="form-group">
+                    <label>Nội dung câu hỏi (Prompt)</label>
+                    <textarea class="form-control" id="sqPrompt" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group" id="sqPassageGroup" style="display: none;">
+                    <label>Bài đọc (Passage - Cho phần Reading)</label>
+                    <textarea class="form-control" id="sqPassage" rows="3"></textarea>
+                </div>
+
+                <!-- MCQ Options Section -->
+                <div id="sqMcqSection">
+                    <label style="font-weight: 600; margin-bottom: 8px; display: block;">Các lựa chọn đáp án (Options)</label>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+                        <div>
+                            <span style="font-weight:600; font-size:12px; color:#2563eb;">A:</span>
+                            <input type="text" class="form-control" id="sqOptA" placeholder="Lựa chọn A">
+                        </div>
+                        <div>
+                            <span style="font-weight:600; font-size:12px; color:#2563eb;">B:</span>
+                            <input type="text" class="form-control" id="sqOptB" placeholder="Lựa chọn B">
+                        </div>
+                        <div>
+                            <span style="font-weight:600; font-size:12px; color:#2563eb;">C:</span>
+                            <input type="text" class="form-control" id="sqOptC" placeholder="Lựa chọn C">
+                        </div>
+                        <div>
+                            <span style="font-weight:600; font-size:12px; color:#2563eb;">D:</span>
+                            <input type="text" class="form-control" id="sqOptD" placeholder="Lựa chọn D">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Đáp án đúng (MCQ Correct Answer)</label>
+                        <select class="form-control" id="sqCorrectIndex">
+                            <option value="0">Option A (Index 0)</option>
+                            <option value="1">Option B (Index 1)</option>
+                            <option value="2">Option C (Index 2)</option>
+                            <option value="3">Option D (Index 3)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- SPR Correct Section -->
+                <div id="sqSprSection" style="display: none;">
+                    <div class="form-group">
+                        <label>Đáp án đúng cho SPR (Text / Con số chính xác)</label>
+                        <input type="text" class="form-control" id="sqCorrectText" placeholder="ví dụ: 64, 2/3, 3.5">
+                    </div>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 20px;">
+                    <button type="button" class="btn-admin" style="background: #64748b;" id="btnCancelSingleQuestion">Hủy</button>
+                    <button type="submit" class="btn-admin" style="background: #10b981;">💾 Cập nhật câu hỏi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Hidden file input for CSV Upload -->
     <input type="file" id="csvFileInput" accept=".csv" style="display: none;">
-
-    <script src="admin.js?v=5"></script>
+    <script src="admin.js?v=6"></script>
 </body>
 </html>
