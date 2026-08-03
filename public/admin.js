@@ -37,7 +37,21 @@
         btnCloseImages: document.getElementById('btnCloseImages'),
         chkOnlyImageQuestions: document.getElementById('chkOnlyImageQuestions'),
         imageStatsCount: document.getElementById('imageStatsCount'),
-        btnSaveAllImages: document.getElementById('btnSaveAllImages')
+        btnSaveAllImages: document.getElementById('btnSaveAllImages'),
+
+        // CSV / Question Editor elements
+        editCsvModal: document.getElementById('editCsvModal'),
+        editCsvModalTitle: document.getElementById('editCsvModalTitle'),
+        btnCloseEditCsv: document.getElementById('btnCloseEditCsv'),
+        btnTabCsvTable: document.getElementById('btnTabCsvTable'),
+        btnTabCsvRaw: document.getElementById('btnTabCsvRaw'),
+        csvTableView: document.getElementById('csvTableView'),
+        csvRawView: document.getElementById('csvRawView'),
+        csvTableBody: document.getElementById('csvTableBody'),
+        rawCsvTextArea: document.getElementById('rawCsvTextArea'),
+        csvQuestionCountLabel: document.getElementById('csvQuestionCountLabel'),
+        btnSaveCsvChanges: document.getElementById('btnSaveCsvChanges'),
+        btnExportCurrentCsv: document.getElementById('btnExportCurrentCsv')
     };
     
     let currentUploadTestId = null;
@@ -105,6 +119,9 @@
                         <div class="action-buttons-group">
                             <button class="btn-admin btn-add-q" style="background: #10b981; padding: 6px 12px; font-size: 13px;" data-id="${t.id}" data-type="${t.type}">
                                 Add Question
+                            </button>
+                            <button class="btn-admin btn-edit-csv" style="background: #6366f1; padding: 6px 12px; font-size: 13px;" data-id="${t.id}" data-title="${t.title}">
+                                📝 Edit CSV
                             </button>
                             <button class="btn-admin btn-import-csv" style="background: #8b5cf6; padding: 6px 12px; font-size: 13px;" data-id="${t.id}">
                                 Drop/Import CSV
@@ -185,6 +202,14 @@
                     const testId = e.currentTarget.getAttribute('data-id');
                     const testTitle = e.currentTarget.getAttribute('data-title');
                     openImagesModal(testId, testTitle);
+                });
+            });
+
+            document.querySelectorAll('.btn-edit-csv').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const testId = e.currentTarget.getAttribute('data-id');
+                    const testTitle = e.currentTarget.getAttribute('data-title');
+                    openEditCsvModal(testId, testTitle);
                 });
             });
         } catch (err) {
@@ -824,6 +849,291 @@
 
     if (dom.chkOnlyImageQuestions) {
         dom.chkOnlyImageQuestions.addEventListener('change', renderImageQuestionsList);
+    }
+
+    // --- CSV / Question Editor Logic ---
+    let currentEditingTestId = null;
+    let currentEditingTestTitle = '';
+    let currentCsvQuestions = [];
+    let currentCsvEditorMode = 'table';
+
+    async function openEditCsvModal(testId, testTitle) {
+        const token = await checkAuth();
+        if (!token) return;
+
+        currentEditingTestId = testId;
+        currentEditingTestTitle = testTitle;
+        dom.editCsvModalTitle.textContent = `📝 Edit Test Questions & CSV - ${testTitle}`;
+        dom.csvTableBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 20px;">Loading test questions...</td></tr>';
+        dom.editCsvModal.classList.remove('hidden');
+
+        switchCsvEditorTab('table');
+
+        try {
+            const res = await fetch(`/api/tests/${testId}/questions`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (!res.ok) throw new Error('Failed to load questions');
+            const data = await res.json();
+            currentCsvQuestions = data.questions || [];
+            
+            renderCsvQuestionsTable();
+            updateRawCsvTextArea();
+        } catch (err) {
+            console.error(err);
+            alert('Error loading questions for CSV editor');
+        }
+    }
+
+    function switchCsvEditorTab(mode) {
+        currentCsvEditorMode = mode;
+        if (mode === 'table') {
+            dom.btnTabCsvTable.style.background = '#2563eb';
+            dom.btnTabCsvRaw.style.background = '#64748b';
+            dom.csvTableView.classList.remove('hidden');
+            dom.csvRawView.classList.add('hidden');
+        } else {
+            dom.btnTabCsvTable.style.background = '#64748b';
+            dom.btnTabCsvRaw.style.background = '#2563eb';
+            dom.csvTableView.classList.add('hidden');
+            dom.csvRawView.classList.remove('hidden');
+            updateRawCsvTextArea();
+        }
+    }
+
+    function renderCsvQuestionsTable() {
+        dom.csvTableBody.innerHTML = '';
+        dom.csvQuestionCountLabel.textContent = `Tổng số: ${currentCsvQuestions.length} câu hỏi`;
+
+        if (currentCsvQuestions.length === 0) {
+            dom.csvTableBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 20px; color:#64748b;">Chưa có câu hỏi nào trong đề thi này.</td></tr>';
+            return;
+        }
+
+        currentCsvQuestions.forEach((q, idx) => {
+            const tr = document.createElement('tr');
+            let opts = q.options;
+            if (typeof opts === 'string') {
+                try { opts = JSON.parse(opts); } catch(e) { opts = []; }
+            }
+            if (!Array.isArray(opts)) opts = [];
+
+            let correctText = '';
+            if (q.question_type === 'spr') {
+                correctText = `<span style="color:#10b981;font-weight:600;">Text: ${q.correct_answer_text || 'N/A'}</span>`;
+            } else {
+                const letters = ['A', 'B', 'C', 'D'];
+                const letter = letters[q.correct_answer_index] || 'A';
+                correctText = `<span style="color:#2563eb;font-weight:600;">Option ${letter}</span>`;
+            }
+
+            const typeBadge = q.question_type === 'spr' 
+                ? '<span style="background:#fef3c7;color:#d97706;padding:2px 6px;border-radius:4px;font-size:11px;font-weight:600;">SPR</span>'
+                : '<span style="background:#e0e7ff;color:#4338ca;padding:2px 6px;border-radius:4px;font-size:11px;font-weight:600;">MCQ</span>';
+
+            const cleanPrompt = (q.prompt || '').replace(/<[^>]*>/g, '').substring(0, 100);
+
+            tr.innerHTML = `
+                <td style="text-align:center;">Module ${q.module || 1}</td>
+                <td style="text-align:center;"><strong>${q.question_number || (idx + 1)}</strong></td>
+                <td style="text-align:center;">${typeBadge}</td>
+                <td style="color:#334155;">${cleanPrompt}${cleanPrompt.length >= 100 ? '...' : ''}</td>
+                <td>${correctText}</td>
+                <td style="text-align:center; white-space:nowrap;">
+                    <button class="btn-admin btn-delete-q-inline" data-index="${idx}" style="background:#ef4444;padding:4px 8px;font-size:12px;">
+                        🗑️ Xóa
+                    </button>
+                </td>
+            `;
+            dom.csvTableBody.appendChild(tr);
+        });
+
+        document.querySelectorAll('.btn-delete-q-inline').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const index = parseInt(e.currentTarget.getAttribute('data-index'), 10);
+                if (confirm(`Bạn có chắc muốn xóa câu Q${currentCsvQuestions[index].question_number} (Module ${currentCsvQuestions[index].module}) khỏi đề thi?`)) {
+                    currentCsvQuestions.splice(index, 1);
+                    renderCsvQuestionsTable();
+                    updateRawCsvTextArea();
+                }
+            });
+        });
+    }
+
+    function escapeCSVField(str) {
+        if (str === null || str === undefined) return '""';
+        let s = String(str);
+        if (s.includes('"') || s.includes(',') || s.includes('\n') || s.includes('\r')) {
+            s = s.replace(/"/g, '""');
+            return `"${s}"`;
+        }
+        return `"${s}"`;
+    }
+
+    function convertQuestionsToCsvString(questions) {
+        const header = "module,question_number,prompt,option_a,option_b,option_c,option_d,correct_answer_index,correct_answer_text,image_url,question_type\n";
+        const rows = questions.map(q => {
+            let opts = q.options;
+            if (typeof opts === 'string') {
+                try { opts = JSON.parse(opts); } catch(e) { opts = []; }
+            }
+            if (!Array.isArray(opts)) opts = [];
+
+            const optA = opts[0] || '';
+            const optB = opts[1] || '';
+            const optC = opts[2] || '';
+            const optD = opts[3] || '';
+
+            return [
+                escapeCSVField(q.module || 1),
+                escapeCSVField(q.question_number || 1),
+                escapeCSVField(q.prompt || ''),
+                escapeCSVField(optA),
+                escapeCSVField(optB),
+                escapeCSVField(optC),
+                escapeCSVField(optD),
+                escapeCSVField(q.correct_answer_index !== null && q.correct_answer_index !== undefined ? q.correct_answer_index : 0),
+                escapeCSVField(q.correct_answer_text || ''),
+                escapeCSVField(q.image_url || ''),
+                escapeCSVField(q.question_type || 'mcq')
+            ].join(',');
+        });
+        return header + rows.join('\n');
+    }
+
+    function updateRawCsvTextArea() {
+        if (dom.rawCsvTextArea) {
+            dom.rawCsvTextArea.value = convertQuestionsToCsvString(currentCsvQuestions);
+        }
+    }
+
+    function parseCsvStringToQuestions(csvText) {
+        const lines = csvText.trim().split(/\r?\n/);
+        if (lines.length <= 1) return [];
+
+        const parseCsvLine = (line) => {
+            const result = [];
+            let cur = '';
+            let inQuotes = false;
+            for (let i = 0; i < line.length; i++) {
+                const c = line[i];
+                if (c === '"') {
+                    if (inQuotes && line[i + 1] === '"') {
+                        cur += '"';
+                        i++;
+                    } else {
+                        inQuotes = !inQuotes;
+                    }
+                } else if (c === ',' && !inQuotes) {
+                    result.push(cur);
+                    cur = '';
+                } else {
+                    cur += c;
+                }
+            }
+            result.push(cur);
+            return result;
+        };
+
+        const result = [];
+        const startIndex = lines[0].toLowerCase().startsWith('module,') ? 1 : 0;
+        
+        for (let i = startIndex; i < lines.length; i++) {
+            const line = lines[i].trim();
+            if (!line) continue;
+            const cols = parseCsvLine(line);
+            if (cols.length < 3) continue;
+
+            const mod = parseInt(cols[0], 10) || 1;
+            const qNum = parseInt(cols[1], 10) || (i - startIndex + 1);
+            const prompt = cols[2] || '';
+            const optA = cols[3] || '';
+            const optB = cols[4] || '';
+            const optC = cols[5] || '';
+            const optD = cols[6] || '';
+            const correctIndex = cols[7] !== '' && cols[7] !== undefined ? parseInt(cols[7], 10) : 0;
+            const correctText = cols[8] || null;
+            const imageUrl = cols[9] || null;
+            const qType = cols[10] ? cols[10].trim().toLowerCase() : (correctText ? 'spr' : 'mcq');
+
+            result.push({
+                module: mod,
+                question_number: qNum,
+                prompt: prompt,
+                options: [optA, optB, optC, optD],
+                correct_answer_index: correctIndex,
+                correct_answer_text: correctText,
+                image_url: imageUrl,
+                question_type: qType
+            });
+        }
+        return result;
+    }
+
+    if (dom.btnTabCsvTable) dom.btnTabCsvTable.addEventListener('click', () => switchCsvEditorTab('table'));
+    if (dom.btnTabCsvRaw) dom.btnTabCsvRaw.addEventListener('click', () => switchCsvEditorTab('raw'));
+    if (dom.btnCloseEditCsv) dom.btnCloseEditCsv.addEventListener('click', () => dom.editCsvModal.classList.add('hidden'));
+
+    if (dom.btnSaveCsvChanges) {
+        dom.btnSaveCsvChanges.addEventListener('click', async () => {
+            const token = await checkAuth();
+            if (!token) return;
+
+            let questionsToSave = currentCsvQuestions;
+            if (currentCsvEditorMode === 'raw') {
+                try {
+                    questionsToSave = parseCsvStringToQuestions(dom.rawCsvTextArea.value);
+                } catch (e) {
+                    alert('Lỗi định dạng CSV. Vui lòng kiểm tra lại văn bản CSV.');
+                    return;
+                }
+            }
+
+            if (!confirm(`Bạn có chắc muốn lưu cập nhật ${questionsToSave.length} câu hỏi vào CSDL cho đề thi này?`)) {
+                return;
+            }
+
+            try {
+                dom.btnSaveCsvChanges.disabled = true;
+                dom.btnSaveCsvChanges.textContent = '⏳ Đang lưu...';
+                const res = await fetch(`/api/admin/tests/${currentEditingTestId}/questions/replace-all`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ questions: questionsToSave })
+                });
+
+                if (res.ok) {
+                    alert(`✅ Đã lưu thành công ${questionsToSave.length} câu hỏi vào CSDL!`);
+                    dom.editCsvModal.classList.add('hidden');
+                } else {
+                    alert('Lỗi khi lưu câu hỏi vào CSDL.');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Lỗi kết nối khi lưu câu hỏi.');
+            } finally {
+                dom.btnSaveCsvChanges.disabled = false;
+                dom.btnSaveCsvChanges.textContent = '💾 Lưu tất cả thay đổi vào CSDL';
+            }
+        });
+    }
+
+    if (dom.btnExportCurrentCsv) {
+        dom.btnExportCurrentCsv.addEventListener('click', () => {
+            const csvStr = convertQuestionsToCsvString(currentCsvQuestions);
+            const blob = new Blob([csvStr], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${currentEditingTestTitle || 'test'}_questions.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
     }
 
     // Init

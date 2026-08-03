@@ -348,6 +348,60 @@ app.post('/api/admin/questions/batch-images', authenticateAdmin, async (req, res
     }
 });
 
+// Admin API to replace all questions of a test (used for CSV editor)
+app.post('/api/admin/tests/:id/questions/replace-all', authenticateAdmin, async (req, res) => {
+    const test_id = req.params.id;
+    const questions = req.body.questions;
+
+    if (!Array.isArray(questions)) {
+        return res.status(400).json({ message: 'Invalid questions format' });
+    }
+
+    const connection = await pool.getConnection();
+    try {
+        await connection.beginTransaction();
+        await connection.query('DELETE FROM questions WHERE test_id = ?', [test_id]);
+
+        for (const q of questions) {
+            await connection.query(
+                'INSERT INTO questions (test_id, question_number, passage, prompt, options, correct_answer_index, module, image_url, question_type, correct_answer_text, section) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                [
+                    test_id,
+                    q.question_number,
+                    q.passage || null,
+                    q.prompt,
+                    q.options ? (typeof q.options === 'string' ? q.options : JSON.stringify(q.options)) : null,
+                    q.correct_answer_index !== undefined ? q.correct_answer_index : null,
+                    q.module || 1,
+                    q.image_url || null,
+                    q.question_type || 'mcq',
+                    q.correct_answer_text || null,
+                    q.section || 'reading'
+                ]
+            );
+        }
+        await connection.commit();
+        res.json({ success: true, count: questions.length });
+    } catch (err) {
+        await connection.rollback();
+        console.error(err);
+        res.status(500).json({ message: 'Error replacing test questions' });
+    } finally {
+        connection.release();
+    }
+});
+
+// Admin API to delete single question
+app.delete('/api/admin/questions/:id', authenticateAdmin, async (req, res) => {
+    try {
+        await pool.query('DELETE FROM questions WHERE id = ?', [req.params.id]);
+        res.json({ success: true });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
 app.post('/api/explain', authenticateToken, async (req, res) => {
     const { question, passage, options, userAnswer, correctAnswer } = req.body;
     try {

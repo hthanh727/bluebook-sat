@@ -241,7 +241,7 @@
     let imageHtml = '';
     if (q.image_url && isImageUrl(q.image_url)) {
       const resolved = resolveImageUrl(q.image_url);
-      imageHtml = `<img src="${resolved}" class="question-image" alt="Question Image" />`;
+      imageHtml = `<img src="${resolved}" class="question-image" loading="eager" fetchpriority="high" alt="Question Image" />`;
     }
 
 function convertMarkdownTablesToHtml(text) {
@@ -1107,6 +1107,16 @@ function convertMarkdownTablesToHtml(text) {
         
         SAT_MATH_QUESTIONS = filteredQuestions;
         state.allQuestions = data.questions;
+        
+        // Preload all question images into browser cache for instant rendering
+        if (Array.isArray(SAT_MATH_QUESTIONS)) {
+            SAT_MATH_QUESTIONS.forEach(q => {
+                if (q.image_url && isImageUrl(q.image_url)) {
+                    const img = new Image();
+                    img.src = resolveImageUrl(q.image_url);
+                }
+            });
+        }
         
         const numQ = SAT_MATH_QUESTIONS.length;
         state.answers = new Array(numQ).fill(null);

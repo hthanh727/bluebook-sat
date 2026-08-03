@@ -421,9 +421,65 @@
         </div>
     </div>
 
+    <!-- CSV / Question Editor Modal -->
+    <div class="modal hidden" id="editCsvModal">
+        <div class="modal-content" style="width: 1050px; max-width: 95vw; max-height: 92vh;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                <h3 style="margin: 0; font-size: 20px;" id="editCsvModalTitle">📝 Edit Test Questions & CSV</h3>
+                <button class="btn-admin" id="btnCloseEditCsv" style="background: #64748b; padding: 6px 14px;">Close</button>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 10px 16px; border-radius: 8px; margin-bottom: 16px; border: 1px solid #e2e8f0;">
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn-admin" id="btnTabCsvTable" style="background: #2563eb; font-size: 13px; padding: 6px 14px;">📊 Bảng câu hỏi</button>
+                    <button class="btn-admin" id="btnTabCsvRaw" style="background: #64748b; font-size: 13px; padding: 6px 14px;">📄 Sửa CSV dạng chữ (Raw CSV)</button>
+                </div>
+                <div id="csvQuestionCountLabel" style="font-weight: 600; color: #475569; font-size: 14px;">
+                    Tổng số: 0 câu hỏi
+                </div>
+            </div>
+
+            <!-- Mode 1: Interactive Table View -->
+            <div id="csvTableView" style="max-height: 58vh; overflow-y: auto; border: 1px solid #cbd5e1; border-radius: 8px;">
+                <table class="tests-table" style="margin: 0; font-size: 13px;">
+                    <thead>
+                        <tr style="position: sticky; top: 0; background: #f1f5f9; z-index: 10;">
+                            <th style="width: 60px;">Module</th>
+                            <th style="width: 60px;">#</th>
+                            <th style="width: 70px;">Loại</th>
+                            <th>Nội dung câu hỏi (Prompt)</th>
+                            <th style="width: 140px;">Đáp án đúng</th>
+                            <th style="width: 120px; text-align: center;">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="csvTableBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Mode 2: Raw CSV Text View -->
+            <div id="csvRawView" class="hidden" style="margin-bottom: 16px;">
+                <label style="font-weight: 600; font-size: 13px; display: block; margin-bottom: 6px; color: #475569;">
+                    Sửa trực tiếp định dạng CSV (module,question_number,prompt,option_a,option_b,option_c,option_d,correct_answer_index,correct_answer_text,image_url,question_type):
+                </label>
+                <textarea id="rawCsvTextArea" rows="18" class="form-control" style="font-size: 12px; white-space: pre; overflow-x: auto; font-family: 'Consolas', 'Courier New', monospace;"></textarea>
+            </div>
+
+            <!-- Footer Action Bar -->
+            <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+                <button class="btn-admin" id="btnExportCurrentCsv" style="background: #8b5cf6; padding: 8px 16px; font-size: 13px;">
+                    📥 Tải file CSV về máy
+                </button>
+                <button class="btn-admin" id="btnSaveCsvChanges" style="background: #10b981; padding: 10px 24px; font-size: 15px; font-weight: 600;">
+                    💾 Lưu tất cả thay đổi vào CSDL
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Hidden file input for CSV Upload -->
     <input type="file" id="csvFileInput" accept=".csv" style="display: none;">
 
-    <script src="admin.js?v=2"></script>
+    <script src="admin.js?v=5"></script>
 </body>
 </html>
