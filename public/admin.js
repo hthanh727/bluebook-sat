@@ -13,30 +13,68 @@
         questionModal: document.getElementById('questionModal'),
         questionForm: document.getElementById('questionForm'),
         btnCancelQuestion: document.getElementById('btnCancelQuestion'),
-        csvFileInput: document.getElementById('csvFileInput')
+        csvFileInput: document.getElementById('csvFileInput'),
+
+        // Student Progress elements
+        btnTabTests: document.getElementById('btnTabTests'),
+        btnTabProgress: document.getElementById('btnTabProgress'),
+        tabTests: document.getElementById('tabTests'),
+        tabProgress: document.getElementById('tabProgress'),
+        progressTableBody: document.getElementById('progressTableBody'),
+        btnRefreshProgress: document.getElementById('btnRefreshProgress'),
+        
+        // Access Management elements
+        accessModal: document.getElementById('accessModal'),
+        accessTableBody: document.getElementById('accessTableBody'),
+        btnCloseAccess: document.getElementById('btnCloseAccess'),
+        btnLockAll: document.getElementById('btnLockAll'),
+        btnUnlockAll: document.getElementById('btnUnlockAll'),
+
+        // Image Manager elements
+        imagesModal: document.getElementById('imagesModal'),
+        imagesModalTitle: document.getElementById('imagesModalTitle'),
+        imagesTableBody: document.getElementById('imagesTableBody'),
+        btnCloseImages: document.getElementById('btnCloseImages'),
+        chkOnlyImageQuestions: document.getElementById('chkOnlyImageQuestions'),
+        imageStatsCount: document.getElementById('imageStatsCount'),
+        btnSaveAllImages: document.getElementById('btnSaveAllImages')
     };
     
     let currentUploadTestId = null;
 
+    function decodeJWT(token) {
+        try {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            return JSON.parse(jsonPayload);
+        } catch (e) {
+            return null;
+        }
+    }
+
     async function checkAuth() {
         const token = localStorage.getItem('token');
         if (!token) {
-            window.location.href = 'login.html';
+            window.location.href = '/login';
             return false;
         }
 
         // Try decoding token to check role
-        try {
-            const payload = JSON.parse(atob(token.split('.')[1]));
-            if (payload.role !== 'admin') {
-                alert('Access denied. Admin only.');
-                window.location.href = 'dashboard.html';
-                return false;
-            }
-        } catch (e) {
-            window.location.href = 'login.html';
+        const payload = decodeJWT(token);
+        if (!payload) {
+            window.location.href = '/login';
             return false;
         }
+        
+        if (payload.role !== 'admin') {
+            alert('Access denied. Admin only.');
+            window.location.href = '/dashboard';
+            return false;
+        }
+        
         return token;
     }
 
@@ -63,16 +101,24 @@
                     <td><strong>${t.title}</strong></td>
                     <td>${typeLabel}</td>
                     <td>${new Date(t.created_at).toLocaleDateString()}</td>
-                    <td>
-                        <button class="btn-admin btn-add-q" style="background: #10b981; padding: 6px 12px; font-size: 13px;" data-id="${t.id}" data-type="${t.type}">
-                            Add Question
-                        </button>
-                        <button class="btn-admin btn-import-csv" style="background: #8b5cf6; padding: 6px 12px; font-size: 13px; margin-left: 8px;" data-id="${t.id}">
-                            Import CSV
-                        </button>
-                        <button class="btn-admin btn-delete-test" style="background: #ef4444; padding: 6px 12px; font-size: 13px; margin-left: 8px;" data-id="${t.id}">
-                            Delete
-                        </button>
+                    <td style="white-space: nowrap;">
+                        <div class="action-buttons-group">
+                            <button class="btn-admin btn-add-q" style="background: #10b981; padding: 6px 12px; font-size: 13px;" data-id="${t.id}" data-type="${t.type}">
+                                Add Question
+                            </button>
+                            <button class="btn-admin btn-import-csv" style="background: #8b5cf6; padding: 6px 12px; font-size: 13px;" data-id="${t.id}">
+                                Drop/Import CSV
+                            </button>
+                            <button class="btn-admin btn-manage-images" style="background: #0284c7; padding: 6px 12px; font-size: 13px;" data-id="${t.id}" data-title="${t.title}">
+                                🖼️ Images
+                            </button>
+                            <button class="btn-admin btn-manage-access" style="background: #eab308; padding: 6px 12px; font-size: 13px;" data-id="${t.id}">
+                                Access
+                            </button>
+                            <button class="btn-admin btn-delete-test" style="background: #ef4444; padding: 6px 12px; font-size: 13px;" data-id="${t.id}">
+                                Delete
+                            </button>
+                        </div>
                     </td>
                 `;
                 dom.testsTableBody.appendChild(tr);
@@ -92,33 +138,78 @@
                     currentUploadTestId = e.currentTarget.getAttribute('data-id');
                     dom.csvFileInput.click();
                 });
+                
+                btn.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    btn.style.opacity = '0.7';
+                    btn.style.outline = '2px dashed #fff';
+                    btn.style.outlineOffset = '-2px';
+                });
+                
+                btn.addEventListener('dragleave', (e) => {
+                    e.preventDefault();
+                    btn.style.opacity = '1';
+                    btn.style.outline = 'none';
+                });
+                
+                btn.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    btn.style.opacity = '1';
+                    btn.style.outline = 'none';
+                    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                        currentUploadTestId = e.currentTarget.getAttribute('data-id');
+                        dom.csvFileInput.files = e.dataTransfer.files;
+                        dom.csvFileInput.dispatchEvent(new Event('change'));
+                    }
+                });
             });
 
             document.querySelectorAll('.btn-delete-test').forEach(btn => {
                 btn.addEventListener('click', async (e) => {
                     const testId = e.currentTarget.getAttribute('data-id');
-                    if (confirm('Are you sure you want to delete this test? All questions and progress associated with it will be lost.')) {
-                        try {
-                            const delRes = await fetch(`/api/admin/tests/${testId}`, {
-                                method: 'DELETE',
-                                headers: { 'Authorization': `Bearer ${token}` }
-                            });
-                            if (delRes.ok) {
-                                alert('Test deleted successfully!');
-                                loadTests();
-                            } else {
-                                alert('Failed to delete test.');
-                            }
-                        } catch (err) {
-                            console.error(err);
-                            alert('Error deleting test.');
-                        }
+                    if (confirm('Are you sure you want to delete this test and all its questions?')) {
+                        deleteTest(testId);
                     }
+                });
+            });
+
+            document.querySelectorAll('.btn-manage-access').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const testId = e.currentTarget.getAttribute('data-id');
+                    openAccessModal(testId);
+                });
+            });
+
+            document.querySelectorAll('.btn-manage-images').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const testId = e.currentTarget.getAttribute('data-id');
+                    const testTitle = e.currentTarget.getAttribute('data-title');
+                    openImagesModal(testId, testTitle);
                 });
             });
         } catch (err) {
             console.error(err);
             alert('Error loading tests');
+        }
+    }
+
+    async function deleteTest(testId) {
+        const token = await checkAuth();
+        if (!token) return;
+
+        try {
+            const res = await fetch(`/api/admin/tests/${testId}`, {
+                method: 'DELETE',
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (res.ok) {
+                loadTests();
+            } else {
+                alert('Failed to delete test');
+            }
+        } catch (err) {
+            console.error(err);
+            alert('Error deleting test');
         }
     }
 
@@ -411,9 +502,332 @@
 
     dom.btnLogout.addEventListener('click', () => {
         localStorage.removeItem('token');
-        window.location.href = 'login.html';
+        window.location.href = '/login';
     });
+
+    // --- Tab Switching ---
+    dom.btnTabTests.addEventListener('click', () => {
+        dom.btnTabTests.classList.add('active');
+        dom.btnTabProgress.classList.remove('active');
+        dom.tabTests.classList.add('active');
+        dom.tabProgress.classList.remove('active');
+    });
+
+    dom.btnTabProgress.addEventListener('click', () => {
+        dom.btnTabProgress.classList.add('active');
+        dom.btnTabTests.classList.remove('active');
+        dom.tabProgress.classList.add('active');
+        dom.tabTests.classList.remove('active');
+        loadStudentProgress();
+    });
+
+    // --- Access Management Logic ---
+    let currentAccessTestId = null;
+
+    async function openAccessModal(testId) {
+        currentAccessTestId = testId;
+        dom.accessModal.classList.remove('hidden');
+        await loadAccessList();
+    }
+
+    async function loadAccessList() {
+        if (!currentAccessTestId) return;
+        const token = await checkAuth();
+        try {
+            const res = await fetch(`/api/admin/tests/${currentAccessTestId}/locks`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (!res.ok) throw new Error('Failed to load locks');
+            const students = await res.json();
+            
+            dom.accessTableBody.innerHTML = '';
+            students.forEach(s => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${s.id}</td>
+                    <td>${s.email}</td>
+                    <td style="text-align: right;">
+                        <label class="toggle-switch">
+                            <input type="checkbox" class="access-toggle" data-uid="${s.id}" ${s.is_locked ? '' : 'checked'}>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </td>
+                `;
+                dom.accessTableBody.appendChild(tr);
+            });
+
+            // Bind toggle events
+            document.querySelectorAll('.access-toggle').forEach(toggle => {
+                toggle.addEventListener('change', async (e) => {
+                    const uid = e.target.getAttribute('data-uid');
+                    const isLocked = !e.target.checked;
+                    await updateLocks([uid], isLocked);
+                });
+            });
+
+        } catch (err) {
+            console.error(err);
+            alert('Failed to load access list');
+        }
+    }
+
+    async function updateLocks(userIds, isLocked) {
+        const token = await checkAuth();
+        try {
+            const res = await fetch(`/api/admin/tests/${currentAccessTestId}/locks`, {
+                method: 'POST',
+                headers: { 
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ userIds, is_locked: isLocked })
+            });
+            if (!res.ok) throw new Error('Failed to update lock');
+        } catch (err) {
+            console.error(err);
+            alert('Failed to update access');
+            // Revert UI by reloading
+            loadAccessList();
+        }
+    }
+
+    dom.btnCloseAccess.addEventListener('click', () => {
+        dom.accessModal.classList.add('hidden');
+        currentAccessTestId = null;
+    });
+
+    dom.btnLockAll.addEventListener('click', async () => {
+        const checkboxes = document.querySelectorAll('.access-toggle');
+        const userIds = Array.from(checkboxes).map(cb => cb.getAttribute('data-uid'));
+        if (userIds.length > 0) {
+            checkboxes.forEach(cb => cb.checked = false); // UI update immediately
+            await updateLocks(userIds, true);
+        }
+    });
+
+    dom.btnUnlockAll.addEventListener('click', async () => {
+        const checkboxes = document.querySelectorAll('.access-toggle');
+        const userIds = Array.from(checkboxes).map(cb => cb.getAttribute('data-uid'));
+        if (userIds.length > 0) {
+            checkboxes.forEach(cb => cb.checked = true); // UI update immediately
+            await updateLocks(userIds, false);
+        }
+    });
+
+    // --- Student Progress Logic ---
+    dom.btnRefreshProgress.addEventListener('click', loadStudentProgress);
+
+    // --- Load Student Progress ---
+    async function loadStudentProgress() {
+        const token = await checkAuth();
+        if (!token) return;
+
+        try {
+            const res = await fetch('/api/admin/student-progress', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (!res.ok) throw new Error('Failed to load student progress');
+            const progressData = await res.json();
+            
+            dom.progressTableBody.innerHTML = '';
+            progressData.forEach(p => {
+                const tr = document.createElement('tr');
+                
+                let typeLabel = 'Reading & Writing';
+                if (p.test_type === 'math') typeLabel = 'Math';
+                if (p.test_type === 'full') typeLabel = 'Full Mock Test';
+
+                const statusClass = p.completed ? 'status-completed' : 'status-progress';
+                const statusText = p.completed ? 'Completed' : 'In Progress';
+
+                tr.innerHTML = `
+                    <td><strong>${p.student_name}</strong></td>
+                    <td>${p.student_email}</td>
+                    <td>${p.test_title}</td>
+                    <td>${typeLabel}</td>
+                    <td><strong>${p.score}</strong></td>
+                    <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+                    <td>${new Date(p.updated_at).toLocaleString()}</td>
+                `;
+                dom.progressTableBody.appendChild(tr);
+            });
+        } catch (err) {
+            console.error(err);
+            alert('Error loading student progress');
+        }
+    }
+
+    // --- Student Progress Filter ---
+    const progressFilter = document.getElementById('progressFilter');
+    if (progressFilter) {
+        progressFilter.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const rows = dom.progressTableBody.querySelectorAll('tr');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    }
+
+    // --- Image Manager Logic ---
+    let currentTestQuestionsForImages = [];
+
+    async function openImagesModal(testId, testTitle) {
+        const token = await checkAuth();
+        if (!token) return;
+
+        dom.imagesModalTitle.textContent = `🖼️ Detect & Manage Images - ${testTitle}`;
+        dom.imagesTableBody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 20px;">Loading questions...</td></tr>';
+        dom.imagesModal.classList.remove('hidden');
+
+        try {
+            const res = await fetch(`/api/tests/${testId}/questions`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (!res.ok) throw new Error('Failed to load questions');
+            const data = await res.json();
+            currentTestQuestionsForImages = data.questions || [];
+            renderImageQuestionsList();
+        } catch (err) {
+            console.error(err);
+            alert('Error loading questions for image manager');
+        }
+    }
+
+    function renderImageQuestionsList() {
+        const onlyFilter = dom.chkOnlyImageQuestions.checked;
+        dom.imagesTableBody.innerHTML = '';
+
+        let detectedCount = 0;
+        let renderedCount = 0;
+
+        currentTestQuestionsForImages.forEach(q => {
+            const promptText = q.prompt || '';
+            const optionsText = typeof q.options === 'string' ? q.options : JSON.stringify(q.options || '');
+            const hasImageTag = promptText.includes('[image]') || promptText.includes('{{image}}') || promptText.includes('[IMAGE]') || optionsText.includes('[image]');
+            const hasImageUrl = Boolean(q.image_url && q.image_url.trim().length > 0);
+
+            let statusBadge = '';
+            if (hasImageTag && !hasImageUrl) {
+                statusBadge = '<span style="background: #fef3c7; color: #d97706; padding: 3px 8px; border-radius: 12px; font-size: 12px; font-weight: 600;">🟡 Missing Image</span>';
+                detectedCount++;
+            } else if (hasImageUrl) {
+                statusBadge = '<span style="background: #d1fae5; color: #059669; padding: 3px 8px; border-radius: 12px; font-size: 12px; font-weight: 600;">🟢 Has Image</span>';
+                if (hasImageTag) detectedCount++;
+            } else {
+                statusBadge = '<span style="background: #f1f5f9; color: #64748b; padding: 3px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">⚪ No Tag</span>';
+            }
+
+            if (onlyFilter && !(hasImageTag || hasImageUrl)) {
+                return;
+            }
+
+            renderedCount++;
+            const cleanPrompt = promptText.replace(/<[^>]*>/g, '').substring(0, 120);
+
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><strong>M${q.module} Q${q.question_number}</strong></td>
+                <td>${statusBadge}</td>
+                <td style="font-size: 13px; color: #334155;">${cleanPrompt}${cleanPrompt.length >= 120 ? '...' : ''}</td>
+                <td>
+                    <input type="text" class="form-control q-image-input" data-qid="${q.id}" value="${q.image_url || ''}" placeholder="Paste URL (https://i.postimg.cc/...)" style="font-size: 13px;" />
+                </td>
+                <td style="text-align: center;">
+                    <img id="prev-img-${q.id}" src="${q.image_url || ''}" style="max-height: 40px; max-width: 60px; object-fit: contain; border-radius: 4px; border: 1px solid #cbd5e1; display: ${q.image_url ? 'inline-block' : 'none'};" onError="this.style.display='none'" onLoad="this.style.display='inline-block'" />
+                </td>
+            `;
+            dom.imagesTableBody.appendChild(tr);
+        });
+
+        if (renderedCount === 0) {
+            dom.imagesTableBody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 20px; color:#64748b;">No questions requiring images detected in this test!</td></tr>';
+        }
+
+        dom.imageStatsCount.textContent = `Phát hiện ${detectedCount} câu có tag [image] / ${currentTestQuestionsForImages.length} câu total (${renderedCount} câu hiển thị)`;
+
+        // Live preview listener on inputs
+        document.querySelectorAll('.q-image-input').forEach(inp => {
+            inp.addEventListener('input', (e) => {
+                const qid = e.target.getAttribute('data-qid');
+                const val = e.target.value.trim();
+                const imgEl = document.getElementById(`prev-img-${qid}`);
+                if (imgEl) {
+                    if (val) {
+                        imgEl.src = val;
+                        imgEl.style.display = 'inline-block';
+                    } else {
+                        imgEl.style.display = 'none';
+                    }
+                }
+            });
+        });
+    }
+
+    if (dom.btnSaveAllImages) {
+        dom.btnSaveAllImages.addEventListener('click', async () => {
+            const token = await checkAuth();
+            if (!token) return;
+
+            const inputs = document.querySelectorAll('.q-image-input');
+            const updates = [];
+
+            inputs.forEach(inp => {
+                const qid = parseInt(inp.getAttribute('data-qid'), 10);
+                const val = inp.value.trim();
+                updates.push({ id: qid, image_url: val });
+            });
+
+            if (updates.length === 0) {
+                alert('No question image links to save.');
+                return;
+            }
+
+            try {
+                dom.btnSaveAllImages.disabled = true;
+                dom.btnSaveAllImages.textContent = '⏳ Saving...';
+                const res = await fetch('/api/admin/questions/batch-images', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ updates })
+                });
+
+                if (res.ok) {
+                    alert(`✅ Successful! Saved image links for ${updates.length} questions.`);
+                    dom.imagesModal.classList.add('hidden');
+                } else {
+                    alert('Failed to save image links.');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Error saving image links.');
+            } finally {
+                dom.btnSaveAllImages.disabled = false;
+                dom.btnSaveAllImages.textContent = '💾 Lưu tất cả link ảnh';
+            }
+        });
+    }
+
+    if (dom.btnCloseImages) {
+        dom.btnCloseImages.addEventListener('click', () => {
+            dom.imagesModal.classList.add('hidden');
+        });
+    }
+
+    if (dom.chkOnlyImageQuestions) {
+        dom.chkOnlyImageQuestions.addEventListener('change', renderImageQuestionsList);
+    }
 
     // Init
     loadTests();
+    // Optional: preload student progress
+    // loadStudentProgress();
 })();

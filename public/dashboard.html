@@ -1423,7 +1423,6 @@
             text-overflow: ellipsis;
         }
     </style>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script>
         MathJax = {
             tex: {
@@ -1569,7 +1568,7 @@
 
             // Auth Check
             if (!localStorage.getItem('token')) {
-                window.location.href = 'login.html';
+                window.location.href = '/login';
                 return;
             }
 
@@ -1577,7 +1576,7 @@
             document.getElementById('logoutBtn').addEventListener('click', () => {
                 localStorage.removeItem('token');
                 localStorage.removeItem('userName');
-                window.location.href = 'login.html';
+                window.location.href = '/login';
             });
 
             // Fetch User Info
@@ -1679,7 +1678,7 @@
                     if (!res.ok) {
                         if (res.status === 401 || res.status === 403) {
                             localStorage.removeItem('token');
-                            window.location.href = 'login.html';
+                            window.location.href = '/login';
                             return;
                         }
                         throw new Error('Failed to load tests');
@@ -1733,9 +1732,9 @@
                     const isFull = test.type === 'full';
                     let typeParam = 'reading';
                     let sectionParam = 'reading';
-                    let page = 'test.html';
+                    let page = '/test';
                     if (isFull) { typeParam = 'full'; sectionParam = 'reading'; } // Full starts with reading
-                    else if (isMath) { typeParam = 'math'; sectionParam = 'math'; page = 'test-math.html'; }
+                    else if (isMath) { typeParam = 'math'; sectionParam = 'math'; page = '/test-math'; }
                     
                     const link = `${page}?id=${test.id}&type=${typeParam}&section=${sectionParam}`;
                     const time = isFull ? '134 min' : (isMath ? '70 min' : '64 min');
@@ -1828,12 +1827,18 @@
                         </div>
                         <div class="test-card-footer">
                             <span class="test-progress-text">${pct}% complete</span>
+                            ${test.is_locked ? `
+                            <button class="btn-start-exam" style="background: #94a3b8; cursor: not-allowed; opacity: 0.8;" disabled>
+                                🔒 Locked
+                            </button>
+                            ` : `
                             <a href="${link}" class="btn-start-exam ${btnClass}">
                                 ${btnText}
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                     <polyline points="9 18 15 12 9 6" />
                                 </svg>
                             </a>
+                            `}
                         </div>
                     `;
                     grid.appendChild(card);

@@ -47,3 +47,11 @@ CREATE TABLE progress (
 INSERT IGNORE INTO users (email, password, role) VALUES 
 ('hocsinh1@gmail.com', '$2b$10$DA3O2Z5ihrqmkeUOn5NwIeQO8EZ8eZdTaEOnjyAF7AOU/8DgTNQA.', 'student'),
 ('admin@bluebook.com', '$2b$10$DA3O2Z5ihrqmkeUOn5NwIeQO8EZ8eZdTaEOnjyAF7AOU/8DgTNQA.', 'admin');
+
+CREATE TABLE IF NOT EXISTS test_locks (
+    test_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (test_id, user_id),
+    FOREIGN KEY (test_id) REFERENCES tests(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);

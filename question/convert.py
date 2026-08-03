@@ -228,11 +228,12 @@ def split_by_module(text: str) -> dict:
         # Không tìm thấy module marker -> coi tất cả là module 1
         result[1] = text
     elif len(modules) == 1:
-        result[modules[0][0]] = text[modules[0][1]:]
+        # Nếu chỉ có 1 module, coi toàn bộ text thuộc về module đó
+        result[modules[0][0]] = text
     else:
         for i in range(len(modules)):
             mod_num = modules[i][0]
-            start = modules[i][1]
+            start = 0 if i == 0 else modules[i][1]
             end = modules[i + 1][1] if i + 1 < len(modules) else len(text)
             result[mod_num] = text[start:end]
 
@@ -255,9 +256,12 @@ def parse_answer_sheet(text: str) -> dict:
 
     answer_text = text[answer_match.start():]
 
-    # Tách theo Module
-    module_splits = re.split(r'Module\s+(\d)', answer_text)
-    # module_splits: ['Answer Sheet\n', '1', '\n1\n2\n...', '2', '\n1\n2\n...']
+    # Tách theo Module (có hoặc không có chữ Module X)
+    module_splits = re.split(r'(?i)Module\s+(\d)', answer_text)
+    
+    if len(module_splits) < 3:
+        # Nếu không có chữ Module nào, coi toàn bộ là của Module 1
+        module_splits = ['', '1', answer_text]
 
     for i in range(1, len(module_splits) - 1, 2):
         mod_num = int(module_splits[i])
@@ -345,8 +349,8 @@ def parse_math_questions(text: str, module: int) -> list:
     """Parse các câu hỏi Toán từ text thuần."""
     questions = []
 
-    # Tách câu hỏi bằng pattern "Question N. X"
-    pattern = r'Question\s+N\.\s*(\d+)'
+    # Tách câu hỏi bằng pattern "Question N. X" hoặc "Question 1." hoặc "Question N1"
+    pattern = r'(?i)Question\s*(?:N\.?\s*)?(\d+)\.?'
     splits = re.split(pattern, text)
 
     # splits sẽ có dạng: [trước_q1, "1", nội_dung_q1, "2", nội_dung_q2, ...]

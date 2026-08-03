@@ -76,6 +76,7 @@
     directionsClose: $('#directionsClose'),
     passageContainer: $('#passageContainer'),
     questionContainer: $('#questionContainer'),
+    studentName: $('#studentName'),
     btnBack: $('#btnBack'),
     btnNext: $('#btnNext'),
     btnQuestionNav: $('#btnQuestionNav'),
@@ -300,7 +301,32 @@ function renderQuestion() {
       imageHtml = `<img src="${resolved}" class="question-image" alt="Question Image" />`;
     }
 
-    let promptHtml = q.prompt;
+function convertMarkdownTablesToHtml(text) {
+    if (!text || typeof text !== 'string') return text;
+    let res = text;
+    if (res.includes('|---')) {
+        res = res.replace(/\|\|/g, '|\n|');
+        const tableRegex = /(?:\|[^\n]+\|\r?\n?)+(?:\|[-:\s|]+\|\r?\n?)(?:\|[^\n]+\|\r?\n?)+/g;
+        res = res.replace(tableRegex, (match) => {
+            const lines = match.trim().split(/\r?\n/).filter(line => line.trim().startsWith('|'));
+            if (lines.length < 3) return match;
+            const parseRow = (rowStr) => rowStr.split('|').slice(1, -1).map(cell => cell.trim());
+            const headers = parseRow(lines[0]);
+            const bodyRows = lines.slice(2).map(parseRow);
+            let html = '<table class="sat-table"><thead><tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr></thead><tbody>';
+            bodyRows.forEach(row => {
+                html += '<tr>' + row.map(cell => `<td>${cell}</td>`).join('') + '</tr>';
+            });
+            html += '</tbody></table>';
+            return html;
+        });
+    }
+    // Strip hardcoded inline styles from tables so CSS controls dark/light mode
+    res = res.replace(/<(table|thead|tbody|tr|th|td)([^>]*)\s+style="[^"]*"/gi, '<$1$2');
+    return res;
+}
+
+    let promptHtml = convertMarkdownTablesToHtml(q.prompt);
     if (imageHtml) {
       if (promptHtml.includes('[image]')) {
         promptHtml = promptHtml.replace('[image]', imageHtml);
@@ -333,7 +359,7 @@ function renderQuestion() {
           const resolvedOpt = resolveImageUrl(opt);
           const optionContent = isImageUrl(resolvedOpt)
             ? `<img src="${resolvedOpt}" class="option-image" style="max-height: 120px; object-fit: contain; display: block;" alt="Option ${letters[i]}" />`
-            : opt;
+            : convertMarkdownTablesToHtml(opt);
           optionsHtml += `
             <div class="answer-option ${selected} ${reviewClass}" data-index="${i}" id="answer-option-${i}">
               <span class="answer-letter">${letters[i]}</span>
@@ -538,7 +564,7 @@ function renderQuestion() {
           saveProgress(0, false);
           const testId = new URLSearchParams(window.location.search).get('id');
           localStorage.setItem(`sat_full_reading_${testId}`, JSON.stringify(state.answers));
-          window.location.href = `break.html?next=test-math.html?id=${testId}%26type=full%26section=math`;
+          window.location.href = `/break?next=/test-math?id=${testId}%26type=full%26section=math`;
           return;
       } else {
           calculateScore();
@@ -1003,7 +1029,7 @@ function renderQuestion() {
     // Exit to Dashboard
     if (dom.btnExitTest) {
       dom.btnExitTest.addEventListener('click', () => {
-        window.location.href = 'dashboard.html';
+        window.location.href = '/dashboard';
       });
     }
 
@@ -1122,7 +1148,7 @@ function renderQuestion() {
     // Score Screen Buttons
     if (dom.btnScoreHome) {
       dom.btnScoreHome.addEventListener('click', () => {
-        window.location.href = 'dashboard.html';
+        window.location.href = '/dashboard';
       });
     }
     
@@ -1291,13 +1317,13 @@ function renderQuestion() {
   async function init() {
     const token = localStorage.getItem('token');
     if (!token) {
-        window.location.href = 'login.html';
+        window.location.href = '/login';
         return;
     }
     
     const testId = new URLSearchParams(window.location.search).get('id');
     if (!testId) {
-        window.location.href = 'dashboard.html';
+        window.location.href = '/dashboard';
         return;
     }
     
@@ -1326,7 +1352,7 @@ function renderQuestion() {
         });
         
         if (!response.ok) {
-            window.location.href = 'dashboard.html';
+            window.location.href = '/dashboard';
             return;
         }
         
@@ -1396,6 +1422,9 @@ function renderQuestion() {
         if (bkRes.ok) {
             state.bookmarked = await bkRes.json();
         }
+
+        const userName = localStorage.getItem('userName') || 'Học sinh';
+        if (dom.studentName) dom.studentName.textContent = userName;
 
         renderQuestion();
         

@@ -62,6 +62,7 @@
     btnExitTest: $('#btnExitTest'),
     btnHelp: $('#btnHelp'),
     questionContainer: $('#questionContainer'),
+    studentName: $('#studentName'),
     btnBack: $('#btnBack'),
     btnNext: $('#btnNext'),
     btnQuestionNav: $('#btnQuestionNav'),
@@ -222,7 +223,7 @@
           const resolvedOpt = resolveImageUrl(opt);
           const optionContent = isImageUrl(resolvedOpt)
             ? `<img src="${resolvedOpt}" class="option-image" style="max-height: 120px; object-fit: contain; display: block;" alt="Option ${letters[i]}" />`
-            : opt;
+            : convertMarkdownTablesToHtml(opt);
           optionsHtml += `
             <div class="answer-option ${selected} ${reviewClass}" data-index="${i}" id="answer-option-${i}">
               <span class="answer-letter">${letters[i]}</span>
@@ -243,7 +244,32 @@
       imageHtml = `<img src="${resolved}" class="question-image" alt="Question Image" />`;
     }
 
-    let promptHtml = q.prompt;
+function convertMarkdownTablesToHtml(text) {
+    if (!text || typeof text !== 'string') return text;
+    let res = text;
+    if (res.includes('|---')) {
+        res = res.replace(/\|\|/g, '|\n|');
+        const tableRegex = /(?:\|[^\n]+\|\r?\n?)+(?:\|[-:\s|]+\|\r?\n?)(?:\|[^\n]+\|\r?\n?)+/g;
+        res = res.replace(tableRegex, (match) => {
+            const lines = match.trim().split(/\r?\n/).filter(line => line.trim().startsWith('|'));
+            if (lines.length < 3) return match;
+            const parseRow = (rowStr) => rowStr.split('|').slice(1, -1).map(cell => cell.trim());
+            const headers = parseRow(lines[0]);
+            const bodyRows = lines.slice(2).map(parseRow);
+            let html = '<table class="sat-table"><thead><tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr></thead><tbody>';
+            bodyRows.forEach(row => {
+                html += '<tr>' + row.map(cell => `<td>${cell}</td>`).join('') + '</tr>';
+            });
+            html += '</tbody></table>';
+            return html;
+        });
+    }
+    // Strip hardcoded inline styles from tables so CSS controls dark/light mode
+    res = res.replace(/<(table|thead|tbody|tr|th|td)([^>]*)\s+style="[^"]*"/gi, '<$1$2');
+    return res;
+}
+
+    let promptHtml = convertMarkdownTablesToHtml(q.prompt);
     if (imageHtml) {
       if (promptHtml.includes('[image]')) {
         promptHtml = promptHtml.replace('[image]', imageHtml);
@@ -345,7 +371,7 @@
 
     // Update nav label
     dom.questionNavLabel.textContent = `Question ${relativeIdx + 1} of ${half}`;
-    dom.btnBack.disabled = idx === 0;
+    if (dom.btnBack) dom.btnBack.disabled = idx === 0;
 
     if (!state.reviewMode) {
       // Delegated click on container - whole row is clickable
@@ -753,7 +779,7 @@
     if (dom.btnExitTest) {
       dom.btnExitTest.addEventListener('click', () => {
         if (confirm('Exit to dashboard? Your progress will be lost.')) {
-          window.location.href = 'dashboard.html';
+          window.location.href = '/dashboard';
         }
       });
     }
@@ -768,7 +794,7 @@
 
     // Navigation
     dom.btnNext.addEventListener('click', nextQuestion);
-    dom.btnBack.addEventListener('click', prevQuestion);
+    if (dom.btnBack) dom.btnBack.addEventListener('click', prevQuestion);
 
     // Question Navigator
     dom.btnQuestionNav.addEventListener('click', () => {
@@ -812,7 +838,7 @@
     // Score Screen Buttons
     if (dom.btnScoreHome) {
       dom.btnScoreHome.addEventListener('click', () => {
-        window.location.href = 'dashboard.html';
+        window.location.href = '/dashboard';
       });
     }
     if (dom.btnScoreReview) {
@@ -1048,13 +1074,13 @@
   async function init() {
     const token = localStorage.getItem('token');
     if (!token) {
-        window.location.href = 'login.html';
+        window.location.href = '/login';
         return;
     }
     
     const testId = new URLSearchParams(window.location.search).get('id');
     if (!testId) {
-        window.location.href = 'dashboard.html';
+        window.location.href = '/dashboard';
         return;
     }
     
@@ -1064,7 +1090,7 @@
         });
         
         if (!response.ok) {
-            window.location.href = 'dashboard.html';
+            window.location.href = '/dashboard';
             return;
         }
         
@@ -1119,6 +1145,9 @@
         if (bkRes.ok) {
             state.bookmarked = await bkRes.json();
         }
+
+        const userName = localStorage.getItem('userName') || 'Học sinh';
+        if (dom.studentName) dom.studentName.textContent = userName;
 
         renderQuestion();
 

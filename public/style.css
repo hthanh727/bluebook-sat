@@ -471,6 +471,64 @@ body {
     z-index: 100;
 }
 
+.footer-student-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.2px;
+}
+
+html.dark .footer-student-name {
+    color: #e2e8f0;
+}
+
+/* SAT Table styling (Light & Dark Mode) */
+.sat-table {
+    border-collapse: collapse;
+    margin: 16px 0;
+    width: 100%;
+    border: 1px solid #cbd5e1;
+}
+
+.sat-table th,
+.sat-table td {
+    border: 1px solid #cbd5e1;
+    padding: 10px 14px;
+    text-align: center;
+}
+
+.sat-table th {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    font-weight: 600;
+}
+
+.sat-table td {
+    background-color: #ffffff;
+    color: #0f172a;
+}
+
+html.dark .sat-table {
+    border-color: #334155;
+}
+
+html.dark .sat-table th,
+html.dark .sat-table td {
+    border-color: #334155;
+}
+
+html.dark .sat-table th {
+    background-color: #1e293b;
+    color: #f8fafc;
+}
+
+html.dark .sat-table td {
+    background-color: #0f172a;
+    color: #f1f5f9;
+}
+
 .btn-nav {
     padding: 8px 24px;
     border-radius: var(--radius-sm);

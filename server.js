@@ -15,7 +15,7 @@ app.use(express.json());
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'MISSING_KEY');
 
 // Serve static frontend files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), { extensions: ['html'] }));
 
 // MySQL Connection Pool
 const pool = mysql.createPool({
@@ -104,6 +104,15 @@ app.put('/api/user/name', authenticateToken, async (req, res) => {
 app.get('/api/tests', authenticateToken, async (req, res) => {
     try {
         const [rows] = await pool.query('SELECT * FROM tests ORDER BY created_at DESC');
+        
+        if (req.user && req.user.role === 'student') {
+            const [locks] = await pool.query('SELECT test_id FROM test_locks WHERE user_id = ?', [req.user.id]);
+            const lockedTestIds = new Set(locks.map(l => l.test_id));
+            rows.forEach(row => {
+                row.is_locked = lockedTestIds.has(row.id);
+            });
+        }
+        
         res.json(rows);
     } catch (err) {
         console.error(err);
@@ -113,6 +122,15 @@ app.get('/api/tests', authenticateToken, async (req, res) => {
 
 app.get('/api/tests/:id/questions', authenticateToken, async (req, res) => {
     try {
+        const testId = req.params.id;
+        
+        if (req.user && req.user.role === 'student') {
+            const [locks] = await pool.query('SELECT 1 FROM test_locks WHERE test_id = ? AND user_id = ?', [testId, req.user.id]);
+            if (locks.length > 0) {
+                return res.status(403).json({ message: 'Test is locked for you' });
+            }
+        }
+        
         const [testRows] = await pool.query('SELECT * FROM tests WHERE id = ?', [req.params.id]);
         if (testRows.length === 0) return res.status(404).json({ message: 'Test not found' });
 
@@ -169,6 +187,27 @@ app.get('/api/progress/:test_id', authenticateToken, async (req, res) => {
 });
 
 // --- Admin API ---
+app.get('/api/admin/student-progress', authenticateAdmin, async (req, res) => {
+    try {
+        const query = `
+            SELECT 
+                u.id as student_id, u.name as student_name, u.email as student_email,
+                t.title as test_title, t.type as test_type,
+                p.score, p.completed, p.updated_at
+            FROM users u
+            JOIN progress p ON u.id = p.user_id
+            JOIN tests t ON p.test_id = t.id
+            WHERE u.role = 'student'
+            ORDER BY p.updated_at DESC
+        `;
+        const [rows] = await pool.query(query);
+        res.json(rows);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
 app.post('/api/admin/tests', authenticateAdmin, async (req, res) => {
     const { title, type } = req.body;
     try {
@@ -191,7 +230,55 @@ app.delete('/api/admin/tests/:id', authenticateAdmin, async (req, res) => {
     }
 });
 
-app.post('/api/admin/questions', authenticateAdmin, async (req, res) => {
+// Admin API to get lock status of a test
+app.get('/api/admin/tests/:id/locks', authenticateAdmin, async (req, res) => {
+    try {
+        const testId = req.params.id;
+        const [students] = await pool.query(`
+            SELECT u.id, u.email, 
+            CASE WHEN tl.test_id IS NOT NULL THEN true ELSE false END as is_locked 
+            FROM users u 
+            LEFT JOIN test_locks tl ON u.id = tl.user_id AND tl.test_id = ? 
+            WHERE u.role = 'student'
+        `, [testId]);
+        
+        // Map 1/0 to true/false for mysql boolean
+        const formattedStudents = students.map(s => ({
+            ...s,
+            is_locked: !!s.is_locked
+        }));
+        
+        res.json(formattedStudents);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// Admin API to update lock status of a test for specific students
+app.post('/api/admin/tests/:id/locks', authenticateAdmin, async (req, res) => {
+    try {
+        const testId = req.params.id;
+        const { userIds, is_locked } = req.body;
+        
+        if (!Array.isArray(userIds) || userIds.length === 0) {
+            return res.status(400).json({ message: 'No users specified' });
+        }
+        
+        if (is_locked) {
+            const values = userIds.map(uid => [testId, uid]);
+            await pool.query('INSERT IGNORE INTO test_locks (test_id, user_id) VALUES ?', [values]);
+        } else {
+            await pool.query('DELETE FROM test_locks WHERE test_id = ? AND user_id IN (?)', [testId, userIds]);
+        }
+        res.json({ success: true });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+app.post('/api/admin/upload-questions', authenticateAdmin, async (req, res) => {
     const { test_id, question_number, passage, prompt, options, correct_answer_index, module, image_url, question_type, correct_answer_text, section } = req.body;
     try {
         await pool.query(
@@ -241,6 +328,23 @@ app.post('/api/admin/tests/:id/questions/bulk', authenticateAdmin, async (req, r
         res.status(500).json({ message: 'Error during bulk import' });
     } finally {
         connection.release();
+    }
+});
+
+// Admin API to batch update question image URLs
+app.post('/api/admin/questions/batch-images', authenticateAdmin, async (req, res) => {
+    const { updates } = req.body; // array of { id, image_url }
+    if (!Array.isArray(updates)) {
+        return res.status(400).json({ message: 'Invalid data format' });
+    }
+    try {
+        for (const u of updates) {
+            await pool.query('UPDATE questions SET image_url = ? WHERE id = ?', [u.image_url ? u.image_url.trim() : null, u.id]);
+        }
+        res.json({ success: true, count: updates.length });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Error updating question images' });
     }
 });
 

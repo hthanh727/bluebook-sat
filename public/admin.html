@@ -16,9 +16,16 @@
             align-items: center;
         }
         .admin-main {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 40px auto;
             padding: 0 24px;
+        }
+        .action-buttons-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: nowrap;
+            white-space: nowrap;
         }
         .admin-section {
             background: white;
@@ -91,6 +98,89 @@
             max-height: 90vh;
             overflow-y: auto;
         }
+        .admin-tabs {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+        /* Toggle Switch CSS */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+        .toggle-switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #ef4444; /* locked (red) */
+            transition: .2s;
+            border-radius: 20px;
+        }
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .2s;
+            border-radius: 50%;
+        }
+        input:checked + .toggle-slider {
+            background-color: #10b981; /* unlocked (green) */
+        }
+        input:checked + .toggle-slider:before {
+            transform: translateX(20px);
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .tab-btn:hover {
+            color: #1e293b;
+            background: #f1f5f9;
+        }
+        .tab-btn.active {
+            color: #2563eb;
+            background: #eff6ff;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .status-completed {
+            background: #dcfce7;
+            color: #166534;
+        }
+        .status-progress {
+            background: #fef08a;
+            color: #854d0e;
+        }
     </style>
 </head>
 <body style="background: #f1f5f9;">
@@ -98,13 +188,18 @@
     <header class="admin-header">
         <h2>SAT Admin Panel</h2>
         <div>
-            <a href="dashboard.html" style="color: white; text-decoration: none; margin-right: 20px;">Back to App</a>
+            <a href="/dashboard" style="color: white; text-decoration: none; margin-right: 20px;">Back to App</a>
             <button class="btn-admin" id="btnLogout" style="background: #dc2626;">Logout</button>
         </div>
     </header>
 
     <main class="admin-main">
-        <div class="admin-section">
+        <div class="admin-tabs">
+            <button class="tab-btn active" id="btnTabTests">Manage Tests</button>
+            <button class="tab-btn" id="btnTabProgress">Student Progress</button>
+        </div>
+
+        <div class="admin-section tab-content active" id="tabTests">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <h3>Manage Tests</h3>
                 <div style="display: flex; gap: 12px; align-items: center;">
@@ -127,6 +222,32 @@
                 </thead>
                 <tbody id="testsTableBody">
                     <!-- Tests will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="admin-section tab-content" id="tabProgress">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <h3 style="margin: 0;">Student Progress</h3>
+                    <input type="text" id="progressFilter" placeholder="Search student name or email..." style="padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px; width: 300px; font-size: 14px;">
+                </div>
+                <button class="btn-admin" id="btnRefreshProgress" style="background: #64748b;">Refresh</button>
+            </div>
+            <table class="tests-table" id="progressTable">
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Email</th>
+                        <th>Test Title</th>
+                        <th>Type</th>
+                        <th>Score</th>
+                        <th>Status</th>
+                        <th>Last Updated</th>
+                    </tr>
+                </thead>
+                <tbody id="progressTableBody">
+                    <!-- Progress will be loaded here -->
                 </tbody>
             </table>
         </div>
@@ -154,6 +275,37 @@
                     <button type="submit" class="btn-admin">Save Test</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- Manage Access Modal -->
+    <div class="modal hidden" id="accessModal">
+        <div class="modal-content" style="width: 800px;">
+            <h3>Manage Test Access</h3>
+            <p style="color: #64748b; font-size: 14px; margin-top: 4px; margin-bottom: 16px;">
+                Turn the toggle OFF to lock the test (student cannot take it). Turn ON to unlock it.
+            </p>
+            <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+                <button type="button" class="btn-admin" id="btnLockAll" style="background: #dc2626;">Lock All</button>
+                <button type="button" class="btn-admin" id="btnUnlockAll" style="background: #10b981;">Unlock All</button>
+            </div>
+            <div style="max-height: 400px; overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 6px;">
+                <table class="tests-table" style="margin-top: 0;">
+                    <thead style="position: sticky; top: 0; z-index: 10;">
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Email</th>
+                            <th style="text-align: right;">Access</th>
+                        </tr>
+                    </thead>
+                    <tbody id="accessTableBody">
+                        <!-- Student access list will be injected here -->
+                    </tbody>
+                </table>
+            </div>
+            <div style="display: flex; justify-content: flex-end; margin-top: 24px;">
+                <button type="button" class="btn-admin" style="background: #64748b;" id="btnCloseAccess">Close</button>
+            </div>
         </div>
     </div>
 
@@ -221,6 +373,51 @@
                     <button type="submit" class="btn-admin">Save Question</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- Image Manager Modal -->
+    <div class="modal hidden" id="imagesModal">
+        <div class="modal-content" style="width: 950px; max-width: 95vw; max-height: 90vh;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                <h3 style="margin: 0; font-size: 20px;" id="imagesModalTitle">🖼️ Detect & Manage Question Images</h3>
+                <button class="btn-admin" id="btnCloseImages" style="background: #64748b; padding: 6px 14px;">Close</button>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; border: 1px solid #e2e8f0;">
+                <label style="font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+                    <input type="checkbox" id="chkOnlyImageQuestions" checked style="width: 16px; height: 16px;">
+                    Chỉ hiện những câu có nhãn [image] hoặc chưa dán link ảnh
+                </label>
+                <div id="imageStatsCount" style="color: #475569; font-weight: 600; font-size: 14px;">
+                    Phát hiện 0 câu
+                </div>
+            </div>
+
+            <div style="max-height: 55vh; overflow-y: auto; border: 1px solid #cbd5e1; border-radius: 8px;">
+                <table class="tests-table" style="margin: 0;">
+                    <thead>
+                        <tr style="position: sticky; top: 0; background: #f1f5f9; z-index: 10;">
+                            <th style="width: 90px;">Câu hỏi</th>
+                            <th style="width: 120px;">Trạng thái</th>
+                            <th>Nội dung câu hỏi (Prompt)</th>
+                            <th style="width: 320px;">Link ảnh (image_url)</th>
+                            <th style="width: 75px; text-align: center;">Xem trước</th>
+                        </tr>
+                    </thead>
+                    <tbody id="imagesTableBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+                <div style="color: #64748b; font-size: 13px;">
+                    💡 Dán đường dẫn ảnh (ví dụ: https://i.postimg.cc/...) và bấm Lưu để cập nhật ngay vào MySQL.
+                </div>
+                <button class="btn-admin" id="btnSaveAllImages" style="background: #10b981; padding: 10px 24px; font-size: 15px; font-weight: 600;">
+                    💾 Lưu tất cả link ảnh
+                </button>
+            </div>
         </div>
     </div>
 
