@@ -418,7 +418,7 @@ function convertMarkdownTablesToHtml(text) {
     dom.questionNavLabel.textContent = `Question ${relativeIdx + 1} of ${half}`;
 
     // Back button state
-    dom.btnBack.disabled = relativeIdx === 0 && state.currentModule === 1;
+    dom.btnBack.disabled = relativeIdx === 0;
 
     if (!state.reviewMode) {
       // Delegated click on container - whole row is clickable
@@ -662,7 +662,9 @@ function convertMarkdownTablesToHtml(text) {
   }
 
   function prevQuestion() {
-    if (state.currentQuestion > 0) {
+    const half = Math.ceil(SAT_QUESTIONS.length / 2);
+    const minIdx = state.currentModule === 2 ? half : 0;
+    if (state.currentQuestion > minIdx) {
       goToQuestion(state.currentQuestion - 1);
     }
   }
