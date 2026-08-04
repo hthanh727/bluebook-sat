@@ -154,6 +154,9 @@
                             <button class="btn-admin btn-manage-access" style="background: #eab308; padding: 6px 12px; font-size: 13px;" data-id="${t.id}">
                                 Access
                             </button>
+                            <button class="btn-admin btn-practice-toggle" style="background: ${t.allow_practice ? '#10b981' : '#6b7280'}; padding: 6px 12px; font-size: 13px;" data-id="${t.id}" data-allow="${t.allow_practice}">
+                                Practice: ${t.allow_practice ? 'ON' : 'OFF'}
+                            </button>
                             <button class="btn-admin btn-delete-test" style="background: #ef4444; padding: 6px 12px; font-size: 13px;" data-id="${t.id}">
                                 Delete
                             </button>
@@ -161,6 +164,35 @@
                     </td>
                 `;
                 dom.testsTableBody.appendChild(tr);
+            });
+
+            // Bind Practice Toggle buttons
+            document.querySelectorAll('.btn-practice-toggle').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    const testId = e.currentTarget.getAttribute('data-id');
+                    const allowPractice = e.currentTarget.getAttribute('data-allow') === '1' || e.currentTarget.getAttribute('data-allow') === 'true';
+                    const newAllow = !allowPractice;
+                    
+                    try {
+                        const res = await fetch(`/api/admin/tests/${testId}/practice`, {
+                            method: 'POST',
+                            headers: { 
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`
+                            },
+                            body: JSON.stringify({ allow_practice: newAllow })
+                        });
+                        
+                        if (res.ok) {
+                            loadTests();
+                        } else {
+                            alert('Failed to update Practice Mode setting');
+                        }
+                    } catch (err) {
+                        console.error(err);
+                        alert('Error updating Practice Mode');
+                    }
+                });
             });
 
             // Bind Add Question buttons

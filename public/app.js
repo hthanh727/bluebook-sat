@@ -57,6 +57,8 @@
     allQuestions: [],
     reviewMode: false,
     bookmarked: [],
+    practiceMode: false,
+    questionSubmitted: [],
   };
 
   // ---- DOM References ----
@@ -86,6 +88,7 @@
     navModalClose: $('#navModalClose'),
     questionGrid: $('#questionGrid'),
     btnGoTo: $('#btnGoTo'),
+    practiceToggle: $('#practiceToggle'),
 
     highlightTooltip: $('#highlightToolbar'),
     tooltipHighlight: $('#hlApply'),
@@ -132,6 +135,12 @@
   function startTimer() {
     if (state.timerInterval) clearInterval(state.timerInterval);
     state.timerInterval = setInterval(() => {
+      if (state.practiceMode) {
+        const now = new Date();
+        const gmt7String = now.toLocaleTimeString('en-US', { hour12: false, timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        dom.timerDisplay.textContent = gmt7String;
+        return;
+      }
       if (state.timerSeconds > 0) {
         state.timerSeconds--;
         updateTimerDisplay();
@@ -351,7 +360,7 @@ function convertMarkdownTablesToHtml(text) {
     if (parsedOpts && parsedOpts.length > 0) {
         parsedOpts.forEach((opt, i) => {
           let reviewClass = '';
-          if (state.reviewMode) {
+          if (state.reviewMode || (state.practiceMode && state.questionSubmitted[state.currentQuestion])) {
             if (i === q.correct_answer_index) reviewClass = 'review-correct';
             else if (state.answers[state.currentQuestion] === i && i !== q.correct_answer_index) reviewClass = 'review-wrong';
           }
@@ -420,7 +429,14 @@ function convertMarkdownTablesToHtml(text) {
     // Back button state
     dom.btnBack.disabled = relativeIdx === 0;
 
-    if (!state.reviewMode) {
+    // Next button text based on Practice Mode
+    if (state.practiceMode && !state.questionSubmitted[state.currentQuestion]) {
+        dom.btnNext.textContent = 'Submit';
+    } else {
+        dom.btnNext.textContent = 'Next';
+    }
+
+    if (!state.reviewMode && !(state.practiceMode && state.questionSubmitted[state.currentQuestion])) {
       // Delegated click on container - whole row is clickable
       const answerOptions = document.getElementById('answerOptions');
       if (answerOptions) {
@@ -542,6 +558,12 @@ function convertMarkdownTablesToHtml(text) {
   }
 
   function nextQuestion() {
+    if (state.practiceMode && !state.questionSubmitted[state.currentQuestion]) {
+      state.questionSubmitted[state.currentQuestion] = true;
+      localStorage.setItem(`sat-practice-submitted-${state.testId}`, JSON.stringify(state.questionSubmitted));
+      renderQuestion();
+      return;
+    }
     const q = SAT_QUESTIONS[state.currentQuestion];
     
     const currentSec = q ? (q.section ? q.section.toLowerCase() : state.testType) : state.testType;
@@ -577,6 +599,8 @@ function convertMarkdownTablesToHtml(text) {
 
   function calculateScore() {
     if (state.timerInterval) clearInterval(state.timerInterval);
+    localStorage.removeItem(`sat-practice-mode-${state.testId}`);
+    localStorage.removeItem(`sat-practice-submitted-${state.testId}`);
     let correct = 0;
     // Calculate for all questions in state.allQuestions so Full tests get total score
     for (let i = 0; i < state.allQuestions.length; i++) {
@@ -1004,6 +1028,24 @@ function convertMarkdownTablesToHtml(text) {
 
   // ---- Event Bindings ----
   function initEvents() {
+    // Practice Mode Toggle
+    if (dom.practiceToggle) {
+      dom.practiceToggle.addEventListener('click', () => {
+        if (!state.practiceMode) {
+          state.practiceMode = true;
+          dom.practiceToggle.classList.add('active');
+          dom.practiceToggle.disabled = true;
+          localStorage.setItem(`sat-practice-mode-${state.testId}`, 'true');
+          renderQuestion();
+          if (state.timerInterval) {
+            const now = new Date();
+            const gmt7String = now.toLocaleTimeString('en-US', { hour12: false, timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            dom.timerDisplay.textContent = gmt7String;
+          }
+        }
+      });
+    }
+
     // Timer
     dom.btnHideTimer.addEventListener('click', toggleTimer);
 
@@ -1360,6 +1402,12 @@ function convertMarkdownTablesToHtml(text) {
         
         const data = await response.json();
         
+        if (data.test && (data.test.allow_practice === 0 || data.test.allow_practice === false)) {
+            if (dom.practiceToggle) dom.practiceToggle.style.display = 'none';
+        } else {
+            if (dom.practiceToggle) dom.practiceToggle.style.display = 'flex';
+        }
+        
         let filteredQuestions = data.questions;
         if (state.testType === 'full') {
             filteredQuestions = data.questions.filter(q => {
@@ -1384,6 +1432,26 @@ function convertMarkdownTablesToHtml(text) {
         const numQ = SAT_QUESTIONS.length;
         state.answers = new Array(numQ).fill(null);
         state.flagged = new Array(numQ).fill(false);
+
+        // Restore Practice Mode state
+        state.questionSubmitted = new Array(numQ).fill(false);
+        const savedPractice = localStorage.getItem(`sat-practice-mode-${testId}`);
+        if (savedPractice === 'true') {
+            state.practiceMode = true;
+            if (dom.practiceToggle) {
+                dom.practiceToggle.classList.add('active');
+                dom.practiceToggle.disabled = true;
+            }
+        }
+        const savedSubmitted = localStorage.getItem(`sat-practice-submitted-${testId}`);
+        if (savedSubmitted) {
+            try {
+                const parsedSub = JSON.parse(savedSubmitted);
+                if (Array.isArray(parsedSub) && parsedSub.length === numQ) {
+                    state.questionSubmitted = parsedSub;
+                }
+            } catch(e) {}
+        }
         
         // Fetch previous progress
         const progRes = await fetch(`/api/progress/${testId}`, {

@@ -1972,6 +1972,57 @@
             loadBookmarks();
         })();
     </script>
+
+    <!-- Motivational Quote Section -->
+    <style>
+        .footer-quote-container {
+            text-align: center;
+            padding: 40px 20px 50px 20px;
+            margin-top: 60px;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        .motivational-quote-text {
+            font-size: 13px;
+            font-style: italic;
+            color: var(--text-muted);
+            letter-spacing: 0.3px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 500;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 0.75;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <div class="footer-quote-container">
+        <p id="motivationalQuote" class="motivational-quote-text"></p>
+    </div>
+    <script>
+        (function() {
+            const quotes = [
+                "“Hành trình vạn dặm luôn bắt đầu bằng một bước chân đầu tiên.”",
+                "“Đừng cúi đầu khi gặp khó khăn, bởi vì bạn sinh ra để đứng vững và bước tiếp.”",
+                "“Thành công không phải là điểm dừng, thất bại cũng không phải là kết thúc: Sự dũng cảm để bước tiếp mới là điều quan trọng nhất.”",
+                "“Khi bạn muốn bỏ cuộc, hãy nghĩ đến lý do vì sao bạn bắt đầu.”",
+                "“Những giới hạn duy nhất là những giới hạn mà bạn tự đặt ra cho chính mình.”",
+                "“Kiên trì không phải là không bao giờ mệt mỏi, mà là dù mệt mỏi vẫn tiếp tục tiến lên.”",
+                "“Mọi khó khăn hôm nay đều là bài học để tạo nên một phiên bản tốt hơn của bạn ngày mai.”",
+                "“Chỉ cần bạn không dừng lại, việc bạn đi chậm thế nào cũng không thành vấn đề.”",
+                "“Người chiến thắng không bao giờ bỏ cuộc, và người bỏ cuộc không bao giờ chiến thắng.”"
+            ];
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const quoteEl = document.getElementById('motivationalQuote');
+            if (quoteEl) {
+                quoteEl.textContent = quotes[randomIndex];
+            }
+        })();
+    </script>
 </body>
 
 </html>

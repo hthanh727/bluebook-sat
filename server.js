@@ -29,6 +29,19 @@ const pool = mysql.createPool({
     queueLimit: 0
 });
 
+// Run migration on startup
+pool.query('ALTER TABLE tests ADD COLUMN allow_practice TINYINT(1) DEFAULT 1')
+    .then(() => {
+        console.log("Migration 'allow_practice' added to 'tests' table successfully!");
+    })
+    .catch(err => {
+        if (err.code === 'ER_DUP_FIELDNAME') {
+            console.log("Column 'allow_practice' already exists.");
+        } else {
+            console.error("Migration error:", err);
+        }
+    });
+
 const JWT_SECRET = process.env.JWT_SECRET || 'super-secret-key-for-bluebook';
 
 // --- Authentication Middleware ---
@@ -270,6 +283,19 @@ app.post('/api/admin/tests/:id/locks', authenticateAdmin, async (req, res) => {
         } else {
             await pool.query('DELETE FROM test_locks WHERE test_id = ? AND user_id IN (?)', [testId, userIds]);
         }
+        res.json({ success: true });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// Admin API to toggle Practice Mode availability for a test
+app.post('/api/admin/tests/:id/practice', authenticateAdmin, async (req, res) => {
+    try {
+        const testId = req.params.id;
+        const { allow_practice } = req.body;
+        await pool.query('UPDATE tests SET allow_practice = ? WHERE id = ?', [allow_practice ? 1 : 0, testId]);
         res.json({ success: true });
     } catch (err) {
         console.error(err);

@@ -1849,6 +1849,16 @@ html.dark .sat-table td {
     border-color: #ef4444 !important;
 }
 
+/* Dark mode overrides for correct/wrong review colors */
+html.dark .answer-option.review-correct {
+    background: #064e3b !important;
+    border-color: #10b981 !important;
+}
+html.dark .answer-option.review-wrong {
+    background: #7f1d1d !important;
+    border-color: #f43f5e !important;
+}
+
 /* ---- Question grid: review coloring ---- */
 .question-grid-btn.review-correct {
     background: #22c55e;
@@ -2906,3 +2916,34 @@ html.dark .theme-toggle-test .icon-moon-t {
         font-size: 13px;
     }
 }
+
+/* Practice Mode Button Styling */
+.practice-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 200ms ease;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 4px;
+}
+.practice-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.04);
+}
+.practice-toggle-btn.active {
+    background: #10b981;
+    border-color: #10b981;
+}
+.practice-toggle-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
