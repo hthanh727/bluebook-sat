@@ -11,8 +11,8 @@ async function main() {
     });
 
     try {
-        const [rows] = await pool.query('SELECT id, email, role, name FROM users');
-        console.log(rows);
+        const [rows] = await pool.query('SELECT * FROM progress LIMIT 5');
+        console.log(JSON.stringify(rows, null, 2));
     } catch (e) {
         console.error(e);
     } finally {

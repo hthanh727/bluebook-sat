@@ -11,7 +11,7 @@ async function main() {
     });
 
     try {
-        const [rows] = await pool.query('SELECT id, email, role, name FROM users');
+        const [rows] = await pool.query("SELECT id, test_id, question_number, prompt, image_url FROM questions WHERE prompt LIKE '%is parallel to line%' LIMIT 5");
         console.log(rows);
     } catch (e) {
         console.error(e);

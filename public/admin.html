@@ -181,7 +181,71 @@
             background: #fef08a;
             color: #854d0e;
         }
+        .dp-q-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            border-radius: 6px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .dp-q-item:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+        .dp-q-item.selected {
+            background: #eff6ff;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+        }
+        .option-detail-box {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.5;
+            background: white;
+            cursor: default;
+            gap: 10px;
+            transition: all 0.2s;
+        }
+        .option-detail-box.correct {
+            border-color: #10b981;
+            background: #f0fdf4;
+            color: #14532d;
+        }
+        .option-detail-box.incorrect-choice {
+            border-color: #ef4444;
+            background: #fef2f2;
+            color: #7f1d1d;
+        }
+        .option-letter {
+            font-weight: 700;
+            color: #64748b;
+            min-width: 18px;
+        }
+        .option-detail-box.correct .option-letter {
+            color: #10b981;
+        }
+        .option-detail-box.incorrect-choice .option-letter {
+            color: #ef4444;
+        }
     </style>
+    <!-- MathJax for rendering SAT LaTeX math formulas -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['\\(', '\\)'], ['$', '$']],
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body style="background: #f1f5f9;">
 
@@ -244,6 +308,7 @@
                         <th>Score</th>
                         <th>Status</th>
                         <th>Last Updated</th>
+                        <th style="width: 100px;">Thao tác</th>
                     </tr>
                 </thead>
                 <tbody id="progressTableBody">
@@ -568,6 +633,89 @@
                     <button type="submit" class="btn-admin" style="background: #10b981;">💾 Cập nhật câu hỏi</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- Detailed Student Progress Modal -->
+    <div class="modal hidden" id="detailedProgressModal">
+        <div class="modal-content" style="width: 1100px; max-width: 95vw; max-height: 92vh; display: flex; flex-direction: column; padding: 24px;">
+            <!-- Modal Header -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; flex-shrink: 0;">
+                <h3 style="margin: 0; font-size: 20px; color: #0f172a;" id="detailedProgressTitle">📊 Chi tiết kết quả học sinh</h3>
+                <button class="btn-admin" id="btnCloseDetailedProgress" style="background: #64748b; padding: 6px 14px;">Đóng</button>
+            </div>
+
+            <!-- Student info summary card -->
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;">
+                <div>
+                    <span style="font-size: 13px; color: #64748b;">Học sinh:</span>
+                    <strong style="font-size: 16px; color: #1e293b; margin-left: 4px;" id="dpStudentName">-</strong>
+                    <span style="font-size: 13px; color: #64748b; margin-left: 16px;">Email:</span>
+                    <span style="font-size: 14px; color: #334155; margin-left: 4px; font-weight: 500;" id="dpStudentEmail">-</span>
+                </div>
+                <div>
+                    <span style="font-size: 13px; color: #64748b;">Đề thi:</span>
+                    <strong style="font-size: 15px; color: #1e293b; margin-left: 4px;" id="dpTestTitle">-</strong>
+                    <span style="font-size: 13px; color: #64748b; margin-left: 16px;">Điểm số:</span>
+                    <strong style="font-size: 18px; color: #10b981; margin-left: 4px;" id="dpScore">-</strong>
+                </div>
+            </div>
+
+            <!-- Main Layout (Split View) -->
+            <div style="display: flex; gap: 20px; flex-grow: 1; min-height: 0; overflow: hidden;">
+                <!-- Left Panel: Question list -->
+                <div style="width: 320px; flex-shrink: 0; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; background: #fafafa;">
+                    <div style="background: #f1f5f9; padding: 10px 12px; border-bottom: 1px solid #cbd5e1; display: flex; flex-direction: column; gap: 4px;">
+                        <span style="font-weight: 600; font-size: 14px; color: #0f172a;">Danh sách câu hỏi</span>
+                        <span id="dpQuestionStats" style="font-size: 12px; color: #475569; font-weight: 500;"></span>
+                    </div>
+                    <div id="dpQuestionList" style="flex-grow: 1; overflow-y: auto; padding: 10px; display: flex; flex-direction: column; gap: 8px;">
+                        <!-- Questions will list here -->
+                    </div>
+                </div>
+
+                <!-- Right Panel: Question Detail view -->
+                <div id="dpQuestionDetailContainer" style="flex-grow: 1; min-width: 0; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; background: white; padding: 20px;">
+                    <div id="dpNoSelectedQuestion" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: #94a3b8;">
+                        <span style="font-size: 48px; margin-bottom: 12px;">🔍</span>
+                        <span>Chọn một câu hỏi ở danh sách bên trái để xem chi tiết</span>
+                    </div>
+                    <div id="dpSelectedQuestionDetail" class="hidden" style="display: flex; flex-direction: column; height: 100%; min-height: 0; overflow-y: auto;">
+                        <!-- Question metadata -->
+                        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; margin-bottom: 16px;">
+                            <span style="font-size: 14px; font-weight: 600; color: #3b82f6; background: #eff6ff; padding: 4px 10px; border-radius: 4px;" id="dpQMeta">Module 1 - Câu 1</span>
+                            <span id="dpQStatusBadge" class="status-badge" style="font-size: 12px;">Đúng</span>
+                        </div>
+                        <!-- Passage (if exists) -->
+                        <div id="dpPassageSection" style="background: #f8fafc; border-left: 4px solid #cbd5e1; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 16px; max-height: 250px; overflow-y: auto; font-style: italic; white-space: pre-wrap; font-size: 14px; line-height: 1.5; color: #334155;">
+                            <!-- Passage text -->
+                        </div>
+                        <!-- Prompt -->
+                        <div id="dpPromptSection" style="font-size: 15px; font-weight: 500; color: #0f172a; margin-bottom: 20px; line-height: 1.5; white-space: pre-wrap;">
+                            <!-- Prompt text -->
+                        </div>
+                        <!-- Image (if exists) -->
+                        <div id="dpImageSection" class="hidden" style="margin-bottom: 20px; text-align: center;">
+                            <img id="dpQImage" src="" alt="Question Image" style="max-width: 100%; max-height: 300px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                        </div>
+                        <!-- Answer options (for MCQ) -->
+                        <div id="dpMcqOptionsSection" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+                            <!-- Options go here -->
+                        </div>
+                        <!-- Student response (for SPR) -->
+                        <div id="dpSprSection" style="background: #f8fafc; padding: 16px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 20px;" class="hidden">
+                            <div style="margin-bottom: 8px;">
+                                <span style="font-weight: 600; color: #475569;">Học sinh trả lời:</span>
+                                <span id="dpStudentSprAnswer" style="margin-left: 8px; font-family: monospace; font-size: 15px; font-weight: bold; padding: 2px 8px; border-radius: 4px;">-</span>
+                            </div>
+                            <div>
+                                <span style="font-weight: 600; color: #475569;">Đáp án đúng:</span>
+                                <span id="dpCorrectSprAnswer" style="margin-left: 8px; font-family: monospace; font-size: 15px; font-weight: bold; background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 4px;">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

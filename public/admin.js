@@ -73,7 +73,31 @@
         sqOptD: document.getElementById('sqOptD'),
         sqCorrectIndex: document.getElementById('sqCorrectIndex'),
         sqSprSection: document.getElementById('sqSprSection'),
-        sqCorrectText: document.getElementById('sqCorrectText')
+        sqCorrectText: document.getElementById('sqCorrectText'),
+        
+        // Detailed Progress Modal elements
+        detailedProgressModal: document.getElementById('detailedProgressModal'),
+        detailedProgressTitle: document.getElementById('detailedProgressTitle'),
+        btnCloseDetailedProgress: document.getElementById('btnCloseDetailedProgress'),
+        dpStudentName: document.getElementById('dpStudentName'),
+        dpStudentEmail: document.getElementById('dpStudentEmail'),
+        dpTestTitle: document.getElementById('dpTestTitle'),
+        dpScore: document.getElementById('dpScore'),
+        dpQuestionStats: document.getElementById('dpQuestionStats'),
+        dpQuestionList: document.getElementById('dpQuestionList'),
+        dpQuestionDetailContainer: document.getElementById('dpQuestionDetailContainer'),
+        dpNoSelectedQuestion: document.getElementById('dpNoSelectedQuestion'),
+        dpSelectedQuestionDetail: document.getElementById('dpSelectedQuestionDetail'),
+        dpQMeta: document.getElementById('dpQMeta'),
+        dpQStatusBadge: document.getElementById('dpQStatusBadge'),
+        dpPassageSection: document.getElementById('dpPassageSection'),
+        dpPromptSection: document.getElementById('dpPromptSection'),
+        dpImageSection: document.getElementById('dpImageSection'),
+        dpQImage: document.getElementById('dpQImage'),
+        dpMcqOptionsSection: document.getElementById('dpMcqOptionsSection'),
+        dpSprSection: document.getElementById('dpSprSection'),
+        dpStudentSprAnswer: document.getElementById('dpStudentSprAnswer'),
+        dpCorrectSprAnswer: document.getElementById('dpCorrectSprAnswer')
     };
     
     let currentUploadTestId = null;
@@ -697,6 +721,25 @@
     dom.btnRefreshProgress.addEventListener('click', loadStudentProgress);
 
     // --- Load Student Progress ---
+    // --- Load Student Progress ---
+    function resolveImageUrl(url) {
+        if (typeof url !== 'string') return url;
+        let cleanUrl = url.trim();
+        if (cleanUrl.includes('imgur.com') && !cleanUrl.includes('i.imgur.com')) {
+            const match = cleanUrl.match(/https?:\/\/(?:www\.)?imgur\.com\/([a-zA-Z0-9]+)$/);
+            if (match) {
+                return `https://i.imgur.com/${match[1]}.png`;
+            }
+        }
+        if ((cleanUrl.includes('postimg.cc') || cleanUrl.includes('postimages.org')) && !cleanUrl.includes('i.postimg.cc')) {
+            const match = cleanUrl.match(/https?:\/\/(?:www\.)?(?:postimg\.cc|postimages\.org)\/([a-zA-Z0-9]+)$/);
+            if (match) {
+                return `https://i.postimg.cc/${match[1]}/image.png`;
+            }
+        }
+        return cleanUrl;
+    }
+
     async function loadStudentProgress() {
         const token = await checkAuth();
         if (!token) return;
@@ -730,13 +773,310 @@
                     <td><strong style="color: #10b981; font-size: 15px;">${p.score !== null ? p.score : 0}</strong></td>
                     <td><span class="status-badge ${statusClass}">${statusText}</span></td>
                     <td>${new Date(p.updated_at).toLocaleString()}</td>
+                    <td>
+                        <button class="btn-admin btn-view-dp" style="background: #3b82f6; padding: 4px 10px; font-size: 12px;">
+                            👁️ Chi tiết
+                        </button>
+                    </td>
                 `;
+                
+                const viewBtn = tr.querySelector('.btn-view-dp');
+                viewBtn.addEventListener('click', () => {
+                    openDetailedProgressModal(p);
+                });
+
                 dom.progressTableBody.appendChild(tr);
             });
         } catch (err) {
             console.error(err);
             alert('Error loading student progress');
         }
+    }
+
+    async function openDetailedProgressModal(progressItem) {
+        const token = await checkAuth();
+        if (!token) return;
+
+        // Reset details view
+        dom.dpStudentName.textContent = progressItem.student_name;
+        dom.dpStudentEmail.textContent = progressItem.student_email;
+        dom.dpTestTitle.textContent = progressItem.test_title;
+        
+        // Handle answers array (could be string or parsed array)
+        let answers = [];
+        try {
+            answers = typeof progressItem.answers === 'string' 
+                ? JSON.parse(progressItem.answers) 
+                : progressItem.answers;
+        } catch (e) {
+            console.error('Failed to parse answers:', e);
+        }
+        if (!Array.isArray(answers)) answers = [];
+
+        // Show loading state
+        dom.dpQuestionList.innerHTML = '<div style="text-align:center; padding:20px; color:#64748b;">Loading questions...</div>';
+        dom.dpNoSelectedQuestion.classList.remove('hidden');
+        dom.dpSelectedQuestionDetail.classList.add('hidden');
+        dom.detailedProgressModal.classList.remove('hidden');
+
+        try {
+            // Fetch test questions
+            const res = await fetch(`/api/tests/${progressItem.test_id}/questions`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (!res.ok) throw new Error('Failed to load test questions');
+            const data = await res.json();
+            const questions = data.questions || [];
+            
+            const test = data.test || {};
+            const testType = test.type || progressItem.test_type || 'math';
+
+            dom.dpScore.textContent = `${progressItem.score} / ${questions.length}`;
+
+            // Calculate correct, incorrect, unanswered count
+            let correctCount = 0;
+            let incorrectCount = 0;
+            let unansweredCount = 0;
+
+            const analyzedQuestions = questions.map((q, idx) => {
+                const ans = answers[idx];
+                let isCorrect = false;
+                let isAnswered = ans !== null && ans !== undefined && ans !== '';
+
+                if (isAnswered) {
+                    if (q.question_type === 'spr') {
+                        if (q.correct_answer_text && ans.toString().trim().toLowerCase() === q.correct_answer_text.trim().toLowerCase()) {
+                            isCorrect = true;
+                        }
+                    } else {
+                        if (parseInt(ans) === parseInt(q.correct_answer_index)) {
+                            isCorrect = true;
+                        }
+                    }
+                }
+
+                if (isCorrect) correctCount++;
+                else if (isAnswered) incorrectCount++;
+                else unansweredCount++;
+
+                return {
+                    question: q,
+                    index: idx,
+                    studentAnswer: ans,
+                    isCorrect,
+                    isAnswered
+                };
+            });
+
+            dom.dpQuestionStats.textContent = `Đúng: ${correctCount} | Sai: ${incorrectCount} | Trống: ${unansweredCount}`;
+
+            // Render list of questions
+            dom.dpQuestionList.innerHTML = '';
+            
+            analyzedQuestions.forEach(aq => {
+                const div = document.createElement('div');
+                div.className = 'dp-q-item';
+                
+                let badgeBg = '#cbd5e1';
+                let badgeColor = '#334155';
+                let badgeText = 'Trống';
+                
+                if (aq.isAnswered) {
+                    if (aq.isCorrect) {
+                        badgeBg = '#dcfce7';
+                        badgeColor = '#166534';
+                        badgeText = 'Đúng';
+                    } else {
+                        badgeBg = '#fee2e2';
+                        badgeColor = '#991b1b';
+                        badgeText = 'Sai';
+                    }
+                }
+
+                let section = aq.question.section;
+                if (testType === 'math' || testType === 'reading') {
+                    section = testType;
+                } else {
+                    section = section || 'reading';
+                }
+                let sectionLabel = section === 'math' ? 'Math' : 'R&W';
+                let promptSnippet = aq.question.prompt ? aq.question.prompt.substring(0, 30) + '...' : '';
+                promptSnippet = promptSnippet.replace(/\\/g, '').replace(/\$/g, '');
+
+                div.innerHTML = `
+                    <div style="display: flex; flex-direction: column;">
+                        <span style="font-weight: 600; font-size: 13px; color: #1e293b;">M${aq.question.module || 1} - Câu ${aq.question.question_number} (${sectionLabel})</span>
+                        <span style="font-size: 11px; color: #64748b; max-width: 190px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${promptSnippet}</span>
+                    </div>
+                    <span style="padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: 600; background: ${badgeBg}; color: ${badgeColor};">${badgeText}</span>
+                `;
+
+                div.addEventListener('click', () => {
+                    dom.dpQuestionList.querySelectorAll('.dp-q-item').forEach(item => item.classList.remove('selected'));
+                    div.classList.add('selected');
+                    showQuestionDetails(aq, testType);
+                });
+
+                dom.dpQuestionList.appendChild(div);
+            });
+
+        } catch (err) {
+            console.error(err);
+            dom.dpQuestionList.innerHTML = '<div style="text-align:center; padding:20px; color:#ef4444;">Error loading questions.</div>';
+        }
+    }
+
+    function showQuestionDetails(aq, testType) {
+        const q = aq.question;
+        dom.dpNoSelectedQuestion.classList.add('hidden');
+        dom.dpSelectedQuestionDetail.classList.remove('hidden');
+
+        // Set metadata
+        let section = q.section;
+        if (testType === 'math' || testType === 'reading') {
+            section = testType;
+        } else {
+            section = section || 'reading';
+        }
+        let sectionLabel = section === 'math' ? 'Math' : 'Reading & Writing';
+        dom.dpQMeta.textContent = `${sectionLabel} - Module ${q.module || 1} - Câu ${q.question_number}`;
+        
+        // Status Badge
+        if (!aq.isAnswered) {
+            dom.dpQStatusBadge.textContent = 'Chưa làm (Trống)';
+            dom.dpQStatusBadge.className = 'status-badge'; 
+            dom.dpQStatusBadge.style.background = '#f1f5f9';
+            dom.dpQStatusBadge.style.color = '#475569';
+        } else if (aq.isCorrect) {
+            dom.dpQStatusBadge.textContent = 'Đúng';
+            dom.dpQStatusBadge.className = 'status-badge status-completed';
+            dom.dpQStatusBadge.style.background = '';
+            dom.dpQStatusBadge.style.color = '';
+        } else {
+            dom.dpQStatusBadge.textContent = 'Sai';
+            dom.dpQStatusBadge.className = 'status-badge'; 
+            dom.dpQStatusBadge.style.background = '#fee2e2';
+            dom.dpQStatusBadge.style.color = '#991b1b';
+        }
+
+        // Passage section
+        if (q.passage && q.passage.trim() !== '') {
+            dom.dpPassageSection.textContent = q.passage;
+            dom.dpPassageSection.classList.remove('hidden');
+        } else {
+            dom.dpPassageSection.classList.add('hidden');
+        }
+
+        // Image & Prompt processing
+        let imageHtml = '';
+        const hasValidImage = q.image_url && q.image_url.trim() !== '';
+        if (hasValidImage) {
+            const resolved = resolveImageUrl(q.image_url);
+            imageHtml = `<div style="text-align: center; margin: 16px 0;"><img src="${resolved}" style="max-width: 100%; max-height: 250px; border: 1px solid #e2e8f0; border-radius: 8px;" alt="Question Image" /></div>`;
+        }
+
+        let promptHtml = q.prompt || '';
+        let imageReplaced = false;
+
+        if (hasValidImage) {
+            if (promptHtml.includes('[image]')) {
+                promptHtml = promptHtml.replace('[image]', imageHtml);
+                imageReplaced = true;
+            } else if (promptHtml.includes('{{image}}')) {
+                promptHtml = promptHtml.replace('{{image}}', imageHtml);
+                imageReplaced = true;
+            } else if (promptHtml.includes('[IMAGE]')) {
+                promptHtml = promptHtml.replace('[IMAGE]', imageHtml);
+                imageReplaced = true;
+            }
+        } else {
+            promptHtml = promptHtml.replace('[image]', '').replace('{{image}}', '').replace('[IMAGE]', '');
+        }
+
+        dom.dpPromptSection.innerHTML = promptHtml;
+
+        if (hasValidImage && !imageReplaced) {
+            dom.dpQImage.src = resolveImageUrl(q.image_url);
+            dom.dpImageSection.classList.remove('hidden');
+        } else {
+            dom.dpImageSection.classList.add('hidden');
+        }
+
+        // MCQ Options vs SPR input
+        if (q.question_type === 'spr') {
+            dom.dpMcqOptionsSection.classList.add('hidden');
+            dom.dpSprSection.classList.remove('hidden');
+
+            dom.dpStudentSprAnswer.textContent = aq.isAnswered ? aq.studentAnswer : '(Không trả lời)';
+            dom.dpCorrectSprAnswer.textContent = q.correct_answer_text || '-';
+
+            if (!aq.isAnswered) {
+                dom.dpStudentSprAnswer.style.background = '#f1f5f9';
+                dom.dpStudentSprAnswer.style.color = '#475569';
+            } else if (aq.isCorrect) {
+                dom.dpStudentSprAnswer.style.background = '#dcfce7';
+                dom.dpStudentSprAnswer.style.color = '#166534';
+            } else {
+                dom.dpStudentSprAnswer.style.background = '#fee2e2';
+                dom.dpStudentSprAnswer.style.color = '#991b1b';
+            }
+        } else {
+            dom.dpSprSection.classList.add('hidden');
+            dom.dpMcqOptionsSection.classList.remove('hidden');
+
+            let options = [];
+            try {
+                options = typeof q.options === 'string' ? JSON.parse(q.options) : q.options;
+            } catch (e) {
+                console.error('Failed to parse MCQ options:', e);
+            }
+            if (!Array.isArray(options)) options = [];
+
+            dom.dpMcqOptionsSection.innerHTML = '';
+            
+            const letters = ['A', 'B', 'C', 'D'];
+            options.forEach((optText, i) => {
+                const box = document.createElement('div');
+                box.className = 'option-detail-box';
+
+                const isStudentChoice = aq.isAnswered && parseInt(aq.studentAnswer) === i;
+                const isCorrectChoice = parseInt(q.correct_answer_index) === i;
+
+                if (isCorrectChoice) {
+                    box.classList.add('correct');
+                } else if (isStudentChoice) {
+                    box.classList.add('incorrect-choice');
+                }
+
+                let badge = '';
+                if (isCorrectChoice) {
+                    badge = ' <span style="margin-left: auto; color:#10b981; font-weight:bold;">✅ Đáp án đúng</span>';
+                }
+                if (isStudentChoice && !isCorrectChoice) {
+                    badge = ' <span style="margin-left: auto; color:#ef4444; font-weight:bold;">❌ Lựa chọn của HS</span>';
+                }
+                if (isStudentChoice && isCorrectChoice) {
+                    badge = ' <span style="margin-left: auto; color:#10b981; font-weight:bold;">✅ Lựa chọn của HS (Đúng)</span>';
+                }
+
+                box.innerHTML = `
+                    <span class="option-letter">${letters[i]}.</span>
+                    <span style="flex-grow: 1;">${optText}</span>
+                    ${badge}
+                `;
+                dom.dpMcqOptionsSection.appendChild(box);
+            });
+        }
+
+        if (window.MathJax) {
+            window.MathJax.typesetPromise([dom.dpSelectedQuestionDetail]).catch((err) => console.log('MathJax error in progress view', err));
+        }
+    }
+
+    if (dom.btnCloseDetailedProgress) {
+        dom.btnCloseDetailedProgress.addEventListener('click', () => {
+            dom.detailedProgressModal.classList.add('hidden');
+        });
     }
 
     // --- Student Progress Filter ---

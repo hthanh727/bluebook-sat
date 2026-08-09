@@ -11,7 +11,7 @@ async function main() {
     });
 
     try {
-        const [rows] = await pool.query('SELECT id, email, role, name FROM users');
+        const [rows] = await pool.query("SELECT DISTINCT test_id, section FROM questions");
         console.log(rows);
     } catch (e) {
         console.error(e);

@@ -206,7 +206,7 @@ app.get('/api/admin/student-progress', authenticateAdmin, async (req, res) => {
             SELECT 
                 u.id as student_id, u.name as student_name, u.email as student_email, u.role as student_role,
                 t.title as test_title, t.type as test_type,
-                p.score, p.completed, p.updated_at
+                p.test_id, p.answers, p.score, p.completed, p.updated_at
             FROM users u
             JOIN progress p ON u.id = p.user_id
             JOIN tests t ON p.test_id = t.id
@@ -509,7 +509,11 @@ app.get('/api/bookmarks', authenticateToken, async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+if (require.main === module) {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+        console.log(`Server is running on http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app;
