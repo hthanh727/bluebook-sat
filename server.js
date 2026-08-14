@@ -29,7 +29,7 @@ const pool = mysql.createPool({
     queueLimit: 0
 });
 
-// Run migration on startup
+// Run migrations on startup
 pool.query('ALTER TABLE tests ADD COLUMN allow_practice TINYINT(1) DEFAULT 1')
     .then(() => {
         console.log("Migration 'allow_practice' added to 'tests' table successfully!");
@@ -38,8 +38,44 @@ pool.query('ALTER TABLE tests ADD COLUMN allow_practice TINYINT(1) DEFAULT 1')
         if (err.code === 'ER_DUP_FIELDNAME') {
             console.log("Column 'allow_practice' already exists.");
         } else {
-            console.error("Migration error:", err);
+            console.error("Migration error 'allow_practice':", err);
         }
+    });
+
+pool.query('ALTER TABLE tests ADD COLUMN difficulty VARCHAR(50) DEFAULT NULL')
+    .then(() => {
+        console.log("Migration 'difficulty' added to 'tests' table successfully!");
+    })
+    .catch(err => {
+        if (err.code === 'ER_DUP_FIELDNAME') {
+            console.log("Column 'difficulty' already exists.");
+        } else {
+            console.error("Migration error 'difficulty':", err);
+        }
+    });
+
+pool.query('ALTER TABLE tests MODIFY COLUMN type VARCHAR(50) NOT NULL')
+    .then(() => {
+        console.log("Migration 'type' modified to VARCHAR(50) successfully!");
+    })
+    .catch(err => {
+        console.error("Migration error 'type' modification:", err);
+    });
+
+pool.query(`
+    CREATE TABLE IF NOT EXISTS recordings (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        title VARCHAR(255) NOT NULL,
+        description TEXT,
+        video_url VARCHAR(512) NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+`)
+    .then(() => {
+        console.log("Table 'recordings' created or already exists successfully!");
+    })
+    .catch(err => {
+        console.error("Migration error creating recordings table:", err);
     });
 
 const JWT_SECRET = process.env.JWT_SECRET || 'super-secret-key-for-bluebook';
@@ -116,8 +152,14 @@ app.put('/api/user/name', authenticateToken, async (req, res) => {
 
 app.get('/api/tests', authenticateToken, async (req, res) => {
     try {
-        const [rows] = await pool.query('SELECT * FROM tests ORDER BY created_at DESC');
-        
+        const query = `
+            SELECT t.*, 
+            (SELECT COUNT(*) FROM questions q WHERE q.test_id = t.id) as question_count
+            FROM tests t 
+            ORDER BY t.created_at DESC
+        `;
+        const [rows] = await pool.query(query);
+
         if (req.user && req.user.role === 'student') {
             const [locks] = await pool.query('SELECT test_id FROM test_locks WHERE user_id = ?', [req.user.id]);
             const lockedTestIds = new Set(locks.map(l => l.test_id));
@@ -125,7 +167,7 @@ app.get('/api/tests', authenticateToken, async (req, res) => {
                 row.is_locked = lockedTestIds.has(row.id);
             });
         }
-        
+
         res.json(rows);
     } catch (err) {
         console.error(err);
@@ -136,14 +178,14 @@ app.get('/api/tests', authenticateToken, async (req, res) => {
 app.get('/api/tests/:id/questions', authenticateToken, async (req, res) => {
     try {
         const testId = req.params.id;
-        
+
         if (req.user && req.user.role === 'student') {
             const [locks] = await pool.query('SELECT 1 FROM test_locks WHERE test_id = ? AND user_id = ?', [testId, req.user.id]);
             if (locks.length > 0) {
                 return res.status(403).json({ message: 'Test is locked for you' });
             }
         }
-        
+
         const [testRows] = await pool.query('SELECT * FROM tests WHERE id = ?', [req.params.id]);
         if (testRows.length === 0) return res.status(404).json({ message: 'Test not found' });
 
@@ -221,9 +263,9 @@ app.get('/api/admin/student-progress', authenticateAdmin, async (req, res) => {
 });
 
 app.post('/api/admin/tests', authenticateAdmin, async (req, res) => {
-    const { title, type } = req.body;
+    const { title, type, difficulty } = req.body;
     try {
-        const [result] = await pool.query('INSERT INTO tests (title, type) VALUES (?, ?)', [title, type]);
+        const [result] = await pool.query('INSERT INTO tests (title, type, difficulty) VALUES (?, ?, ?)', [title, type, difficulty || null]);
         res.json({ success: true, id: result.insertId });
     } catch (err) {
         console.error(err);
@@ -253,13 +295,13 @@ app.get('/api/admin/tests/:id/locks', authenticateAdmin, async (req, res) => {
             LEFT JOIN test_locks tl ON u.id = tl.user_id AND tl.test_id = ? 
             WHERE u.role = 'student'
         `, [testId]);
-        
+
         // Map 1/0 to true/false for mysql boolean
         const formattedStudents = students.map(s => ({
             ...s,
             is_locked: !!s.is_locked
         }));
-        
+
         res.json(formattedStudents);
     } catch (err) {
         console.error(err);
@@ -272,11 +314,11 @@ app.post('/api/admin/tests/:id/locks', authenticateAdmin, async (req, res) => {
     try {
         const testId = req.params.id;
         const { userIds, is_locked } = req.body;
-        
+
         if (!Array.isArray(userIds) || userIds.length === 0) {
             return res.status(400).json({ message: 'No users specified' });
         }
-        
+
         if (is_locked) {
             const values = userIds.map(uid => [testId, uid]);
             await pool.query('INSERT IGNORE INTO test_locks (test_id, user_id) VALUES ?', [values]);
@@ -506,6 +548,49 @@ app.get('/api/bookmarks', authenticateToken, async (req, res) => {
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Error fetching bookmarks' });
+    }
+});
+
+// --- Recordings API ---
+
+// Get all recordings (Student + Admin)
+app.get('/api/recordings', authenticateToken, async (req, res) => {
+    try {
+        const [rows] = await pool.query('SELECT * FROM recordings ORDER BY created_at DESC');
+        res.json(rows);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// Create recording (Admin Only)
+app.post('/api/admin/recordings', authenticateAdmin, async (req, res) => {
+    const { title, description, video_url } = req.body;
+    if (!title || !video_url) {
+        return res.status(400).json({ message: 'Title and Video URL are required' });
+    }
+    try {
+        await pool.query(
+            'INSERT INTO recordings (title, description, video_url) VALUES (?, ?, ?)',
+            [title, description || null, video_url]
+        );
+        res.json({ success: true });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// Delete recording (Admin Only)
+app.delete('/api/admin/recordings/:id', authenticateAdmin, async (req, res) => {
+    const { id } = req.params;
+    try {
+        await pool.query('DELETE FROM recordings WHERE id = ?', [id]);
+        res.json({ success: true });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
     }
 });
 

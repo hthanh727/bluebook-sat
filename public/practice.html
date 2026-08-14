@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Topic Practice</title>
+    <meta name="description" content="Digital SAT Practice - Topic Practice Mode">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- html2pdf for Export PDF feature -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <!-- Top Header Bar -->
+    <header class="header" id="header">
+        <div class="header-left">
+            <div class="section-indicator"></div>
+            <span class="section-title" id="practiceTopicTitle">Chuyên đề: Luyện tập</span>
+        </div>
+        <div class="header-center">
+            <div class="timer-container" id="timerContainer">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                </svg>
+                <span class="timer-display" id="currentTimeDisplay">00:00:00</span>
+                <button class="btn-hide" id="btnHideTimer">Hide</button>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="btn-header-tool" id="btnCalculator" style="display: none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                    <line x1="8" y1="6" x2="16" y2="6"></line>
+                    <line x1="8" y1="10" x2="16" y2="10"></line>
+                    <line x1="8" y1="14" x2="16" y2="14"></line>
+                </svg>
+                Calculator
+            </button>
+            <button class="btn-header-tool" id="btnReference" style="display: none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Reference
+            </button>
+            <button class="theme-toggle-test" id="themeToggleTest" title="Toggle dark/light mode">
+                <svg class="toggle-icon icon-sun-t" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.894 6.166a.75.75 0 0 0-1.06-1.06l-1.591 1.59a.75.75 0 1 0 1.06 1.061l1.591-1.59ZM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5H21a.75.75 0 0 1 .75.75ZM17.834 18.894a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 1 0-1.061 1.06l1.59 1.591ZM12 18a.75.75 0 0 1 .75.75V21a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18ZM7.758 17.303a.75.75 0 0 0-1.061-1.06l-1.591 1.59a.75.75 0 0 0 1.06 1.061l1.591-1.59ZM6 12a.75.75 0 0 1-.75.75H3a.75.75 0 0 1 0-1.5h2.25A.75.75 0 0 1 6 12ZM6.697 7.757a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 0 0-1.061 1.06l1.59 1.591Z" />
+                </svg>
+                <svg class="toggle-icon icon-moon-t" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M21.752 15.002A9.718 9.718 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                </svg>
+            </button>
+            <button class="btn-more" id="btnMore">More</button>
+            <div class="more-dropdown" id="moreDropdown">
+                <button class="dropdown-item" id="btnAnnotate">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 20h9" />
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                    </svg>
+                    Highlight mode
+                </button>
+                <button class="dropdown-item" id="btnExitTest">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" y1="12" x2="9" y2="12" />
+                    </svg>
+                    Exit to Dashboard
+                </button>
+                <button class="dropdown-item" id="btnHelp">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                    Help
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Directions Banner -->
+    <div class="directions-banner" id="directionsBanner">
+        <div class="directions-content">
+            <strong>Chuyên đề Luyện tập:</strong> Đọc kỹ đề bài và trả lời các câu hỏi. Tiến độ được lưu tự động.
+        </div>
+        <button class="directions-close" id="directionsClose">✕</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <div class="content-wrapper">
+            <!-- Left Panel - Passage -->
+            <div class="panel panel-left" id="panelLeft">
+                <div class="passage-container" id="passageContainer">
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="panel-divider" id="panelDivider">
+                <div class="divider-handle"></div>
+            </div>
+
+            <!-- Right Panel - Question -->
+            <div class="panel panel-right" id="panelRight">
+                <div class="question-container" id="questionContainer">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="footer-left">
+            <span class="footer-student-name" id="studentName">Student Name</span>
+        </div>
+        <div class="footer-center">
+            <button class="btn-question-nav" id="btnQuestionNav">
+                <span id="questionNavLabel">Question 1 of N</span>
+                <svg class="nav-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                    <path d="M2 4L6 8L10 4" />
+                </svg>
+            </button>
+        </div>
+        <div class="footer-right">
+            <button class="btn-nav btn-back" id="btnBack">Back</button>
+            <button class="btn-nav btn-next" id="btnNext">Next</button>
+        </div>
+    </footer>
+
+    <!-- Reference Modal -->
+    <div class="modal-overlay" id="refOverlay">
+        <div class="modal-window" style="width:780px;height:580px;">
+            <div class="modal-dark-header" id="refHeader">
+                <span class="modal-title">Reference</span>
+                <div class="modal-drag-handle"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm4-2a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm-4 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm4-2a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm-4 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm4-2a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                    </svg></div>
+                <button class="modal-close" id="refClose">&#x2715;</button>
+            </div>
+            <div class="modal-body" style="overflow-y:auto;padding:24px;background:#fff;flex:1;font-family:Georgia,serif;">
+                <div style="background:#1a1a1a;color:#fff;font-weight:700;font-size:13px;padding:5px 10px;display:inline-block;margin-bottom:20px;letter-spacing:1px;">REFERENCE</div>
+                <div style="display:flex;justify-content:space-around;align-items:flex-end;margin-bottom:28px;flex-wrap:wrap;gap:16px;text-align:center;">
+                    <div>
+                        <svg width="80" height="80" viewBox="0 0 80 80">
+                            <circle cx="40" cy="40" r="28" fill="none" stroke="#000" stroke-width="1.5" />
+                            <line x1="40" y1="40" x2="68" y2="40" stroke="#000" stroke-width="1.5" /><text x="53" y="36" font-size="11" font-style="italic">r</text>
+                        </svg>
+                        <div style="font-size:13px;line-height:1.8;"><em>A</em> = &pi;<em>r</em>&sup2;<br><em>C</em> = 2&pi;<em>r</em></div>
+                    </div>
+                    <div>
+                        <svg width="90" height="60" viewBox="0 0 90 60">
+                            <rect x="5" y="8" width="80" height="38" fill="none" stroke="#000" stroke-width="1.5" />
+                            <text x="40" y="5" font-size="11" font-style="italic" text-anchor="middle">&#8467;</text><text x="87" y="30" font-size="11" font-style="italic">w</text>
+                        </svg>
+                        <div style="font-size:13px;"><em>A</em> = &#8467;<em>w</em></div>
+                    </div>
+                    <div>
+                        <svg width="80" height="80" viewBox="0 0 80 80">
+                            <polygon points="40,5 5,75 75,75" fill="none" stroke="#000" stroke-width="1.5" />
+                            <line x1="40" y1="5" x2="40" y2="75" stroke="#000" stroke-width="1.5" stroke-dasharray="4,3" /><text x="43" y="44" font-size="11" font-style="italic">h</text><text x="34" y="80" font-size="11" font-style="italic">b</text>
+                        </svg>
+                        <div style="font-size:13px;"><em>A</em> = &frac12;<em>bh</em></div>
+                    </div>
+                    <div>
+                        <svg width="80" height="80" viewBox="0 0 80 80">
+                            <polygon points="5,75 75,75 75,5" fill="none" stroke="#000" stroke-width="1.5" />
+                            <rect x="68" y="68" width="7" height="7" fill="none" stroke="#000" stroke-width="1.5" />
+                            <text x="35" y="82" font-size="11" font-style="italic">a</text><text x="78" y="42" font-size="11" font-style="italic">b</text><text x="36" y="32" font-size="11" font-style="italic">c</text>
+                        </svg>
+                        <div style="font-size:13px;"><em>c</em>&sup2; = <em>a</em>&sup2; + <em>b</em>&sup2;</div>
+                    </div>
+                    <div>
+                        <svg width="150" height="80" viewBox="0 0 150 80">
+                            <polygon points="5,75 50,75 27,10" fill="none" stroke="#000" stroke-width="1.5" />
+                            <rect x="21" y="69" width="6" height="6" fill="none" stroke="#000" stroke-width="1.5" />
+                            <text x="7" y="70" font-size="9">30&deg;</text><text x="20" y="18" font-size="9">60&deg;</text>
+                            <text x="28" y="48" font-size="9">2x</text><text x="52" y="74" font-size="9">x</text><text x="2" y="48" font-size="9">x&radic;3</text>
+                            <polygon points="80,75 130,75 130,10" fill="none" stroke="#000" stroke-width="1.5" />
+                            <rect x="124" y="69" width="6" height="6" fill="none" stroke="#000" stroke-width="1.5" />
+                            <text x="82" y="70" font-size="9">45&deg;</text><text x="116" y="18" font-size="9">45&deg;</text>
+                            <text x="102" y="74" font-size="9">s</text><text x="133" y="48" font-size="9">s&radic;2</text><text x="78" y="48" font-size="9">s</text>
+                        </svg>
+                        <div style="font-size:12px;font-weight:700;">Special Right Triangles</div>
+                    </div>
+                </div>
+                <div style="display:flex;justify-content:space-around;align-items:flex-end;margin-bottom:24px;flex-wrap:wrap;gap:16px;text-align:center;">
+                    <div>
+                        <svg width="80" height="80" viewBox="0 0 80 80">
+                            <rect x="8" y="20" width="45" height="35" fill="none" stroke="#000" stroke-width="1.5" />
+                            <rect x="18" y="10" width="45" height="35" fill="none" stroke="#000" stroke-width="1.5" />
+                            <line x1="8" y1="20" x2="18" y2="10" stroke="#000" stroke-width="1.5" />
+                            <line x1="53" y1="20" x2="63" y2="10" stroke="#000" stroke-width="1.5" />
+                            <line x1="53" y1="55" x2="63" y2="45" stroke="#000" stroke-width="1.5" /><text x="24" y="76" font-size="11" font-style="italic">&#8467;</text><text x="2" y="40" font-size="11" font-style="italic">h</text><text x="10" y="58" font-size="11" font-style="italic">w</text>
+                        </svg>
+                        <div style="font-size:13px;"><em>V</em> = &#8467;<em>wh</em></div>
+                    </div>
+                    <div>
+                        <svg width="80" height="90" viewBox="0 0 80 90">
+                            <ellipse cx="40" cy="22" rx="26" ry="9" fill="none" stroke="#000" stroke-width="1.5" />
+                            <line x1="14" y1="22" x2="14" y2="68" stroke="#000" stroke-width="1.5" />
+                            <line x1="66" y1="22" x2="66" y2="68" stroke="#000" stroke-width="1.5" />
+                            <ellipse cx="40" cy="68" rx="26" ry="9" fill="none" stroke="#000" stroke-width="1.5" />
+                            <line x1="40" y1="22" x2="66" y2="22" stroke="#000" stroke-width="1.5" /><text x="50" y="20" font-size="11" font-style="italic">r</text><text x="68" y="48" font-size="11" font-style="italic">h</text>
+                        </svg>
+                        <div style="font-size:13px;"><em>V</em> = &pi;<em>r</em>&sup2;<em>h</em></div>
+                    </div>
+                    <div>
+                        <svg width="80" height="90" viewBox="0 0 80 90">
+                            <ellipse cx="40" cy="65" rx="26" ry="9" fill="none" stroke="#000" stroke-width="1.5" />
+                            <line x1="14" y1="65" x2="40" y2="10" stroke="#000" stroke-width="1.5" />
+                            <line x1="66" y1="65" x2="40" y2="10" stroke="#000" stroke-width="1.5" />
+                            <line x1="40" y1="65" x2="40" y2="10" stroke="#000" stroke-width="1.5" stroke-dasharray="4,3" /><text x="43" y="42" font-size="11" font-style="italic">h</text><text x="42" y="74" font-size="11" font-style="italic">r</text>
+                        </svg>
+                        <div style="font-size:13px;"><em>V</em> = &frac13;&pi;<em>r</em>&sup2;<em>h</em></div>
+                    </div>
+                    <div>
+                        <svg width="80" height="80" viewBox="0 0 80 80">
+                            <circle cx="40" cy="40" r="28" fill="none" stroke="#000" stroke-width="1.5" />
+                            <ellipse cx="40" cy="40" rx="28" ry="8" fill="none" stroke="#000" stroke-width="1" stroke-dasharray="4,3" />
+                            <line x1="40" y1="40" x2="68" y2="40" stroke="#000" stroke-width="1.5" /><text x="50" y="36" font-size="11" font-style="italic">r</text>
+                        </svg>
+                        <div style="font-size:13px;"><em>V</em> = &frac43;&pi;<em>r</em>&sup3;</div>
+                    </div>
+                    <div>
+                        <svg width="85" height="80" viewBox="0 0 85 80">
+                            <polygon points="42,5 10,65 75,65" fill="none" stroke="#000" stroke-width="1.5" />
+                            <polygon points="42,5 75,65 85,50" fill="none" stroke="#000" stroke-width="1.5" />
+                            <line x1="75" y1="65" x2="85" y2="50" stroke="#000" stroke-width="1.5" />
+                            <line x1="10" y1="65" x2="85" y2="50" stroke="#000" stroke-width="1" stroke-dasharray="3,3" />
+                            <line x1="42" y1="5" x2="42" y2="60" stroke="#000" stroke-width="1.5" stroke-dasharray="4,3" /><text x="44" y="42" font-size="10" font-style="italic">h</text><text x="30" y="76" font-size="10" font-style="italic">&#8467;</text><text x="76" y="63" font-size="10" font-style="italic">w</text>
+                        </svg>
+                        <div style="font-size:13px;"><em>V</em> = &frac13;&#8467;<em>wh</em></div>
+                    </div>
+                </div>
+                <div style="font-size:13px;line-height:2.2;border-top:1px solid #ddd;padding-top:16px;">
+                    <p>The number of degrees of arc in a circle is 360.</p>
+                    <p>The number of radians of arc in a circle is 2&pi;.</p>
+                    <p>The sum of the measures in degrees of the angles of a triangle is 180.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calculator Modal -->
+    <div class="modal-overlay" id="calcOverlay" style="pointer-events:none;">
+        <div class="modal-window" id="calcModal" style="width:640px;height:520px;pointer-events:auto;">
+            <div class="modal-dark-header" id="calcHeader">
+                <span class="modal-title">Calculator</span>
+                <div class="modal-drag-handle"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm4-2a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm-4 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm4-2a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm-4 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm4-2a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                    </svg></div>
+                <button class="modal-close" id="calcClose">&#x2715;</button>
+            </div>
+            <div style="flex:1;overflow:hidden;">
+                <iframe src="https://www.desmos.com/testing/cb-digital-sat/graphing" width="100%" height="100%" frameborder="0" style="display:block;"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Question Navigator Modal -->
+    <div class="question-nav-overlay" id="questionNavOverlay">
+        <div class="question-nav-modal" id="questionNavModal">
+            <div class="nav-modal-header">
+                <h3>Chuyên đề: Danh sách câu hỏi</h3>
+                <button class="nav-modal-close" id="navModalClose">✕</button>
+            </div>
+            <div class="nav-modal-body">
+                <div class="question-grid" id="questionGrid">
+                </div>
+            </div>
+            <div class="nav-modal-footer">
+                <div class="nav-legend">
+                    <span class="legend-item"><span class="legend-dot current"></span> Current</span>
+                    <span class="legend-item"><span class="legend-dot answered"></span> Answered</span>
+                    <span class="legend-item"><span class="legend-dot unanswered"></span> Unanswered</span>
+                    <span class="legend-item"><span class="legend-dot flagged"></span> For Review</span>
+                </div>
+                <button class="btn-go-to" id="btnGoTo">Go to Question</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Highlight Toolbar (Bluebook style) -->
+    <div class="highlight-toolbar" id="highlightToolbar">
+        <div class="highlight-toolbar-inner">
+            <button class="hl-color-btn hl-yellow active" data-color="yellow" title="Yellow highlight"></button>
+            <button class="hl-color-btn hl-blue" data-color="blue" title="Blue highlight"></button>
+            <button class="hl-color-btn hl-pink" data-color="pink" title="Pink highlight"></button>
+            <button class="hl-color-btn hl-green" data-color="green" title="Green highlight"></button>
+            <button class="hl-color-btn hl-orange" data-color="orange" title="Orange highlight"></button>
+            <div class="hl-divider"></div>
+            <button class="hl-action-btn" id="hlApply" title="Highlight selection">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M15.24 2.86l5.9 5.9a1 1 0 010 1.41l-8.49 8.49a1 1 0 01-.7.29H6.76a1 1 0 01-.7-.29l-2.9-2.9a1 1 0 010-1.41l8.49-8.49 1.06-1.06a2 2 0 012.53.06zM3 20h18v2H3v-2z" />
+                </svg>
+            </button>
+            <button class="hl-action-btn" id="hlNote" title="Add note">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10 9 9 9 8 9" />
+                </svg>
+            </button>
+            <button class="hl-action-btn hl-remove-btn" id="hlRemove" title="Remove highlight">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                </svg>
+            </button>
+        </div>
+        <div class="hl-arrow"></div>
+    </div>
+
+    <!-- Annotation Note Popup -->
+    <div class="annotation-popup" id="annotationPopup">
+        <div class="annotation-popup-inner">
+            <div class="annotation-popup-header">
+                <span class="annotation-popup-title">Add Note</span>
+                <button class="annotation-popup-close" id="annotationClose">✕</button>
+            </div>
+            <textarea class="annotation-textarea" id="annotationTextarea" placeholder="Type your note here..." rows="4"></textarea>
+            <div class="annotation-popup-actions">
+                <button class="annotation-btn-cancel" id="annotationCancel">Cancel</button>
+                <button class="annotation-btn-save" id="annotationSave">Save Note</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">
+        <span class="toast-icon">✓</span>
+        <span class="toast-message" id="toastMessage">Saved!</span>
+    </div>
+
+    <!-- Score Overlay -->
+    <div class="score-overlay" id="scoreOverlay">
+        <div class="score-card">
+            <h2 class="score-title">Chuyên đề hoàn thành</h2>
+
+            <div class="score-visual-container">
+                <div class="score-circle-wrapper">
+                    <svg class="score-circle-svg" width="180" height="180">
+                        <circle class="score-circle-bg" cx="90" cy="90" r="70" stroke="rgba(255,255,255,0.06)" stroke-width="10" fill="transparent"></circle>
+                        <circle class="score-circle-bar" id="scoreCircleBar" cx="90" cy="90" r="70" stroke="url(#scoreGrad)" stroke-width="12" fill="transparent" stroke-dasharray="439.8" stroke-dashoffset="439.8" stroke-linecap="round" transform="rotate(-90 90 90)"></circle>
+                        <defs>
+                            <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#3b82f6" />
+                                <stop offset="100%" stop-color="#8b5cf6" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div class="score-circle-text">
+                        <div class="score-number-big" id="scoreCorrect">0</div>
+                        <div class="score-number-divider"></div>
+                        <div class="score-number-total" id="scoreTotal">50</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="score-feedback" id="scoreFeedback">Practice makes perfect! Keep going!</div>
+            <div class="score-percentage" id="scorePercent">0% Correct</div>
+
+            <div class="score-buttons">
+                <button class="score-btn home" id="btnScoreHome">Return to Dashboard</button>
+                <button class="score-btn review" id="btnScoreReview">View Error Log</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Log Overlay -->
+    <div class="error-log-overlay" id="errorLogOverlay" style="display: none;">
+        <div class="error-log-header">
+            <h2 class="error-log-title" id="errorLogOverlayTitle">Error Log</h2>
+            <div class="error-log-actions">
+                <button class="error-log-btn pdf-btn" id="btnExportPDF">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Export to PDF
+                </button>
+                <button class="error-log-btn close-btn" id="btnCloseErrorLog">Close</button>
+            </div>
+        </div>
+        <div class="error-log-content-wrapper">
+            <div id="error-log-content">
+            </div>
+        </div>
+    </div>
+
+    <script src="app-practice.js"></script>
+</body>
+
+</html>

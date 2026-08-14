@@ -646,7 +646,7 @@
             color: var(--accent-blue);
             border-color: rgba(59, 130, 246, 0.3);
         }
-        
+
         html.light .filter-btn.active {
             background: rgba(59, 130, 246, 0.1);
             color: var(--accent-blue);
@@ -1415,12 +1415,160 @@
                 background-position: 0% 50%;
             }
         }
+
         .clamped-prompt {
             display: -webkit-box;
             -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+
+        .difficulty-badge {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .difficulty-badge.easy {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        .difficulty-badge.medium {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+        .difficulty-badge.hard {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        /* ---- Video Recording Cards ---- */
+        .recording-card {
+            display: flex;
+            flex-direction: column;
+            padding: 16px !important;
+            gap: 14px !important;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: #000;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+            color: var(--text-secondary);
+            gap: 12px;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+        .video-placeholder:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        html.light .video-placeholder {
+            background: linear-gradient(135deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01));
+            color: var(--text-secondary);
+        }
+        html.light .video-placeholder:hover {
+            background: linear-gradient(135deg, rgba(0,0,0,0.06), rgba(0,0,0,0.02));
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .play-btn-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+            transition: transform 0.2s;
+        }
+        .video-placeholder:hover .play-btn-circle {
+            transform: scale(1.1);
+        }
+        .recording-details {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 4px;
+        }
+        .recording-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+            margin-bottom: 6px;
+        }
+        .recording-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 12px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .recording-footer {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--glass-border);
+            padding-top: 12px;
+        }
+        .btn-recording-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-blue);
+            padding: 6px 12px;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+        .btn-recording-link:hover {
+            background: var(--accent-blue);
+            color: white;
         }
     </style>
     <script>
@@ -1451,7 +1599,9 @@
             </div>
             <div class="header-nav">
                 <a href="#" class="header-nav-link active" id="navExams">Exams</a>
+                <a href="#" class="header-nav-link" id="navTopics">Topics</a>
                 <a href="#" class="header-nav-link" id="navBookmarks">Bookmarks</a>
+                <a href="#" class="header-nav-link" id="navRecordings">Recordings</a>
                 <!-- Theme Toggle -->
                 <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode" aria-label="Toggle theme">
                     <div class="theme-toggle-knob">
@@ -1500,7 +1650,8 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
                             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                             <polyline points="22 4 12 14.01 9 11.01"></polyline>
                         </svg>
@@ -1529,7 +1680,7 @@
                         <h2 class="section-title-text">Exams</h2>
                         <div class="section-line"></div>
                     </div>
-                    
+
                     <div class="test-filters">
                         <button class="filter-btn active" data-filter="all">All</button>
                         <button class="filter-btn" data-filter="full">Full Mock Test</button>
@@ -1545,6 +1696,19 @@
                 </div>
             </div>
 
+            <!-- Topics Section -->
+            <div id="topicsSection" style="display: none;">
+                <div class="section-header">
+                    <div class="section-title-wrapper">
+                        <h2 class="section-title-text">Practice by Topic</h2>
+                        <div class="section-line"></div>
+                    </div>
+                </div>
+                <div class="tests-grid" id="topicsGrid">
+                    <!-- Topics will be loaded here -->
+                </div>
+            </div>
+
             <!-- Bookmarks Section -->
             <div id="bookmarksSection" style="display: none;">
                 <div class="section-header">
@@ -1555,6 +1719,19 @@
                 </div>
                 <div class="tests-grid" id="bookmarksGrid">
                     <!-- Render bookmarks here -->
+                </div>
+            </div>
+
+            <!-- Recordings Section -->
+            <div id="recordingsSection" style="display: none;">
+                <div class="section-header">
+                    <div class="section-title-wrapper">
+                        <h2 class="section-title-text">Class Recordings</h2>
+                        <div class="section-line"></div>
+                    </div>
+                </div>
+                <div class="tests-grid" id="recordingsGrid">
+                    <!-- Render recordings here -->
                 </div>
             </div>
         </main>
@@ -1684,10 +1861,10 @@
                         throw new Error('Failed to load tests');
                     }
                     const tests = await res.json();
-                    allTests = tests; // Save for filtering
-                    renderTests(tests);
+                    allTests = tests.filter(t => t.type !== 'topic'); // Save for filtering (exclude topics)
+                    renderTests(allTests);
                     document.getElementById('statTotal').textContent = tests.length;
-                    
+
                     // statCompleted is updated incrementally in renderTests
 
                 } catch (err) {
@@ -1722,7 +1899,7 @@
                 const grid = document.getElementById('testsGrid');
                 grid.innerHTML = '';
                 const token = localStorage.getItem('token');
-                
+
                 // Only count for 'all' filter to avoid changing stat when filtering
                 let totalCompleted = 0;
                 let processedTests = 0;
@@ -1735,7 +1912,7 @@
                     let page = '/test';
                     if (isFull) { typeParam = 'full'; sectionParam = 'reading'; } // Full starts with reading
                     else if (isMath) { typeParam = 'math'; sectionParam = 'math'; page = '/test-math'; }
-                    
+
                     const link = `${page}?id=${test.id}&type=${typeParam}&section=${sectionParam}`;
                     const time = isFull ? '134 min' : (isMath ? '70 min' : '64 min');
                     const totalQ = isFull ? 98 : (isMath ? 44 : 54);
@@ -1825,20 +2002,29 @@
                         <div class="test-card-progress">
                             <div class="test-card-progress-fill ${progressClass}" style="width: 0%"></div>
                         </div>
-                        <div class="test-card-footer">
+                        <div class="test-card-footer" style="display: flex; justify-content: space-between; align-items: center;">
                             <span class="test-progress-text">${pct}% complete</span>
+                            <div style="display: flex; gap: 8px; align-items: center;">
                             ${test.is_locked ? `
                             <button class="btn-start-exam" style="background: #94a3b8; cursor: not-allowed; opacity: 0.8;" disabled>
                                 🔒 Locked
                             </button>
                             ` : `
-                            <a href="${link}" class="btn-start-exam ${btnClass}">
-                                ${btnText}
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                    <polyline points="9 18 15 12 9 6" />
-                                </svg>
-                            </a>
+                                ${(() => {
+                                    if (completed) {
+                                        return `
+                                            <a href="${link}&review=true" class="btn-start-exam review-btn" style="background: rgba(139, 92, 246, 0.12); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.25); font-weight:600; padding:8px 14px; border-radius:6px; font-size:12px; text-decoration:none; display:inline-flex; align-items:center; cursor:pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(139, 92, 246, 0.22)'" onmouseout="this.style.background='rgba(139, 92, 246, 0.12)'">
+                                                Xem câu sai
+                                            </a>
+                                        `;
+                                    }
+                                    return '';
+                                })()}
+                                <a href="${link}" class="btn-start-exam ${btnClass}" style="padding: 8px 14px; font-size: 12px; display: inline-flex; align-items: center; justify-content: center;">
+                                    ${btnText}
+                                </a>
                             `}
+                            </div>
                         </div>
                     `;
                     grid.appendChild(card);
@@ -1858,40 +2044,323 @@
             // ---- Navigation Tabs ----
             const navExams = document.getElementById('navExams');
             const navBookmarks = document.getElementById('navBookmarks');
+            const navRecordings = document.getElementById('navRecordings');
+            const navTopics = document.getElementById('navTopics');
             const examsSection = document.getElementById('examsSection');
             const bookmarksSection = document.getElementById('bookmarksSection');
+            const recordingsSection = document.getElementById('recordingsSection');
+            const topicsSection = document.getElementById('topicsSection');
 
             navExams.addEventListener('click', (e) => {
                 e.preventDefault();
                 navExams.classList.add('active');
                 navBookmarks.classList.remove('active');
+                navRecordings.classList.remove('active');
+                navTopics.classList.remove('active');
                 examsSection.style.display = 'block';
                 bookmarksSection.style.display = 'none';
+                recordingsSection.style.display = 'none';
+                topicsSection.style.display = 'none';
             });
 
             navBookmarks.addEventListener('click', (e) => {
                 e.preventDefault();
                 navBookmarks.classList.add('active');
                 navExams.classList.remove('active');
+                navRecordings.classList.remove('active');
+                navTopics.classList.remove('active');
                 bookmarksSection.style.display = 'block';
                 examsSection.style.display = 'none';
+                recordingsSection.style.display = 'none';
+                topicsSection.style.display = 'none';
                 loadBookmarks();
             });
+
+            navRecordings.addEventListener('click', (e) => {
+                e.preventDefault();
+                navRecordings.classList.add('active');
+                navExams.classList.remove('active');
+                navBookmarks.classList.remove('active');
+                navTopics.classList.remove('active');
+                recordingsSection.style.display = 'block';
+                examsSection.style.display = 'none';
+                bookmarksSection.style.display = 'none';
+                topicsSection.style.display = 'none';
+                loadRecordings();
+            });
+
+            navTopics.addEventListener('click', (e) => {
+                e.preventDefault();
+                navTopics.classList.add('active');
+                navExams.classList.remove('active');
+                navBookmarks.classList.remove('active');
+                navRecordings.classList.remove('active');
+                topicsSection.style.display = 'block';
+                examsSection.style.display = 'none';
+                bookmarksSection.style.display = 'none';
+                recordingsSection.style.display = 'none';
+                loadTopics();
+            });
+
+            let allTopics = [];
+            async function loadTopics() {
+                const grid = document.getElementById('topicsGrid');
+                grid.innerHTML = '<div class="skeleton-card"></div><div class="skeleton-card"></div>';
+
+                try {
+                    const token = localStorage.getItem('token');
+                    const res = await fetch('/api/tests', {
+                        headers: { 'Authorization': `Bearer ${token}` }
+                    });
+                    if (res.ok) {
+                        const tests = await res.json();
+                        const topics = tests.filter(t => t.type === 'topic');
+                        allTopics = topics;
+                        renderTopics(topics);
+                    }
+                } catch (e) {
+                    console.error('Error fetching topics:', e);
+                    grid.innerHTML = '<p style="color:#ef4444; grid-column: 1/-1; text-align:center;">Failed to load practice topics.</p>';
+                }
+            }
+
+            async function renderTopics(topics) {
+                const grid = document.getElementById('topicsGrid');
+                grid.innerHTML = '';
+                const token = localStorage.getItem('token');
+
+                if (topics.length === 0) {
+                    grid.innerHTML = "<p style='color:var(--text-secondary); grid-column:1/-1; text-align:center; padding: 40px 0; font-size: 16px;'>No practice topics available yet.</p>";
+                    return;
+                }
+
+                for (const topic of topics) {
+                    const totalQ = topic.question_count || 0;
+                    const link = `/practice?id=${topic.id}`;
+                    
+                    // Fetch progress
+                    let answered = 0;
+                    let completed = false;
+                    try {
+                        const pRes = await fetch(`/api/progress/${topic.id}`, { headers: { 'Authorization': `Bearer ${token}` } });
+                        if (pRes.ok) {
+                            const pData = await pRes.json();
+                            if (pData.answers) {
+                                const ansArray = JSON.parse(pData.answers);
+                                answered = ansArray.filter(a => a !== null).length;
+                            }
+                            if (pData.completed) completed = true;
+                        }
+                    } catch (e) { console.error('Failed to load progress for topic', topic.id) }
+
+                    const pct = totalQ > 0 ? Math.round((answered / totalQ) * 100) : 0;
+                    let statusText = 'Not Started';
+                    let statusClass = 'not-started';
+                    let btnText = 'PRACTICE';
+
+                    if (completed) {
+                        statusText = 'Completed';
+                        statusClass = 'completed';
+                        btnText = 'PRACTICE AGAIN';
+                    } else if (answered > 0) {
+                        statusText = 'In Progress';
+                        statusClass = 'in-progress';
+                        btnText = 'RESUME';
+                    }
+
+                    const card = document.createElement('div');
+                    card.className = `test-card math-card`;
+                    
+                    let reviewBtnHtml = '';
+                    if (completed) {
+                        reviewBtnHtml = `
+                            <a href="${link}&review=true" class="btn-start-exam review-btn" style="background: rgba(139, 92, 246, 0.12); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.25); font-weight:600; padding:8px 14px; border-radius:6px; font-size:12px; text-decoration:none; display:inline-flex; align-items:center; cursor:pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(139, 92, 246, 0.22)'" onmouseout="this.style.background='rgba(139, 92, 246, 0.12)'">
+                                Xem câu sai
+                            </a>
+                        `;
+                    }
+
+                    card.innerHTML = `
+                        <div class="test-card-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                            <span class="test-badge math-badge">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                </svg>
+                                Topic · ${totalQ} Q
+                            </span>
+                            ${topic.difficulty ? `<span class="difficulty-badge ${topic.difficulty.toLowerCase()}">${topic.difficulty}</span>` : ''}
+                            <span class="test-status ${statusClass}">${statusText}</span>
+                        </div>
+                        <h3 class="test-card-title">${topic.title}</h3>
+                        <div class="test-card-info">
+                            <span class="test-info-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                                Self-paced
+                            </span>
+                            <span class="test-info-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                    <polyline points="22 4 12 14.01 9 11.01" />
+                                </svg>
+                                ${answered} / ${totalQ} solved
+                            </span>
+                        </div>
+                        <div class="test-card-progress">
+                            <div class="test-card-progress-fill math-progress" style="width: 0%"></div>
+                        </div>
+                        <div class="test-card-footer" style="display: flex; justify-content: space-between; align-items: center;">
+                            <span class="test-progress-text">${pct}% complete</span>
+                            <div style="display: flex; gap: 8px; align-items: center;">
+                                ${reviewBtnHtml}
+                                <a href="${link}" class="btn-start-exam math-btn" style="padding: 8px 14px; font-size: 12px; display: inline-flex; align-items: center; justify-content: center;">
+                                    ${btnText}
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+
+                    // Animate progress bar after card appears
+                    requestAnimationFrame(() => {
+                        setTimeout(() => {
+                            const bar = card.querySelector('.test-card-progress-fill');
+                            if (bar) bar.style.width = pct + '%';
+                        }, 300);
+                    });
+                }
+            }
+
+            async function loadRecordings() {
+                const grid = document.getElementById('recordingsGrid');
+                grid.innerHTML = '<div class="skeleton-card"></div><div class="skeleton-card"></div>';
+
+                try {
+                    const token = localStorage.getItem('token');
+                    const res = await fetch('/api/recordings', {
+                        headers: { 'Authorization': `Bearer ${token}` }
+                    });
+
+                    if (res.ok) {
+                        const recordings = await res.json();
+                        grid.innerHTML = '';
+                        
+                        if (recordings.length === 0) {
+                            grid.innerHTML = "<p style='color:var(--text-secondary); grid-column:1/-1; text-align:center; padding: 40px 0; font-size: 16px;'>No lesson recordings available yet.</p>";
+                            return;
+                        }
+
+                        for (const rec of recordings) {
+                            const embedUrl = getEmbedUrl(rec.video_url);
+                            const card = document.createElement('div');
+                            card.className = 'test-card recording-card';
+                            
+                            const dateObj = new Date(rec.created_at);
+                            const dateStr = dateObj.toLocaleDateString('vi-VN', { year: 'numeric', month: 'long', day: 'numeric' });
+
+                            let videoHtml = '';
+                            if (embedUrl) {
+                                videoHtml = `
+                                    <div class="video-container">
+                                        <iframe src="${embedUrl}" allowfullscreen></iframe>
+                                    </div>
+                                `;
+                            } else {
+                                videoHtml = `
+                                    <div class="video-container">
+                                        <a href="${rec.video_url}" target="_blank" class="video-placeholder">
+                                            <div class="play-btn-circle">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                                    <polygon points="5 3 19 12 5 21 5 3"/>
+                                                </svg>
+                                            </div>
+                                            <span style="font-weight:600; font-size:14px;">Open Video Resource</span>
+                                        </a>
+                                    </div>
+                                `;
+                            }
+
+                            card.innerHTML = `
+                                ${videoHtml}
+                                <div class="recording-details">
+                                    <h3 class="recording-title">${escapeHtml(rec.title)}</h3>
+                                    <p class="recording-desc">${escapeHtml(rec.description || 'No description provided.')}</p>
+                                    <div class="recording-footer">
+                                        <span>📅 ${dateStr}</span>
+                                        <a href="${rec.video_url}" target="_blank" class="btn-recording-link">
+                                            Open
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                                <polyline points="15 3 21 3 21 9"/>
+                                                <line x1="10" y1="14" x2="21" y2="3"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            `;
+                            grid.appendChild(card);
+                        }
+                    }
+                } catch (e) {
+                    console.error('Error fetching recordings:', e);
+                    grid.innerHTML = '<p style="color:#ef4444; grid-column: 1/-1; text-align:center;">Failed to load recordings.</p>';
+                }
+            }
+
+            function getEmbedUrl(url) {
+                if (!url) return null;
+                
+                // YouTube
+                let ytMatch = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i);
+                if (ytMatch && ytMatch[1]) {
+                    return `https://www.youtube.com/embed/${ytMatch[1]}`;
+                }
+                
+                // Google Drive
+                let gdMatch = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/i);
+                if (gdMatch && gdMatch[1]) {
+                    return `https://drive.google.com/file/d/${gdMatch[1]}/preview`;
+                }
+                
+                // Loom
+                let loomMatch = url.match(/loom\.com\/share\/([a-zA-Z0-9_-]+)/i);
+                if (loomMatch && loomMatch[1]) {
+                    return `https://www.loom.com/embed/${loomMatch[1]}`;
+                }
+                
+                if (url.includes('embed') || url.includes('player.vimeo.com')) {
+                    return url;
+                }
+                
+                return null;
+            }
+
+            function escapeHtml(str) {
+                if (!str) return '';
+                return str
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            }
 
             async function loadBookmarks() {
                 const grid = document.getElementById('bookmarksGrid');
                 grid.innerHTML = '<div class="skeleton-card"></div><div class="skeleton-card"></div>';
-                
+
                 try {
                     const token = localStorage.getItem('token');
                     const res = await fetch('/api/bookmarks', {
                         headers: { 'Authorization': `Bearer ${token}` }
                     });
-                    
+
                     if (res.ok) {
                         const bookmarks = await res.json();
                         document.getElementById('statBookmarks').textContent = bookmarks.length;
-                        
+
                         grid.innerHTML = '';
                         if (bookmarks.length === 0) {
                             grid.innerHTML = "<p style='color:var(--text-secondary); grid-column:1/-1; text-align:center; padding: 40px 0; font-size: 16px;'>you haven't saved any questions</p>";
@@ -1902,7 +2371,7 @@
                             const card = document.createElement('div');
                             card.className = 'test-card';
                             card.style.position = 'relative';
-                            
+
                             let answerDisplay = '';
                             if (b.question_type === 'mcq') {
                                 const letters = ['A', 'B', 'C', 'D'];
@@ -1913,7 +2382,7 @@
                                         if (opts[b.correct_answer_index]) {
                                             answerDisplay += `. ${opts[b.correct_answer_index]}`;
                                         }
-                                    } catch(e) {}
+                                    } catch (e) { }
                                 }
                             } else {
                                 answerDisplay = b.correct_answer_text || '';
@@ -1921,7 +2390,7 @@
 
                             let fullPrompt = b.prompt || '';
                             fullPrompt = fullPrompt.replace(/\\\)\s+\\\(/g, '\\)<br>\\(');
-                            
+
                             card.innerHTML = `
                                 <div class="test-card-header">
                                     <span class="test-badge reading-badge">
@@ -1937,10 +2406,10 @@
                                     <strong>Correct Answer:</strong> ${answerDisplay}
                                 </div>
                             `;
-                            
+
                             const removeBtn = card.querySelector('.remove-bookmark-btn');
                             removeBtn.addEventListener('click', async () => {
-                                if(confirm('Remove this question from bookmarks?')) {
+                                if (confirm('Remove this question from bookmarks?')) {
                                     try {
                                         const delRes = await fetch('/api/bookmarks/' + b.question_id, {
                                             method: 'DELETE',
@@ -1949,15 +2418,15 @@
                                         if (delRes.ok) {
                                             loadBookmarks(); // reload
                                         }
-                                    } catch(e) {
+                                    } catch (e) {
                                         console.error(e);
                                     }
                                 }
                             });
-                            
+
                             grid.appendChild(card);
                         }
-                        
+
                         if (window.MathJax) {
                             MathJax.typesetPromise([grid]).catch((err) => console.log('MathJax error', err));
                         }
@@ -1983,6 +2452,7 @@
             transform: translateY(10px);
             animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
+
         .motivational-quote-text {
             font-size: 13px;
             font-style: italic;
@@ -1993,6 +2463,7 @@
             margin: 0 auto;
             font-weight: 500;
         }
+
         @keyframes fadeInUp {
             to {
                 opacity: 0.75;
@@ -2004,7 +2475,7 @@
         <p id="motivationalQuote" class="motivational-quote-text"></p>
     </div>
     <script>
-        (function() {
+        (function () {
             const quotes = [
                 "“Hành trình vạn dặm luôn bắt đầu bằng một bước chân đầu tiên.”",
                 "“Đừng cúi đầu khi gặp khó khăn, bởi vì bạn sinh ra để đứng vững và bước tiếp.”",

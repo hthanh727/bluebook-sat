@@ -1,0 +1,1541 @@
+[
+  {
+    "question_number": 1,
+    "passage": "",
+    "prompt": "In the xy-plane, line \n passes through the point \n and is parallel to the line represented by the equation \n. If line \n also passes\nthrough the point \n, what is the value of \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "24",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 2,
+    "passage": "",
+    "prompt": "One gallon of stain will cover \n square feet of a surface. A yard has a total fence area of \nsquare feet. Which equation represents the total\namount of stain \n, in gallons, needed to stain the fence in this yard twice?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 3,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 3,
+    "passage": "",
+    "prompt": "In the system of equations below, a and c are constants.\nIf the system of equations has an infinite number of solutions \n, what is the value of a ?",
+    "options": [
+      "B. 0\nC. \nD.",
+      "0",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 3,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 4,
+    "passage": "",
+    "prompt": "The graph of \n is shown. Which equation defines function \n?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 0,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": "images/media_1786731309486_Q4.png"
+  },
+  {
+    "question_number": 5,
+    "passage": "",
+    "prompt": "Keenan made \n cups of vegetable broth. Keenan then filled \n small jars and \n large jars with all the vegetable broth he made. The equation \n represents this situation. Which is the best interpretation of \n in this context?",
+    "options": [
+      "The number of large jars Keenan filled",
+      "The number of small jars Keenan filled",
+      "The total number of cups of vegetable broth in the large jars",
+      "The total number of cups of vegetable broth in the small jars"
+    ],
+    "correct_answer_index": 2,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 6,
+    "passage": "",
+    "prompt": "One of the equations in a system of two linear equations is given. The system has no solution. Which equation could be the second equation in\nthe system?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 2,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 7,
+    "passage": "",
+    "prompt": "The solution to the given system of equations is \n. What is the value of \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "35",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 8,
+    "passage": "",
+    "prompt": "If \n is the solution to the system of equations above, what is the value of \n?",
+    "options": [
+      "B. \nC. 5\nD. 13",
+      "C. 5\nD. 13",
+      "5",
+      "13"
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 9,
+    "passage": "",
+    "prompt": "A sample of a cer tain alloy has a total mass of \n grams and is \n silicon by mass. The sample was created by combining two pieces of\ndifferent alloys. The first piece was \n silicon by mass and the second piece was \n silicon by mass. What was the mass, in grams, of\nthe silicon in the second piece?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 10,
+    "passage": "",
+    "prompt": "In the equation above, a and b are constants and \n. Which of the following could represent the graph of the equation in the xy-plane?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 2,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 11,
+    "passage": "",
+    "prompt": "Rationale\nChoice C is correct. The given equation \n can be rewritten in slope-intercept form, \n, where m represents the slope of\nthe line represented by the equation, and k represents the y-coordinate of the y-intercept of the line. Subtracting ax from both sides of the\nequation yields \n, and dividing both sides of this equation by b yields \n, or \n. With the\nequation now in slope-intercept form, it shows that \n, which means the y-coordinate of the y-intercept is 1. It’s given that a and b are both\ngreater than 0 (positive) and that \n. Since \n, the slope of the line must be a value between \n and 0. Choice C is the only graph\nof a line that has a y-value of the y-intercept that is 1 and a slope that is between \n and 0.\nChoices A, B, and D are incorrect because the slopes of the lines in these graphs aren’t between \n and 0.",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 12,
+    "passage": "",
+    "prompt": "In the given equation, \n and \n are constants and \n. The equation has no solution. What is the value of \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "-.9333, -14/15",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 13,
+    "passage": "",
+    "prompt": "The points plotted in the coordinate plane above represent the possible numbers of wallflowers and cornflowers that someone can buy at the\nGarden Store in order to spend exactly $24.00 total on the two types of flowers. The price of each wallflower is the same and the price of each\ncornflower is the same. What is the price, in dollars, of 1 cornflower?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 14,
+    "passage": "",
+    "prompt": "A small business owner budgets \n to purchase candles. The owner must purchase a minimum of \n candles to maintain the discounted\npricing. If the owner pays \n per candle to purchase small candles and \n per candle to purchase large candles, what is the maximum\nnumber of large candles the owner can purchase to stay within the budget and maintain the discounted pricing?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "182",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 15,
+    "passage": "",
+    "prompt": "The table shows three values of \n and their corresponding values of \n, where \n is a constant. There is a linear relationship between \n and \n.\nWhich of the following equations represents this relationship?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": "images/media_1786731309486_Q15.png"
+  },
+  {
+    "question_number": 16,
+    "passage": "",
+    "prompt": "The graph of \n in the \n-plane has an \n-intercept at \n and a \n-intercept at \n, where \n and \n are constants. What is the\nvalue of \n?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 3,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 17,
+    "passage": "",
+    "prompt": "In the given system of equations, \n is a constant. If the system has no solution, what is the value of \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "-34",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 18,
+    "passage": "",
+    "prompt": "For the linear function \n, the table shows three values of \n and their corresponding values of \n. Function \n is defined by \n,\nwhere \n and \n are constants. What is the value of \n?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 3,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": "images/media_1786731309486_Q18.png"
+  },
+  {
+    "question_number": 19,
+    "passage": "",
+    "prompt": "Oil and gas production in a cer tain area dropped from 4 million barrels in 2000 to 1.9 million barrels in 2013. Assuming that the oil and gas\nproduction decreased at a constant rate, which of the following linear functions f best models the production, in millions of barrels, t years after\nthe year 2000?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 2,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 20,
+    "passage": "",
+    "prompt": "A movie theater sells two types of tickets, adult tickets for $12 and child tickets for $8. If the theater sold 30 tickets for a total of $300, how\nmuch, in dollars, was spent on adult tickets? (Disregard the $ sign when gridding your answer.)",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 21,
+    "passage": "",
+    "prompt": "What value of \n is the solution to the given equation?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "-22",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 22,
+    "passage": "",
+    "prompt": "The graph of line \n is shown in the xy-plane. Line \n is defined by \n, where \n and \n are constants. If line \n is graphed in this xy-\nplane, resulting in the graph of a system of two linear equations, the system of two linear equations will have infinitely many solutions. What is\nthe value of \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "300",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": "images/media_1786731309486_Q22.png"
+  },
+  {
+    "question_number": 23,
+    "passage": "",
+    "prompt": "How many solutions does the equation \n have?",
+    "options": [
+      "Exactly one",
+      "Exactly two",
+      "Infinitely many",
+      "Zero"
+    ],
+    "correct_answer_index": 0,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 24,
+    "passage": "",
+    "prompt": "One gallon of paint will cover \n square feet of a surface. A room has a total wall area of \nsquare feet. Which equation represents the total\namount of paint \n, in gallons, needed to paint the walls of the room twice?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 0,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 25,
+    "passage": "",
+    "prompt": "A team hosting an event to raise money for new uniforms plans to sell at least \n tickets before this event and at least \n tickets during this\nevent to raise a total of at least \n from all tickets sold. The price of a ticket during this event is \n less than the price of a ticket before this\nevent. Which inequality represents this situation, where \n is the price, in dollars, of a ticket sold during this event?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 26,
+    "passage": "",
+    "prompt": "For which of the following tables are all the values of \n and their corresponding values of \n solutions to the given inequality?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 0,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": "images/media_1786731309486_Q26.png"
+  },
+  {
+    "question_number": 27,
+    "passage": "",
+    "prompt": "The triangle inequality theorem states that the sum of any two sides of a triangle must be greater than the length of the third side. If a triangle\nhas side lengths of \n and \n, which inequality represents the possible lengths, \n, of the third side of the triangle?",
+    "options": [
+      "B. \nC. \nD. \n or",
+      "C. \nD. \n or",
+      "D. \n or",
+      "or"
+    ],
+    "correct_answer_index": 2,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 28,
+    "passage": "",
+    "prompt": "A linear model estimates the population of a city from \n to \n. The model estimates the population was \n thousand in \n, \nthousand in \n, and \n thousand in \n. To the nearest whole number, what is the value of \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "257",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 29,
+    "passage": "",
+    "prompt": "In the given system of equations, \n is a constant. If the system has no solution, what is the value of \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "10",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 30,
+    "passage": "",
+    "prompt": "Line \n in the xy-plane is perpendicular to the line with equation \n. What is the slope of line \n?",
+    "options": [
+      "0",
+      "C. \nD. The slope of line \n is undefined.",
+      "D. The slope of line \n is undefined.",
+      "The slope of line \n is undefined."
+    ],
+    "correct_answer_index": 0,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 31,
+    "passage": "",
+    "prompt": "For the function \n, \n for all values of \n, where \n is a positive constant. If \n, what is the value of \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": ".0465, 2/43",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 32,
+    "passage": "",
+    "prompt": "The function \n gives the temperature, in degrees Fahrenheit, that corresponds to a temperature of \n kelvins. If a temperature increased by \nkelvins, by how much did the temperature increase, in degrees Fahrenheit?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 0,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 33,
+    "passage": "",
+    "prompt": "Each side of a \n-sided polygon has one of three lengths. The number of sides with length \n is \n times the number of sides\n with length \n. There are \n sides with length \n. Which equation must be true for the value of \n?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 34,
+    "passage": "",
+    "prompt": "The formula above is Ohm’s law for an electric circuit with current I, in amperes, potential difference V\n, in volts, and resistance R, in ohms. A\ncircuit has a resistance of 500 ohms, and its potential difference will be generated by n six-volt batteries that produce a total potential difference\nof \n volts. If the circuit is to have a current of no more than 0.25 ampere, what is the greatest number, n, of six-volt batteries that can be used?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 35,
+    "passage": "",
+    "prompt": "For which of the following tables are all the values of \n and their corresponding values of \n solutions to the given inequality?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 2,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": "images/media_1786731309486_Q35.png"
+  },
+  {
+    "question_number": 36,
+    "passage": "",
+    "prompt": "Choice D is incorrect. In the table for choice D, when \n, the corresponding value of \n is \n, which is not less than \n; when \n, the\ncorresponding value of \n is \n, which is not less than \n; when \n, the corresponding value of \n is \n, which is not less than \n.",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 37,
+    "passage": "",
+    "prompt": "The cost of renting a large canopy tent for up to \n days is \n for the first day and \n for each additional day. Which of the following\nequations gives the cost \n, in dollars, of renting the tent for \n days, where \n is a positive integer and \n?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 0,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 38,
+    "passage": "",
+    "prompt": "For which of the following tables are all the values of \n and their corresponding values of \n solutions to the given inequality?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 3,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": "images/media_1786731309486_Q38.png"
+  },
+  {
+    "question_number": 39,
+    "passage": "",
+    "prompt": "Choice C is incorrect. In the table for choice C, when \n, the corresponding value of \n is \n, which is not greater than \n; when \n, the\ncorresponding value of \n is \n, which is not greater than \n; when \n, the corresponding value of \n is \n, which is not greater than \n.",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 40,
+    "passage": "",
+    "prompt": "The solution to the given system of equations is \n. What is the value of \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "1.8, 9/5",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 41,
+    "passage": "",
+    "prompt": "The graph of \n is translated down \n units in the xy-plane. What is the x-coordinate of the x-intercept of the resulting graph?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "59/9, 6.555, 6.556",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 42,
+    "passage": "",
+    "prompt": "In the given equation, \n is a constant. The equation has no solution. What is the value of \n?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 43,
+    "passage": "",
+    "prompt": "In the system of equations above, c is a constant. If the system has no solution, what is the value of c ?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 44,
+    "passage": "",
+    "prompt": "If \n, the value of \n is between which of the following pairs of values?",
+    "options": [
+      "and",
+      "and",
+      "and",
+      "and"
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 45,
+    "passage": "",
+    "prompt": "x\ny\n3\n7\nk\n11\n12\nn\nThe table above shows the coordinates of three points on a line in the xy-plane, where k and n are constants. If the slope of the line is 2, what is\nthe value of \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": "images/media_1786731309486_Q45.png"
+  },
+  {
+    "question_number": 46,
+    "passage": "",
+    "prompt": "Line \n is shown in the xy-plane. Line \n (not shown) is perpendicular to line \n. What is the slope of line \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "1.2, 6/5",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": "images/media_1786731309486_Q46.png"
+  },
+  {
+    "question_number": 47,
+    "passage": "",
+    "prompt": "A shipping service restricts the dimensions of the boxes it will ship for a cer tain type of service. The restriction states that for boxes shaped like\nrectangular prisms, the sum of the perimeter of the base of the box and the height of the box cannot exceed 130 inches. The perimeter of the\nbase is determined using the width and length of the box. If a box has a height of 60 inches and its length is 2.5 times the width, which inequality\nshows the allowable width x, in inches, of the box?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 0,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 48,
+    "passage": "",
+    "prompt": "Line \n is defined by \n. Line \n is perpendicular to line \n in the xy-plane. What is the slope of line \n?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 3,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 49,
+    "passage": "",
+    "prompt": "In the system of equations above, a is a constant. If the system of equations has no solution, what is the value of a ?",
+    "options": [
+      "B. 0\nC. 1\nD. 2",
+      "0",
+      "1",
+      "2"
+    ],
+    "correct_answer_index": 3,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 50,
+    "passage": "",
+    "prompt": "For each real number \n, which of the following points lies on the graph of each equation in the xy-plane for the given system?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 0,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 51,
+    "passage": "",
+    "prompt": "For which of the following tables are all the values of \n and their corresponding values of \n solutions to the given inequality?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 2,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": "images/media_1786731309486_Q51.png"
+  },
+  {
+    "question_number": 52,
+    "passage": "",
+    "prompt": "Choice D is incorrect. In the table for choice D, when \n, the corresponding value of \n is \n, which is not less than \n; when \n, the\ncorresponding value of \n is \n, which is not less than \n; when \n, the corresponding value of \n is \n, which is not less than \n.",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 53,
+    "passage": "",
+    "prompt": "In the given pair of equations, \n and \n are constants. The graph of this pair of equations in the xy-plane is a pair of perpendicular lines. Which of\nthe following pairs of equations also represents a pair of perpendicular lines?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 54,
+    "passage": "",
+    "prompt": "A business owner plans to purchase the same model of chair for each of the \n employees. The total budget to spend on these chairs is\n, which includes a \n sales tax. Which of the following is closest to the maximum possible price per chair, before sales tax, the\nbusiness owner could pay based on this budget?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 55,
+    "passage": "",
+    "prompt": "For a par ticular car, the linear function \n gives the predicted power, in brake horsepower \n, for engine speeds between\n and \n. According to this function, the car's predicted power is \n at an engine speed\nof \n and \n at an engine speed of \n. The equation \n defines \n, where \n is the engine speed,\n, and \n is a constant. What is the value of \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "3331",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 56,
+    "passage": "",
+    "prompt": "At a school fair, students can win colored tokens that are wor th a different number of points depending on the color. One student won \n green\ntokens and \n red tokens wor th a total of \n points. The given equation represents this situation. How many more points is a red token wor th\nthan a green token?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "40",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 57,
+    "passage": "",
+    "prompt": "In a set of four consecutive odd integers, where the integers are ordered from least to greatest, the first integer is represented by \n. The product\nof \n and the four th odd integer is at most \n less than the sum of the first and third odd integers. Which inequality represents this situation?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 0,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 58,
+    "passage": "",
+    "prompt": "The given equation is one equation in a system of two linear equations. If the system of equations has at least one solution, which of the\nfollowing equations could be the other equation in the system?\nI. \nII.",
+    "options": [
+      "I only",
+      "II only",
+      "I and II",
+      "Neither I nor II"
+    ],
+    "correct_answer_index": 2,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 59,
+    "passage": "",
+    "prompt": "Which system of linear equations has no solution?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 3,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 60,
+    "passage": "",
+    "prompt": "Store A sells raspberries for \n per pint and blackberries for \n per pint. Store B sells raspberries for \n per pint and blackberries for\n per pint. A cer tain purchase of raspberries and blackberries would cost \n at Store A or \n at Store B. How many pints of\nblackberries are in this purchase?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 61,
+    "passage": "",
+    "prompt": "x\nf(x)\n21\n18\n15\n12\nThe table above shows some values of x and their corresponding values \n for the linear function f. What is the x-intercept of the graph of\n in the xy-plane?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": "images/media_1786731309486_Q61.png"
+  },
+  {
+    "question_number": 62,
+    "passage": "",
+    "prompt": "Anthony will spend at most \n to purchase \n small cheese pizzas and \n large cheese pizzas for a team dinner. The given inequality represents\nthis situation. Which of the following is the best interpretation of \n in this context?",
+    "options": [
+      "The amount, in dollars, Anthony will spend on each large cheese pizza",
+      "The amount, in dollars, Anthony will spend on each small cheese pizza",
+      "The total amount, in dollars, Anthony will spend on large cheese pizzas",
+      "The total amount, in dollars, Anthony will spend on small cheese pizzas"
+    ],
+    "correct_answer_index": 2,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 63,
+    "passage": "",
+    "prompt": "Ken is working this summer as par t of a crew on a farm. He earned $8 per hour for the first 10 hours he worked this week. Because of his\nperformance, his crew leader raised his salary to $10 per hour for the rest of the week. Ken saves 90% of his earnings from each week. What is\nthe least number of hours he must work the rest of the week to save at least $270 for the week?",
+    "options": [
+      "38",
+      "33",
+      "22",
+      "16"
+    ],
+    "correct_answer_index": 2,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 64,
+    "passage": "",
+    "prompt": "Which of the following consists of the y-coordinates of all the points that satisfy the system of inequalities above?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 65,
+    "passage": "",
+    "prompt": "Kaylani used fabric measuring \n yards in length to make each suit for a men's choir. The relationship between the number of suits that Kaylani\nmade, \n, and the total length of fabric that she purchased \n, in yards, is represented by the equation \n. What is the best interpretation\nof \n in this context?",
+    "options": [
+      "Kaylani made \n suits.",
+      "Kaylani purchased a total of \n yards of fabric.",
+      "Kaylani used a total of \n yards of fabric to make the suits.",
+      "Kaylani purchased \n yards more fabric than she used to make the suits."
+    ],
+    "correct_answer_index": 3,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 66,
+    "passage": "",
+    "prompt": "To earn money for college, Avery works two par t-time jobs: A and B. She earns $10 per hour working at job A and $20 per hour working at job B.\nIn one week, Avery earned a total of s dollars for working at the two par t-time jobs. The graph above represents all possible combinations of\nnumbers of hours Avery could have worked at the two jobs to earn s dollars. What is the value of s ?",
+    "options": [
+      "128",
+      "160",
+      "200",
+      "320"
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 67,
+    "passage": "",
+    "prompt": "In the given system of equations, \n is a constant. In the xy-plane, the graphs of these equations intersect at the point \n, where \n is a\nconstant. What is the value of \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "11",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 68,
+    "passage": "",
+    "prompt": "In the given system of equations, \n is a constant. If the system has no solution, what is the value of \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "3.5, 7/2",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 69,
+    "passage": "",
+    "prompt": "In the given system of equations, \n is a constant. If the system has no solution, what is the value of \n?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 3,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 70,
+    "passage": "",
+    "prompt": "How many solutions does the given equation have?",
+    "options": [
+      "Zero",
+      "Exactly one",
+      "Exactly two",
+      "Infinitely many"
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 71,
+    "passage": "",
+    "prompt": "The graph of \n is shown.\nWhich equation defines the linear function \n?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": "images/media_1786731309486_Q71.png"
+  },
+  {
+    "question_number": 72,
+    "passage": "",
+    "prompt": "Choice A is incorrect and may result from conceptual or calculation errors.\nChoice C is incorrect and may result from conceptual or calculation errors.\nChoice D is incorrect and may result from conceptual or calculation errors.",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 73,
+    "passage": "",
+    "prompt": "A piece of wire with a length of \n inches is cut into two par ts. One par t has a length of \n inches, and the other par t has a length of \n inches. The\nvalue of \n is \n more than \n times the value of \n. What is the value of \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "25",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 74,
+    "passage": "",
+    "prompt": "The function \n is defined as \n more than \n times a number \n. If \nis graphed in the \n-plane, what is the best interpretation of the\n-intercept?",
+    "options": [
+      "When \n, the number is \n.",
+      "When the number is \n,  \n.",
+      "The value of \n increases by \n for each increase of \n in the value of the number.",
+      "For each increase of \n in the value of the number, \n increases by \n."
+    ],
+    "correct_answer_index": 0,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 75,
+    "passage": "",
+    "prompt": "The line with the equation \n is graphed in the xy‑plane. What is the x-coordinate of the x‑intercept of the line?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 76,
+    "passage": "",
+    "prompt": "One of the two equations in a linear system is \n. The system has no solution. Which of the following could be the other equation\nin the system?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 77,
+    "passage": "",
+    "prompt": "The point with coordinates \n lies on the line shown. What is the value of \n?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 2,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": "images/media_1786731309486_Q77.png"
+  },
+  {
+    "question_number": 78,
+    "passage": "",
+    "prompt": "Choice D is incorrect and may result from conceptual or calculation errors.",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 79,
+    "passage": "",
+    "prompt": "If \n, what is the value of \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "11",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 80,
+    "passage": "",
+    "prompt": "An object hangs from a spring. The formula \n relates the length \n, in centimeters, of the spring to the weight w, in newtons, of the\nobject. Which of the following describes the meaning of the 2 in this context?",
+    "options": [
+      "The length, in centimeters, of the spring with no weight attached",
+      "The weight, in newtons, of an object that will stretch the spring 30 centimeters",
+      "The increase in the weight, in newtons, of the object for each one-centimeter increase in the length of the spring",
+      "The increase in the length, in centimeters, of the spring for each one-newton increase in the weight of the object"
+    ],
+    "correct_answer_index": 3,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 81,
+    "passage": "",
+    "prompt": "The equation \n, where a and b are constants, has no solutions. Which of the following must be true?\nI. \nII. \nIII.",
+    "options": [
+      "None",
+      "I only",
+      "I and II only",
+      "I and III only"
+    ],
+    "correct_answer_index": 3,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 82,
+    "passage": "",
+    "prompt": "The solution to the given system of equations is \n. What is the value of \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "1677",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 83,
+    "passage": "",
+    "prompt": "For the function f, if \n for all values of x, what is the value of \n ?",
+    "options": [
+      "B. \nC. 0\nD. 2",
+      "C. 0\nD. 2",
+      "0",
+      "2"
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 84,
+    "passage": "",
+    "prompt": "The linear function \n is defined by \n, where \n is a constant. If \n, where \n is a constant, which of the following\nexpressions represents the value of \n?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 2,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 85,
+    "passage": "",
+    "prompt": "For each real number \n, which of the following points lies on the graph of each equation in the xy-plane for the given system?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 86,
+    "passage": "",
+    "prompt": "In the xy-plane, line k is defined by \n. Line j is perpendicular to line k, and the y-intercept of line j is \n. Which of the following is an\nequation of line j ?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 3,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 87,
+    "passage": "",
+    "prompt": "What value of \n is the solution to the equation \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "-.3266, -.3267, -49/150",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 88,
+    "passage": "",
+    "prompt": "The table shows three values of \n and their corresponding values of \n, where \n is a constant, for the linear relationship between \n and \n. What is\nthe slope of the line that represents this relationship in the xy-plane?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 0,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": "images/media_1786731309486_Q88.png"
+  },
+  {
+    "question_number": 89,
+    "passage": "",
+    "prompt": "One of the equations in a system of two linear equations is given. The system has no solution. Which equation could be the second equation in\nthe system?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 90,
+    "passage": "",
+    "prompt": "What is the y-coordinate of the y-intercept of the graph of \n in the xy-plane?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "189/5, 37.8",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 91,
+    "passage": "",
+    "prompt": "If \n, the value of \n is between which of the following pairs of values?",
+    "options": [
+      "and",
+      "and",
+      "and",
+      "and"
+    ],
+    "correct_answer_index": 1,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 92,
+    "passage": "",
+    "prompt": "How many liters of a 25% saline solution must be added to 3 liters of a 10% saline solution to obtain a 15% saline solution?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 93,
+    "passage": "",
+    "prompt": "A science teacher is preparing the 5 stations of a science laboratory. Each station will have either Experiment A materials or Experiment B\nmaterials, but not both. Experiment A requires 6 teaspoons of salt, and Experiment B requires 4 teaspoons of salt. If x is the number of stations\nthat will be set up for Experiment A and the remaining stations will be set up for Experiment B, which of the following expressions represents the\ntotal number of teaspoons of salt required?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 2,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 94,
+    "passage": "",
+    "prompt": "The equation \n gives the corresponding temperature \n, in degrees Fahrenheit, of any substance that has a temperature of \nkelvins, where \n. If a substance has a temperature of \n degrees Fahrenheit, what is the corresponding temperature, in kelvins, of this\nsubstance?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "515",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 95,
+    "passage": "",
+    "prompt": "For groups of \n or more people, a museum charges \n per person for the first \n people and \n for each additional person. Which function \ngives the total charge, in dollars, for a tour group with \n people, where \n?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 0,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 96,
+    "passage": "",
+    "prompt": "The graph shows a linear relationship between \n and \n. Which equation represents this relationship, where \n is a positive constant?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 2,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": "images/media_1786731309486_Q96.png"
+  },
+  {
+    "question_number": 97,
+    "passage": "",
+    "prompt": "Choice D is incorrect. The graph of this relationship passes through the point \n, not \n.",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 98,
+    "passage": "",
+    "prompt": "The cost of renting a carpet cleaner is \n for the first day and \n for each additional day. Which of the following functions gives the cost\n, in dollars, of renting the carpet cleaner for \n days, where \n is a positive integer?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 0,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 99,
+    "passage": "",
+    "prompt": "If a new graph of three linear equations is created using the system of equations shown and the equation \n, how many solutions\n will the resulting system of three equations have?",
+    "options": [
+      "Zero",
+      "Exactly one",
+      "Exactly two",
+      "Infinitely many"
+    ],
+    "correct_answer_index": 0,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": "images/media_1786731309486_Q99.png"
+  },
+  {
+    "question_number": 100,
+    "passage": "",
+    "prompt": "Choice C is incorrect and may result from conceptual or calculation errors.\nChoice D is incorrect and may result from conceptual or calculation errors.",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 101,
+    "passage": "",
+    "prompt": "The table shows two values of \n and their corresponding values of \n. In the xy-plane, the graph of the linear equation representing this\nrelationship passes through the point \n. What is the value of \n?",
+    "options": [
+      "B. \nC. \nD.",
+      "C. \nD.",
+      "D.",
+      ""
+    ],
+    "correct_answer_index": 3,
+    "correct_answer_text": "",
+    "question_type": "mcq",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  },
+  {
+    "question_number": 102,
+    "passage": "",
+    "prompt": "The solution to the given system of equations is \n. What is the value of \n?",
+    "options": null,
+    "correct_answer_index": null,
+    "correct_answer_text": "20",
+    "question_type": "spr",
+    "difficulty": "Hard",
+    "section": "math",
+    "image_url": null
+  }
+]

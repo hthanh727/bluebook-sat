@@ -334,10 +334,14 @@ function convertMarkdownTablesToHtml(text) {
         let reviewHtml = '';
         if (state.reviewMode || (state.practiceMode && state.questionSubmitted[idx])) {
             const isCorrect = (state.answers[idx] || '').toString().trim() === (q.correct_answer_text || '').toString().trim();
+            const bg = isCorrect ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)';
+            const border = isCorrect ? 'rgba(16, 185, 129, 0.4)' : 'rgba(239, 68, 68, 0.4)';
+            const txtColor = isCorrect ? '#10b981' : '#f87171';
+            
             reviewHtml = `
-               <div style="margin-top: 24px; padding: 16px; border-radius: 8px; border: 1px solid ${isCorrect ? '#10b981' : '#ef4444'}; background: ${isCorrect ? '#ecfdf5' : '#fef2f2'};">
+               <div style="margin-top: 24px; padding: 16px; border-radius: 8px; border: 1px solid ${border}; background: ${bg};">
                    <div style="font-size: 14px; margin-bottom: 8px;">
-                       <span style="font-weight: 600; color: ${isCorrect ? '#10b981' : '#ef4444'};">Your Answer:</span> 
+                       <span style="font-weight: 600; color: ${txtColor};">Your Answer:</span> 
                        ${state.answers[idx] || '<span style="font-style:italic;color:#94a3b8">No Answer Provided</span>'}
                    </div>
                    <div style="font-size: 14px;">
@@ -1122,11 +1126,13 @@ function convertMarkdownTablesToHtml(text) {
         return;
     }
     
-    const testId = new URLSearchParams(window.location.search).get('id');
+    const urlParams = new URLSearchParams(window.location.search);
+    const testId = urlParams.get('id');
     if (!testId) {
         window.location.href = '/dashboard';
         return;
     }
+    state.reviewMode = urlParams.get('mode') === 'review' || urlParams.get('review') === 'true';
     
     try {
         const response = await fetch(`/api/tests/${testId}/questions`, {
@@ -1198,10 +1204,13 @@ function convertMarkdownTablesToHtml(text) {
         });
         if (progRes.ok) {
             const progData = await progRes.json();
-            if (progData && progData.answers && progData.completed !== 1) {
+            if (progData && progData.answers && (progData.completed !== 1 || state.reviewMode)) {
                 const savedAnswers = JSON.parse(progData.answers);
                 for (let i = 0; i < savedAnswers.length && i < numQ; i++) {
                     state.answers[i] = savedAnswers[i];
+                }
+                if (state.reviewMode) {
+                    state.questionSubmitted = new Array(numQ).fill(true);
                 }
             } else if (progData && progData.completed === 1) {
                 localStorage.removeItem(`sat-resume-${testId}-${state.testType}`);
@@ -1211,7 +1220,7 @@ function convertMarkdownTablesToHtml(text) {
         }
         
         const savedResume = localStorage.getItem(`sat-resume-${testId}-${state.testType}`);
-        if (savedResume) {
+        if (savedResume && !state.reviewMode) {
             try {
                 const s = JSON.parse(savedResume);
                 if (s.currentModule) state.currentModule = s.currentModule;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,11 +16,13 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .admin-main {
             max-width: 1400px;
             margin: 40px auto;
             padding: 0 24px;
         }
+
         .action-buttons-group {
             display: flex;
             align-items: center;
@@ -27,6 +30,7 @@
             flex-wrap: nowrap;
             white-space: nowrap;
         }
+
         .admin-section {
             background: white;
             border-radius: 12px;
@@ -34,20 +38,25 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             margin-bottom: 24px;
         }
+
         .tests-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 16px;
         }
-        .tests-table th, .tests-table td {
+
+        .tests-table th,
+        .tests-table td {
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #e2e8f0;
         }
+
         .tests-table th {
             background: #f8fafc;
             font-weight: 600;
         }
+
         .btn-admin {
             background: #2563eb;
             color: white;
@@ -57,38 +66,45 @@
             cursor: pointer;
             font-weight: 500;
         }
+
         .btn-admin:hover {
             background: #1d4ed8;
         }
+
         .form-group {
             margin-bottom: 16px;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
         }
+
         .form-control {
             width: 100%;
             padding: 8px 12px;
             border: 1px solid #cbd5e1;
             border-radius: 6px;
         }
+
         .hidden {
             display: none !important;
         }
+
         .modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
         }
+
         .modal-content {
             background: white;
             padding: 32px;
@@ -98,6 +114,7 @@
             max-height: 90vh;
             overflow-y: auto;
         }
+
         .admin-tabs {
             display: flex;
             gap: 16px;
@@ -105,6 +122,7 @@
             border-bottom: 1px solid #e2e8f0;
             padding-bottom: 8px;
         }
+
         /* Toggle Switch CSS */
         .toggle-switch {
             position: relative;
@@ -112,19 +130,26 @@
             width: 40px;
             height: 20px;
         }
-        .toggle-switch input { 
+
+        .toggle-switch input {
             opacity: 0;
             width: 0;
             height: 0;
         }
+
         .toggle-slider {
             position: absolute;
             cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #ef4444; /* locked (red) */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ef4444;
+            /* locked (red) */
             transition: .2s;
             border-radius: 20px;
         }
+
         .toggle-slider:before {
             position: absolute;
             content: "";
@@ -136,12 +161,16 @@
             transition: .2s;
             border-radius: 50%;
         }
-        input:checked + .toggle-slider {
-            background-color: #10b981; /* unlocked (green) */
+
+        input:checked+.toggle-slider {
+            background-color: #10b981;
+            /* unlocked (green) */
         }
-        input:checked + .toggle-slider:before {
+
+        input:checked+.toggle-slider:before {
             transform: translateX(20px);
         }
+
         .tab-btn {
             background: none;
             border: none;
@@ -153,34 +182,42 @@
             border-radius: 6px;
             transition: all 0.2s;
         }
+
         .tab-btn:hover {
             color: #1e293b;
             background: #f1f5f9;
         }
+
         .tab-btn.active {
             color: #2563eb;
             background: #eff6ff;
         }
+
         .tab-content {
             display: none;
         }
+
         .tab-content.active {
             display: block;
         }
+
         .status-badge {
             padding: 4px 8px;
             border-radius: 9999px;
             font-size: 12px;
             font-weight: 600;
         }
+
         .status-completed {
             background: #dcfce7;
             color: #166534;
         }
+
         .status-progress {
             background: #fef08a;
             color: #854d0e;
         }
+
         .dp-q-item {
             display: flex;
             align-items: center;
@@ -192,15 +229,18 @@
             cursor: pointer;
             transition: all 0.2s;
         }
+
         .dp-q-item:hover {
             background: #f1f5f9;
             border-color: #cbd5e1;
         }
+
         .dp-q-item.selected {
             background: #eff6ff;
             border-color: #3b82f6;
             box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
         }
+
         .option-detail-box {
             display: flex;
             align-items: flex-start;
@@ -214,24 +254,29 @@
             gap: 10px;
             transition: all 0.2s;
         }
+
         .option-detail-box.correct {
             border-color: #10b981;
             background: #f0fdf4;
             color: #14532d;
         }
+
         .option-detail-box.incorrect-choice {
             border-color: #ef4444;
             background: #fef2f2;
             color: #7f1d1d;
         }
+
         .option-letter {
             font-weight: 700;
             color: #64748b;
             min-width: 18px;
         }
+
         .option-detail-box.correct .option-letter {
             color: #10b981;
         }
+
         .option-detail-box.incorrect-choice .option-letter {
             color: #ef4444;
         }
@@ -247,6 +292,7 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
+
 <body style="background: #f1f5f9;">
 
     <header class="admin-header">
@@ -261,19 +307,27 @@
         <div class="admin-tabs">
             <button class="tab-btn active" id="btnTabTests">Manage Tests</button>
             <button class="tab-btn" id="btnTabProgress">Student Progress</button>
+            <button class="tab-btn" id="btnTabRecordings">Manage Recordings</button>
+            <button class="tab-btn" id="btnTabConvert">PDF Question Parser</button>
         </div>
 
         <div class="admin-section tab-content active" id="tabTests">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <h3>Manage Tests</h3>
                 <div style="display: flex; gap: 12px; align-items: center;">
-                    <a href="template_reading.csv" download class="btn-admin" style="background: #e2e8f0; color: #334155; font-size: 13px; text-decoration: none;">⬇️ Reading Template</a>
-                    <a href="template_math.csv" download class="btn-admin" style="background: #e2e8f0; color: #334155; font-size: 13px; text-decoration: none;">⬇️ Math Template</a>
-                    <a href="template_full.csv" download class="btn-admin" style="background: #e2e8f0; color: #334155; font-size: 13px; text-decoration: none;">⬇️ Full Template</a>
+                    <a href="template_reading.csv" download class="btn-admin"
+                        style="background: #e2e8f0; color: #334155; font-size: 13px; text-decoration: none;">⬇️ Reading
+                        Template</a>
+                    <a href="template_math.csv" download class="btn-admin"
+                        style="background: #e2e8f0; color: #334155; font-size: 13px; text-decoration: none;">⬇️ Math
+                        Template</a>
+                    <a href="template_full.csv" download class="btn-admin"
+                        style="background: #e2e8f0; color: #334155; font-size: 13px; text-decoration: none;">⬇️ Full
+                        Template</a>
                     <button class="btn-admin" id="btnCreateTest">Create New Test</button>
                 </div>
             </div>
-            
+
             <table class="tests-table" id="testsTable">
                 <thead>
                     <tr>
@@ -294,7 +348,8 @@
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
                 <div style="display: flex; align-items: center; gap: 16px;">
                     <h3 style="margin: 0;">Student Progress</h3>
-                    <input type="text" id="progressFilter" placeholder="Search student name or email..." style="padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px; width: 300px; font-size: 14px;">
+                    <input type="text" id="progressFilter" placeholder="Search student name or email..."
+                        style="padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 6px; width: 300px; font-size: 14px;">
                 </div>
                 <button class="btn-admin" id="btnRefreshProgress" style="background: #64748b;">Refresh</button>
             </div>
@@ -316,6 +371,74 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="admin-section tab-content" id="tabRecordings">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="margin: 0;">Manage Lesson Recordings</h3>
+                <button class="btn-admin" id="btnOpenCreateRecording" style="background: #3b82f6;">Add New Recording</button>
+            </div>
+            <table class="tests-table" id="recordingsTable">
+                <thead>
+                    <tr>
+                        <th style="width: 80px;">ID</th>
+                        <th style="width: 250px;">Title</th>
+                        <th>Description</th>
+                        <th style="width: 250px;">Video URL</th>
+                        <th style="width: 150px;">Date Added</th>
+                        <th style="width: 120px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="recordingsTableBody">
+                    <!-- Recordings will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="admin-section tab-content" id="tabConvert" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="margin: 0;">Question PDF Text Parser (College Board Question Bank)</h3>
+            </div>
+            <div class="card" style="background: white; padding: 24px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 24px;">
+                <p style="font-size: 14px; color: #64748b; margin-bottom: 20px;">
+                    Sao chép toàn bộ văn bản (hoặc văn bản OCR) từ file PDF đề thi của College Board Question Bank rồi dán vào khung bên dưới. Hệ thống sẽ tự động tách câu hỏi, các đáp án lựa chọn và đáp án đúng để import trực tiếp vào bài tập chuyên đề.
+                </p>
+                <div class="form-group" style="margin-bottom: 16px;">
+                    <label style="font-weight: 600; display: block; margin-bottom: 8px;">1. Chọn Chuyên đề / Đề thi muốn thêm câu hỏi vào:</label>
+                    <select id="convertTargetTest" class="form-control" style="max-width: 400px; padding: 8px; border-radius: 4px; border: 1px solid #cbd5e1;" required>
+                        <!-- Loaded dynamically -->
+                    </select>
+                </div>
+                <div class="form-group" style="margin-bottom: 16px;">
+                    <label style="font-weight: 600; display: block; margin-bottom: 8px;">2. Dán văn bản PDF / OCR vào đây:</label>
+                    <textarea id="pdfRawText" class="form-control" rows="12" style="width: 100%; max-width: 100%; box-sizing: border-box; padding: 12px; border-radius: 4px; border: 1px solid #cbd5e1; font-family: monospace; font-size: 13px;" placeholder="Dán nội dung PDF tại đây...&#10;Ví dụ:&#10;Question ID: 002dba45&#10;SAT Math Algebra Linear equations...&#10;Medium&#10;Question&#10;Line k is defined by y =...&#10;Correct Answer: 3/17&#10;Rationale..."></textarea>
+                </div>
+                <div style="display: flex; gap: 12px;">
+                    <button class="btn-admin" id="btnParseText" style="background: #3b82f6;">Phân tích văn bản (Preview)</button>
+                    <button class="btn-admin" id="btnImportParsed" style="background: #10b981; display: none;">Nhập vào Database (<span id="parsedCountText">0</span> câu)</button>
+                </div>
+            </div>
+
+            <!-- Preview Panel -->
+            <div id="parsedPreviewCard" style="display: none; background: white; padding: 24px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                <h3 style="margin-top: 0; margin-bottom: 16px;">Xem trước câu hỏi phân tích được</h3>
+                <div style="overflow-x: auto;">
+                    <table class="tests-table" style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0;">
+                                <th style="width: 60px; padding: 12px; text-align: left;">STT</th>
+                                <th style="width: 100px; padding: 12px; text-align: left;">Độ khó</th>
+                                <th style="width: 100px; padding: 12px; text-align: left;">Loại</th>
+                                <th style="padding: 12px; text-align: left;">Đề bài</th>
+                                <th style="width: 300px; padding: 12px; text-align: left;">Các lựa chọn / Đáp án đúng</th>
+                            </tr>
+                        </thead>
+                        <tbody id="parsedPreviewTableBody">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Create Test Modal -->
@@ -325,7 +448,8 @@
             <form id="testForm" style="margin-top: 20px;">
                 <div class="form-group">
                     <label>Test Title</label>
-                    <input type="text" class="form-control" id="testTitle" required placeholder="e.g. SAT Practice Test 2 - Reading">
+                    <input type="text" class="form-control" id="testTitle" required
+                        placeholder="e.g. SAT Practice Test 2 - Reading">
                 </div>
                 <div class="form-group">
                     <label>Test Type</label>
@@ -333,11 +457,53 @@
                         <option value="reading">Reading & Writing</option>
                         <option value="math">Math</option>
                         <option value="full">Full Mock Test</option>
+                        <option value="topic">Topic Practice (Chuyên đề)</option>
+                    </select>
+                </div>
+                <div class="form-group" id="testDifficultyGroup" style="display: none; margin-top: 15px;">
+                    <label>Difficulty (Độ khó)</label>
+                    <select id="testDifficulty" class="form-control" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #cbd5e1;">
+                        <option value="Easy">Easy (Dễ)</option>
+                        <option value="Medium" selected>Medium (Trung bình)</option>
+                        <option value="Hard">Hard (Khó)</option>
                     </select>
                 </div>
                 <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
-                    <button type="button" class="btn-admin" style="background: #64748b;" id="btnCancelTest">Cancel</button>
+                    <button type="button" class="btn-admin" style="background: #64748b;"
+                        id="btnCancelTest">Cancel</button>
                     <button type="submit" class="btn-admin">Save Test</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Create Recording Modal -->
+    <div class="modal hidden" id="recordingModal">
+        <div class="modal-content">
+            <h3 id="recordingModalTitle">Add New Lesson Recording</h3>
+            <form id="recordingForm" style="margin-top: 20px;">
+                <div class="form-group">
+                    <label>Recording Title</label>
+                    <input type="text" class="form-control" id="recordingTitle" required
+                        placeholder="e.g. SAT Math Module 1 Review - 2026-08-15">
+                </div>
+                <div class="form-group">
+                    <label>Description (Optional)</label>
+                    <textarea class="form-control" id="recordingDescription" rows="3"
+                        placeholder="Brief summary of the lesson topics covered..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Video URL / Embed URL</label>
+                    <input type="url" class="form-control" id="recordingVideoUrl" required
+                        placeholder="YouTube, Google Drive, Loom, Zoom cloud link, etc.">
+                    <span style="font-size: 11px; color: #64748b; margin-top: 4px; display: block;">
+                        💡 Normal URLs are automatically parsed and embedded where possible (YouTube, Drive, Loom).
+                    </span>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
+                    <button type="button" class="btn-admin" style="background: #64748b;"
+                        id="btnCancelRecording">Cancel</button>
+                    <button type="submit" class="btn-admin">Save Recording</button>
                 </div>
             </form>
         </div>
@@ -352,7 +518,8 @@
             </p>
             <div style="display: flex; gap: 12px; margin-bottom: 16px;">
                 <button type="button" class="btn-admin" id="btnLockAll" style="background: #dc2626;">Lock All</button>
-                <button type="button" class="btn-admin" id="btnUnlockAll" style="background: #10b981;">Unlock All</button>
+                <button type="button" class="btn-admin" id="btnUnlockAll" style="background: #10b981;">Unlock
+                    All</button>
             </div>
             <div style="max-height: 400px; overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 6px;">
                 <table class="tests-table" style="margin-top: 0;">
@@ -380,7 +547,7 @@
             <h3>Add Question</h3>
             <form id="questionForm" style="margin-top: 20px;">
                 <input type="hidden" id="qTestId">
-                
+
                 <div class="form-group">
                     <label>Module (1 or 2)</label>
                     <input type="number" class="form-control" id="qModule" min="1" max="2" value="1" required>
@@ -409,13 +576,17 @@
                     <label>Prompt</label>
                     <textarea class="form-control" id="qPrompt" rows="3" required></textarea>
                 </div>
-                
+
                 <div class="form-group" id="mcqOptionsGroup">
                     <label>Options (A, B, C, D)</label>
-                    <input type="text" class="form-control" id="qOptA" placeholder="Option A" style="margin-bottom: 8px;">
-                    <input type="text" class="form-control" id="qOptB" placeholder="Option B" style="margin-bottom: 8px;">
-                    <input type="text" class="form-control" id="qOptC" placeholder="Option C" style="margin-bottom: 8px;">
-                    <input type="text" class="form-control" id="qOptD" placeholder="Option D" style="margin-bottom: 8px;">
+                    <input type="text" class="form-control" id="qOptA" placeholder="Option A"
+                        style="margin-bottom: 8px;">
+                    <input type="text" class="form-control" id="qOptB" placeholder="Option B"
+                        style="margin-bottom: 8px;">
+                    <input type="text" class="form-control" id="qOptC" placeholder="Option C"
+                        style="margin-bottom: 8px;">
+                    <input type="text" class="form-control" id="qOptD" placeholder="Option D"
+                        style="margin-bottom: 8px;">
                 </div>
 
                 <div class="form-group" id="mcqCorrectGroup">
@@ -427,14 +598,15 @@
                         <option value="3">D</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group hidden" id="sprCorrectGroup">
                     <label>Correct Answer (Exact text for SPR)</label>
                     <input type="text" class="form-control" id="qCorrectText" placeholder="e.g. 5, 2/3, 3.5">
                 </div>
 
                 <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
-                    <button type="button" class="btn-admin" style="background: #64748b;" id="btnCancelQuestion">Cancel</button>
+                    <button type="button" class="btn-admin" style="background: #64748b;"
+                        id="btnCancelQuestion">Cancel</button>
                     <button type="submit" class="btn-admin">Save Question</button>
                 </div>
             </form>
@@ -446,10 +618,12 @@
         <div class="modal-content" style="width: 950px; max-width: 95vw; max-height: 90vh;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                 <h3 style="margin: 0; font-size: 20px;" id="imagesModalTitle">🖼️ Detect & Manage Question Images</h3>
-                <button class="btn-admin" id="btnCloseImages" style="background: #64748b; padding: 6px 14px;">Close</button>
+                <button class="btn-admin" id="btnCloseImages"
+                    style="background: #64748b; padding: 6px 14px;">Close</button>
             </div>
 
-            <div style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; border: 1px solid #e2e8f0;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; border: 1px solid #e2e8f0;">
                 <label style="font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px;">
                     <input type="checkbox" id="chkOnlyImageQuestions" checked style="width: 16px; height: 16px;">
                     Chỉ hiện những câu có nhãn [image] hoặc chưa dán link ảnh
@@ -479,7 +653,8 @@
                 <div style="color: #64748b; font-size: 13px;">
                     💡 Dán đường dẫn ảnh (ví dụ: https://i.postimg.cc/...) và bấm Lưu để cập nhật ngay vào MySQL.
                 </div>
-                <button class="btn-admin" id="btnSaveAllImages" style="background: #10b981; padding: 10px 24px; font-size: 15px; font-weight: 600;">
+                <button class="btn-admin" id="btnSaveAllImages"
+                    style="background: #10b981; padding: 10px 24px; font-size: 15px; font-weight: 600;">
                     💾 Lưu tất cả link ảnh
                 </button>
             </div>
@@ -491,13 +666,18 @@
         <div class="modal-content" style="width: 1050px; max-width: 95vw; max-height: 92vh;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                 <h3 style="margin: 0; font-size: 20px;" id="editCsvModalTitle">📝 Edit Test Questions & CSV</h3>
-                <button class="btn-admin" id="btnCloseEditCsv" style="background: #64748b; padding: 6px 14px;">Close</button>
+                <button class="btn-admin" id="btnCloseEditCsv"
+                    style="background: #64748b; padding: 6px 14px;">Close</button>
             </div>
 
-            <div style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 10px 16px; border-radius: 8px; margin-bottom: 16px; border: 1px solid #e2e8f0;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc; padding: 10px 16px; border-radius: 8px; margin-bottom: 16px; border: 1px solid #e2e8f0;">
                 <div style="display: flex; gap: 10px;">
-                    <button class="btn-admin" id="btnTabCsvTable" style="background: #2563eb; font-size: 13px; padding: 6px 14px;">📊 Bảng câu hỏi</button>
-                    <button class="btn-admin" id="btnTabCsvRaw" style="background: #64748b; font-size: 13px; padding: 6px 14px;">📄 Sửa CSV dạng chữ (Raw CSV)</button>
+                    <button class="btn-admin" id="btnTabCsvTable"
+                        style="background: #2563eb; font-size: 13px; padding: 6px 14px;">📊 Bảng câu hỏi</button>
+                    <button class="btn-admin" id="btnTabCsvRaw"
+                        style="background: #64748b; font-size: 13px; padding: 6px 14px;">📄 Sửa CSV dạng chữ (Raw
+                        CSV)</button>
                 </div>
                 <div id="csvQuestionCountLabel" style="font-weight: 600; color: #475569; font-size: 14px;">
                     Tổng số: 0 câu hỏi
@@ -505,7 +685,8 @@
             </div>
 
             <!-- Mode 1: Interactive Table View -->
-            <div id="csvTableView" style="max-height: 58vh; overflow-y: auto; border: 1px solid #cbd5e1; border-radius: 8px;">
+            <div id="csvTableView"
+                style="max-height: 58vh; overflow-y: auto; border: 1px solid #cbd5e1; border-radius: 8px;">
                 <table class="tests-table" style="margin: 0; font-size: 13px;">
                     <thead>
                         <tr style="position: sticky; top: 0; background: #f1f5f9; z-index: 10;">
@@ -525,17 +706,21 @@
             <!-- Mode 2: Raw CSV Text View -->
             <div id="csvRawView" class="hidden" style="margin-bottom: 16px;">
                 <label style="font-weight: 600; font-size: 13px; display: block; margin-bottom: 6px; color: #475569;">
-                    Sửa trực tiếp định dạng CSV (module,question_number,prompt,option_a,option_b,option_c,option_d,correct_answer_index,correct_answer_text,image_url,question_type):
+                    Sửa trực tiếp định dạng CSV
+                    (module,question_number,prompt,option_a,option_b,option_c,option_d,correct_answer_index,correct_answer_text,image_url,question_type):
                 </label>
-                <textarea id="rawCsvTextArea" rows="18" class="form-control" style="font-size: 12px; white-space: pre; overflow-x: auto; font-family: 'Consolas', 'Courier New', monospace;"></textarea>
+                <textarea id="rawCsvTextArea" rows="18" class="form-control"
+                    style="font-size: 12px; white-space: pre; overflow-x: auto; font-family: 'Consolas', 'Courier New', monospace;"></textarea>
             </div>
 
             <!-- Footer Action Bar -->
             <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
-                <button class="btn-admin" id="btnExportCurrentCsv" style="background: #8b5cf6; padding: 8px 16px; font-size: 13px;">
+                <button class="btn-admin" id="btnExportCurrentCsv"
+                    style="background: #8b5cf6; padding: 8px 16px; font-size: 13px;">
                     📥 Tải file CSV về máy
                 </button>
-                <button class="btn-admin" id="btnSaveCsvChanges" style="background: #10b981; padding: 10px 24px; font-size: 15px; font-weight: 600;">
+                <button class="btn-admin" id="btnSaveCsvChanges"
+                    style="background: #10b981; padding: 10px 24px; font-size: 15px; font-weight: 600;">
                     💾 Lưu tất cả thay đổi vào CSDL
                 </button>
             </div>
@@ -547,7 +732,8 @@
         <div class="modal-content" style="width: 750px; max-width: 95vw; max-height: 90vh;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                 <h3 style="margin: 0; font-size: 18px;" id="singleQuestionModalTitle">✏️ Sửa chi tiết câu hỏi</h3>
-                <button class="btn-admin" id="btnCloseSingleQuestion" style="background: #64748b; padding: 4px 12px;">Close</button>
+                <button class="btn-admin" id="btnCloseSingleQuestion"
+                    style="background: #64748b; padding: 4px 12px;">Close</button>
             </div>
 
             <form id="singleQuestionForm">
@@ -589,7 +775,8 @@
 
                 <!-- MCQ Options Section -->
                 <div id="sqMcqSection">
-                    <label style="font-weight: 600; margin-bottom: 8px; display: block;">Các lựa chọn đáp án (Options)</label>
+                    <label style="font-weight: 600; margin-bottom: 8px; display: block;">Các lựa chọn đáp án
+                        (Options)</label>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
                         <div>
                             <span style="font-weight:600; font-size:12px; color:#2563eb;">A:</span>
@@ -629,7 +816,8 @@
                 </div>
 
                 <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 20px;">
-                    <button type="button" class="btn-admin" style="background: #64748b;" id="btnCancelSingleQuestion">Hủy</button>
+                    <button type="button" class="btn-admin" style="background: #64748b;"
+                        id="btnCancelSingleQuestion">Hủy</button>
                     <button type="submit" class="btn-admin" style="background: #10b981;">💾 Cập nhật câu hỏi</button>
                 </div>
             </form>
@@ -638,20 +826,26 @@
 
     <!-- Detailed Student Progress Modal -->
     <div class="modal hidden" id="detailedProgressModal">
-        <div class="modal-content" style="width: 1100px; max-width: 95vw; max-height: 92vh; display: flex; flex-direction: column; padding: 24px;">
+        <div class="modal-content"
+            style="width: 1100px; max-width: 95vw; max-height: 92vh; display: flex; flex-direction: column; padding: 24px;">
             <!-- Modal Header -->
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; flex-shrink: 0;">
-                <h3 style="margin: 0; font-size: 20px; color: #0f172a;" id="detailedProgressTitle">📊 Chi tiết kết quả học sinh</h3>
-                <button class="btn-admin" id="btnCloseDetailedProgress" style="background: #64748b; padding: 6px 14px;">Đóng</button>
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid #e2e8f0; padding-bottom: 12px; flex-shrink: 0;">
+                <h3 style="margin: 0; font-size: 20px; color: #0f172a;" id="detailedProgressTitle">📊 Chi tiết kết quả
+                    học sinh</h3>
+                <button class="btn-admin" id="btnCloseDetailedProgress"
+                    style="background: #64748b; padding: 6px 14px;">Đóng</button>
             </div>
 
             <!-- Student info summary card -->
-            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;">
+            <div
+                style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;">
                 <div>
                     <span style="font-size: 13px; color: #64748b;">Học sinh:</span>
                     <strong style="font-size: 16px; color: #1e293b; margin-left: 4px;" id="dpStudentName">-</strong>
                     <span style="font-size: 13px; color: #64748b; margin-left: 16px;">Email:</span>
-                    <span style="font-size: 14px; color: #334155; margin-left: 4px; font-weight: 500;" id="dpStudentEmail">-</span>
+                    <span style="font-size: 14px; color: #334155; margin-left: 4px; font-weight: 500;"
+                        id="dpStudentEmail">-</span>
                 </div>
                 <div>
                     <span style="font-size: 13px; color: #64748b;">Đề thi:</span>
@@ -664,53 +858,70 @@
             <!-- Main Layout (Split View) -->
             <div style="display: flex; gap: 20px; flex-grow: 1; min-height: 0; overflow: hidden;">
                 <!-- Left Panel: Question list -->
-                <div style="width: 320px; flex-shrink: 0; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; background: #fafafa;">
-                    <div style="background: #f1f5f9; padding: 10px 12px; border-bottom: 1px solid #cbd5e1; display: flex; flex-direction: column; gap: 4px;">
+                <div
+                    style="width: 320px; flex-shrink: 0; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; background: #fafafa;">
+                    <div
+                        style="background: #f1f5f9; padding: 10px 12px; border-bottom: 1px solid #cbd5e1; display: flex; flex-direction: column; gap: 4px;">
                         <span style="font-weight: 600; font-size: 14px; color: #0f172a;">Danh sách câu hỏi</span>
                         <span id="dpQuestionStats" style="font-size: 12px; color: #475569; font-weight: 500;"></span>
                     </div>
-                    <div id="dpQuestionList" style="flex-grow: 1; overflow-y: auto; padding: 10px; display: flex; flex-direction: column; gap: 8px;">
+                    <div id="dpQuestionList"
+                        style="flex-grow: 1; overflow-y: auto; padding: 10px; display: flex; flex-direction: column; gap: 8px;">
                         <!-- Questions will list here -->
                     </div>
                 </div>
 
                 <!-- Right Panel: Question Detail view -->
-                <div id="dpQuestionDetailContainer" style="flex-grow: 1; min-width: 0; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; background: white; padding: 20px;">
-                    <div id="dpNoSelectedQuestion" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: #94a3b8;">
+                <div id="dpQuestionDetailContainer"
+                    style="flex-grow: 1; min-width: 0; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden; background: white; padding: 20px;">
+                    <div id="dpNoSelectedQuestion"
+                        style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: #94a3b8;">
                         <span style="font-size: 48px; margin-bottom: 12px;">🔍</span>
                         <span>Chọn một câu hỏi ở danh sách bên trái để xem chi tiết</span>
                     </div>
-                    <div id="dpSelectedQuestionDetail" class="hidden" style="display: flex; flex-direction: column; height: 100%; min-height: 0; overflow-y: auto;">
+                    <div id="dpSelectedQuestionDetail" class="hidden"
+                        style="display: flex; flex-direction: column; height: 100%; min-height: 0; overflow-y: auto;">
                         <!-- Question metadata -->
-                        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; margin-bottom: 16px;">
-                            <span style="font-size: 14px; font-weight: 600; color: #3b82f6; background: #eff6ff; padding: 4px 10px; border-radius: 4px;" id="dpQMeta">Module 1 - Câu 1</span>
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; margin-bottom: 16px;">
+                            <span
+                                style="font-size: 14px; font-weight: 600; color: #3b82f6; background: #eff6ff; padding: 4px 10px; border-radius: 4px;"
+                                id="dpQMeta">Module 1 - Câu 1</span>
                             <span id="dpQStatusBadge" class="status-badge" style="font-size: 12px;">Đúng</span>
                         </div>
                         <!-- Passage (if exists) -->
-                        <div id="dpPassageSection" style="background: #f8fafc; border-left: 4px solid #cbd5e1; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 16px; max-height: 250px; overflow-y: auto; font-style: italic; white-space: pre-wrap; font-size: 14px; line-height: 1.5; color: #334155;">
+                        <div id="dpPassageSection"
+                            style="background: #f8fafc; border-left: 4px solid #cbd5e1; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 16px; max-height: 250px; overflow-y: auto; font-style: italic; white-space: pre-wrap; font-size: 14px; line-height: 1.5; color: #334155;">
                             <!-- Passage text -->
                         </div>
                         <!-- Prompt -->
-                        <div id="dpPromptSection" style="font-size: 15px; font-weight: 500; color: #0f172a; margin-bottom: 20px; line-height: 1.5; white-space: pre-wrap;">
+                        <div id="dpPromptSection"
+                            style="font-size: 15px; font-weight: 500; color: #0f172a; margin-bottom: 20px; line-height: 1.5; white-space: pre-wrap;">
                             <!-- Prompt text -->
                         </div>
                         <!-- Image (if exists) -->
                         <div id="dpImageSection" class="hidden" style="margin-bottom: 20px; text-align: center;">
-                            <img id="dpQImage" src="" alt="Question Image" style="max-width: 100%; max-height: 300px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                            <img id="dpQImage" src="" alt="Question Image"
+                                style="max-width: 100%; max-height: 300px; border: 1px solid #e2e8f0; border-radius: 8px;">
                         </div>
                         <!-- Answer options (for MCQ) -->
-                        <div id="dpMcqOptionsSection" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+                        <div id="dpMcqOptionsSection"
+                            style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
                             <!-- Options go here -->
                         </div>
                         <!-- Student response (for SPR) -->
-                        <div id="dpSprSection" style="background: #f8fafc; padding: 16px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 20px;" class="hidden">
+                        <div id="dpSprSection"
+                            style="background: #f8fafc; padding: 16px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 20px;"
+                            class="hidden">
                             <div style="margin-bottom: 8px;">
                                 <span style="font-weight: 600; color: #475569;">Học sinh trả lời:</span>
-                                <span id="dpStudentSprAnswer" style="margin-left: 8px; font-family: monospace; font-size: 15px; font-weight: bold; padding: 2px 8px; border-radius: 4px;">-</span>
+                                <span id="dpStudentSprAnswer"
+                                    style="margin-left: 8px; font-family: monospace; font-size: 15px; font-weight: bold; padding: 2px 8px; border-radius: 4px;">-</span>
                             </div>
                             <div>
                                 <span style="font-weight: 600; color: #475569;">Đáp án đúng:</span>
-                                <span id="dpCorrectSprAnswer" style="margin-left: 8px; font-family: monospace; font-size: 15px; font-weight: bold; background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 4px;">-</span>
+                                <span id="dpCorrectSprAnswer"
+                                    style="margin-left: 8px; font-family: monospace; font-size: 15px; font-weight: bold; background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 4px;">-</span>
                             </div>
                         </div>
                     </div>
@@ -723,4 +934,5 @@
     <input type="file" id="csvFileInput" accept=".csv" style="display: none;">
     <script src="admin.js?v=6"></script>
 </body>
+
 </html>

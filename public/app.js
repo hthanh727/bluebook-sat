@@ -1365,11 +1365,13 @@ function convertMarkdownTablesToHtml(text) {
         return;
     }
     
-    const testId = new URLSearchParams(window.location.search).get('id');
+    const urlParams = new URLSearchParams(window.location.search);
+    const testId = urlParams.get('id');
     if (!testId) {
         window.location.href = '/dashboard';
         return;
     }
+    state.reviewMode = urlParams.get('mode') === 'review' || urlParams.get('review') === 'true';
     
     try {
         // Fetch test type if missing in URL
@@ -1459,10 +1461,13 @@ function convertMarkdownTablesToHtml(text) {
         });
         if (progRes.ok) {
             const progData = await progRes.json();
-            if (progData && progData.answers && progData.completed !== 1) {
+            if (progData && progData.answers && (progData.completed !== 1 || state.reviewMode)) {
                 const savedAnswers = JSON.parse(progData.answers);
                 for (let i = 0; i < savedAnswers.length && i < numQ; i++) {
                     state.answers[i] = savedAnswers[i];
+                }
+                if (state.reviewMode) {
+                    state.questionSubmitted = new Array(numQ).fill(true);
                 }
             } else if (progData && progData.completed === 1) {
                 localStorage.removeItem(`sat-resume-${testId}-${state.testType}`);
@@ -1474,7 +1479,7 @@ function convertMarkdownTablesToHtml(text) {
         // Restore currentQuestion and currentModule if they exist
         const savedResume = localStorage.getItem(`sat-resume-${testId}-${state.testType}`);
         let resumeFound = false;
-        if (savedResume) {
+        if (savedResume && !state.reviewMode) {
             try {
                 const s = JSON.parse(savedResume);
                 if (s.currentModule) state.currentModule = s.currentModule;

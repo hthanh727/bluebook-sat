@@ -4,12 +4,12 @@
     const dom = {
         testsTableBody: document.getElementById('testsTableBody'),
         btnLogout: document.getElementById('btnLogout'),
-        
+
         btnCreateTest: document.getElementById('btnCreateTest'),
         testModal: document.getElementById('testModal'),
         testForm: document.getElementById('testForm'),
         btnCancelTest: document.getElementById('btnCancelTest'),
-        
+
         questionModal: document.getElementById('questionModal'),
         questionForm: document.getElementById('questionForm'),
         btnCancelQuestion: document.getElementById('btnCancelQuestion'),
@@ -18,11 +18,20 @@
         // Student Progress elements
         btnTabTests: document.getElementById('btnTabTests'),
         btnTabProgress: document.getElementById('btnTabProgress'),
+        btnTabRecordings: document.getElementById('btnTabRecordings'),
         tabTests: document.getElementById('tabTests'),
         tabProgress: document.getElementById('tabProgress'),
+        tabRecordings: document.getElementById('tabRecordings'),
+        tabConvert: document.getElementById('tabConvert'),
+        btnTabConvert: document.getElementById('btnTabConvert'),
         progressTableBody: document.getElementById('progressTableBody'),
         btnRefreshProgress: document.getElementById('btnRefreshProgress'),
-        
+        recordingsTableBody: document.getElementById('recordingsTableBody'),
+        btnOpenCreateRecording: document.getElementById('btnOpenCreateRecording'),
+        recordingModal: document.getElementById('recordingModal'),
+        recordingForm: document.getElementById('recordingForm'),
+        btnCancelRecording: document.getElementById('btnCancelRecording'),
+
         // Access Management elements
         accessModal: document.getElementById('accessModal'),
         accessTableBody: document.getElementById('accessTableBody'),
@@ -74,7 +83,7 @@
         sqCorrectIndex: document.getElementById('sqCorrectIndex'),
         sqSprSection: document.getElementById('sqSprSection'),
         sqCorrectText: document.getElementById('sqCorrectText'),
-        
+
         // Detailed Progress Modal elements
         detailedProgressModal: document.getElementById('detailedProgressModal'),
         detailedProgressTitle: document.getElementById('detailedProgressTitle'),
@@ -99,14 +108,14 @@
         dpStudentSprAnswer: document.getElementById('dpStudentSprAnswer'),
         dpCorrectSprAnswer: document.getElementById('dpCorrectSprAnswer')
     };
-    
+
     let currentUploadTestId = null;
 
     function decodeJWT(token) {
         try {
             const base64Url = token.split('.')[1];
             const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
                 return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
             }).join(''));
             return JSON.parse(jsonPayload);
@@ -128,13 +137,13 @@
             window.location.href = '/login';
             return false;
         }
-        
+
         if (payload.role !== 'admin') {
             alert('Access denied. Admin only.');
             window.location.href = '/dashboard';
             return false;
         }
-        
+
         return token;
     }
 
@@ -148,7 +157,7 @@
             });
             if (!res.ok) throw new Error('Failed to load tests');
             const tests = await res.json();
-            
+
             dom.testsTableBody.innerHTML = '';
             tests.forEach(t => {
                 const tr = document.createElement('tr');
@@ -196,17 +205,17 @@
                     const testId = e.currentTarget.getAttribute('data-id');
                     const allowPractice = e.currentTarget.getAttribute('data-allow') === '1' || e.currentTarget.getAttribute('data-allow') === 'true';
                     const newAllow = !allowPractice;
-                    
+
                     try {
                         const res = await fetch(`/api/admin/tests/${testId}/practice`, {
                             method: 'POST',
-                            headers: { 
+                            headers: {
                                 'Content-Type': 'application/json',
                                 'Authorization': `Bearer ${token}`
                             },
                             body: JSON.stringify({ allow_practice: newAllow })
                         });
-                        
+
                         if (res.ok) {
                             loadTests();
                         } else {
@@ -233,20 +242,20 @@
                     currentUploadTestId = e.currentTarget.getAttribute('data-id');
                     dom.csvFileInput.click();
                 });
-                
+
                 btn.addEventListener('dragover', (e) => {
                     e.preventDefault();
                     btn.style.opacity = '0.7';
                     btn.style.outline = '2px dashed #fff';
                     btn.style.outlineOffset = '-2px';
                 });
-                
+
                 btn.addEventListener('dragleave', (e) => {
                     e.preventDefault();
                     btn.style.opacity = '1';
                     btn.style.outline = 'none';
                 });
-                
+
                 btn.addEventListener('drop', (e) => {
                     e.preventDefault();
                     btn.style.opacity = '1';
@@ -319,6 +328,7 @@
     // --- Modals ---
     dom.btnCreateTest.addEventListener('click', () => {
         dom.testForm.reset();
+        document.getElementById('testDifficultyGroup').style.display = 'none'; // hide by default
         dom.testModal.classList.remove('hidden');
     });
 
@@ -326,11 +336,22 @@
         dom.testModal.classList.add('hidden');
     });
 
+    const testTypeSelect = document.getElementById('testType');
+    const testDifficultyGroup = document.getElementById('testDifficultyGroup');
+    testTypeSelect.addEventListener('change', () => {
+        if (testTypeSelect.value === 'topic') {
+            testDifficultyGroup.style.display = 'block';
+        } else {
+            testDifficultyGroup.style.display = 'none';
+        }
+    });
+
     dom.testForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const token = await checkAuth();
         const title = document.getElementById('testTitle').value;
         const type = document.getElementById('testType').value;
+        const difficulty = type === 'topic' ? document.getElementById('testDifficulty').value : null;
 
         try {
             const res = await fetch('/api/admin/tests', {
@@ -339,7 +360,7 @@
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify({ title, type })
+                body: JSON.stringify({ title, type, difficulty })
             });
             if (res.ok) {
                 dom.testModal.classList.add('hidden');
@@ -355,14 +376,14 @@
     function openQuestionModal(testId, type) {
         dom.questionForm.reset();
         document.getElementById('qTestId').value = testId;
-        
+
         const passageGroup = document.getElementById('passageGroup');
         if (type === 'math') {
             passageGroup.style.display = 'none';
         } else {
             passageGroup.style.display = 'block';
         }
-        
+
         dom.questionModal.classList.remove('hidden');
     }
 
@@ -385,7 +406,7 @@
 
     dom.questionForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         const test_id = document.getElementById('qTestId').value;
         if (!test_id) {
             alert('Error: Test ID is missing.');
@@ -399,11 +420,11 @@
         const qType = document.getElementById('qType').value;
         const imageUrl = document.getElementById('qImageUrl').value;
         const prompt = document.getElementById('qPrompt').value;
-        
+
         let options = null;
         let correct_answer_index = null;
         let correct_answer_text = null;
-        
+
         if (qType === 'mcq') {
             options = [
                 document.getElementById('qOptA').value,
@@ -465,7 +486,7 @@
         reader.onload = async (event) => {
             const csvData = event.target.result;
             const parsedQuestions = parseCSV(csvData);
-            
+
             if (parsedQuestions.length === 0) {
                 alert('No valid questions found in CSV.');
                 return;
@@ -491,7 +512,7 @@
                 console.error(err);
                 alert('Error uploading CSV.');
             }
-            
+
             // reset file input
             dom.csvFileInput.value = '';
             currentUploadTestId = null;
@@ -580,7 +601,7 @@
                 let ansIdx = parseInt(getCol('correct_answer_index'));
                 if (isNaN(ansIdx)) {
                     const ansText = getCol('correct_answer') || getCol('correct_answer_text') || '';
-                    ansIdx = ['A','B','C','D'].indexOf(ansText.toUpperCase());
+                    ansIdx = ['A', 'B', 'C', 'D'].indexOf(ansText.toUpperCase());
                 }
                 correct_answer_index = isNaN(ansIdx) ? 0 : ansIdx;
             } else {
@@ -612,16 +633,273 @@
     dom.btnTabTests.addEventListener('click', () => {
         dom.btnTabTests.classList.add('active');
         dom.btnTabProgress.classList.remove('active');
+        dom.btnTabRecordings.classList.remove('active');
         dom.tabTests.classList.add('active');
         dom.tabProgress.classList.remove('active');
+        dom.tabRecordings.classList.remove('active');
     });
 
     dom.btnTabProgress.addEventListener('click', () => {
         dom.btnTabProgress.classList.add('active');
         dom.btnTabTests.classList.remove('active');
+        dom.btnTabRecordings.classList.remove('active');
         dom.tabProgress.classList.add('active');
         dom.tabTests.classList.remove('active');
+        dom.tabRecordings.classList.remove('active');
         loadStudentProgress();
+    });
+
+    dom.btnTabRecordings.addEventListener('click', () => {
+        dom.btnTabRecordings.classList.add('active');
+        dom.btnTabTests.classList.remove('active');
+        dom.btnTabProgress.classList.remove('active');
+        dom.btnTabConvert.classList.remove('active');
+        dom.tabRecordings.classList.add('active');
+        dom.tabTests.classList.remove('active');
+        dom.tabProgress.classList.remove('active');
+        dom.tabConvert.style.display = 'none';
+        loadRecordings();
+    });
+
+    dom.btnTabConvert.addEventListener('click', () => {
+        dom.btnTabConvert.classList.add('active');
+        dom.btnTabTests.classList.remove('active');
+        dom.btnTabProgress.classList.remove('active');
+        dom.btnTabRecordings.classList.remove('active');
+        dom.tabConvert.style.display = 'block';
+        dom.tabTests.classList.remove('active');
+        dom.tabProgress.classList.remove('active');
+        dom.tabRecordings.classList.remove('active');
+        loadTargetTestsDropdown();
+    });
+
+    async function loadTargetTestsDropdown() {
+        const select = document.getElementById('convertTargetTest');
+        select.innerHTML = '<option value="">-- Chọn bài thi / chuyên đề nhận câu hỏi --</option>';
+        try {
+            const token = await checkAuth();
+            const res = await fetch('/api/tests', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (res.ok) {
+                const tests = await res.json();
+                tests.forEach(test => {
+                    const option = document.createElement('option');
+                    option.value = test.id;
+                    const typeLabel = test.type === 'topic' ? `Chuyên đề` : `Mock Test (${test.type})`;
+                    const difficultyLabel = test.difficulty ? ` - ${test.difficulty}` : '';
+                    option.textContent = `[${typeLabel}${difficultyLabel}] ${test.title}`;
+                    select.appendChild(option);
+                });
+            }
+        } catch (err) {
+            console.error('Failed to load target tests dropdown', err);
+        }
+    }
+
+    let parsedQuestionsList = [];
+
+    document.getElementById('btnParseText').addEventListener('click', () => {
+        const rawText = document.getElementById('pdfRawText').value;
+        if (!rawText.trim()) {
+            alert('Vui lòng dán văn bản từ PDF vào.');
+            return;
+        }
+
+        parsedQuestionsList = parsePDFText(rawText);
+        if (parsedQuestionsList.length === 0) {
+            alert('Không tìm thấy câu hỏi hợp lệ nào trong văn bản đã dán.');
+            return;
+        }
+
+        const previewCard = document.getElementById('parsedPreviewCard');
+        const previewBody = document.getElementById('parsedPreviewTableBody');
+        const countText = document.getElementById('parsedCountText');
+        const importBtn = document.getElementById('btnImportParsed');
+
+        let previewHtml = '';
+        parsedQuestionsList.forEach((q, idx) => {
+            const optionsHtml = q.question_type === 'mcq'
+                ? `<ol type="A" style="margin: 0; padding-left: 20px;">
+                    <li>${escapeHtml(q.options[0])}</li>
+                    <li>${escapeHtml(q.options[1])}</li>
+                    <li>${escapeHtml(q.options[2])}</li>
+                    <li>${escapeHtml(q.options[3])}</li>
+                  </ol>
+                  <strong style="color: #22c55e;">Đáp án đúng:</strong> ${['A','B','C','D'][q.correct_answer_index]}`
+                : `<strong style="color: #3b82f6;">Đáp án đúng (SPR):</strong> ${escapeHtml(q.correct_answer_text)}`;
+                
+            previewHtml += `
+                <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 12px; font-weight: 600;">${idx + 1}</td>
+                    <td style="padding: 12px;"><span style="padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; ${
+                        q.difficulty === 'Easy' ? 'background:rgba(34,197,94,0.15); color:#22c55e;' : 
+                        q.difficulty === 'Hard' ? 'background:rgba(239,68,68,0.15); color:#ef4444;' : 
+                        'background:rgba(245,158,11,0.15); color:#f59e0b;'
+                    }">${q.difficulty}</span></td>
+                    <td style="padding: 12px; font-size: 12px; font-weight: 600; color: #64748b;">${q.question_type.toUpperCase()}</td>
+                    <td style="padding: 12px; white-space: pre-wrap; font-size: 13px;">${escapeHtml(q.prompt)}</td>
+                    <td style="padding: 12px; font-size: 13px;">${optionsHtml}</td>
+                </tr>
+            `;
+        });
+
+        previewBody.innerHTML = previewHtml;
+        countText.textContent = parsedQuestionsList.length;
+        previewCard.style.display = 'block';
+        importBtn.style.display = 'inline-block';
+    });
+
+    document.getElementById('btnImportParsed').addEventListener('click', async () => {
+        const targetTestId = document.getElementById('convertTargetTest').value;
+        if (!targetTestId) {
+            alert('Vui lòng chọn bài thi/chuyên đề nhận câu hỏi.');
+            return;
+        }
+
+        if (parsedQuestionsList.length === 0) {
+            alert('Không có câu hỏi nào để nhập.');
+            return;
+        }
+
+        const token = await checkAuth();
+        try {
+            const res = await fetch(`/api/admin/tests/${targetTestId}/questions/bulk`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ questions: parsedQuestionsList })
+            });
+
+            if (res.ok) {
+                alert(`Nhập thành công ${parsedQuestionsList.length} câu hỏi!`);
+                document.getElementById('pdfRawText').value = '';
+                document.getElementById('parsedPreviewCard').style.display = 'none';
+                document.getElementById('btnImportParsed').style.display = 'none';
+                parsedQuestionsList = [];
+            } else {
+                const err = await res.json();
+                alert('Lỗi khi nhập câu hỏi: ' + (err.message || 'Không xác định'));
+            }
+        } catch (err) {
+            console.error('Import failed', err);
+            alert('Lỗi kết nối khi gửi yêu cầu nhập câu hỏi.');
+        }
+    });
+
+    function parsePDFText(text) {
+        // Clean line endings
+        const cleanText = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+        
+        // Split by "Question ID:"
+        const blocks = cleanText.split(/Question ID:/gi);
+        const questions = [];
+        
+        blocks.forEach(block => {
+            if (!block.trim()) return;
+            
+            const fullBlock = "Question ID:" + block;
+            
+            // Extract Question ID
+            const idMatch = fullBlock.match(/Question ID:\s*([a-zA-Z0-9]+)/i);
+            const qId = idMatch ? idMatch[1] : '';
+            
+            // Extract Difficulty
+            let difficulty = 'Medium';
+            const diffMatch = fullBlock.match(/Difficulty\s*\n.*?(Easy|Medium|Hard)/is) || fullBlock.match(/(Easy|Medium|Hard)\s*\n\s*Question/i);
+            if (diffMatch) {
+                difficulty = diffMatch[1].trim();
+            }
+            
+            // Extract Question prompt
+            let prompt = '';
+            let options = [];
+            let qType = 'spr';
+            let correct_answer_text = '';
+            let correct_answer_index = null;
+            
+            const questionIndex = fullBlock.search(/\nQuestion\n/i);
+            let startSearchIndex = questionIndex !== -1 ? questionIndex + 10 : 0;
+            if (questionIndex === -1) {
+                const lines = fullBlock.split('\n');
+                const qLineIdx = lines.findIndex(l => l.trim().toLowerCase() === 'question');
+                if (qLineIdx !== -1) {
+                    startSearchIndex = fullBlock.indexOf(lines[qLineIdx]) + lines[qLineIdx].length;
+                }
+            }
+            
+            let endSearchIndex = fullBlock.search(/\nAnswer\n|\nAnswer\r\n|\nCorrect Answer:/i);
+            if (endSearchIndex === -1) {
+                endSearchIndex = fullBlock.search(/\nRationale\n/i);
+            }
+            
+            if (startSearchIndex !== -1 && endSearchIndex !== -1 && startSearchIndex < endSearchIndex) {
+                prompt = fullBlock.substring(startSearchIndex, endSearchIndex).trim();
+            } else if (questionIndex !== -1) {
+                prompt = fullBlock.substring(questionIndex + 10).trim();
+            }
+            
+            // Check if MCQ
+            const answerIndex = fullBlock.search(/\nAnswer\n|\nAnswer\r\n/i);
+            if (answerIndex !== -1) {
+                qType = 'mcq';
+                const correctAnsIndex = fullBlock.search(/\nCorrect Answer:/i);
+                if (correctAnsIndex !== -1 && correctAnsIndex > answerIndex) {
+                    const optionsSection = fullBlock.substring(answerIndex + 7, correctAnsIndex).trim();
+                    const optAMatch = optionsSection.match(/^[A]\.\s*(.*?)(?=\n[B]\.|\r\n[B]\.|$)/is);
+                    const optBMatch = optionsSection.match(/\n[B]\.\s*(.*?)(?=\n[C]\.|\r\n[C]\.|$)/is);
+                    const optCMatch = optionsSection.match(/\n[C]\.\s*(.*?)(?=\n[D]\.|\r\n[D]\.|$)/is);
+                    const optDMatch = optionsSection.match(/\n[D]\.\s*(.*?)$/is);
+                    
+                    options = [
+                        optAMatch ? optAMatch[1].trim() : '',
+                        optBMatch ? optBMatch[1].trim() : '',
+                        optCMatch ? optCMatch[1].trim() : '',
+                        optDMatch ? optDMatch[1].trim() : ''
+                    ];
+                }
+            }
+            
+            // Correct Answer
+            const corrAnsMatch = fullBlock.match(/Correct Answer:\s*(.*?)(?=\nRationale|\r\nRationale|$)/is);
+            if (corrAnsMatch) {
+                const ansStr = corrAnsMatch[1].trim();
+                if (qType === 'mcq') {
+                    correct_answer_index = ['A', 'B', 'C', 'D'].indexOf(ansStr.toUpperCase());
+                    if (correct_answer_index === -1) correct_answer_index = 0;
+                } else {
+                    correct_answer_text = ansStr;
+                }
+            }
+            
+            if (prompt) {
+                questions.push({
+                    question_number: questions.length + 1,
+                    passage: '',
+                    prompt: prompt,
+                    options: qType === 'mcq' ? options : null,
+                    correct_answer_index: correct_answer_index,
+                    correct_answer_text: qType === 'spr' ? correct_answer_text : null,
+                    question_type: qType,
+                    difficulty: difficulty,
+                    section: 'math' 
+                });
+            }
+        });
+        
+        return questions;
+    }
+
+    dom.btnTabRecordings.addEventListener('click', () => {
+        dom.btnTabRecordings.classList.add('active');
+        dom.btnTabTests.classList.remove('active');
+        dom.btnTabProgress.classList.remove('active');
+        dom.tabRecordings.classList.add('active');
+        dom.tabTests.classList.remove('active');
+        dom.tabProgress.classList.remove('active');
+        loadRecordings();
     });
 
     // --- Access Management Logic ---
@@ -642,7 +920,7 @@
             });
             if (!res.ok) throw new Error('Failed to load locks');
             const students = await res.json();
-            
+
             dom.accessTableBody.innerHTML = '';
             students.forEach(s => {
                 const tr = document.createElement('tr');
@@ -679,7 +957,7 @@
         try {
             const res = await fetch(`/api/admin/tests/${currentAccessTestId}/locks`, {
                 method: 'POST',
-                headers: { 
+                headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 },
@@ -750,19 +1028,19 @@
             });
             if (!res.ok) throw new Error('Failed to load student progress');
             const progressData = await res.json();
-            
+
             dom.progressTableBody.innerHTML = '';
             progressData.forEach(p => {
                 const tr = document.createElement('tr');
-                
+
                 let typeLabel = 'Reading & Writing';
                 if (p.test_type === 'math') typeLabel = 'Math';
                 if (p.test_type === 'full') typeLabel = 'Full Mock Test';
 
                 const statusClass = p.completed ? 'status-completed' : 'status-progress';
                 const statusText = p.completed ? 'Completed' : 'In Progress';
-                const roleBadge = p.student_role === 'admin' 
-                    ? ' <span style="background:#8b5cf6;color:white;font-size:10px;padding:2px 6px;border-radius:4px;font-weight:600;">ADMIN</span>' 
+                const roleBadge = p.student_role === 'admin'
+                    ? ' <span style="background:#8b5cf6;color:white;font-size:10px;padding:2px 6px;border-radius:4px;font-weight:600;">ADMIN</span>'
                     : '';
 
                 tr.innerHTML = `
@@ -779,7 +1057,7 @@
                         </button>
                     </td>
                 `;
-                
+
                 const viewBtn = tr.querySelector('.btn-view-dp');
                 viewBtn.addEventListener('click', () => {
                     openDetailedProgressModal(p);
@@ -801,12 +1079,12 @@
         dom.dpStudentName.textContent = progressItem.student_name;
         dom.dpStudentEmail.textContent = progressItem.student_email;
         dom.dpTestTitle.textContent = progressItem.test_title;
-        
+
         // Handle answers array (could be string or parsed array)
         let answers = [];
         try {
-            answers = typeof progressItem.answers === 'string' 
-                ? JSON.parse(progressItem.answers) 
+            answers = typeof progressItem.answers === 'string'
+                ? JSON.parse(progressItem.answers)
                 : progressItem.answers;
         } catch (e) {
             console.error('Failed to parse answers:', e);
@@ -827,7 +1105,7 @@
             if (!res.ok) throw new Error('Failed to load test questions');
             const data = await res.json();
             const questions = data.questions || [];
-            
+
             const test = data.test || {};
             const testType = test.type || progressItem.test_type || 'math';
 
@@ -872,15 +1150,15 @@
 
             // Render list of questions
             dom.dpQuestionList.innerHTML = '';
-            
+
             analyzedQuestions.forEach(aq => {
                 const div = document.createElement('div');
                 div.className = 'dp-q-item';
-                
+
                 let badgeBg = '#cbd5e1';
                 let badgeColor = '#334155';
                 let badgeText = 'Trống';
-                
+
                 if (aq.isAnswered) {
                     if (aq.isCorrect) {
                         badgeBg = '#dcfce7';
@@ -940,11 +1218,11 @@
         }
         let sectionLabel = section === 'math' ? 'Math' : 'Reading & Writing';
         dom.dpQMeta.textContent = `${sectionLabel} - Module ${q.module || 1} - Câu ${q.question_number}`;
-        
+
         // Status Badge
         if (!aq.isAnswered) {
             dom.dpQStatusBadge.textContent = 'Chưa làm (Trống)';
-            dom.dpQStatusBadge.className = 'status-badge'; 
+            dom.dpQStatusBadge.className = 'status-badge';
             dom.dpQStatusBadge.style.background = '#f1f5f9';
             dom.dpQStatusBadge.style.color = '#475569';
         } else if (aq.isCorrect) {
@@ -954,7 +1232,7 @@
             dom.dpQStatusBadge.style.color = '';
         } else {
             dom.dpQStatusBadge.textContent = 'Sai';
-            dom.dpQStatusBadge.className = 'status-badge'; 
+            dom.dpQStatusBadge.className = 'status-badge';
             dom.dpQStatusBadge.style.background = '#fee2e2';
             dom.dpQStatusBadge.style.color = '#991b1b';
         }
@@ -1033,7 +1311,7 @@
             if (!Array.isArray(options)) options = [];
 
             dom.dpMcqOptionsSection.innerHTML = '';
-            
+
             const letters = ['A', 'B', 'C', 'D'];
             options.forEach((optText, i) => {
                 const box = document.createElement('div');
@@ -1273,7 +1551,7 @@
             if (!res.ok) throw new Error('Failed to load questions');
             const data = await res.json();
             currentCsvQuestions = data.questions || [];
-            
+
             renderCsvQuestionsTable();
             updateRawCsvTextArea();
         } catch (err) {
@@ -1311,7 +1589,7 @@
             const tr = document.createElement('tr');
             let opts = q.options;
             if (typeof opts === 'string') {
-                try { opts = JSON.parse(opts); } catch(e) { opts = []; }
+                try { opts = JSON.parse(opts); } catch (e) { opts = []; }
             }
             if (!Array.isArray(opts)) opts = [];
 
@@ -1324,7 +1602,7 @@
                 correctText = `<span style="color:#2563eb;font-weight:600;">Option ${letter}</span>`;
             }
 
-            const typeBadge = q.question_type === 'spr' 
+            const typeBadge = q.question_type === 'spr'
                 ? '<span style="background:#fef3c7;color:#d97706;padding:2px 6px;border-radius:4px;font-size:11px;font-weight:600;">SPR</span>'
                 : '<span style="background:#e0e7ff;color:#4338ca;padding:2px 6px;border-radius:4px;font-size:11px;font-weight:600;">MCQ</span>';
 
@@ -1382,7 +1660,7 @@
         const rows = questions.map(q => {
             let opts = q.options;
             if (typeof opts === 'string') {
-                try { opts = JSON.parse(opts); } catch(e) { opts = []; }
+                try { opts = JSON.parse(opts); } catch (e) { opts = []; }
             }
             if (!Array.isArray(opts)) opts = [];
 
@@ -1444,7 +1722,7 @@
 
         const result = [];
         const startIndex = lines[0].toLowerCase().startsWith('module,') ? 1 : 0;
-        
+
         for (let i = startIndex; i < lines.length; i++) {
             const line = lines[i].trim();
             if (!line) continue;
@@ -1552,7 +1830,7 @@
 
         currentEditingSingleQIndex = index;
         dom.singleQuestionModalTitle.textContent = `✏️ Sửa chi tiết câu Q${q.question_number || (index + 1)} (Module ${q.module || 1})`;
-        
+
         dom.sqModule.value = q.module || 1;
         dom.sqQNum.value = q.question_number || (index + 1);
         dom.sqType.value = q.question_type || 'mcq';
@@ -1562,7 +1840,7 @@
 
         let opts = q.options;
         if (typeof opts === 'string') {
-            try { opts = JSON.parse(opts); } catch(e) { opts = []; }
+            try { opts = JSON.parse(opts); } catch (e) { opts = []; }
         }
         if (!Array.isArray(opts)) opts = [];
 
@@ -1636,6 +1914,106 @@
 
             dom.singleQuestionModal.classList.add('hidden');
         });
+    }
+
+    // --- Recordings Management ---
+    async function loadRecordings() {
+        const token = await checkAuth();
+        try {
+            const res = await fetch('/api/recordings', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (res.ok) {
+                const recordings = await res.json();
+                dom.recordingsTableBody.innerHTML = '';
+                if (recordings.length === 0) {
+                    dom.recordingsTableBody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #64748b; padding: 20px;">No recordings uploaded yet.</td></tr>';
+                    return;
+                }
+                recordings.forEach(rec => {
+                    const tr = document.createElement('tr');
+                    const dateStr = new Date(rec.created_at).toLocaleString('vi-VN');
+                    tr.innerHTML = `
+                        <td>${rec.id}</td>
+                        <td style="font-weight: 600;">${escapeHtml(rec.title)}</td>
+                        <td style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${escapeHtml(rec.description || '')}</td>
+                        <td><a href="${rec.video_url}" target="_blank" style="color: #3b82f6; text-decoration: none; word-break: break-all;">${escapeHtml(rec.video_url)}</a></td>
+                        <td>${dateStr}</td>
+                        <td>
+                            <button class="btn-admin btn-delete-recording" style="background: #ef4444; padding: 4px 8px; font-size: 12px;" data-id="${rec.id}">Delete</button>
+                        </td>
+                    `;
+                    tr.querySelector('.btn-delete-recording').addEventListener('click', () => deleteRecording(rec.id));
+                    dom.recordingsTableBody.appendChild(tr);
+                });
+            }
+        } catch (err) {
+            console.error('Error loading recordings:', err);
+        }
+    }
+
+    async function deleteRecording(id) {
+        if (!confirm('Are you sure you want to delete this recording?')) return;
+        const token = await checkAuth();
+        try {
+            const res = await fetch(`/api/admin/recordings/${id}`, {
+                method: 'DELETE',
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (res.ok) {
+                loadRecordings();
+            } else {
+                alert('Failed to delete recording.');
+            }
+        } catch (err) {
+            console.error('Error deleting recording:', err);
+        }
+    }
+
+    dom.btnOpenCreateRecording.addEventListener('click', () => {
+        dom.recordingForm.reset();
+        dom.recordingModal.classList.remove('hidden');
+    });
+
+    dom.btnCancelRecording.addEventListener('click', () => {
+        dom.recordingModal.classList.add('hidden');
+    });
+
+    dom.recordingForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const token = await checkAuth();
+        const title = document.getElementById('recordingTitle').value.trim();
+        const description = document.getElementById('recordingDescription').value.trim();
+        const video_url = document.getElementById('recordingVideoUrl').value.trim();
+
+        try {
+            const res = await fetch('/api/admin/recordings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ title, description, video_url })
+            });
+            if (res.ok) {
+                dom.recordingModal.classList.add('hidden');
+                loadRecordings();
+            } else {
+                alert('Failed to save recording.');
+            }
+        } catch (err) {
+            console.error('Error saving recording:', err);
+        }
+    });
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
     }
 
     // Init
