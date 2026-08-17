@@ -64,38 +64,55 @@
 
   // ---- Image Resolvers ----
   function isImageUrl(url) {
-      if (!url) return false;
-      return url.match(/\.(jpeg|jpg|gif|png|webp|svg)$/i) !== null || url.startsWith('data:image/') || url.includes('/api/images/');
+      if (!url || typeof url !== 'string') return false;
+      const clean = url.trim();
+      return clean.match(/\.(jpeg|jpg|gif|png|webp|svg)($|\?)/i) !== null || clean.startsWith('data:image/') || clean.includes('/api/images/');
   }
 
   function resolveImageUrl(url) {
-      if (!url) return '';
-      if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:image/')) {
-          return url;
+      if (!url || typeof url !== 'string') return '';
+      let clean = url.trim();
+      if (clean.startsWith('http://') || clean.startsWith('https://') || clean.startsWith('data:image/')) {
+          return clean;
       }
-      return url.startsWith('/') ? url : '/' + url;
+      return clean.replace(/^\/+/, '');
+  }
+
+  function createImgTag(src, className, altText = '', style = '') {
+      const clean = src.replace(/^\/+/, '');
+      return `<img src="${src}" class="${className}" alt="${altText}" style="${style}" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='/${clean}';}else if(this.dataset.retried==='1'){this.dataset.retried='2';this.src='/public/${clean}';}" />`;
   }
 
   function convertMarkdownTablesToHtml(text) {
-      if (!text || typeof text !== 'string' || !text.includes('|')) return text;
-      
-      // Standard markdown table regex
-      const tableRegex = /(?:\|[^\n]+\|\r?\n)+(?:\|[-:\s|]+\|\r?\n)(?:\|[^\n]+\|\r?\n?)+/g;
-      
-      return text.replace(tableRegex, (match) => {
-          const lines = match.trim().split(/\r?\n/).filter(line => line.trim().startsWith('|'));
-          if (lines.length < 3) return match;
-          const parseRow = (rowStr) => rowStr.split('|').slice(1, -1).map(cell => cell.trim());
-          const headers = parseRow(lines[0]);
-          const bodyRows = lines.slice(2).map(parseRow);
-          
-          let html = '<table class="sat-table"><thead><tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr></thead><tbody>';
-          bodyRows.forEach(row => {
-              html += '<tr>' + row.map(cell => `<td>${cell}</td>`).join('') + '</tr>';
+      if (!text || typeof text !== 'string') return '';
+      let res = text;
+      // Convert literal \n or \\n strings into actual linebreaks
+      res = res.replace(/\\n/g, '\n');
+
+      if (res.includes('|')) {
+          res = res.replace(/\|\|/g, '|\n|');
+          const tableRegex = /(?:\|[^\n\r]+\|\r?\n?)+(?:\|[-:\s|]+\|\r?\n?)(?:\|[^\n\r]+\|\r?\n?)+/g;
+          res = res.replace(tableRegex, (match) => {
+              const lines = match.trim().split(/\r?\n/).filter(line => line.trim().startsWith('|'));
+              if (lines.length < 2) return match;
+              const parseRow = (rowStr) => rowStr.split('|').slice(1, -1).map(cell => cell.trim());
+              let headers = parseRow(lines[0]);
+              let bodyRows = [];
+              if (lines.length >= 2 && lines[1].includes('---')) {
+                  bodyRows = lines.slice(2).map(parseRow);
+              } else {
+                  bodyRows = lines.slice(1).map(parseRow);
+              }
+              let html = '<table class="sat-table"><thead><tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr></thead><tbody>';
+              bodyRows.forEach(row => {
+                  html += '<tr>' + row.map(cell => `<td>${cell}</td>`).join('') + '</tr>';
+              });
+              html += '</tbody></table>';
+              return html;
           });
-          html += '</tbody></table>';
-          return html;
-      });
+      }
+      res = res.replace(/<(table|thead|tbody|tr|th|td)([^>]*)\s+style="[^"]*"/gi, '<$1$2');
+      return res;
   }
 
   // ---- Clock Timer (Live GMT+7 with seconds) ----
@@ -169,7 +186,7 @@
       // 2. Render Question Card (right pane)
       let imageHtml = '';
       if (q.image_url && isImageUrl(q.image_url)) {
-          imageHtml = `<img src="${resolveImageUrl(q.image_url)}" class="question-image" alt="Question Graphic" style="max-height: 380px; object-fit: contain; margin-bottom:15px; display:block;" />`;
+          imageHtml = createImgTag(resolveImageUrl(q.image_url), 'question-image', 'Question Graphic', 'max-height: 380px; object-fit: contain; margin-bottom:15px; display:block;');
       }
 
       let promptHtml = convertMarkdownTablesToHtml(q.prompt);
@@ -181,6 +198,8 @@
               promptHtml = promptHtml.replace('{{image}}', imageHtml);
               imageHtml = '';
           }
+      } else {
+          promptHtml = promptHtml.replace(/\[image\]/g, '').replace(/\{\{image\}\}/g, '');
       }
 
       // Render flagged/bookmark icon state
@@ -229,7 +248,7 @@
               const selected = state.answers[state.currentQuestion] === i ? 'selected' : '';
               const resolvedOpt = resolveImageUrl(opt);
               const optionContent = isImageUrl(resolvedOpt)
-                ? `<img src="${resolvedOpt}" class="option-image" style="max-height: 100px; object-fit: contain; display: block;" />`
+                ? createImgTag(resolvedOpt, 'option-image', `Option ${letters[i]}`, 'max-height: 120px; object-fit: contain; display: block;')
                 : convertMarkdownTablesToHtml(opt);
 
               optionsHtml += `

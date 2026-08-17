@@ -10,17 +10,15 @@
 
   // ---- Image Helper Functions ----
   function isImageUrl(url) {
-    if (typeof url !== 'string') return false;
+    if (!url || typeof url !== 'string') return false;
     const cleanUrl = url.trim();
-    return cleanUrl.startsWith('http://') || 
-           cleanUrl.startsWith('https://') || 
-           cleanUrl.startsWith('/') || 
-           cleanUrl.startsWith('./') ||
-           cleanUrl.startsWith('data:image/');
+    return cleanUrl.match(/\.(jpeg|jpg|gif|png|webp|svg)($|\?)/i) !== null || 
+           cleanUrl.startsWith('data:image/') || 
+           cleanUrl.includes('/api/images/');
   }
 
   function resolveImageUrl(url) {
-    if (typeof url !== 'string') return url;
+    if (!url || typeof url !== 'string') return '';
     let cleanUrl = url.trim();
     if (cleanUrl.includes('imgur.com') && !cleanUrl.includes('i.imgur.com')) {
         const match = cleanUrl.match(/https?:\/\/(?:www\.)?imgur\.com\/([a-zA-Z0-9]+)$/);
@@ -34,7 +32,10 @@
             return `https://i.postimg.cc/${match[1]}/image.png`;
         }
     }
-    return cleanUrl;
+    if (cleanUrl.startsWith('http://') || cleanUrl.startsWith('https://') || cleanUrl.startsWith('data:image/')) {
+        return cleanUrl;
+    }
+    return cleanUrl.replace(/^\/+/, '');
   }
   const urlParams = new URLSearchParams(window.location.search);
   const testId = urlParams.get('id');
@@ -307,21 +308,30 @@ function renderQuestion() {
     let imageHtml = '';
     if (q.image_url && isImageUrl(q.image_url)) {
       const resolved = resolveImageUrl(q.image_url);
-      imageHtml = `<img src="${resolved}" class="question-image" loading="eager" fetchpriority="high" alt="Question Image" />`;
+      const cleanImg = resolved.replace(/^\/+/, '');
+      imageHtml = `<img src="${resolved}" class="question-image" loading="eager" fetchpriority="high" alt="Question Image" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='/${cleanImg}';}else if(this.dataset.retried==='1'){this.dataset.retried='2';this.src='/public/${cleanImg}';}" />`;
     }
 
 function convertMarkdownTablesToHtml(text) {
-    if (!text || typeof text !== 'string') return text;
+    if (!text || typeof text !== 'string') return '';
     let res = text;
-    if (res.includes('|---')) {
+    // Convert literal \n or \\n strings into actual linebreaks
+    res = res.replace(/\\n/g, '\n');
+
+    if (res.includes('|')) {
         res = res.replace(/\|\|/g, '|\n|');
-        const tableRegex = /(?:\|[^\n]+\|\r?\n?)+(?:\|[-:\s|]+\|\r?\n?)(?:\|[^\n]+\|\r?\n?)+/g;
+        const tableRegex = /(?:\|[^\n\r]+\|\r?\n?)+(?:\|[-:\s|]+\|\r?\n?)(?:\|[^\n\r]+\|\r?\n?)+/g;
         res = res.replace(tableRegex, (match) => {
             const lines = match.trim().split(/\r?\n/).filter(line => line.trim().startsWith('|'));
-            if (lines.length < 3) return match;
+            if (lines.length < 2) return match;
             const parseRow = (rowStr) => rowStr.split('|').slice(1, -1).map(cell => cell.trim());
-            const headers = parseRow(lines[0]);
-            const bodyRows = lines.slice(2).map(parseRow);
+            let headers = parseRow(lines[0]);
+            let bodyRows = [];
+            if (lines.length >= 2 && lines[1].includes('---')) {
+                bodyRows = lines.slice(2).map(parseRow);
+            } else {
+                bodyRows = lines.slice(1).map(parseRow);
+            }
             let html = '<table class="sat-table"><thead><tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr></thead><tbody>';
             bodyRows.forEach(row => {
                 html += '<tr>' + row.map(cell => `<td>${cell}</td>`).join('') + '</tr>';
@@ -344,6 +354,8 @@ function convertMarkdownTablesToHtml(text) {
         promptHtml = promptHtml.replace('{{image}}', imageHtml);
         imageHtml = '';
       }
+    } else {
+      promptHtml = promptHtml.replace(/\[image\]/g, '').replace(/\{\{image\}\}/g, '');
     }
     promptHtml = promptHtml.replace(/\\\)\s+\\\(/g, '\\)<br>\\(');
 
@@ -366,8 +378,9 @@ function convertMarkdownTablesToHtml(text) {
           }
           const selected = state.answers[state.currentQuestion] === i && !state.reviewMode ? 'selected' : '';
           const resolvedOpt = resolveImageUrl(opt);
+          const cleanOpt = resolvedOpt.replace(/^\/+/, '');
           const optionContent = isImageUrl(resolvedOpt)
-            ? `<img src="${resolvedOpt}" class="option-image" style="max-height: 120px; object-fit: contain; display: block;" alt="Option ${letters[i]}" />`
+            ? `<img src="${resolvedOpt}" class="option-image" style="max-height: 120px; object-fit: contain; display: block;" alt="Option ${letters[i]}" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='/${cleanOpt}';}else if(this.dataset.retried==='1'){this.dataset.retried='2';this.src='/public/${cleanOpt}';}" />`
             : convertMarkdownTablesToHtml(opt);
           optionsHtml += `
             <div class="answer-option ${selected} ${reviewClass}" data-index="${i}" id="answer-option-${i}">

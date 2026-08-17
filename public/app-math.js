@@ -9,17 +9,15 @@
 
   // ---- Image Helper Functions ----
   function isImageUrl(url) {
-    if (typeof url !== 'string') return false;
+    if (!url || typeof url !== 'string') return false;
     const cleanUrl = url.trim();
-    return cleanUrl.startsWith('http://') || 
-           cleanUrl.startsWith('https://') || 
-           cleanUrl.startsWith('/') || 
-           cleanUrl.startsWith('./') ||
-           cleanUrl.startsWith('data:image/');
+    return cleanUrl.match(/\.(jpeg|jpg|gif|png|webp|svg)($|\?)/i) !== null || 
+           cleanUrl.startsWith('data:image/') || 
+           cleanUrl.includes('/api/images/');
   }
 
   function resolveImageUrl(url) {
-    if (typeof url !== 'string') return url;
+    if (!url || typeof url !== 'string') return '';
     let cleanUrl = url.trim();
     if (cleanUrl.includes('imgur.com') && !cleanUrl.includes('i.imgur.com')) {
         const match = cleanUrl.match(/https?:\/\/(?:www\.)?imgur\.com\/([a-zA-Z0-9]+)$/);
@@ -33,7 +31,10 @@
             return `https://i.postimg.cc/${match[1]}/image.png`;
         }
     }
-    return cleanUrl;
+    if (cleanUrl.startsWith('http://') || cleanUrl.startsWith('https://') || cleanUrl.startsWith('data:image/')) {
+        return cleanUrl;
+    }
+    return cleanUrl.replace(/^\/+/, '');
   }
 
   const state = {
@@ -254,17 +255,25 @@
     }
 
 function convertMarkdownTablesToHtml(text) {
-    if (!text || typeof text !== 'string') return text;
+    if (!text || typeof text !== 'string') return '';
     let res = text;
-    if (res.includes('|---')) {
+    // Convert literal \n or \\n strings into actual linebreaks
+    res = res.replace(/\\n/g, '\n');
+
+    if (res.includes('|')) {
         res = res.replace(/\|\|/g, '|\n|');
-        const tableRegex = /(?:\|[^\n]+\|\r?\n?)+(?:\|[-:\s|]+\|\r?\n?)(?:\|[^\n]+\|\r?\n?)+/g;
+        const tableRegex = /(?:\|[^\n\r]+\|\r?\n?)+(?:\|[-:\s|]+\|\r?\n?)(?:\|[^\n\r]+\|\r?\n?)+/g;
         res = res.replace(tableRegex, (match) => {
             const lines = match.trim().split(/\r?\n/).filter(line => line.trim().startsWith('|'));
-            if (lines.length < 3) return match;
+            if (lines.length < 2) return match;
             const parseRow = (rowStr) => rowStr.split('|').slice(1, -1).map(cell => cell.trim());
-            const headers = parseRow(lines[0]);
-            const bodyRows = lines.slice(2).map(parseRow);
+            let headers = parseRow(lines[0]);
+            let bodyRows = [];
+            if (lines.length >= 2 && lines[1].includes('---')) {
+                bodyRows = lines.slice(2).map(parseRow);
+            } else {
+                bodyRows = lines.slice(1).map(parseRow);
+            }
             let html = '<table class="sat-table"><thead><tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr></thead><tbody>';
             bodyRows.forEach(row => {
                 html += '<tr>' + row.map(cell => `<td>${cell}</td>`).join('') + '</tr>';
