@@ -416,15 +416,17 @@ function convertMarkdownTablesToHtml(text) {
               saveProgress(); // Auto-save
           });
       }
+    }
 
-      // Bind flag
-      const flagBtn = document.getElementById('flagBtn');
-      if (flagBtn) {
-        flagBtn.addEventListener('click', () => {
-          state.flagged[idx] = !state.flagged[idx];
-          renderQuestion();
-        });
-      }
+    // Bind flag
+    const flagBtn = document.getElementById('flagBtn');
+    if (flagBtn) {
+      flagBtn.addEventListener('click', () => {
+        state.flagged[idx] = !state.flagged[idx];
+        renderQuestion();
+      });
+    }
+
     // Bind bookmark
     const bookmarkBtn = document.getElementById('bookmarkBtn');
     if (bookmarkBtn) {
@@ -450,7 +452,6 @@ function convertMarkdownTablesToHtml(text) {
         }
         renderQuestion();
       });
-    }
     }
 
     if (dom.panelRight) dom.panelRight.scrollTop = 0;
@@ -899,7 +900,9 @@ function convertMarkdownTablesToHtml(text) {
     if (dom.btnCloseErrorLog) {
       dom.btnCloseErrorLog.addEventListener('click', () => {
         dom.errorLogOverlay.style.display = 'none';
-        dom.scoreOverlay.classList.add('active');
+        if (!state.reviewMode) {
+          dom.scoreOverlay.classList.add('active');
+        }
       });
     }
 

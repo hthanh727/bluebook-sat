@@ -163,7 +163,18 @@
                 const tr = document.createElement('tr');
                 let typeLabel = 'Reading & Writing';
                 if (t.type === 'math') typeLabel = 'Math';
-                if (t.type === 'full') typeLabel = 'Full Mock Test';
+                else if (t.type === 'full') typeLabel = 'Full Mock Test';
+                else if (t.type === 'topic') {
+                    const titleLower = (t.title || '').toLowerCase();
+                    const isMathTopic = titleLower.includes('math') || 
+                                       titleLower.includes('algebra') || 
+                                       titleLower.includes('geometry') || 
+                                       titleLower.includes('trigonometry') ||
+                                       titleLower.includes('arithmetic') ||
+                                       titleLower.includes('number') ||
+                                       titleLower.includes('calc');
+                    typeLabel = isMathTopic ? 'Math (Chuyên đề)' : 'Reading & Writing (Chuyên đề)';
+                }
 
                 tr.innerHTML = `
                     <td>${t.id}</td>
@@ -1035,7 +1046,18 @@
 
                 let typeLabel = 'Reading & Writing';
                 if (p.test_type === 'math') typeLabel = 'Math';
-                if (p.test_type === 'full') typeLabel = 'Full Mock Test';
+                else if (p.test_type === 'full') typeLabel = 'Full Mock Test';
+                else if (p.test_type === 'topic') {
+                    const titleLower = (p.test_title || '').toLowerCase();
+                    const isMathTopic = titleLower.includes('math') || 
+                                       titleLower.includes('algebra') || 
+                                       titleLower.includes('geometry') || 
+                                       titleLower.includes('trigonometry') ||
+                                       titleLower.includes('arithmetic') ||
+                                       titleLower.includes('number') ||
+                                       titleLower.includes('calc');
+                    typeLabel = isMathTopic ? 'Math (Chuyên đề)' : 'Reading & Writing (Chuyên đề)';
+                }
 
                 const statusClass = p.completed ? 'status-completed' : 'status-progress';
                 const statusText = p.completed ? 'Completed' : 'In Progress';

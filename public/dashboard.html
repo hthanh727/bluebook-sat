@@ -1434,16 +1434,19 @@
             display: inline-flex;
             align-items: center;
         }
+
         .difficulty-badge.easy {
             background: rgba(34, 197, 94, 0.15);
             color: #22c55e;
             border: 1px solid rgba(34, 197, 94, 0.3);
         }
+
         .difficulty-badge.medium {
             background: rgba(245, 158, 11, 0.15);
             color: #f59e0b;
             border: 1px solid rgba(245, 158, 11, 0.3);
         }
+
         .difficulty-badge.hard {
             background: rgba(239, 68, 68, 0.15);
             color: #ef4444;
@@ -1457,16 +1460,19 @@
             padding: 16px !important;
             gap: 14px !important;
         }
+
         .video-container {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            padding-top: 56.25%;
+            /* 16:9 Aspect Ratio */
             border-radius: var(--radius-md);
             overflow: hidden;
             background: #000;
             border: 1px solid var(--glass-border);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
+
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -1475,6 +1481,7 @@
             height: 100%;
             border: 0;
         }
+
         .video-placeholder {
             position: absolute;
             top: 0;
@@ -1491,20 +1498,24 @@
             text-decoration: none;
             transition: all var(--transition-fast);
         }
+
         .video-placeholder:hover {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
             color: var(--text-primary);
             text-decoration: none;
         }
+
         html.light .video-placeholder {
-            background: linear-gradient(135deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01));
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.01));
             color: var(--text-secondary);
         }
+
         html.light .video-placeholder:hover {
-            background: linear-gradient(135deg, rgba(0,0,0,0.06), rgba(0,0,0,0.02));
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.02));
             color: var(--text-primary);
             text-decoration: none;
         }
+
         .play-btn-circle {
             width: 48px;
             height: 48px;
@@ -1517,15 +1528,18 @@
             box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
             transition: transform 0.2s;
         }
+
         .video-placeholder:hover .play-btn-circle {
             transform: scale(1.1);
         }
+
         .recording-details {
             display: flex;
             flex-direction: column;
             flex: 1;
             padding: 4px;
         }
+
         .recording-title {
             font-size: 16px;
             font-weight: 600;
@@ -1533,6 +1547,7 @@
             line-height: 1.4;
             margin-bottom: 6px;
         }
+
         .recording-desc {
             font-size: 13px;
             color: var(--text-secondary);
@@ -1544,6 +1559,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+
         .recording-footer {
             margin-top: auto;
             display: flex;
@@ -1554,6 +1570,7 @@
             border-top: 1px solid var(--glass-border);
             padding-top: 12px;
         }
+
         .btn-recording-link {
             display: inline-flex;
             align-items: center;
@@ -1566,6 +1583,7 @@
             text-decoration: none;
             transition: all var(--transition-fast);
         }
+
         .btn-recording-link:hover {
             background: var(--accent-blue);
             color: white;
@@ -2011,15 +2029,15 @@
                             </button>
                             ` : `
                                 ${(() => {
-                                    if (completed) {
-                                        return `
+                            if (completed) {
+                                return `
                                             <a href="${link}&review=true" class="btn-start-exam review-btn" style="background: rgba(139, 92, 246, 0.12); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.25); font-weight:600; padding:8px 14px; border-radius:6px; font-size:12px; text-decoration:none; display:inline-flex; align-items:center; cursor:pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(139, 92, 246, 0.22)'" onmouseout="this.style.background='rgba(139, 92, 246, 0.12)'">
                                                 Xem câu sai
                                             </a>
                                         `;
-                                    }
-                                    return '';
-                                })()}
+                            }
+                            return '';
+                        })()}
                                 <a href="${link}" class="btn-start-exam ${btnClass}" style="padding: 8px 14px; font-size: 12px; display: inline-flex; align-items: center; justify-content: center;">
                                     ${btnText}
                                 </a>
@@ -2137,7 +2155,7 @@
                 for (const topic of topics) {
                     const totalQ = topic.question_count || 0;
                     const link = `/practice?id=${topic.id}`;
-                    
+
                     // Fetch progress
                     let answered = 0;
                     let completed = false;
@@ -2168,9 +2186,27 @@
                         btnText = 'RESUME';
                     }
 
+                    const titleLower = (topic.title || '').toLowerCase();
+                    const isMathTopic = titleLower.includes('math') ||
+                        titleLower.includes('algebra') ||
+                        titleLower.includes('geometry') ||
+                        titleLower.includes('trigonometry') ||
+                        titleLower.includes('arithmetic') ||
+                        titleLower.includes('number') ||
+                        titleLower.includes('calc');
+                    const badgeClass = isMathTopic ? 'math-badge' : 'reading-badge';
+                    const cardClass = isMathTopic ? 'math-card' : '';
+                    const progressClass = isMathTopic ? 'math-progress' : '';
+                    const btnClass = isMathTopic ? 'math-btn' : 'reading-btn';
+                    const labelText = isMathTopic ? 'Math' : 'R&W';
+
+                    const svgIcon = isMathTopic ?
+                        '<rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><line x1="9" y1="3" x2="9" y2="21" /><line x1="15" y1="3" x2="15" y2="21" /><line x1="3" y1="9" x2="21" y2="9" /><line x1="3" y1="15" x2="21" y2="15" />' :
+                        '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />';
+
                     const card = document.createElement('div');
-                    card.className = `test-card math-card`;
-                    
+                    card.className = `test-card ${cardClass}`;
+
                     let reviewBtnHtml = '';
                     if (completed) {
                         reviewBtnHtml = `
@@ -2182,11 +2218,11 @@
 
                     card.innerHTML = `
                         <div class="test-card-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                            <span class="test-badge math-badge">
+                            <span class="test-badge ${badgeClass}">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                    ${svgIcon}
                                 </svg>
-                                Topic · ${totalQ} Q
+                                ${labelText} · ${totalQ} Q
                             </span>
                             ${topic.difficulty ? `<span class="difficulty-badge ${topic.difficulty.toLowerCase()}">${topic.difficulty}</span>` : ''}
                             <span class="test-status ${statusClass}">${statusText}</span>
@@ -2209,13 +2245,13 @@
                             </span>
                         </div>
                         <div class="test-card-progress">
-                            <div class="test-card-progress-fill math-progress" style="width: 0%"></div>
+                            <div class="test-card-progress-fill ${progressClass}" style="width: 0%"></div>
                         </div>
                         <div class="test-card-footer" style="display: flex; justify-content: space-between; align-items: center;">
                             <span class="test-progress-text">${pct}% complete</span>
                             <div style="display: flex; gap: 8px; align-items: center;">
                                 ${reviewBtnHtml}
-                                <a href="${link}" class="btn-start-exam math-btn" style="padding: 8px 14px; font-size: 12px; display: inline-flex; align-items: center; justify-content: center;">
+                                <a href="${link}" class="btn-start-exam ${btnClass}" style="padding: 8px 14px; font-size: 12px; display: inline-flex; align-items: center; justify-content: center;">
                                     ${btnText}
                                 </a>
                             </div>
@@ -2246,7 +2282,7 @@
                     if (res.ok) {
                         const recordings = await res.json();
                         grid.innerHTML = '';
-                        
+
                         if (recordings.length === 0) {
                             grid.innerHTML = "<p style='color:var(--text-secondary); grid-column:1/-1; text-align:center; padding: 40px 0; font-size: 16px;'>No lesson recordings available yet.</p>";
                             return;
@@ -2256,7 +2292,7 @@
                             const embedUrl = getEmbedUrl(rec.video_url);
                             const card = document.createElement('div');
                             card.className = 'test-card recording-card';
-                            
+
                             const dateObj = new Date(rec.created_at);
                             const dateStr = dateObj.toLocaleDateString('vi-VN', { year: 'numeric', month: 'long', day: 'numeric' });
 
@@ -2311,29 +2347,29 @@
 
             function getEmbedUrl(url) {
                 if (!url) return null;
-                
+
                 // YouTube
                 let ytMatch = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i);
                 if (ytMatch && ytMatch[1]) {
                     return `https://www.youtube.com/embed/${ytMatch[1]}`;
                 }
-                
+
                 // Google Drive
                 let gdMatch = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/i);
                 if (gdMatch && gdMatch[1]) {
                     return `https://drive.google.com/file/d/${gdMatch[1]}/preview`;
                 }
-                
+
                 // Loom
                 let loomMatch = url.match(/loom\.com\/share\/([a-zA-Z0-9_-]+)/i);
                 if (loomMatch && loomMatch[1]) {
                     return `https://www.loom.com/embed/${loomMatch[1]}`;
                 }
-                
+
                 if (url.includes('embed') || url.includes('player.vimeo.com')) {
                     return url;
                 }
-                
+
                 return null;
             }
 

@@ -1207,7 +1207,9 @@ function convertMarkdownTablesToHtml(text) {
     if (dom.btnCloseErrorLog) {
       dom.btnCloseErrorLog.addEventListener('click', () => {
         dom.errorLogOverlay.style.display = 'none';
-        dom.scoreOverlay.classList.add('active');
+        if (!state.reviewMode) {
+          dom.scoreOverlay.classList.add('active');
+        }
       });
     }
 
