@@ -183,6 +183,9 @@
                     <td>${new Date(t.created_at).toLocaleDateString()}</td>
                     <td style="white-space: nowrap;">
                         <div class="action-buttons-group">
+                            <button class="btn-admin btn-rename-test" style="background: #f59e0b; padding: 6px 12px; font-size: 13px;" data-id="${t.id}" data-title="${t.title}" data-type="${t.type}" data-difficulty="${t.difficulty || ''}" title="Rename Test">
+                                ✏️ Rename
+                            </button>
                             <button class="btn-admin btn-add-q" style="background: #10b981; padding: 6px 12px; font-size: 13px;" data-id="${t.id}" data-type="${t.type}">
                                 Add Question
                             </button>
@@ -208,6 +211,48 @@
                     </td>
                 `;
                 dom.testsTableBody.appendChild(tr);
+            });
+
+            // Bind Rename Test buttons
+            document.querySelectorAll('.btn-rename-test').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    const testId = e.currentTarget.getAttribute('data-id');
+                    const currentTitle = e.currentTarget.getAttribute('data-title');
+                    const currentDiff = e.currentTarget.getAttribute('data-difficulty');
+                    const currentType = e.currentTarget.getAttribute('data-type');
+
+                    const newTitle = prompt('Nhập tên mới cho đề thi / chuyên đề:', currentTitle);
+                    if (newTitle === null) return; // User cancelled
+                    if (newTitle.trim() === '') {
+                        alert('Tên đề thi không được để trống!');
+                        return;
+                    }
+
+                    try {
+                        const res = await fetch(`/api/admin/tests/${testId}`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`
+                            },
+                            body: JSON.stringify({
+                                title: newTitle.trim(),
+                                type: currentType,
+                                difficulty: currentDiff
+                            })
+                        });
+
+                        if (res.ok) {
+                            loadTests();
+                        } else {
+                            const errData = await res.json();
+                            alert(errData.message || 'Lỗi khi đổi tên đề thi');
+                        }
+                    } catch (err) {
+                        console.error(err);
+                        alert('Lỗi kết nối khi đổi tên đề thi');
+                    }
+                });
             });
 
             // Bind Practice Toggle buttons

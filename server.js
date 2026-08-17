@@ -273,6 +273,36 @@ app.post('/api/admin/tests', authenticateAdmin, async (req, res) => {
     }
 });
 
+app.put('/api/admin/tests/:id', authenticateAdmin, async (req, res) => {
+    const testId = req.params.id;
+    const { title, type, difficulty } = req.body;
+    if (!title || title.trim() === '') {
+        return res.status(400).json({ message: 'Title is required' });
+    }
+    try {
+        const updates = [];
+        const params = [];
+        if (title !== undefined) {
+            updates.push('title = ?');
+            params.push(title.trim());
+        }
+        if (type !== undefined) {
+            updates.push('type = ?');
+            params.push(type);
+        }
+        if (difficulty !== undefined) {
+            updates.push('difficulty = ?');
+            params.push(difficulty || null);
+        }
+        params.push(testId);
+        await pool.query(`UPDATE tests SET ${updates.join(', ')} WHERE id = ?`, params);
+        res.json({ success: true, message: 'Test updated successfully' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
 app.delete('/api/admin/tests/:id', authenticateAdmin, async (req, res) => {
     const test_id = req.params.id;
     try {
