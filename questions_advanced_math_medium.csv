@@ -1,0 +1,83 @@
+module,question_number,prompt,option_a,option_b,option_c,option_d,correct_answer_index,correct_answer_text,image_url,question_type
+"1","1","A system of equations consists of a quadratic equation and a linear equation. The equations in this system are graphed in the \(xy\)-plane above.
+How many solutions does this system have?","\(0\)","\(1\)","\(2\)","\(3\)","2","","images/adv_math_med_q1.png","mcq"
+"1","2","\(y = x + 1\)
+\(y = x^2 + x\)
+If \((x, y)\) is a solution to the system of equations above, which of the following could be the value of \(x\)?","\(-1\)","\(0\)","\(2\)","\(3\)","0","","","mcq"
+"1","3","\(4a^2 + 20ab + 25b^2\)
+Which of the following is a factor of the polynomial above?","\(a + b\)","\(2a + 5b\)","\(4a + 5b\)","\(4a + 25b\)","1","","","mcq"
+"1","4","If \(p = 3x + 4\) and \(v = x + 5\), which of the following is equivalent to \(pv - 2p + v\)?","\(3x^2 + 12x + 7\)","\(3x^2 + 14x + 17\)","\(3x^2 + 19x + 20\)","\(3x^2 + 26x + 33\)","1","","","mcq"
+"1","5","\(x^2 - x - 1 = 0\)
+What values satisfy the equation above?","\(x = 1\) and \(x = 2\)","\(x = -\frac{1}{2}\) and \(x = \frac{3}{2}\)","\(x = \frac{1 + \sqrt{5}}{2}\) and \(x = \frac{1 - \sqrt{5}}{2}\)","\(x = \frac{-1 + \sqrt{5}}{2}\) and \(x = \frac{-1 - \sqrt{5}}{2}\)","2","","","mcq"
+"1","6","\(y = 7,400(0.87)^x\)
+The given equation estimates the value, in dollars, of a certain piece of equipment \(x\) years after it was purchased. According to the given equation, what was the estimated value, in dollars, of the piece of equipment at the time it was purchased?","\(740\)","\(6,438\)","\(7,400\)","\(8,700\)","2","","","mcq"
+"1","7","Which of the following is equivalent to the expression \(x^4 - x^2 - 6\)?","\((x^2 + 1)(x^2 - 6)\)","\((x^2 + 2)(x^2 - 3)\)","\((x^2 + 3)(x^2 - 2)\)","\((x^2 + 6)(x^2 - 1)\)","1","","","mcq"
+"1","8","\((2x + 5)^2 - (x - 2) + 2(x + 3)\)
+Which of the following is equivalent to the expression above?","\(4x^2 + 21x + 33\)","\(4x^2 + 21x + 29\)","\(4x^2 + x + 29\)","\(4x^2 + x + 33\)","0","","","mcq"
+"1","9","Which of the following expressions is equivalent to \(x^2 - 5\)?","\((x + \sqrt{5})^2\)","\((x - \sqrt{5})^2\)","\((x + \sqrt{5})(x - \sqrt{5})\)","\((x + 5)(x - 1)\)","2","","","mcq"
+"1","10","\(f(x) = 4,000(0.75)^x\)
+An entomologist recommended a program to reduce a certain invasive beetle population in an area. The given function estimates this beetle species' population \(x\) years after 2012, where \(x \le 7\). Which of the following is the best interpretation of \(4,000\) in this context?","The estimated initial beetle population for this species and area in 2012","The estimated beetle population for this species and area 7 years after 2012","The estimated percent decrease in the beetle population for this species and area each year after 2012","The estimated percent decrease in the beetle population for this species and area every 7 years after 2012","0","","","mcq"
+"1","11","A rectangular volleyball court has an area of \(162\) square meters. If the length of the court is twice the width, what is the width of the court, in meters?","\(9\)","\(18\)","\(27\)","\(54\)","0","","","mcq"
+"1","12","\(S(n) = 38,000a^n\)
+The function \(S\) above models the annual salary, in dollars, of an employee \(n\) years after starting a job, where \(a\) is a constant. If the employee's salary increases by \(4\%\) each year, what is the value of \(a\)?","\(0.04\)","\(0.4\)","\(1.04\)","\(1.4\)","2","","","mcq"
+"1","13","Which of the following is an equivalent form of \((1.5x - 2.4)^2 - (5.2x^2 - 6.4)\)?","\(-2.2x^2 + 1.6\)","\(-2.2x^2 + 11.2\)","\(-2.95x^2 - 7.2x + 12.16\)","\(-2.95x^2 - 7.2x + 0.64\)","2","","","mcq"
+"1","14","\(D = 5,640(1.9)^t\)
+The equation above estimates the global data traffic \(D\), in terabytes, for the year that is \(t\) years after 2010. What is the best interpretation of the number \(5,640\) in this context?","The estimated amount of increase of data traffic, in terabytes, each year","The estimated percent increase in the data traffic, in terabytes, each year","The estimated data traffic, in terabytes, for the year that is t years after 2010","The estimated data traffic, in terabytes, in 2010","3","","","mcq"
+"1","15","Which of the following could be the equation of the graph shown in the \(xy\)-plane?","\(y = -\frac{1}{10}x(x - 4)(x + 5)\)","\(y = -\frac{1}{10}x(x - 4)(x + 5)^2\)","\(y = -\frac{1}{10}x(x - 5)(x + 4)\)","\(y = -\frac{1}{10}x(x - 5)^2(x + 4)\)","1","","images/adv_math_med_q15.png","mcq"
+"1","16","\((x - 4)(x + 2)(x - 1) = 0\)
+What is the product of the solutions to the given equation?","\(8\)","\(3\)","\(-3\)","\(-8\)","3","","","mcq"
+"1","17","\(\frac{2(x + 1)}{x + 5} = 1 - \frac{1}{x + 5}\)
+What is the solution to the equation above?","\(0\)","\(2\)","\(3\)","\(5\)","1","","","mcq"
+"1","18","A rectangle has a length of \(x\) units and a width of \((x - 15)\) units. If the rectangle has an area of \(76\) square units, what is the value of \(x\)?","\(4\)","\(19\)","\(23\)","\(76\)","1","","","mcq"
+"1","19","\(y = x^2 - 4x + 4\)
+\(y = 4 - x\)
+If the ordered pair \((x, y)\) satisfies the system of equations above, what is one possible value of \(x\)?","","","","","","0","","spr"
+"1","20","\(\sqrt[3]{x^3 y^6}\)
+Which of the following expressions is equivalent to the expression above?","\(y^2\)","\(xy^2\)","\(y^3\)","\(xy^3\)","1","","","mcq"
+"1","21","An oceanographer uses the equation \(s = \frac{3}{2}p\) to model the speed \(s\), in knots, of an ocean wave, where \(p\) represents the period of the wave, in seconds. Which of the following represents the period of the wave in terms of the speed of the wave?","\(p = \frac{2}{3}s\)","\(p = \frac{3}{2}s\)","\(p = \frac{2}{3} + s\)","\(p = \frac{3}{2} + s\)","0","","","mcq"
+"1","22","If \(x^2 = a + b\) and \(y^2 = a + c\), which of the following is equal to \((x^2 - y^2)^2\)?","\(a^2 - 2ac + c^2\)","\(b^2 - 2bc + c^2\)","\(4a^2 - 4abc + c^2\)","\(4a^2 - 2abc + b^2 c^2\)","1","","","mcq"
+"1","23","\(f(x) = x^5 + 9x + 17\)
+For the given function \(f\), the graph of \(y = f(x)\) in the \(xy\)-plane passes through the point \((0, b)\), where \(b\) is a constant. What is the value of \(b\)?","","","","","","17","","spr"
+"1","24","If \(x \ne 0\), which of the following expressions is equivalent to \(\frac{\sqrt{16x^4 y^8}}{x^3}\)?","\(8x^2 y^4\)","\(4xy^4\)","\(4x^{-2} y^2\)","\(4x^{-1} y^4\)","3","","","mcq"
+"1","25","\(g(x) = x^2 + 55\)
+What is the minimum value of the given function?","\(0\)","\(55\)","\(110\)","\(3,025\)","1","","","mcq"
+"1","26","In the \(xy\)-plane, what is the \(y\)-coordinate of the point of intersection of the graphs of \(y = (x - 1)^2\) and \(y = 2x - 3\)?","","","","","","1","","spr"
+"1","27","\((x - 16)(x - 10)(x + 7)(x + 17) = 0\)
+What is a positive solution to the given equation?","","","","","","10","","spr"
+"1","28","\(14j + 5k = m\)
+The given equation relates the numbers \(j\), \(k\), and \(m\). Which equation correctly expresses \(k\) in terms of \(j\) and \(m\)?","\(k = \frac{m - 14j}{5}\)","\(k = \frac{1}{5}m - 14j\)","\(k = \frac{14j - m}{5}\)","\(k = 5m - 14j\)","0","","","mcq"
+"1","29","\(f(x) = (x + 6)(x - 4)\)
+If the given function \(f\) is graphed in the \(xy\)-plane, where \(y = f(x)\), what is the \(x\)-coordinate of an \(x\)-intercept of the graph?","","","","","","-6","","spr"
+"1","30","\(x^2 + 6x + 4\)
+Which of the following is equivalent to the expression above?","\((x + 3)^2 + 5\)","\((x + 3)^2 - 5\)","\((x - 3)^2 + 5\)","\((x - 3)^2 - 5\)","1","","","mcq"
+"1","31","\((x + 2)(x + 3) = (x - 2)(x - 3) + 10\)
+Which of the following is a solution to the given equation?","\(1\)","\(0\)","\(-2\)","\(-5\)","0","","","mcq"
+"1","32","\(y = x^2 + 1.7\)
+\(y = 1.7 - x\)
+Which graph represents the given system of equations?","images/adv_math_med_q32_a.png","images/adv_math_med_q32_b.png","images/adv_math_med_q32_c.png","images/adv_math_med_q32_d.png","0","","","mcq"
+"1","33","\(x^2 - ax + 12 = 0\)
+In the equation above, \(a\) is a constant and \(a > 0\). If the equation has two integer solutions, what is a possible value of \(a\)?","","","","","","7","","spr"
+"1","34","From 2005 through 2014, the number of music CDs sold in the United States declined each year by approximately \(15\%\) of the number sold the preceding year. In 2005, approximately \(600\) million CDs were sold in the United States. Of the following, which best models \(C\), the number of millions of CDs sold in the United States, \(t\) years after 2005?","\(C = 600(0.15)^t\)","\(C = 600(0.85)^t\)","\(C = 600(1.15)^t\)","\(C = 600(1.85)^t\)","1","","","mcq"
+"1","35","The expression \(\frac{24}{6x + 42}\) is equivalent to \(\frac{4}{x + b}\), where \(b\) is a constant and \(x > 0\). What is the value of \(b\)?","\(7\)","\(10\)","\(24\)","\(252\)","0","","","mcq"
+"1","36","The product of two positive integers is \(546\). If the first integer is \(11\) greater than twice the second integer, what is the smaller of the two integers?","\(7\)","\(14\)","\(39\)","\(78\)","1","","","mcq"
+"1","37","In the \(xy\)-plane, the \(y\)-coordinate of the \(y\)-intercept of the graph of the function \(f\) is \(c\). Which of the following must be equal to \(c\)?","\(f(0)\)","\(f(1)\)","\(f(2)\)","\(f(3)\)","0","","","mcq"
+"1","38","The graph of a system of a linear equation and a quadratic equation is shown. A solution to the system is \((x, y)\). What is a possible value of \(x\)?","\(4\)","\(5\)","\(7.2\)","\(8\)","0","","images/adv_math_med_q38.png","mcq"
+"1","39","On April 1, there were \(233\) views of an advertisement posted on a website. Every \(2\) days after April 1, the number of views of the advertisement had increased by \(70\%\) of the number of views \(2\) days earlier. The function \(f\) gives the predicted number of views \(x\) days after April 1. Which equation defines \(f\)?","\(f(x) = 233(0.70)^{\frac{x}{2}}\)","\(f(x) = 233(0.70)^{2x}\)","\(f(x) = 233(1.70)^{\frac{x}{2}}\)","\(f(x) = 233(1.70)^{2x}\)","2","","","mcq"
+"1","40","\(f(x) = x^3 + 3x^2 - 6x - 1\)
+For the function \(f\) defined above, what is the value of \(f(-1)\)?","\(-11\)","\(-7\)","\(7\)","\(11\)","2","","","mcq"
+"1","41","\(y = 4(2^x)\)
+Which of the following is the graph in the \(xy\)-plane of the given equation?","images/adv_math_med_q41_a.png","images/adv_math_med_q41_b.png","images/adv_math_med_q41_c.png","images/adv_math_med_q41_d.png","3","","","mcq"
+"1","42","The area of a triangle is \(270\) square centimeters. The length of the base of the triangle is \(12\) centimeters greater than the height of the triangle. What is the height, in centimeters, of the triangle?","\(15\)","\(18\)","\(30\)","\(36\)","1","","","mcq"
+"1","43","The function \(g\) is defined by \(g(x) = 10^{5x - 8}\). What is the value of \(x\) when \(g(x)\) is equal to \(10,000\)?","\(\frac{11}{5}\)","\(\frac{12}{5}\)","\(3\)","\(4\)","1","","","mcq"
+"1","44","An object's kinetic energy, in joules, is equal to the product of one-half the object's mass, in kilograms, and the square of the object's speed, in meters per second. What is the speed, in meters per second, of an object with a mass of \(4\) kilograms and kinetic energy of \(18\) joules?","\(3\)","\(6\)","\(9\)","\(36\)","0","","","mcq"
+"1","45","The height, in feet, of an object \(x\) seconds after it is thrown straight up in the air can be modeled by the function \(h(x) = -16x^2 + 20x + 5\).
+Based on the model, which of the following statements best interprets the equation \(h(1.4) = 1.64\)?","The height of the object 1.4 seconds after being thrown straight up in the air is 1.64 feet.","The height of the object 1.64 seconds after being thrown straight up in the air is 1.4 feet.","The height of the object 1.64 seconds after being thrown straight up in the air is approximately 1.4 times as great as its initial height.","The speed of the object 1.4 seconds after being thrown straight up in the air is approximately 1.64 feet per second.","0","","","mcq"
+"1","46","The speed of sound in dry air, \(v\), can be modeled by the formula \(v = 331.3 + 0.606T\), where \(T\) is the temperature in degrees Celsius and \(v\) is measured in meters per second. Which of the following correctly expresses \(T\) in terms of \(v\)?","\(T = \frac{v + 0.606}{331.3}\)","\(T = \frac{v - 0.606}{331.3}\)","\(T = \frac{v + 331.3}{0.606}\)","\(T = \frac{v - 331.3}{0.606}\)","3","","","mcq"
+"1","47","\(f(x) = 2x + 3\)
+\(g(x) = 7x - 2\)
+\(h(x) = 5x + 6\)
+The functions \(f\), \(g\), and \(h\) are defined as shown. If \(f(x) \cdot g(x) - h(x) = ax^2 + bx + c\), where \(a\), \(b\), and \(c\) are constants, what is the value of \(b\)?","\(-5\)","\(12\)","\(20\)","\(22\)","1","","","mcq"
+"1","48","The graph of \(y = f(x)\) is shown. What is the \(y\)-intercept of \(y = f(x) + 5\)?","\((0, 8)\)","\((0, 5)\)","\((0, 3)\)","\((0, 0)\)","0","","images/adv_math_med_q48.png","mcq"
+"1","49","\(f(\theta) = -0.28(\theta - 27)^2 + 880\)
+An engineer wanted to identify the best angle for a cooling fan in an engine in order to get the greatest airflow. The engineer discovered that the function above models the airflow \(f(\theta)\), in cubic feet per minute, as a function of the angle of the fan \(\theta\), in degrees. According to the model, what angle, in degrees, gives the greatest airflow?","\(-0.28\)","\(0.28\)","\(27\)","\(880\)","2","","","mcq"
+"1","50","The value of a certain fishing boat was \(\$24,000\) when it was purchased. Each year, the value of the fishing boat decreased by \(20\%\) of the previous year's value. Which equation represents this situation, where \(v\) is the value of the fishing boat, in dollars, and \(y\) is the number of years since the fishing boat was purchased?","\(v = 0.8(24,000)^y\)","\(v = 1.2(24,000)^y\)","\(v = 24,000(0.8)^y\)","\(v = 24,000(1.2)^y\)","2","","","mcq"

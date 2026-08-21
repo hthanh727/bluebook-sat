@@ -5,11 +5,13 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const mysql = require('mysql2/promise');
 const path = require('path');
+const fs = require('fs');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 const app = express();
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '100mb' }));
+app.use(express.urlencoded({ limit: '100mb', extended: true }));
 
 // Init Gemini
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'MISSING_KEY');
@@ -68,6 +70,8 @@ pool.query(`
         title VARCHAR(255) NOT NULL,
         description TEXT,
         video_url VARCHAR(512) NOT NULL,
+        pdf_url VARCHAR(512) DEFAULT NULL,
+        pdf_name VARCHAR(255) DEFAULT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
 `)
@@ -77,6 +81,18 @@ pool.query(`
     .catch(err => {
         console.error("Migration error creating recordings table:", err);
     });
+
+// Migration for existing recordings table
+pool.query('ALTER TABLE recordings ADD COLUMN pdf_url VARCHAR(512) DEFAULT NULL')
+    .catch(() => {});
+pool.query('ALTER TABLE recordings ADD COLUMN pdf_name VARCHAR(255) DEFAULT NULL')
+    .catch(() => {});
+
+// Ensure uploads/pdf dir exists
+const pdfUploadDir = path.join(__dirname, 'public', 'uploads', 'pdf');
+if (!fs.existsSync(pdfUploadDir)) {
+    fs.mkdirSync(pdfUploadDir, { recursive: true });
+}
 
 const JWT_SECRET = process.env.JWT_SECRET || 'super-secret-key-for-bluebook';
 
@@ -246,6 +262,7 @@ app.get('/api/admin/student-progress', authenticateAdmin, async (req, res) => {
     try {
         const query = `
             SELECT 
+                p.id as progress_id,
                 u.id as student_id, u.name as student_name, u.email as student_email, u.role as student_role,
                 t.title as test_title, t.type as test_type,
                 p.test_id, p.answers, p.score, p.completed, p.updated_at
@@ -256,6 +273,18 @@ app.get('/api/admin/student-progress', authenticateAdmin, async (req, res) => {
         `;
         const [rows] = await pool.query(query);
         res.json(rows);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// Admin delete student progress
+app.delete('/api/admin/student-progress/:id', authenticateAdmin, async (req, res) => {
+    const progressId = req.params.id;
+    try {
+        await pool.query('DELETE FROM progress WHERE id = ?', [progressId]);
+        res.json({ success: true, message: 'Progress deleted successfully' });
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Server error' });
@@ -594,16 +623,40 @@ app.get('/api/recordings', authenticateToken, async (req, res) => {
     }
 });
 
+// Upload PDF document (Admin Only)
+app.post('/api/admin/upload-pdf', authenticateAdmin, async (req, res) => {
+    try {
+        const { filename, base64Data } = req.body;
+        if (!filename || !base64Data) {
+            return res.status(400).json({ message: 'Filename and base64Data are required' });
+        }
+
+        const safeName = filename.replace(/[^a-zA-Z0-9._-]/g, '_');
+        const uniqueName = `${Date.now()}_${safeName}`;
+        const filePath = path.join(pdfUploadDir, uniqueName);
+
+        const base64Clean = base64Data.replace(/^data:application\/pdf;base64,/, '').replace(/^data:[^;]+;base64,/, '');
+        const buffer = Buffer.from(base64Clean, 'base64');
+        fs.writeFileSync(filePath, buffer);
+
+        const fileUrl = `/uploads/pdf/${uniqueName}`;
+        res.json({ success: true, url: fileUrl, name: filename });
+    } catch (err) {
+        console.error('PDF upload error:', err);
+        res.status(500).json({ message: 'Failed to save PDF file' });
+    }
+});
+
 // Create recording (Admin Only)
 app.post('/api/admin/recordings', authenticateAdmin, async (req, res) => {
-    const { title, description, video_url } = req.body;
+    const { title, description, video_url, pdf_url, pdf_name } = req.body;
     if (!title || !video_url) {
         return res.status(400).json({ message: 'Title and Video URL are required' });
     }
     try {
         await pool.query(
-            'INSERT INTO recordings (title, description, video_url) VALUES (?, ?, ?)',
-            [title, description || null, video_url]
+            'INSERT INTO recordings (title, description, video_url, pdf_url, pdf_name) VALUES (?, ?, ?, ?, ?)',
+            [title, description || null, video_url, pdf_url || null, pdf_name || null]
         );
         res.json({ success: true });
     } catch (err) {

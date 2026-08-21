@@ -1,0 +1,773 @@
+require('dotenv').config({ override: true });
+const fs = require('fs');
+const path = require('path');
+const mysql = require('mysql2/promise');
+
+const TARGET_TOPIC_TITLE = 'Advanced Math';
+const TARGET_DIFFICULTY = 'Medium';
+
+const questions = [
+  {
+    question_number: 1,
+    question_id: 'a5663025',
+    question_type: 'mcq',
+    prompt: 'A system of equations consists of a quadratic equation and a linear equation. The equations in this system are graphed in the \\(xy\\)-plane above.\nHow many solutions does this system have?',
+    option_a: '\\(0\\)',
+    option_b: '\\(1\\)',
+    option_c: '\\(2\\)',
+    option_d: '\\(3\\)',
+    correct_answer_index: 2,
+    correct_answer_text: '',
+    image_url: 'images/adv_math_med_q1.png'
+  },
+  {
+    question_number: 2,
+    question_id: 'd0a7871e',
+    question_type: 'mcq',
+    prompt: '\\(y = x + 1\\)\n\\(y = x^2 + x\\)\nIf \\((x, y)\\) is a solution to the system of equations above, which of the following could be the value of \\(x\\)?',
+    option_a: '\\(-1\\)',
+    option_b: '\\(0\\)',
+    option_c: '\\(2\\)',
+    option_d: '\\(3\\)',
+    correct_answer_index: 0,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 3,
+    question_id: 'dd4ab4c4',
+    question_type: 'mcq',
+    prompt: '\\(4a^2 + 20ab + 25b^2\\)\nWhich of the following is a factor of the polynomial above?',
+    option_a: '\\(a + b\\)',
+    option_b: '\\(2a + 5b\\)',
+    option_c: '\\(4a + 5b\\)',
+    option_d: '\\(4a + 25b\\)',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 4,
+    question_id: 'b8caaf84',
+    question_type: 'mcq',
+    prompt: 'If \\(p = 3x + 4\\) and \\(v = x + 5\\), which of the following is equivalent to \\(pv - 2p + v\\)?',
+    option_a: '\\(3x^2 + 12x + 7\\)',
+    option_b: '\\(3x^2 + 14x + 17\\)',
+    option_c: '\\(3x^2 + 19x + 20\\)',
+    option_d: '\\(3x^2 + 26x + 33\\)',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 5,
+    question_id: '7f81d0c3',
+    question_type: 'mcq',
+    prompt: '\\(x^2 - x - 1 = 0\\)\nWhat values satisfy the equation above?',
+    option_a: '\\(x = 1\\) and \\(x = 2\\)',
+    option_b: '\\(x = -\\frac{1}{2}\\) and \\(x = \\frac{3}{2}\\)',
+    option_c: '\\(x = \\frac{1 + \\sqrt{5}}{2}\\) and \\(x = \\frac{1 - \\sqrt{5}}{2}\\)',
+    option_d: '\\(x = \\frac{-1 + \\sqrt{5}}{2}\\) and \\(x = \\frac{-1 - \\sqrt{5}}{2}\\)',
+    correct_answer_index: 2,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 6,
+    question_id: '71b74a44',
+    question_type: 'mcq',
+    prompt: '\\(y = 7,400(0.87)^x\\)\nThe given equation estimates the value, in dollars, of a certain piece of equipment \\(x\\) years after it was purchased. According to the given equation, what was the estimated value, in dollars, of the piece of equipment at the time it was purchased?',
+    option_a: '\\(740\\)',
+    option_b: '\\(6,438\\)',
+    option_c: '\\(7,400\\)',
+    option_d: '\\(8,700\\)',
+    correct_answer_index: 2,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 7,
+    question_id: 'ad2ec615',
+    question_type: 'mcq',
+    prompt: 'Which of the following is equivalent to the expression \\(x^4 - x^2 - 6\\)?',
+    option_a: '\\((x^2 + 1)(x^2 - 6)\\)',
+    option_b: '\\((x^2 + 2)(x^2 - 3)\\)',
+    option_c: '\\((x^2 + 3)(x^2 - 2)\\)',
+    option_d: '\\((x^2 + 6)(x^2 - 1)\\)',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 8,
+    question_id: '42c71eb5',
+    question_type: 'mcq',
+    prompt: '\\((2x + 5)^2 - (x - 2) + 2(x + 3)\\)\nWhich of the following is equivalent to the expression above?',
+    option_a: '\\(4x^2 + 21x + 33\\)',
+    option_b: '\\(4x^2 + 21x + 29\\)',
+    option_c: '\\(4x^2 + x + 29\\)',
+    option_d: '\\(4x^2 + x + 33\\)',
+    correct_answer_index: 0,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 9,
+    question_id: 'a05bd3a4',
+    question_type: 'mcq',
+    prompt: 'Which of the following expressions is equivalent to \\(x^2 - 5\\)?',
+    option_a: '\\((x + \\sqrt{5})^2\\)',
+    option_b: '\\((x - \\sqrt{5})^2\\)',
+    option_c: '\\((x + \\sqrt{5})(x - \\sqrt{5})\\)',
+    option_d: '\\((x + 5)(x - 1)\\)',
+    correct_answer_index: 2,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 10,
+    question_id: '1d3c5c95',
+    question_type: 'mcq',
+    prompt: '\\(f(x) = 4,000(0.75)^x\\)\nAn entomologist recommended a program to reduce a certain invasive beetle population in an area. The given function estimates this beetle species\' population \\(x\\) years after 2012, where \\(x \\le 7\\). Which of the following is the best interpretation of \\(4,000\\) in this context?',
+    option_a: 'The estimated initial beetle population for this species and area in 2012',
+    option_b: 'The estimated beetle population for this species and area 7 years after 2012',
+    option_c: 'The estimated percent decrease in the beetle population for this species and area each year after 2012',
+    option_d: 'The estimated percent decrease in the beetle population for this species and area every 7 years after 2012',
+    correct_answer_index: 0,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 11,
+    question_id: 'f89af023',
+    question_type: 'mcq',
+    prompt: 'A rectangular volleyball court has an area of \\(162\\) square meters. If the length of the court is twice the width, what is the width of the court, in meters?',
+    option_a: '\\(9\\)',
+    option_b: '\\(18\\)',
+    option_c: '\\(27\\)',
+    option_d: '\\(54\\)',
+    correct_answer_index: 0,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 12,
+    question_id: 'e53add44',
+    question_type: 'mcq',
+    prompt: '\\(S(n) = 38,000a^n\\)\nThe function \\(S\\) above models the annual salary, in dollars, of an employee \\(n\\) years after starting a job, where \\(a\\) is a constant. If the employee\'s salary increases by \\(4\\%\\) each year, what is the value of \\(a\\)?',
+    option_a: '\\(0.04\\)',
+    option_b: '\\(0.4\\)',
+    option_c: '\\(1.04\\)',
+    option_d: '\\(1.4\\)',
+    correct_answer_index: 2,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 13,
+    question_id: 'cc776a04',
+    question_type: 'mcq',
+    prompt: 'Which of the following is an equivalent form of \\((1.5x - 2.4)^2 - (5.2x^2 - 6.4)\\)?',
+    option_a: '\\(-2.2x^2 + 1.6\\)',
+    option_b: '\\(-2.2x^2 + 11.2\\)',
+    option_c: '\\(-2.95x^2 - 7.2x + 12.16\\)',
+    option_d: '\\(-2.95x^2 - 7.2x + 0.64\\)',
+    correct_answer_index: 2,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 14,
+    question_id: '926c246b',
+    question_type: 'mcq',
+    prompt: '\\(D = 5,640(1.9)^t\\)\nThe equation above estimates the global data traffic \\(D\\), in terabytes, for the year that is \\(t\\) years after 2010. What is the best interpretation of the number \\(5,640\\) in this context?',
+    option_a: 'The estimated amount of increase of data traffic, in terabytes, each year',
+    option_b: 'The estimated percent increase in the data traffic, in terabytes, each year',
+    option_c: 'The estimated data traffic, in terabytes, for the year that is t years after 2010',
+    option_d: 'The estimated data traffic, in terabytes, in 2010',
+    correct_answer_index: 3,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 15,
+    question_id: '252a3b3a',
+    question_type: 'mcq',
+    prompt: 'Which of the following could be the equation of the graph shown in the \\(xy\\)-plane?',
+    option_a: '\\(y = -\\frac{1}{10}x(x - 4)(x + 5)\\)',
+    option_b: '\\(y = -\\frac{1}{10}x(x - 4)(x + 5)^2\\)',
+    option_c: '\\(y = -\\frac{1}{10}x(x - 5)(x + 4)\\)',
+    option_d: '\\(y = -\\frac{1}{10}x(x - 5)^2(x + 4)\\)',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: 'images/adv_math_med_q15.png'
+  },
+  {
+    question_number: 16,
+    question_id: '911383f2',
+    question_type: 'mcq',
+    prompt: '\\((x - 4)(x + 2)(x - 1) = 0\\)\nWhat is the product of the solutions to the given equation?',
+    option_a: '\\(8\\)',
+    option_b: '\\(3\\)',
+    option_c: '\\(-3\\)',
+    option_d: '\\(-8\\)',
+    correct_answer_index: 3,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 17,
+    question_id: 'b80d10d7',
+    question_type: 'mcq',
+    prompt: '\\(\\frac{2(x + 1)}{x + 5} = 1 - \\frac{1}{x + 5}\\)\nWhat is the solution to the equation above?',
+    option_a: '\\(0\\)',
+    option_b: '\\(2\\)',
+    option_c: '\\(3\\)',
+    option_d: '\\(5\\)',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 18,
+    question_id: 'd4950429',
+    question_type: 'mcq',
+    prompt: 'A rectangle has a length of \\(x\\) units and a width of \\((x - 15)\\) units. If the rectangle has an area of \\(76\\) square units, what is the value of \\(x\\)?',
+    option_a: '\\(4\\)',
+    option_b: '\\(19\\)',
+    option_c: '\\(23\\)',
+    option_d: '\\(76\\)',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 19,
+    question_id: 'fcdf87b7',
+    question_type: 'spr',
+    prompt: '\\(y = x^2 - 4x + 4\\)\n\\(y = 4 - x\\)\nIf the ordered pair \\((x, y)\\) satisfies the system of equations above, what is one possible value of \\(x\\)?',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer_index: -1,
+    correct_answer_text: '0',
+    image_url: ''
+  },
+  {
+    question_number: 20,
+    question_id: 'a520ba07',
+    question_type: 'mcq',
+    prompt: '\\(\\sqrt[3]{x^3 y^6}\\)\nWhich of the following expressions is equivalent to the expression above?',
+    option_a: '\\(y^2\\)',
+    option_b: '\\(xy^2\\)',
+    option_c: '\\(y^3\\)',
+    option_d: '\\(xy^3\\)',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 21,
+    question_id: '652054da',
+    question_type: 'mcq',
+    prompt: 'An oceanographer uses the equation \\(s = \\frac{3}{2}p\\) to model the speed \\(s\\), in knots, of an ocean wave, where \\(p\\) represents the period of the wave, in seconds. Which of the following represents the period of the wave in terms of the speed of the wave?',
+    option_a: '\\(p = \\frac{2}{3}s\\)',
+    option_b: '\\(p = \\frac{3}{2}s\\)',
+    option_c: '\\(p = \\frac{2}{3} + s\\)',
+    option_d: '\\(p = \\frac{3}{2} + s\\)',
+    correct_answer_index: 0,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 22,
+    question_id: 'a255ae72',
+    question_type: 'mcq',
+    prompt: 'If \\(x^2 = a + b\\) and \\(y^2 = a + c\\), which of the following is equal to \\((x^2 - y^2)^2\\)?',
+    option_a: '\\(a^2 - 2ac + c^2\\)',
+    option_b: '\\(b^2 - 2bc + c^2\\)',
+    option_c: '\\(4a^2 - 4abc + c^2\\)',
+    option_d: '\\(4a^2 - 2abc + b^2 c^2\\)',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 23,
+    question_id: 'dd3b1e1a',
+    question_type: 'spr',
+    prompt: '\\(f(x) = x^5 + 9x + 17\\)\nFor the given function \\(f\\), the graph of \\(y = f(x)\\) in the \\(xy\\)-plane passes through the point \\((0, b)\\), where \\(b\\) is a constant. What is the value of \\(b\\)?',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer_index: -1,
+    correct_answer_text: '17',
+    image_url: ''
+  },
+  {
+    question_number: 24,
+    question_id: '463eec13',
+    question_type: 'mcq',
+    prompt: 'If \\(x \\ne 0\\), which of the following expressions is equivalent to \\(\\frac{\\sqrt{16x^4 y^8}}{x^3}\\)?',
+    option_a: '\\(8x^2 y^4\\)',
+    option_b: '\\(4xy^4\\)',
+    option_c: '\\(4x^{-2} y^2\\)',
+    option_d: '\\(4x^{-1} y^4\\)',
+    correct_answer_index: 3,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 25,
+    question_id: '341ba5db',
+    question_type: 'mcq',
+    prompt: '\\(g(x) = x^2 + 55\\)\nWhat is the minimum value of the given function?',
+    option_a: '\\(0\\)',
+    option_b: '\\(55\\)',
+    option_c: '\\(110\\)',
+    option_d: '\\(3,025\\)',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 26,
+    question_id: '6e02cd78',
+    question_type: 'spr',
+    prompt: 'In the \\(xy\\)-plane, what is the \\(y\\)-coordinate of the point of intersection of the graphs of \\(y = (x - 1)^2\\) and \\(y = 2x - 3\\)?',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer_index: -1,
+    correct_answer_text: '1',
+    image_url: ''
+  },
+  {
+    question_number: 27,
+    question_id: '6bd40794',
+    question_type: 'spr',
+    prompt: '\\((x - 16)(x - 10)(x + 7)(x + 17) = 0\\)\nWhat is a positive solution to the given equation?',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer_index: -1,
+    correct_answer_text: '10',
+    image_url: ''
+  },
+  {
+    question_number: 28,
+    question_id: '11ccf3e1',
+    question_type: 'mcq',
+    prompt: '\\(14j + 5k = m\\)\nThe given equation relates the numbers \\(j\\), \\(k\\), and \\(m\\). Which equation correctly expresses \\(k\\) in terms of \\(j\\) and \\(m\\)?',
+    option_a: '\\(k = \\frac{m - 14j}{5}\\)',
+    option_b: '\\(k = \\frac{1}{5}m - 14j\\)',
+    option_c: '\\(k = \\frac{14j - m}{5}\\)',
+    option_d: '\\(k = 5m - 14j\\)',
+    correct_answer_index: 0,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 29,
+    question_id: '50e40f08',
+    question_type: 'spr',
+    prompt: '\\(f(x) = (x + 6)(x - 4)\\)\nIf the given function \\(f\\) is graphed in the \\(xy\\)-plane, where \\(y = f(x)\\), what is the \\(x\\)-coordinate of an \\(x\\)-intercept of the graph?',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer_index: -1,
+    correct_answer_text: '-6',
+    image_url: ''
+  },
+  {
+    question_number: 30,
+    question_id: 'a1bf1c4e',
+    question_type: 'mcq',
+    prompt: '\\(x^2 + 6x + 4\\)\nWhich of the following is equivalent to the expression above?',
+    option_a: '\\((x + 3)^2 + 5\\)',
+    option_b: '\\((x + 3)^2 - 5\\)',
+    option_c: '\\((x - 3)^2 + 5\\)',
+    option_d: '\\((x - 3)^2 - 5\\)',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 31,
+    question_id: '802549ac',
+    question_type: 'mcq',
+    prompt: '\\((x + 2)(x + 3) = (x - 2)(x - 3) + 10\\)\nWhich of the following is a solution to the given equation?',
+    option_a: '\\(1\\)',
+    option_b: '\\(0\\)',
+    option_c: '\\(-2\\)',
+    option_d: '\\(-5\\)',
+    correct_answer_index: 0,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 32,
+    question_id: '75a32330',
+    question_type: 'mcq',
+    prompt: '\\(y = x^2 + 1.7\\)\n\\(y = 1.7 - x\\)\nWhich graph represents the given system of equations?',
+    option_a: 'images/adv_math_med_q32_a.png',
+    option_b: 'images/adv_math_med_q32_b.png',
+    option_c: 'images/adv_math_med_q32_c.png',
+    option_d: 'images/adv_math_med_q32_d.png',
+    correct_answer_index: 0,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 33,
+    question_id: 'a4f61d75',
+    question_type: 'spr',
+    prompt: '\\(x^2 - ax + 12 = 0\\)\nIn the equation above, \\(a\\) is a constant and \\(a > 0\\). If the equation has two integer solutions, what is a possible value of \\(a\\)?',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer_index: -1,
+    correct_answer_text: '7',
+    image_url: ''
+  },
+  {
+    question_number: 34,
+    question_id: 'a31417d1',
+    question_type: 'mcq',
+    prompt: 'From 2005 through 2014, the number of music CDs sold in the United States declined each year by approximately \\(15\\%\\) of the number sold the preceding year. In 2005, approximately \\(600\\) million CDs were sold in the United States. Of the following, which best models \\(C\\), the number of millions of CDs sold in the United States, \\(t\\) years after 2005?',
+    option_a: '\\(C = 600(0.15)^t\\)',
+    option_b: '\\(C = 600(0.85)^t\\)',
+    option_c: '\\(C = 600(1.15)^t\\)',
+    option_d: '\\(C = 600(1.85)^t\\)',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 35,
+    question_id: '6d04c89d',
+    question_type: 'mcq',
+    prompt: 'The expression \\(\\frac{24}{6x + 42}\\) is equivalent to \\(\\frac{4}{x + b}\\), where \\(b\\) is a constant and \\(x > 0\\). What is the value of \\(b\\)?',
+    option_a: '\\(7\\)',
+    option_b: '\\(10\\)',
+    option_c: '\\(24\\)',
+    option_d: '\\(252\\)',
+    correct_answer_index: 0,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 36,
+    question_id: '203774bc',
+    question_type: 'mcq',
+    prompt: 'The product of two positive integers is \\(546\\). If the first integer is \\(11\\) greater than twice the second integer, what is the smaller of the two integers?',
+    option_a: '\\(7\\)',
+    option_b: '\\(14\\)',
+    option_c: '\\(39\\)',
+    option_d: '\\(78\\)',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 37,
+    question_id: 'c4cd5bcc',
+    question_type: 'mcq',
+    prompt: 'In the \\(xy\\)-plane, the \\(y\\)-coordinate of the \\(y\\)-intercept of the graph of the function \\(f\\) is \\(c\\). Which of the following must be equal to \\(c\\)?',
+    option_a: '\\(f(0)\\)',
+    option_b: '\\(f(1)\\)',
+    option_c: '\\(f(2)\\)',
+    option_d: '\\(f(3)\\)',
+    correct_answer_index: 0,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 38,
+    question_id: '5f10c095',
+    question_type: 'mcq',
+    prompt: 'The graph of a system of a linear equation and a quadratic equation is shown. A solution to the system is \\((x, y)\\). What is a possible value of \\(x\\)?',
+    option_a: '\\(4\\)',
+    option_b: '\\(5\\)',
+    option_c: '\\(7.2\\)',
+    option_d: '\\(8\\)',
+    correct_answer_index: 0,
+    correct_answer_text: '',
+    image_url: 'images/adv_math_med_q38.png'
+  },
+  {
+    question_number: 39,
+    question_id: '68607eca',
+    question_type: 'mcq',
+    prompt: 'On April 1, there were \\(233\\) views of an advertisement posted on a website. Every \\(2\\) days after April 1, the number of views of the advertisement had increased by \\(70\\%\\) of the number of views \\(2\\) days earlier. The function \\(f\\) gives the predicted number of views \\(x\\) days after April 1. Which equation defines \\(f\\)?',
+    option_a: '\\(f(x) = 233(0.70)^{\\frac{x}{2}}\\)',
+    option_b: '\\(f(x) = 233(0.70)^{2x}\\)',
+    option_c: '\\(f(x) = 233(1.70)^{\\frac{x}{2}}\\)',
+    option_d: '\\(f(x) = 233(1.70)^{2x}\\)',
+    correct_answer_index: 2,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 40,
+    question_id: '78d5f91a',
+    question_type: 'mcq',
+    prompt: '\\(f(x) = x^3 + 3x^2 - 6x - 1\\)\nFor the function \\(f\\) defined above, what is the value of \\(f(-1)\\)?',
+    option_a: '\\(-11\\)',
+    option_b: '\\(-7\\)',
+    option_c: '\\(7\\)',
+    option_d: '\\(11\\)',
+    correct_answer_index: 2,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 41,
+    question_id: 'd675744f',
+    question_type: 'mcq',
+    prompt: '\\(y = 4(2^x)\\)\nWhich of the following is the graph in the \\(xy\\)-plane of the given equation?',
+    option_a: 'images/adv_math_med_q41_a.png',
+    option_b: 'images/adv_math_med_q41_b.png',
+    option_c: 'images/adv_math_med_q41_c.png',
+    option_d: 'images/adv_math_med_q41_d.png',
+    correct_answer_index: 3,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 42,
+    question_id: 'f880f910',
+    question_type: 'mcq',
+    prompt: 'The area of a triangle is \\(270\\) square centimeters. The length of the base of the triangle is \\(12\\) centimeters greater than the height of the triangle. What is the height, in centimeters, of the triangle?',
+    option_a: '\\(15\\)',
+    option_b: '\\(18\\)',
+    option_c: '\\(30\\)',
+    option_d: '\\(36\\)',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 43,
+    question_id: '769b612d',
+    question_type: 'mcq',
+    prompt: 'The function \\(g\\) is defined by \\(g(x) = 10^{5x - 8}\\). What is the value of \\(x\\) when \\(g(x)\\) is equal to \\(10,000\\)?',
+    option_a: '\\(\\frac{11}{5}\\)',
+    option_b: '\\(\\frac{12}{5}\\)',
+    option_c: '\\(3\\)',
+    option_d: '\\(4\\)',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 44,
+    question_id: 'f44a29a8',
+    question_type: 'mcq',
+    prompt: 'An object\'s kinetic energy, in joules, is equal to the product of one-half the object\'s mass, in kilograms, and the square of the object\'s speed, in meters per second. What is the speed, in meters per second, of an object with a mass of \\(4\\) kilograms and kinetic energy of \\(18\\) joules?',
+    option_a: '\\(3\\)',
+    option_b: '\\(6\\)',
+    option_c: '\\(9\\)',
+    option_d: '\\(36\\)',
+    correct_answer_index: 0,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 45,
+    question_id: 'd71f6dbf',
+    question_type: 'mcq',
+    prompt: 'The height, in feet, of an object \\(x\\) seconds after it is thrown straight up in the air can be modeled by the function \\(h(x) = -16x^2 + 20x + 5\\).\nBased on the model, which of the following statements best interprets the equation \\(h(1.4) = 1.64\\)?',
+    option_a: 'The height of the object 1.4 seconds after being thrown straight up in the air is 1.64 feet.',
+    option_b: 'The height of the object 1.64 seconds after being thrown straight up in the air is 1.4 feet.',
+    option_c: 'The height of the object 1.64 seconds after being thrown straight up in the air is approximately 1.4 times as great as its initial height.',
+    option_d: 'The speed of the object 1.4 seconds after being thrown straight up in the air is approximately 1.64 feet per second.',
+    correct_answer_index: 0,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 46,
+    question_id: '630897df',
+    question_type: 'mcq',
+    prompt: 'The speed of sound in dry air, \\(v\\), can be modeled by the formula \\(v = 331.3 + 0.606T\\), where \\(T\\) is the temperature in degrees Celsius and \\(v\\) is measured in meters per second. Which of the following correctly expresses \\(T\\) in terms of \\(v\\)?',
+    option_a: '\\(T = \\frac{v + 0.606}{331.3}\\)',
+    option_b: '\\(T = \\frac{v - 0.606}{331.3}\\)',
+    option_c: '\\(T = \\frac{v + 331.3}{0.606}\\)',
+    option_d: '\\(T = \\frac{v - 331.3}{0.606}\\)',
+    correct_answer_index: 3,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 47,
+    question_id: '04887c7b',
+    question_type: 'mcq',
+    prompt: '\\(f(x) = 2x + 3\\)\n\\(g(x) = 7x - 2\\)\n\\(h(x) = 5x + 6\\)\nThe functions \\(f\\), \\(g\\), and \\(h\\) are defined as shown. If \\(f(x) \\cdot g(x) - h(x) = ax^2 + bx + c\\), where \\(a\\), \\(b\\), and \\(c\\) are constants, what is the value of \\(b\\)?',
+    option_a: '\\(-5\\)',
+    option_b: '\\(12\\)',
+    option_c: '\\(20\\)',
+    option_d: '\\(22\\)',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 48,
+    question_id: 'cef0eada',
+    question_type: 'mcq',
+    prompt: 'The graph of \\(y = f(x)\\) is shown. What is the \\(y\\)-intercept of \\(y = f(x) + 5\\)?',
+    option_a: '\\((0, 8)\\)',
+    option_b: '\\((0, 5)\\)',
+    option_c: '\\((0, 3)\\)',
+    option_d: '\\((0, 0)\\)',
+    correct_answer_index: 0,
+    correct_answer_text: '',
+    image_url: 'images/adv_math_med_q48.png'
+  },
+  {
+    question_number: 49,
+    question_id: '6676f055',
+    question_type: 'mcq',
+    prompt: '\\(f(\\theta) = -0.28(\\theta - 27)^2 + 880\\)\nAn engineer wanted to identify the best angle for a cooling fan in an engine in order to get the greatest airflow. The engineer discovered that the function above models the airflow \\(f(\\theta)\\), in cubic feet per minute, as a function of the angle of the fan \\(\\theta\\), in degrees. According to the model, what angle, in degrees, gives the greatest airflow?',
+    option_a: '\\(-0.28\\)',
+    option_b: '\\(0.28\\)',
+    option_c: '\\(27\\)',
+    option_d: '\\(880\\)',
+    correct_answer_index: 2,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 50,
+    question_id: '53c07bf9',
+    question_type: 'mcq',
+    prompt: 'The value of a certain fishing boat was \\(\\$24,000\\) when it was purchased. Each year, the value of the fishing boat decreased by \\(20\\%\\) of the previous year\'s value. Which equation represents this situation, where \\(v\\) is the value of the fishing boat, in dollars, and \\(y\\) is the number of years since the fishing boat was purchased?',
+    option_a: '\\(v = 0.8(24,000)^y\\)',
+    option_b: '\\(v = 1.2(24,000)^y\\)',
+    option_c: '\\(v = 24,000(0.8)^y\\)',
+    option_d: '\\(v = 24,000(1.2)^y\\)',
+    correct_answer_index: 2,
+    correct_answer_text: '',
+    image_url: ''
+  }
+];
+
+async function main() {
+    const cachePath = 'c:/Users/Thanh GAY/.gemini/antigravity-ide/scratch/bluebook-sat/questions_advanced_math_medium_raw.json';
+    const csvPath = 'c:/Users/Thanh GAY/.gemini/antigravity-ide/scratch/bluebook-sat/questions_advanced_math_medium.csv';
+
+    fs.writeFileSync(cachePath, JSON.stringify(questions, null, 2), 'utf8');
+    console.log(`📦 Saved questions to JSON: ${cachePath}`);
+
+    // Save CSV
+    function escapeCSV(val) {
+        if (val === null || val === undefined) return '""';
+        const str = String(val);
+        const escaped = str.replace(/"/g, '""');
+        return `"${escaped}"`;
+    }
+
+    const csvHeaders = ['module', 'question_number', 'prompt', 'option_a', 'option_b', 'option_c', 'option_d', 'correct_answer_index', 'correct_answer_text', 'image_url', 'question_type'];
+    const csvRows = questions.map(q => {
+        return [
+            1, // module
+            q.question_number,
+            q.prompt,
+            q.option_a || '',
+            q.option_b || '',
+            q.option_c || '',
+            q.option_d || '',
+            q.question_type === 'mcq' ? q.correct_answer_index : '',
+            q.question_type === 'spr' ? q.correct_answer_text : '',
+            q.image_url || '',
+            q.question_type
+        ];
+    });
+
+    const headerLine = csvHeaders.join(',') + '\n';
+    const content = csvRows.map(row => row.map(escapeCSV).join(',')).join('\n') + '\n';
+    fs.writeFileSync(csvPath, headerLine + content, 'utf8');
+    console.log(`📁 Generated CSV file at: ${csvPath}`);
+
+    // Database Connection
+    const pool = mysql.createPool({
+        host: process.env.DB_HOST || 'localhost',
+        user: process.env.DB_USER || 'root',
+        password: process.env.DB_PASSWORD || '',
+        database: process.env.DB_NAME || 'defaultdb',
+        port: parseInt(process.env.DB_PORT || '18921'),
+        waitForConnections: true,
+        connectionLimit: 5
+    });
+
+    const connection = await pool.getConnection();
+    try {
+        // Find or create test
+        const [testRows] = await connection.query(
+            "SELECT id FROM tests WHERE title = ? AND type = 'topic' AND difficulty = ?",
+            [TARGET_TOPIC_TITLE, TARGET_DIFFICULTY]
+        );
+
+        let testId;
+        if (testRows.length > 0) {
+            testId = testRows[0].id;
+            console.log(`Found existing test with ID: ${testId}`);
+        } else {
+            const [insertRes] = await connection.query(
+                "INSERT INTO tests (title, type, difficulty, allow_practice) VALUES (?, 'topic', ?, 1)",
+                [TARGET_TOPIC_TITLE, TARGET_DIFFICULTY]
+            );
+            testId = insertRes.insertId;
+            console.log(`Created new test "${TARGET_TOPIC_TITLE}" (${TARGET_DIFFICULTY}) with ID: ${testId}`);
+        }
+
+        // Delete existing questions
+        await connection.query('DELETE FROM questions WHERE test_id = ?', [testId]);
+        console.log(`Cleared existing questions for test ID: ${testId}`);
+
+        // Bulk Insert
+        await connection.beginTransaction();
+        let count = 0;
+        for (const q of questions) {
+            const options = q.question_type === 'mcq' ? JSON.stringify([q.option_a || '', q.option_b || '', q.option_c || '', q.option_d || '']) : null;
+            await connection.query(
+                `INSERT INTO questions 
+                (test_id, section, module, question_number, passage, prompt, options, correct_answer_index, correct_answer_text, image_url, question_type)
+                VALUES (?, 'math', 1, ?, NULL, ?, ?, ?, ?, ?, ?)`,
+                [
+                    testId,
+                    q.question_number,
+                    q.prompt,
+                    options,
+                    q.question_type === 'mcq' ? q.correct_answer_index : null,
+                    q.question_type === 'spr' ? (q.correct_answer_text || '') : null,
+                    q.image_url || null,
+                    q.question_type
+                ]
+            );
+            count++;
+        }
+
+        await connection.commit();
+        console.log(`🎉 Successfully inserted ${count} questions into test ID ${testId} ("${TARGET_TOPIC_TITLE}" - ${TARGET_DIFFICULTY})!`);
+
+    } catch (err) {
+        await connection.rollback();
+        console.error('❌ Database insertion error:', err);
+    } finally {
+        connection.release();
+        await pool.end();
+    }
+}
+
+main().catch(err => {
+    console.error('Fatal error:', err);
+    process.exit(1);
+});

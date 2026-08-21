@@ -12,7 +12,8 @@
     bookmarked: [],
     testType: 'topic',
     testTitle: 'Chuyên đề Luyện tập',
-    reviewMode: false
+    reviewMode: false,
+    isCompleted: false
   };
 
   // ---- DOM References ----
@@ -59,7 +60,8 @@
     btnCloseErrorLog: $('#btnCloseErrorLog'),
     btnExportPDF: $('#btnExportPDF'),
     errorLogContent: $('#error-log-content'),
-    practiceTopicTitle: $('#practiceTopicTitle')
+    practiceTopicTitle: $('#practiceTopicTitle'),
+    btnRestartPractice: $('#btnRestartPractice')
   };
 
   // ---- Image Resolvers ----
@@ -364,6 +366,7 @@
                   // Update active UI style
                   $$('.answer-option').forEach(el => el.classList.remove('selected'));
                   option.classList.add('selected');
+                  saveProgress(false);
               });
           } else {
               // Input text SPR
@@ -373,6 +376,7 @@
                       state.answers[state.currentQuestion] = e.target.value;
                       const preview = $('#sprAnswerPreview');
                       if (preview) preview.textContent = e.target.value;
+                      saveProgress(false);
                   });
               }
           }
@@ -481,12 +485,14 @@
       const token = localStorage.getItem('token');
       if (!token || !state.testId) return;
 
+      const isDone = completed || state.isCompleted;
+
       // Calculate score (correct answers)
       let correct = 0;
       for (let i = 0; i < SAT_QUESTIONS.length; i++) {
           const q = SAT_QUESTIONS[i];
           const ans = state.answers[i];
-          if (state.questionSubmitted[i]) {
+          if (state.questionSubmitted[i] || (ans !== null && ans !== undefined && ans.toString().trim() !== '')) {
               if (q.question_type === 'mcq') {
                   if (ans === q.correct_answer_index) correct++;
               } else {
@@ -495,11 +501,13 @@
           }
       }
 
-      // Save local resume info
-      localStorage.setItem(`sat-resume-${state.testId}-${state.testType}`, JSON.stringify({
-          currentQuestion: state.currentQuestion,
-          questionSubmitted: state.questionSubmitted
-      }));
+      // Save local resume info only if not completed
+      if (!isDone) {
+          localStorage.setItem(`sat-resume-${state.testId}-${state.testType}`, JSON.stringify({
+              currentQuestion: state.currentQuestion,
+              questionSubmitted: state.questionSubmitted
+          }));
+      }
 
       try {
           await fetch('/api/save-progress', {
@@ -512,7 +520,7 @@
                   test_id: state.testId,
                   answers: state.answers,
                   score: correct,
-                  completed: completed
+                  completed: isDone
               })
           });
       } catch(err) {
@@ -599,6 +607,7 @@
           }, 100);
       }
 
+      state.isCompleted = true;
       dom.scoreOverlay.classList.add('active');
       await saveProgress(true); // Complete
       
@@ -790,8 +799,29 @@
       });
       document.addEventListener('click', () => dom.moreDropdown.classList.remove('active'));
 
-      dom.btnExitTest.addEventListener('click', () => {
+      if (dom.btnRestartPractice) {
+          dom.btnRestartPractice.addEventListener('click', async () => {
+              if (confirm('Bạn có chắc chắn muốn làm lại từ đầu? Toàn bộ câu trả lời hiện tại sẽ được làm mới.')) {
+                  const numQ = SAT_QUESTIONS.length;
+                  state.answers = new Array(numQ).fill(null);
+                  state.flagged = new Array(numQ).fill(false);
+                  state.questionSubmitted = new Array(numQ).fill(false);
+                  state.currentQuestion = 0;
+                  state.isCompleted = false;
+                  localStorage.removeItem(`sat-resume-${state.testId}-${state.testType}`);
+                  await saveProgress(false);
+                  renderQuestion();
+                  dom.moreDropdown.classList.remove('active');
+                  showToast('Đã làm mới bài luyện tập!');
+              }
+          });
+      }
+
+      dom.btnExitTest.addEventListener('click', async () => {
           if (confirm('Bạn có muốn thoát về Dashboard? Tiến trình đã được lưu lại.')) {
+              if (!state.isCompleted && !state.reviewMode) {
+                  await saveProgress(false);
+              }
               window.location.href = '/dashboard';
           }
       });
@@ -951,16 +981,26 @@
           state.flagged = new Array(numQ).fill(false);
           state.questionSubmitted = new Array(numQ).fill(false);
 
+          let isPreviouslyCompleted = false;
           // Load previous progress
           const progRes = await fetch(`/api/progress/${state.testId}`, {
               headers: { 'Authorization': `Bearer ${token}` }
           });
           if (progRes.ok) {
               const progData = await progRes.json();
+              if (progData && progData.completed === 1) {
+                  isPreviouslyCompleted = true;
+                  if (state.reviewMode) {
+                      state.isCompleted = true;
+                  }
+              }
               if (progData && progData.answers && (progData.completed !== 1 || state.reviewMode)) {
                   const savedAnswers = JSON.parse(progData.answers);
                   for (let i = 0; i < savedAnswers.length && i < numQ; i++) {
                       state.answers[i] = savedAnswers[i];
+                      if (savedAnswers[i] !== null && savedAnswers[i] !== undefined && savedAnswers[i].toString().trim() !== '') {
+                          state.questionSubmitted[i] = true;
+                      }
                   }
                   
                   if (state.reviewMode) {
@@ -969,15 +1009,30 @@
               }
           }
 
-          // Restore active question from local storage
-          const savedResume = localStorage.getItem(`sat-resume-${state.testId}-${state.testType}`);
-          if (savedResume && !state.reviewMode) {
-              try {
-                  const s = JSON.parse(savedResume);
-                  if (s.currentQuestion !== undefined) state.currentQuestion = s.currentQuestion;
-                  if (s.questionSubmitted) state.questionSubmitted = s.questionSubmitted;
-              } catch(e) {}
+          // Restore active question from local storage only if in progress
+          if (isPreviouslyCompleted && !state.reviewMode) {
+              // Starting fresh from completed test
+              localStorage.removeItem(`sat-resume-${state.testId}-${state.testType}`);
+          } else {
+              const savedResume = localStorage.getItem(`sat-resume-${state.testId}-${state.testType}`);
+              if (savedResume && !state.reviewMode) {
+                  try {
+                      const s = JSON.parse(savedResume);
+                      if (s.currentQuestion !== undefined) state.currentQuestion = s.currentQuestion;
+                      if (s.questionSubmitted && Array.isArray(s.questionSubmitted)) {
+                          for (let i = 0; i < s.questionSubmitted.length && i < numQ; i++) {
+                              if (s.questionSubmitted[i]) state.questionSubmitted[i] = true;
+                          }
+                      }
+                  } catch(e) {}
+              }
           }
+
+          window.addEventListener('beforeunload', () => {
+              if (!state.isCompleted && !state.reviewMode) {
+                  saveProgress(false);
+              }
+          });
 
           const userName = localStorage.getItem('userName') || 'Học sinh';
           if (dom.studentName) dom.studentName.textContent = userName;

@@ -1119,15 +1119,37 @@
                     <td><span class="status-badge ${statusClass}">${statusText}</span></td>
                     <td>${new Date(p.updated_at).toLocaleString()}</td>
                     <td>
-                        <button class="btn-admin btn-view-dp" style="background: #3b82f6; padding: 4px 10px; font-size: 12px;">
-                            👁️ Chi tiết
-                        </button>
+                        <div style="display: flex; gap: 6px;">
+                            <button class="btn-admin btn-view-dp" style="background: #3b82f6; padding: 4px 10px; font-size: 12px;">
+                                👁️ Chi tiết
+                            </button>
+                            <button class="btn-admin btn-delete-dp" style="background: #ef4444; padding: 4px 10px; font-size: 12px;" title="Xóa tiến trình này">
+                                🗑️ Xóa
+                            </button>
+                        </div>
                     </td>
                 `;
 
                 const viewBtn = tr.querySelector('.btn-view-dp');
                 viewBtn.addEventListener('click', () => {
                     openDetailedProgressModal(p);
+                });
+
+                const deleteBtn = tr.querySelector('.btn-delete-dp');
+                deleteBtn.addEventListener('click', async () => {
+                    if (confirm(`Bạn có chắc chắn muốn xóa tiến trình làm bài của học sinh "${p.student_name}" cho đề "${p.test_title}" không?`)) {
+                        try {
+                            const delRes = await fetch(`/api/admin/student-progress/${p.progress_id}`, {
+                                method: 'DELETE',
+                                headers: { 'Authorization': `Bearer ${token}` }
+                            });
+                            if (!delRes.ok) throw new Error('Failed to delete progress');
+                            loadStudentProgress();
+                        } catch (err) {
+                            console.error(err);
+                            alert('Lỗi khi xóa tiến trình.');
+                        }
+                    }
                 });
 
                 dom.progressTableBody.appendChild(tr);
@@ -2000,11 +2022,18 @@
                 recordings.forEach(rec => {
                     const tr = document.createElement('tr');
                     const dateStr = new Date(rec.created_at).toLocaleString('vi-VN');
+                    const pdfBadge = rec.pdf_url
+                        ? `<a href="${rec.pdf_url}" target="_blank" style="display:inline-flex; align-items:center; gap:4px; color:#ef4444; font-weight:600; text-decoration:none; font-size:12px; background:#fef2f2; padding:3px 8px; border-radius:4px; border:1px solid #fecaca;">
+                            📄 ${escapeHtml(rec.pdf_name || 'Xem PDF')}
+                           </a>`
+                        : `<span style="color:#94a3b8; font-size:12px;">Không có</span>`;
+
                     tr.innerHTML = `
                         <td>${rec.id}</td>
                         <td style="font-weight: 600;">${escapeHtml(rec.title)}</td>
-                        <td style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${escapeHtml(rec.description || '')}</td>
-                        <td><a href="${rec.video_url}" target="_blank" style="color: #3b82f6; text-decoration: none; word-break: break-all;">${escapeHtml(rec.video_url)}</a></td>
+                        <td style="max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${escapeHtml(rec.description || '')}</td>
+                        <td>${pdfBadge}</td>
+                        <td><a href="${rec.video_url}" target="_blank" style="color: #3b82f6; text-decoration: none; word-break: break-all; font-size: 13px;">${escapeHtml(rec.video_url)}</a></td>
                         <td>${dateStr}</td>
                         <td>
                             <button class="btn-admin btn-delete-recording" style="background: #ef4444; padding: 4px 8px; font-size: 12px;" data-id="${rec.id}">Delete</button>
@@ -2037,8 +2066,88 @@
         }
     }
 
+    // PDF Upload handling in Recording Modal
+    const pdfFileInput = document.getElementById('recordingPdfFile');
+    const btnBrowsePdf = document.getElementById('btnBrowsePdf');
+    const pdfUploadStatus = document.getElementById('pdfUploadStatus');
+    const btnClearPdf = document.getElementById('btnClearPdf');
+    const hiddenPdfUrl = document.getElementById('recordingPdfUrl');
+    const recordingPdfName = document.getElementById('recordingPdfName');
+    const recordingPdfUrlInput = document.getElementById('recordingPdfUrlInput');
+
+    if (btnBrowsePdf && pdfFileInput) {
+        btnBrowsePdf.addEventListener('click', () => pdfFileInput.click());
+        
+        pdfFileInput.addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+                alert('Vui lòng chọn file định dạng PDF (.pdf)');
+                pdfFileInput.value = '';
+                return;
+            }
+
+            pdfUploadStatus.textContent = `⏳ Đang tải lên: ${file.name}...`;
+            pdfUploadStatus.style.color = '#3b82f6';
+
+            const reader = new FileReader();
+            reader.onload = async () => {
+                const token = await checkAuth();
+                try {
+                    const uploadRes = await fetch('/api/admin/upload-pdf', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify({
+                            filename: file.name,
+                            base64Data: reader.result
+                        })
+                    });
+                    const uploadData = await uploadRes.json();
+                    if (uploadData.success) {
+                        hiddenPdfUrl.value = uploadData.url;
+                        if (!recordingPdfName.value.trim()) {
+                            recordingPdfName.value = file.name;
+                        }
+                        pdfUploadStatus.textContent = `✅ ${file.name}`;
+                        pdfUploadStatus.style.color = '#10b981';
+                        btnClearPdf.classList.remove('hidden');
+                    } else {
+                        throw new Error(uploadData.message || 'Upload failed');
+                    }
+                } catch (err) {
+                    console.error(err);
+                    pdfUploadStatus.textContent = '❌ Lỗi tải file lên';
+                    pdfUploadStatus.style.color = '#ef4444';
+                }
+            };
+            reader.readAsDataURL(file);
+        });
+
+        if (btnClearPdf) {
+            btnClearPdf.addEventListener('click', () => {
+                pdfFileInput.value = '';
+                hiddenPdfUrl.value = '';
+                recordingPdfName.value = '';
+                recordingPdfUrlInput.value = '';
+                pdfUploadStatus.textContent = 'Chưa chọn file';
+                pdfUploadStatus.style.color = '#64748b';
+                btnClearPdf.classList.add('hidden');
+            });
+        }
+    }
+
     dom.btnOpenCreateRecording.addEventListener('click', () => {
         dom.recordingForm.reset();
+        if (hiddenPdfUrl) hiddenPdfUrl.value = '';
+        if (pdfUploadStatus) {
+            pdfUploadStatus.textContent = 'Chưa chọn file';
+            pdfUploadStatus.style.color = '#64748b';
+        }
+        if (btnClearPdf) btnClearPdf.classList.add('hidden');
         dom.recordingModal.classList.remove('hidden');
     });
 
@@ -2053,6 +2162,15 @@
         const description = document.getElementById('recordingDescription').value.trim();
         const video_url = document.getElementById('recordingVideoUrl').value.trim();
 
+        // Check PDF: uploaded file or typed URL
+        let pdf_url = (hiddenPdfUrl && hiddenPdfUrl.value) ? hiddenPdfUrl.value.trim() : '';
+        if (!pdf_url && recordingPdfUrlInput && recordingPdfUrlInput.value.trim()) {
+            pdf_url = recordingPdfUrlInput.value.trim();
+        }
+        const pdf_name = (recordingPdfName && recordingPdfName.value.trim()) 
+            ? recordingPdfName.value.trim() 
+            : (pdf_url ? 'Tài liệu PDF' : null);
+
         try {
             const res = await fetch('/api/admin/recordings', {
                 method: 'POST',
@@ -2060,7 +2178,13 @@
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify({ title, description, video_url })
+                body: JSON.stringify({ 
+                    title, 
+                    description, 
+                    video_url,
+                    pdf_url: pdf_url || null,
+                    pdf_name: pdf_name || null
+                })
             });
             if (res.ok) {
                 dom.recordingModal.classList.add('hidden');

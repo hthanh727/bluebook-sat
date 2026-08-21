@@ -363,7 +363,7 @@
                         <th>Score</th>
                         <th>Status</th>
                         <th>Last Updated</th>
-                        <th style="width: 100px;">Thao tác</th>
+                        <th style="width: 140px;">Thao tác</th>
                     </tr>
                 </thead>
                 <tbody id="progressTableBody">
@@ -380,12 +380,13 @@
             <table class="tests-table" id="recordingsTable">
                 <thead>
                     <tr>
-                        <th style="width: 80px;">ID</th>
-                        <th style="width: 250px;">Title</th>
+                        <th style="width: 70px;">ID</th>
+                        <th style="width: 220px;">Title</th>
                         <th>Description</th>
-                        <th style="width: 250px;">Video URL</th>
-                        <th style="width: 150px;">Date Added</th>
-                        <th style="width: 120px;">Actions</th>
+                        <th style="width: 180px;">PDF / Tài liệu</th>
+                        <th style="width: 180px;">Video URL</th>
+                        <th style="width: 140px;">Date Added</th>
+                        <th style="width: 100px;">Actions</th>
                     </tr>
                 </thead>
                 <tbody id="recordingsTableBody">
@@ -497,9 +498,34 @@
                     <input type="url" class="form-control" id="recordingVideoUrl" required
                         placeholder="YouTube, Google Drive, Loom, Zoom cloud link, etc.">
                     <span style="font-size: 11px; color: #64748b; margin-top: 4px; display: block;">
-                        💡 Normal URLs are automatically parsed and embedded where possible (YouTube, Drive, Loom).
+                        💡 Hỗ trợ link YouTube, Google Drive, Loom, Vimeo, v.v. Tự động hiển thị trình phát video.
                     </span>
                 </div>
+
+                <!-- PDF Attachment Section -->
+                <div class="form-group" style="background: #f8fafc; padding: 14px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 14px;">
+                    <label style="display: flex; align-items: center; justify-content: space-between; font-weight: 600; margin-bottom: 6px;">
+                        <span>📄 Tài liệu / File PDF đính kèm (Optional)</span>
+                        <span style="font-size: 11px; font-weight: normal; color: #64748b;">Học sinh có thể đọc trực tiếp hoặc tải về</span>
+                    </label>
+                    
+                    <div style="margin-top: 8px;">
+                        <!-- Option A: File upload -->
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                            <input type="file" id="recordingPdfFile" accept="application/pdf" style="display: none;">
+                            <button type="button" class="btn-admin" id="btnBrowsePdf" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; padding: 6px 14px; font-size: 13px; cursor: pointer;">
+                                📁 Chọn file PDF từ máy tính
+                            </button>
+                            <span id="pdfUploadStatus" style="font-size: 13px; color: #64748b; max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Chưa chọn file</span>
+                            <button type="button" id="btnClearPdf" class="hidden" style="background: none; border: none; color: #ef4444; cursor: pointer; font-size: 16px; font-weight: bold;" title="Gỡ file">✕</button>
+                        </div>
+                        
+                        <input type="hidden" id="recordingPdfUrl">
+                        <input type="text" class="form-control" id="recordingPdfName" placeholder="Tên hiển thị tài liệu (VD: Slide bài giảng Math Day 1.pdf)" style="margin-bottom: 8px; font-size: 13px;">
+                        <input type="url" class="form-control" id="recordingPdfUrlInput" placeholder="Hoặc dán trực tiếp link PDF / Google Drive link..." style="font-size: 13px;">
+                    </div>
+                </div>
+
                 <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px;">
                     <button type="button" class="btn-admin" style="background: #64748b;"
                         id="btnCancelRecording">Cancel</button>

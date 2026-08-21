@@ -2318,15 +2318,37 @@
                                 `;
                             }
 
+                            let pdfHtml = '';
+                            if (rec.pdf_url) {
+                                const pdfTitle = rec.pdf_name || 'Tài liệu PDF đính kèm';
+                                const pdfPreviewUrl = getPdfPreviewUrl(rec.pdf_url);
+                                pdfHtml = `
+                                    <div style="margin: 10px 0 12px 0;">
+                                        <button class="btn-recording-pdf" data-url="${escapeHtml(pdfPreviewUrl)}" data-rawurl="${escapeHtml(rec.pdf_url)}" data-title="${escapeHtml(pdfTitle)}" style="display: inline-flex; align-items: center; gap: 7px; background: rgba(239, 68, 68, 0.12); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 6px; padding: 6px 12px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(239, 68, 68, 0.22)'" onmouseout="this.style.background='rgba(239, 68, 68, 0.12)'">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                                <polyline points="14 2 14 8 20 8"/>
+                                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                                <polyline points="10 9 9 9 8 9"/>
+                                            </svg>
+                                            <span style="max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${escapeHtml(pdfTitle)}</span>
+                                            <span style="font-size: 10px; background: rgba(239, 68, 68, 0.25); color: #fca5a5; padding: 1px 5px; border-radius: 4px;">PDF</span>
+                                        </button>
+                                    </div>
+                                `;
+                            }
+
                             card.innerHTML = `
                                 ${videoHtml}
                                 <div class="recording-details">
                                     <h3 class="recording-title">${escapeHtml(rec.title)}</h3>
                                     <p class="recording-desc">${escapeHtml(rec.description || 'No description provided.')}</p>
+                                    ${pdfHtml}
                                     <div class="recording-footer">
                                         <span>📅 ${dateStr}</span>
                                         <a href="${rec.video_url}" target="_blank" class="btn-recording-link">
-                                            Open
+                                            Open Video
                                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
                                                 <polyline points="15 3 21 3 21 9"/>
@@ -2336,6 +2358,15 @@
                                     </div>
                                 </div>
                             `;
+
+                            // Attach PDF modal trigger
+                            const pdfBtn = card.querySelector('.btn-recording-pdf');
+                            if (pdfBtn) {
+                                pdfBtn.addEventListener('click', () => {
+                                    openPdfModal(pdfBtn.dataset.url, pdfBtn.dataset.rawurl, pdfBtn.dataset.title);
+                                });
+                            }
+
                             grid.appendChild(card);
                         }
                     }
@@ -2344,6 +2375,55 @@
                     grid.innerHTML = '<p style="color:#ef4444; grid-column: 1/-1; text-align:center;">Failed to load recordings.</p>';
                 }
             }
+
+            function getPdfPreviewUrl(url) {
+                if (!url) return '';
+                // Google drive link to preview embed
+                let gdMatch = url.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/i);
+                if (gdMatch && gdMatch[1]) {
+                    return `https://drive.google.com/file/d/${gdMatch[1]}/preview`;
+                }
+                return url;
+            }
+
+            function openPdfModal(previewUrl, rawUrl, title) {
+                const modal = document.getElementById('pdfViewerModal');
+                const iframe = document.getElementById('pdfViewerIframe');
+                const titleEl = document.getElementById('pdfViewerTitle');
+                const newTabBtn = document.getElementById('btnPdfOpenNewTab');
+
+                if (modal && iframe) {
+                    titleEl.textContent = title || 'Tài liệu PDF';
+                    iframe.src = previewUrl;
+                    newTabBtn.href = rawUrl || previewUrl;
+                    modal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            function closePdfModal() {
+                const modal = document.getElementById('pdfViewerModal');
+                const iframe = document.getElementById('pdfViewerIframe');
+                if (modal) {
+                    modal.style.display = 'none';
+                    if (iframe) iframe.src = '';
+                    document.body.style.overflow = '';
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const closeBtn = document.getElementById('btnClosePdfViewer');
+                const modal = document.getElementById('pdfViewerModal');
+                if (closeBtn) closeBtn.addEventListener('click', closePdfModal);
+                if (modal) {
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) closePdfModal();
+                    });
+                }
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') closePdfModal();
+                });
+            });
 
             function getEmbedUrl(url) {
                 if (!url) return null;
@@ -2530,6 +2610,31 @@
             }
         })();
     </script>
+    <!-- PDF Viewer Modal -->
+    <div id="pdfViewerModal" style="display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 99999; justify-content: center; align-items: center; padding: 20px;">
+        <div style="background: #181524; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 12px; width: 1000px; max-width: 95vw; height: 90vh; display: flex; flex-direction: column; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8); overflow: hidden;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; background: rgba(255, 255, 255, 0.04); border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+                <div style="display: flex; align-items: center; gap: 10px; overflow: hidden;">
+                    <span style="font-size: 20px;">📄</span>
+                    <h3 id="pdfViewerTitle" style="margin: 0; font-size: 16px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 600px;">Tài liệu PDF</h3>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <a id="btnPdfOpenNewTab" href="#" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; font-size: 12px; font-weight: 600; color: #a78bfa; background: rgba(167, 139, 250, 0.12); border: 1px solid rgba(167, 139, 250, 0.25); border-radius: 6px; text-decoration: none; transition: all 0.2s;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                        Mở tab mới
+                    </a>
+                    <button id="btnClosePdfViewer" style="background: rgba(255, 255, 255, 0.08); border: none; color: #fff; width: 32px; height: 32px; border-radius: 6px; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: all 0.2s;" onmouseover="this.style.background='rgba(255, 255, 255, 0.16)'" onmouseout="this.style.background='rgba(255, 255, 255, 0.08)'">✕</button>
+                </div>
+            </div>
+            <div style="flex: 1; background: #0f0d19; position: relative;">
+                <iframe id="pdfViewerIframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
