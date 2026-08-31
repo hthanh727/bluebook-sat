@@ -60,7 +60,50 @@
     bookmarked: [],
     practiceMode: false,
     questionSubmitted: [],
+    isSubmitted: false,
   };
+
+  // ---- Local Persistence & Resilient Auto-Save ----
+  function saveLocalState() {
+    if (!state.testId) return;
+    try {
+      localStorage.setItem(`sat-answers-${state.testId}-${state.testType}`, JSON.stringify(state.answers));
+      localStorage.setItem(`sat-flagged-${state.testId}-${state.testType}`, JSON.stringify(state.flagged));
+      localStorage.setItem(`sat-resume-${state.testId}-${state.testType}`, JSON.stringify({
+        currentQuestion: state.currentQuestion,
+        currentModule: state.currentModule
+      }));
+    } catch (e) {
+      console.warn('LocalStorage save error:', e);
+    }
+  }
+
+  function clearLocalExamData() {
+    if (!state.testId) return;
+    try {
+      localStorage.removeItem(`sat-answers-${state.testId}-${state.testType}`);
+      localStorage.removeItem(`sat-flagged-${state.testId}-${state.testType}`);
+      localStorage.removeItem(`sat-resume-${state.testId}-${state.testType}`);
+      localStorage.removeItem(`sat-timer-${state.testId}-${state.testType}-1`);
+      localStorage.removeItem(`sat-timer-${state.testId}-${state.testType}-2`);
+      localStorage.removeItem(`sat-practice-mode-${state.testId}`);
+      localStorage.removeItem(`sat-practice-submitted-${state.testId}`);
+    } catch(e) {}
+  }
+
+  let saveProgressTimeout = null;
+  function triggerAutoSave(score = 0, completed = false, immediate = false) {
+    saveLocalState();
+    if (immediate || completed) {
+      if (saveProgressTimeout) clearTimeout(saveProgressTimeout);
+      saveProgress(score, completed);
+    } else {
+      if (saveProgressTimeout) clearTimeout(saveProgressTimeout);
+      saveProgressTimeout = setTimeout(() => {
+        saveProgress(score, completed);
+      }, 500);
+    }
+  }
 
   // ---- DOM References ----
   const $ = (sel) => document.querySelector(sel);
@@ -229,7 +272,7 @@ function renderQuestion() {
     const q = SAT_QUESTIONS[state.currentQuestion];
     if (!q) return;
 
-    localStorage.setItem(`sat-resume-${state.testId}-${state.testType}`, JSON.stringify({ currentQuestion: state.currentQuestion, currentModule: state.currentModule }));
+    saveLocalState();
 
     const panelLeft = document.getElementById('panelLeft');
     const panelDivider = document.getElementById('panelDivider');
@@ -466,14 +509,14 @@ function convertMarkdownTablesToHtml(text) {
           const i = parseInt(option.dataset.index);
           state.answers[idx] = i;
           renderQuestion();
-          saveProgress(); // Auto-save
+          triggerAutoSave(); // Debounced Auto-save & Instant LocalStorage
         });
         
         const sprInput = document.getElementById('sprInput');
         if (sprInput) {
             sprInput.addEventListener('input', (e) => {
                 state.answers[idx] = e.target.value.trim();
-                saveProgress();
+                triggerAutoSave();
             });
         }
       }
@@ -483,6 +526,7 @@ function convertMarkdownTablesToHtml(text) {
       if (flagBtn) {
         flagBtn.addEventListener('click', () => {
           state.flagged[idx] = !state.flagged[idx];
+          saveLocalState();
           renderQuestion();
         });
       }
@@ -519,9 +563,10 @@ function convertMarkdownTablesToHtml(text) {
     dom.panelLeft.scrollTop = 0;
     document.querySelector('.panel-right').scrollTop = 0;
 
-    // Render MathJax typeset
-    if (window.MathJax) {
-      window.MathJax.typesetPromise().catch((err) => console.log('MathJax error', err));
+    // Render MathJax typeset safely on question panels only
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      const targets = [dom.passageContainer, dom.questionContainer].filter(Boolean);
+      window.MathJax.typesetPromise(targets).catch((err) => console.log('MathJax error', err));
     }
   }
 
@@ -671,30 +716,34 @@ function convertMarkdownTablesToHtml(text) {
     
     dom.scoreOverlay.classList.add('active');
     
-    // Save final completion
-    saveProgress(correct, true);
+    // Save final completion and clear local cached exam state
+    state.isSubmitted = true;
+    clearLocalExamData();
+    triggerAutoSave(correct, true, true);
   }
   
   async function saveProgress(score = 0, completed = false) {
     const token = localStorage.getItem('token');
-    if (!token) return;
-    const testId = new URLSearchParams(window.location.search).get('id');
+    if (!token || !state.testId) return;
     try {
-        await fetch('/api/save-progress', {
+        const res = await fetch('/api/save-progress', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}` 
             },
             body: JSON.stringify({
-                test_id: testId,
+                test_id: state.testId,
                 answers: state.answers,
                 score: score,
                 completed: completed
             })
         });
+        if (!res.ok) {
+            console.warn('Save progress returned non-ok status:', res.status);
+        }
     } catch(err) {
-        console.error('Failed to save progress', err);
+        console.error('Failed to save progress to server (saved in localStorage):', err);
     }
   }
 
@@ -1413,8 +1462,12 @@ function convertMarkdownTablesToHtml(text) {
         });
         
         if (!response.ok) {
-            window.location.href = '/dashboard';
-            return;
+            if (response.status === 401 || response.status === 403) {
+                alert('Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.');
+                window.location.href = '/login';
+                return;
+            }
+            throw new Error(`Server returned ${response.status}`);
         }
         
         const data = await response.json();
@@ -1450,6 +1503,33 @@ function convertMarkdownTablesToHtml(text) {
         state.answers = new Array(numQ).fill(null);
         state.flagged = new Array(numQ).fill(false);
 
+        // 1. First restore answers and flags from localStorage if available
+        const localAnswers = localStorage.getItem(`sat-answers-${testId}-${state.testType}`);
+        if (localAnswers) {
+            try {
+                const parsedLocal = JSON.parse(localAnswers);
+                if (Array.isArray(parsedLocal)) {
+                    for (let i = 0; i < parsedLocal.length && i < numQ; i++) {
+                        if (parsedLocal[i] !== null && parsedLocal[i] !== undefined) {
+                            state.answers[i] = parsedLocal[i];
+                        }
+                    }
+                }
+            } catch(e) {}
+        }
+
+        const localFlagged = localStorage.getItem(`sat-flagged-${testId}-${state.testType}`);
+        if (localFlagged) {
+            try {
+                const parsedFlags = JSON.parse(localFlagged);
+                if (Array.isArray(parsedFlags)) {
+                    for (let i = 0; i < parsedFlags.length && i < numQ; i++) {
+                        if (parsedFlags[i]) state.flagged[i] = true;
+                    }
+                }
+            } catch(e) {}
+        }
+
         // Restore Practice Mode state
         state.questionSubmitted = new Array(numQ).fill(false);
         const savedPractice = localStorage.getItem(`sat-practice-mode-${testId}`);
@@ -1470,25 +1550,30 @@ function convertMarkdownTablesToHtml(text) {
             } catch(e) {}
         }
         
-        // Fetch previous progress
-        const progRes = await fetch(`/api/progress/${testId}`, {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-        if (progRes.ok) {
-            const progData = await progRes.json();
-            if (progData && progData.answers && (progData.completed !== 1 || state.reviewMode)) {
-                const savedAnswers = JSON.parse(progData.answers);
-                for (let i = 0; i < savedAnswers.length && i < numQ; i++) {
-                    state.answers[i] = savedAnswers[i];
+        // 2. Fetch server progress and smart-merge
+        try {
+            const progRes = await fetch(`/api/progress/${testId}`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (progRes.ok) {
+                const progData = await progRes.json();
+                if (progData && progData.answers && (progData.completed !== 1 || state.reviewMode)) {
+                    const savedAnswers = JSON.parse(progData.answers);
+                    for (let i = 0; i < savedAnswers.length && i < numQ; i++) {
+                        // Merge: if local didn't have it, take from server
+                        if (state.answers[i] === null && savedAnswers[i] !== null && savedAnswers[i] !== undefined) {
+                            state.answers[i] = savedAnswers[i];
+                        }
+                    }
+                    if (state.reviewMode) {
+                        state.questionSubmitted = new Array(numQ).fill(true);
+                    }
+                } else if (progData && progData.completed === 1 && !state.reviewMode) {
+                    clearLocalExamData();
                 }
-                if (state.reviewMode) {
-                    state.questionSubmitted = new Array(numQ).fill(true);
-                }
-            } else if (progData && progData.completed === 1) {
-                localStorage.removeItem(`sat-resume-${testId}-${state.testType}`);
-                localStorage.removeItem(`sat-timer-${testId}-${state.testType}-1`);
-                localStorage.removeItem(`sat-timer-${testId}-${state.testType}-2`);
             }
+        } catch(progErr) {
+            console.warn('Could not fetch server progress, using local cache:', progErr);
         }
         
         // Restore currentQuestion and currentModule if they exist
@@ -1516,12 +1601,14 @@ function convertMarkdownTablesToHtml(text) {
             }
         }
         // Fetch bookmarks
-        const bkRes = await fetch(`/api/tests/${testId}/bookmarks`, {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-        if (bkRes.ok) {
-            state.bookmarked = await bkRes.json();
-        }
+        try {
+            const bkRes = await fetch(`/api/tests/${testId}/bookmarks`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (bkRes.ok) {
+                state.bookmarked = await bkRes.json();
+            }
+        } catch(e) {}
 
         const userName = localStorage.getItem('userName') || 'Học sinh';
         if (dom.studentName) dom.studentName.textContent = userName;
@@ -1537,9 +1624,25 @@ function convertMarkdownTablesToHtml(text) {
         initEvents();
         initKeyboardShortcuts();
         initPanelResizer();
+
+        // Safe beforeunload & online listeners
+        window.addEventListener('beforeunload', (e) => {
+            if (!state.reviewMode && !state.isSubmitted && SAT_QUESTIONS && SAT_QUESTIONS.length > 0) {
+                saveLocalState();
+            }
+        });
+        window.addEventListener('online', () => {
+            triggerAutoSave(0, false, true);
+        });
+
     } catch (err) {
-        console.error(err);
-        alert('Error loading test. Please try again.');
+        console.error('Error during init:', err);
+        const retry = confirm('Lỗi kết nối tải bài thi hoặc máy chủ đang khởi động lại. Bấm OK để thử lại ngay, hoặc Cancel để quay lại bảng điều khiển.');
+        if (retry) {
+            setTimeout(init, 1000);
+        } else {
+            window.location.href = '/dashboard';
+        }
     }
   }
 

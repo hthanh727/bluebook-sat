@@ -16,6 +16,44 @@
     isCompleted: false
   };
 
+  // ---- Local Persistence & Resilient Auto-Save ----
+  function saveLocalState() {
+    if (!state.testId) return;
+    try {
+      localStorage.setItem(`sat-answers-${state.testId}-${state.testType}`, JSON.stringify(state.answers));
+      localStorage.setItem(`sat-flagged-${state.testId}-${state.testType}`, JSON.stringify(state.flagged));
+      localStorage.setItem(`sat-resume-${state.testId}-${state.testType}`, JSON.stringify({
+        currentQuestion: state.currentQuestion,
+        questionSubmitted: state.questionSubmitted
+      }));
+    } catch (e) {
+      console.warn('LocalStorage save error in practice:', e);
+    }
+  }
+
+  function clearLocalExamData() {
+    if (!state.testId) return;
+    try {
+      localStorage.removeItem(`sat-answers-${state.testId}-${state.testType}`);
+      localStorage.removeItem(`sat-flagged-${state.testId}-${state.testType}`);
+      localStorage.removeItem(`sat-resume-${state.testId}-${state.testType}`);
+    } catch(e) {}
+  }
+
+  let saveProgressTimeout = null;
+  function triggerAutoSave(completed = false, immediate = false) {
+    saveLocalState();
+    if (immediate || completed) {
+      if (saveProgressTimeout) clearTimeout(saveProgressTimeout);
+      saveProgress(completed);
+    } else {
+      if (saveProgressTimeout) clearTimeout(saveProgressTimeout);
+      saveProgressTimeout = setTimeout(() => {
+        saveProgress(completed);
+      }, 500);
+    }
+  }
+
   // ---- DOM References ----
   const $ = (sel) => document.querySelector(sel);
   const $$ = (sel) => document.querySelectorAll(sel);
@@ -366,7 +404,7 @@
                   // Update active UI style
                   $$('.answer-option').forEach(el => el.classList.remove('selected'));
                   option.classList.add('selected');
-                  saveProgress(false);
+                  triggerAutoSave(false);
               });
           } else {
               // Input text SPR
@@ -376,7 +414,7 @@
                       state.answers[state.currentQuestion] = e.target.value;
                       const preview = $('#sprAnswerPreview');
                       if (preview) preview.textContent = e.target.value;
-                      saveProgress(false);
+                      triggerAutoSave(false);
                   });
               }
           }
@@ -399,6 +437,7 @@
   function toggleFlag() {
       const active = !state.flagged[state.currentQuestion];
       state.flagged[state.currentQuestion] = active;
+      saveLocalState();
       const btn = $('#btnFlag');
       if (active) {
           btn.classList.add('flagged');
@@ -420,7 +459,7 @@
 
       state.questionSubmitted[state.currentQuestion] = true;
       renderQuestion();
-      saveProgress(false); // Save progress
+      triggerAutoSave(false, true); // Save immediately
   }
 
   // ---- Explain with AI ----
@@ -503,14 +542,13 @@
 
       // Save local resume info only if not completed
       if (!isDone) {
-          localStorage.setItem(`sat-resume-${state.testId}-${state.testType}`, JSON.stringify({
-              currentQuestion: state.currentQuestion,
-              questionSubmitted: state.questionSubmitted
-          }));
+          saveLocalState();
+      } else {
+          clearLocalExamData();
       }
 
       try {
-          await fetch('/api/save-progress', {
+          const res = await fetch('/api/save-progress', {
               method: 'POST',
               headers: { 
                   'Content-Type': 'application/json',
@@ -523,8 +561,11 @@
                   completed: isDone
               })
           });
+          if (!res.ok) {
+              console.warn('Practice saveProgress status:', res.status);
+          }
       } catch(err) {
-          console.error('Failed to save progress', err);
+          console.error('Failed to save progress to server (saved locally):', err);
       }
   }
 
@@ -946,8 +987,12 @@
               headers: { 'Authorization': `Bearer ${token}` }
           });
           if (!response.ok) {
-              window.location.href = '/dashboard';
-              return;
+              if (response.status === 401 || response.status === 403) {
+                  alert('Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.');
+                  window.location.href = '/login';
+                  return;
+              }
+              throw new Error(`Server returned ${response.status}`);
           }
 
           const data = await response.json();
@@ -981,38 +1026,70 @@
           state.flagged = new Array(numQ).fill(false);
           state.questionSubmitted = new Array(numQ).fill(false);
 
-          let isPreviouslyCompleted = false;
-          // Load previous progress
-          const progRes = await fetch(`/api/progress/${state.testId}`, {
-              headers: { 'Authorization': `Bearer ${token}` }
-          });
-          if (progRes.ok) {
-              const progData = await progRes.json();
-              if (progData && progData.completed === 1) {
-                  isPreviouslyCompleted = true;
-                  if (state.reviewMode) {
-                      state.isCompleted = true;
-                  }
-              }
-              if (progData && progData.answers && (progData.completed !== 1 || state.reviewMode)) {
-                  const savedAnswers = JSON.parse(progData.answers);
-                  for (let i = 0; i < savedAnswers.length && i < numQ; i++) {
-                      state.answers[i] = savedAnswers[i];
-                      if (savedAnswers[i] !== null && savedAnswers[i] !== undefined && savedAnswers[i].toString().trim() !== '') {
-                          state.questionSubmitted[i] = true;
+          // 1. Restore local cache first
+          const localAnswers = localStorage.getItem(`sat-answers-${state.testId}-${state.testType}`);
+          if (localAnswers) {
+              try {
+                  const parsedLocal = JSON.parse(localAnswers);
+                  if (Array.isArray(parsedLocal)) {
+                      for (let i = 0; i < parsedLocal.length && i < numQ; i++) {
+                          if (parsedLocal[i] !== null && parsedLocal[i] !== undefined) {
+                              state.answers[i] = parsedLocal[i];
+                          }
                       }
                   }
-                  
-                  if (state.reviewMode) {
-                      state.questionSubmitted.fill(true);
+              } catch(e) {}
+          }
+
+          const localFlagged = localStorage.getItem(`sat-flagged-${state.testId}-${state.testType}`);
+          if (localFlagged) {
+              try {
+                  const parsedFlags = JSON.parse(localFlagged);
+                  if (Array.isArray(parsedFlags)) {
+                      for (let i = 0; i < parsedFlags.length && i < numQ; i++) {
+                          if (parsedFlags[i]) state.flagged[i] = true;
+                      }
+                  }
+              } catch(e) {}
+          }
+
+          let isPreviouslyCompleted = false;
+          // 2. Load previous progress from server
+          try {
+              const progRes = await fetch(`/api/progress/${state.testId}`, {
+                  headers: { 'Authorization': `Bearer ${token}` }
+              });
+              if (progRes.ok) {
+                  const progData = await progRes.json();
+                  if (progData && progData.completed === 1) {
+                      isPreviouslyCompleted = true;
+                      if (state.reviewMode) {
+                          state.isCompleted = true;
+                      }
+                  }
+                  if (progData && progData.answers && (progData.completed !== 1 || state.reviewMode)) {
+                      const savedAnswers = JSON.parse(progData.answers);
+                      for (let i = 0; i < savedAnswers.length && i < numQ; i++) {
+                          if (state.answers[i] === null && savedAnswers[i] !== null && savedAnswers[i] !== undefined) {
+                              state.answers[i] = savedAnswers[i];
+                          }
+                          if (state.answers[i] !== null && state.answers[i] !== undefined && state.answers[i].toString().trim() !== '') {
+                              state.questionSubmitted[i] = true;
+                          }
+                      }
+                      
+                      if (state.reviewMode) {
+                          state.questionSubmitted.fill(true);
+                      }
                   }
               }
+          } catch(progErr) {
+              console.warn('Could not load practice progress from server, using local cache:', progErr);
           }
 
           // Restore active question from local storage only if in progress
           if (isPreviouslyCompleted && !state.reviewMode) {
-              // Starting fresh from completed test
-              localStorage.removeItem(`sat-resume-${state.testId}-${state.testType}`);
+              clearLocalExamData();
           } else {
               const savedResume = localStorage.getItem(`sat-resume-${state.testId}-${state.testType}`);
               if (savedResume && !state.reviewMode) {
@@ -1030,8 +1107,11 @@
 
           window.addEventListener('beforeunload', () => {
               if (!state.isCompleted && !state.reviewMode) {
-                  saveProgress(false);
+                  saveLocalState();
               }
+          });
+          window.addEventListener('online', () => {
+              triggerAutoSave(false, true);
           });
 
           const userName = localStorage.getItem('userName') || 'Học sinh';
@@ -1048,8 +1128,13 @@
               }, 500);
           }
       } catch (err) {
-          console.error(err);
-          alert('Error loading topic practice. Please try again.');
+          console.error('Practice init error:', err);
+          const retry = confirm('Lỗi kết nối tải chuyên đề hoặc máy chủ đang khởi động lại. Bấm OK để thử lại ngay, hoặc Cancel để quay lại bảng điều khiển.');
+          if (retry) {
+              setTimeout(init, 1000);
+          } else {
+              window.location.href = '/dashboard';
+          }
       }
   }
 

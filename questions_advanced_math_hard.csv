@@ -1,0 +1,176 @@
+module,question_number,prompt,option_a,option_b,option_c,option_d,correct_answer_index,correct_answer_text,image_url,question_type
+"1","1","For the given function \(f\), the value of \(f(x)\) increases by \(p\%\) for every increase of \(x\) by \(6\). What is the value of \(p\)?\n\(\(f(x) = 27(1.20)^{\frac{x}{6}}\)\)","","","","","","44","","spr"
+"1","2","How many times does the graph of the given equation in the \(xy\)-plane cross the \(x\)-axis, where \(a\), \(b\), and \(c\) are positive constants such that \(a > 7\) and \(b > c\)?\n\(\(y = 9\left(\frac{a}{7}\right)^{x + c} - b\)\)","Zero","One","Two","Three","1","","","mcq"
+"1","3","The table shows three values of \(x\) and their corresponding values of \(g(x)\), where \(g(x) = \frac{f(x)}{x + 3}\) and \(f\) is a linear function. What is the \(y\)-intercept of the graph of \(y = f(x)\) in the \(xy\)-plane?\n\n| \(x\) | \(g(x)\) |\n|---|---|\n| \(-27\) | \(3\) |\n| \(-9\) | \(0\) |\n| \(21\) | \(5\) |","\((0, 36)\)","\((0, 12)\)","\((0, 4)\)","\((0, -9)\)","0","","","mcq"
+"1","4","The quadratic function \(h\) is defined as shown. In the \(xy\)-plane, the graph of \(y = h(x)\) intersects the \(x\)-axis at the points \((0, 0)\) and \((t, 0)\), where \(t\) is a constant. What is the value of \(t\)?\n\(\(h(x) = 2(x - 4)^2 - 32\)\)","\(1\)","\(2\)","\(4\)","\(8\)","3","","","mcq"
+"1","5","What is the minimum value of the given function?\n\(\(f(x) = x^2 - 48x + 2,304\)\)","","","","","","1728","","spr"
+"1","6","What is the positive solution to the given equation?\n\(\(2|4 - x| + 3|4 - x| = 25\)\)","","","","","","9","","spr"
+"1","7","The function \(f\) is defined by \(f(x) = (-8)(2)^x + 22\). What is the \(y\)-intercept of the graph of \(y = f(x)\) in the \(xy\)-plane?","\((0, 14)\)","\((0, 2)\)","\((0, 22)\)","\((0, -8)\)","0","","","mcq"
+"1","8","An auditorium has seats for \(1,800\) people. Tickets to attend a show at the auditorium currently cost \(\$4.00\). For each \(\$1.00\) increase to the ticket price, \(100\) fewer tickets will be sold. This situation can be modeled by the equation \(y = -100x^2 + 1,400x + 7,200\), where \(x\) represents the increase in ticket price, in dollars, and \(y\) represents the revenue, in dollars, from ticket sales. If this equation is graphed in the \(xy\)-plane, at what value of \(x\) is the maximum of the graph?","\(4\)","\(7\)","\(14\)","\(18\)","1","","","mcq"
+"1","9","One solution to the given equation can be written as \(1 + \sqrt{k}\), where \(k\) is a constant. What is the value of \(k\)?\n\(\(x^2 - 2x - 9 = 0\)\)","\(8\)","\(10\)","\(20\)","\(40\)","1","","","mcq"
+"1","10","In the \(xy\)-plane, a line with equation \(2y = 4.5\) intersects a parabola at exactly one point. If the parabola has equation \(y = -4x^2 + bx\), where \(b\) is a positive constant, what is the value of \(b\)?","","","","","","6","","spr"
+"1","11","The given function \(f\) models the number of advertisements a company sent to its clients each year, where \(x\) represents the number of years since \(1997\), and \(0 \le x \le 5\). If \(y = f(x)\) is graphed in the \(xy\)-plane, which of the following is the best interpretation of the \(y\)-intercept of the graph in this context?\n\(\(f(x) = 9,000(0.66)^x\)\)","The minimum estimated number of advertisements the company sent to its clients during the \(5\) years was \(1,708\).","The minimum estimated number of advertisements the company sent to its clients during the \(5\) years was \(9,000\).","The estimated number of advertisements the company sent to its clients in \(1997\) was \(1,708\).","The estimated number of advertisements the company sent to its clients in \(1997\) was \(9,000\).","3","","","mcq"
+"1","12","The first term of a sequence is \(9\). Each term after the first is \(4\) times the preceding term. If \(w\) represents the \(n\)-th term of the sequence, which equation gives \(w\) in terms of \(n\)?","\(w = 4(9^n)\)","\(w = 4(9^{n-1})\)","\(w = 9(4^n)\)","\(w = 9(4^{n-1})\)","3","","","mcq"
+"1","13","The function \(f\) is defined by \(f(x) = a(2.2^x + 2.2^b)\), where \(a\) and \(b\) are integer constants and \(0 < a < b\). The functions \(g\) and \(h\) are equivalent to function \(f\), where \(k\) and \(m\) are constants. Which of the following equations displays the \(y\)-coordinate of the \(y\)-intercept of the graph of \(y = f(x)\) in the \(xy\)-plane as a constant or coefficient?\n\nI. \(g(x) = a(2.2^x + k)\)\nII. \(h(x) = a(2.2)^x + m\)","I only","II only","I and II","Neither I nor II","3","","","mcq"
+"1","14","\(x - y = 1\)\n\(x + y = x^2 - 3\)\n\nWhich ordered pair is a solution to the system of equations above?","\((1 + \sqrt{3}, \sqrt{3})\)","\((\sqrt{3}, -\sqrt{3})\)","\((1 + \sqrt{5}, \sqrt{5})\)","\((\sqrt{5}, -1 + \sqrt{5})\)","0","","","mcq"
+"1","15","\((ax + 3)(5x^2 - bx + 4) = 20x^3 - 9x^2 - 2x + 12\)\n\nThe equation above is true for all \(x\), where \(a\) and \(b\) are constants. What is the value of \(ab\)?","\(18\)","\(20\)","\(24\)","\(40\)","2","","","mcq"
+"1","16","Which of the following expressions is(are) a factor of \(3x^2 + 20x - 63\)?\n\nI. \(x - 9\)\nII. \(3x - 7\)","I only","II only","I and II","Neither I nor II","1","","","mcq"
+"1","17","If \(\frac{\sqrt{x^5}}{\sqrt[3]{x^4}} = x^{\frac{a}{b}}\) for all positive values of \(x\), what is the value of \(\frac{a}{b}\)?","","","","","","7/6","","spr"
+"1","18","Function \(f\) is defined by \(f(x) = -a^x + b\), where \(a\) and \(b\) are constants. In the \(xy\)-plane, the graph of \(y = f(x) - 12\) has a \(y\)-intercept at \(\left(0, -\frac{75}{7}\right)\). The product of \(a\) and \(b\) is \(\frac{320}{7}\). What is the value of \(a\)?","","","","","","20","","spr"
+"1","19","The function \(f\) is defined by the given equation. For what value of \(x\) does \(f(x)\) reach its minimum?\n\(\(f(x) = (x - 44)(x - 46)\)\)","\(46\)","\(45\)","\(44\)","\(-1\)","1","","","mcq"
+"1","20","In the given equation, \(q\) is an integer constant. The given equation has no real solutions. What is the largest possible value of \(q\)?\n\(\(r^2 + qr = 2r - 55\)\)","","","","","","16","","spr"
+"1","21","If \(x\) is a solution to the given equation \(\frac{1}{x^2 + 10x + 25} = 4\), which of the following is a possible value of \(x + 5\)?","\(\frac{1}{2}\)","\(\frac{5}{2}\)","\(\frac{9}{2}\)","\(\frac{11}{2}\)","0","","","mcq"
+"1","22","In the given equation, \(k\) is a constant. The equation \(\sqrt{k - x} = 58 - x\) has exactly one real solution. What is the minimum possible value of \(4k\)?","","","","","","231","","spr"
+"1","23","In the \(xy\)-plane, when the graph of the function \(f\), where \(f(x) = (x - 1)(x + 3)(x - 2)\), is shifted up \(6\) units, the resulting graph is defined by the function \(g\). If the graph of \(y = g(x)\) crosses through the point \((4, b)\), where \(b\) is a constant, what is the value of \(b\)?","","","","","","48","","spr"
+"1","24","A machine launches a softball from ground level. The softball reaches a maximum height of \(51.84\) meters above the ground at \(1.8\) seconds and hits the ground at \(3.6\) seconds. Which equation represents the height above ground \(h\), in meters, of the softball \(t\) seconds after it is launched?","\(h = -t^2 + 3.6\)","\(h = -t^2 + 51.84\)","\(h = -16(t - 1.8)^2 - 3.6\)","\(h = -16(t - 1.8)^2 + 51.84\)","3","","","mcq"
+"1","25","The expression \(\frac{29x + 102}{x(x + 51)}\) is equivalent to \(\frac{p}{x} + \frac{w}{x + 51}\), where \(p\) and \(w\) are constants. What is the value of \(w\)?","","","","","","27","","spr"
+"1","26","The function \(f\) is defined by \(f(x) = a^x + b\), where \(a\) and \(b\) are constants. In the \(xy\)-plane, the graph of \(y = f(x)\) has an \(x\)-intercept at \((2, 0)\) and a \(y\)-intercept at \((0, -323)\). What is the value of \(b\)?","","","","","","-324","","spr"
+"1","27","During a \(5\)-second time interval, the average acceleration \(a\), in meters per second squared, of an object with an initial velocity of \(12\) meters per second is defined by the equation \(a = \frac{v_f - 12}{5}\), where \(v_f\) is the final velocity of the object in meters per second. If the equation is rewritten in the form \(v_f = xa + y\), where \(x\) and \(y\) are constants, what is the value of \(x\)?","","","","","","5","","spr"
+"1","28","The revenue \(f(x)\), in dollars, that a company receives from sales of a product is given by the function \(f\) above, where \(x\) is the unit price, in dollars, of the product. The graph of \(y = f(x)\) in the \(xy\)-plane intersects the \(x\)-axis at \(0\) and \(a\). What does \(a\) represent?","The revenue, in dollars, when the unit price of the product is \(\$0\)","The unit price, in dollars, of the product that will result in maximum revenue","The unit price, in dollars, of the product that will result in a revenue of \(\$0\)","The maximum revenue, in dollars, that the company can make","2","","","mcq"
+"1","29","The equation above is true for all \(x > 2\), where \(r\) and \(t\) are positive constants. \(\frac{2}{x - 2} + \frac{3}{x + 5} = \frac{rx + t}{(x - 2)(x + 5)}\). What is the value of \(rt\)?","\(-20\)","\(15\)","\(20\)","\(60\)","2","","","mcq"
+"1","30","Growth of a Culture of Bacteria
+| Day | Number of bacteria per milliliter at end of day |
+|---|---|
+| \(1\) | \(2.5 \times 10^5\) |
+| \(2\) | \(5.0 \times 10^5\) |
+| \(3\) | \(1.0 \times 10^6\) |
+
+A culture of bacteria is growing at an exponential rate, as shown in the table above. At this rate, on which day would the number of bacteria per milliliter reach \(5.12 \times 10^8\)?","Day \(5\)","Day \(9\)","Day \(11\)","Day \(12\)","3","","","mcq"
+"1","31","One solution to the given equation \(2x^2 - 8x - 7 = 0\) can be written as \(\frac{8 - \sqrt{k}}{4}\), where \(k\) is a constant. What is the value of \(k\)?","","","","","","120","","spr"
+"1","32","For what value of \(x\) is the given expression \(\sqrt[3]{70n}(\sqrt[n]{70n})^2\) equivalent to \((70n)^{30x}\), where \(n > 1\)?","","","","","","4/225","","spr"
+"1","33","Which of the following is a solution to the equation \(2x^2 - 2 = 2x + 3\)?","\(2\)","\(1 - \sqrt{11}\)","\(\frac{1}{2} + \sqrt{11}\)","\(\frac{1 + \sqrt{11}}{2}\)","3","","","mcq"
+"1","34","In the given quadratic function \(f(x) = ax^2 + 4x + c\), \(a\) and \(c\) are constants. The graph of \(y = f(x)\) in the \(xy\)-plane is a parabola that opens upward and has a vertex at the point \((h, k)\), where \(h\) and \(k\) are constants. If \(k < 0\) and \(f(-9) = f(3)\), which of the following must be true?
+
+I. \(c < 0\)
+II. \(a \ge 1\)","I only","II only","I and II","Neither I nor II","3","","","mcq"
+"1","35","In the \(xy\)-plane, a line with equation \(2y = c\) for some constant \(c\) intersects a parabola at exactly one point. If the parabola has equation \(y = -2x^2 + 9x\), what is the value of \(c\)?","","","","","","81/4","","spr"
+"1","36","The function \(P\) models the population, in thousands, of a certain city \(t\) years after \(2003\). According to the model, the population is predicted to increase by \(4\%\) every \(n\) months. What is the value of \(n\)?
+
+\(P(t) = 260(1.04)^{(\frac{4}{3})t}\)","\(8\)","\(12\)","\(18\)","\(72\)","0","","","mcq"
+"1","37","The function \(f\) is defined by \(f(x) = 4x^2 + 64x + 262\). The function \(g\) is defined by \(g(x) = f(x + 5)\). For what value of \(x\) does \(g(x)\) reach its minimum?","\(-13\)","\(-8\)","\(-5\)","\(-3\)","0","","","mcq"
+"1","38","The expression \((3x - 23)(19x + 6)\) is equivalent to the expression \(ax^2 + bx + c\), where \(a\), \(b\), and \(c\) are constants. What is the value of \(b\)?","","","","","","-419","","spr"
+"1","39","The graph of \(y = 2x^2 + bx + c\) is shown, where \(b\) and \(c\) are constants. What is the value of \(bc\)?","","","","","","-24","images/adv_math_hard_q39.png","spr"
+"1","40","What is the sum of the solutions to the given equation \((x - 47)^2 = 1\)?","","","","","","94","","spr"
+"1","41","In the given system of equations, \(m\) and \(b\) are negative constants. In the \(xy\)-plane, the graphs of the equations in the given system intersect at the point \((-5, y)\), where \(y < 0\). Which expression represents the value of \(b\)?
+
+\[\begin{aligned}x^2 + y^2 &= 36\\y &= mx + \frac{b}{4}\end{aligned}\]","\(-\frac{5m}{4} + \frac{\sqrt{11}}{4}\)","\(\frac{5m}{4} - \frac{\sqrt{11}}{4}\)","\(-20m + 4\sqrt{11}\)","\(20m - 4\sqrt{11}\)","3","","","mcq"
+"1","42","Which expression is equivalent to \(\frac{4}{4x - 5} - \frac{1}{x + 1}\)?","\(\frac{1}{(x + 1)(4x - 5)}\)","\(-\frac{3}{3x - 6}\)","\(-\frac{1}{(x + 1)(4x - 5)}\)","\(\frac{9}{(x + 1)(4x - 5)}\)","3","","","mcq"
+"1","43","The function \(f\) is defined by \(f(x) = (x - 6)(x - 2)(x + 6)\). In the \(xy\)-plane, the graph of \(g\) is the result of translating the graph of \(y = f(x)\) up \(4\) units. What is the value of \(g(0)\)?","","","","","","76","","spr"
+"1","44","The function \(g\) is defined by the given equation, where \(a\) and \(b\) are constants. In the \(xy\)-plane, the graph of \(y = g(x)\) passes through the point \((0, 22)\), and \(g(-22) = 0\). What is the value of \(b\)?
+
+\[g(x) = \frac{x^2 - x - a}{x^3 - x - b}\]","\(23\)","\(22\)","\(-22\)","\(-23\)","0","","","mcq"
+"1","45","In the expression above, \(b\) and \(c\) are positive integers. If the expression is equivalent to \(x + b\) and \(x \neq b\), which of the following could be the value of \(c\)?
+
+\[\frac{x^2 - c}{x - b}\]","\(4\)","\(6\)","\(8\)","\(10\)","0","","","mcq"
+"1","46","What is the smallest solution to the given equation?
+
+\[\sqrt{(x - 2)^2} = \sqrt{3x + 34}\]","","","","","","-3","","spr"
+"1","47","A quadratic function models a projectile's height, in meters, above the ground in terms of the time, in seconds, after it was launched. The model estimates that the projectile was launched from an initial height of \(7\) meters above the ground and reached a maximum height of \(51.1\) meters above the ground \(3\) seconds after the launch. How many seconds after the launch does the model estimate that the projectile will return to a height of \(7\) meters?","\(3\)","\(6\)","\(7\)","\(9\)","1","","","mcq"
+"1","48","The given equation relates the variables \(x\) and \(y\). For what value of \(x\) does the value of \(y\) reach its minimum?
+
+\[y = x^2 - 14x + 22\]","","","","","","7","","spr"
+"1","49","The graph of \(y = f(x) + 4\) is shown. Which equation defines function \(f\)?
+
+| x | y |
+|---|---|
+| ... | ... |
+
+*(Note: graph shows an exponential curve passing through \((0, 8)\), with horizontal asymptote at \(y = 4\) and \(x\)-intercept at \(2\).)*","\(f(x) = -3^x + 1\)","\(f(x) = -3^x + 5\)","\(f(x) = -3^x + 8\)","\(f(x) = -3^x + 9\)","1","","images/adv_math_hard_q49.png","mcq"
+"1","50","If \((x_1, y_1)\) and \((x_2, y_2)\) are the two solutions to the system of equations above, what is the value of \(y_1 + y_2\)?
+
+\[\begin{aligned}y &= x^2 + 2x + 1\\x + y + 1 &= 0\end{aligned}\]","\(-3\)","\(-2\)","\(-1\)","\(1\)","3","","","mcq"
+"1","51","The function \(h\) estimates a ball's height, in feet, above a floor \(t\) seconds after the ball is released, where \(b\) is a constant. The function estimates that the ball is \(19.36\) feet above the floor when it is released at \(t = 0\). How many seconds after being released does the function estimate the ball will reach the floor?
+
+\[h(t) = -16t^2 + b\]","","","","","","1.1","","spr"
+"1","52","The given function \(f\) models the number of coupons a company sent to their customers at the end of each year, where \(t\) represents the number of years since the end of \(1998\), and \(0 \le t \le 5\). If \(y = f(t)\) is graphed in the \(ty\)-plane, which of the following is the best interpretation of the \(y\)-intercept of the graph in this context?
+
+\[f(t) = 8,000(0.65)^t\]","The minimum estimated number of coupons the company sent to their customers during the \(5\) years was \(1,428\).","The minimum estimated number of coupons the company sent to their customers during the \(5\) years was \(8,000\).","The estimated number of coupons the company sent to their customers at the end of \(1998\) was \(1,428\).","The estimated number of coupons the company sent to their customers at the end of \(1998\) was \(8,000\).","3","","","mcq"
+"1","53","If \(u - 3 = \frac{6}{t - 2}\), what is \(t\) in terms of \(u\)?","\(t = \frac{1}{u}\)","\(t = \frac{2u + 9}{u}\)","\(t = \frac{1}{u - 3}\)","\(t = \frac{2u}{u - 3}\)","3","","","mcq"
+"1","54","In the given equation, \(c\) is a constant. The equation has exactly one solution. What is the value of \(c\)?
+
+\[-9x^2 + 30x + c = 0\]","\(3\)","\(0\)","\(-25\)","\(-53\)","2","","","mcq"
+"1","55","In the given equation, \(c\) is a positive constant. Which of the following is one of the solutions to the given equation?
+
+\[\frac{x^2}{\sqrt{x^2 - c^2}} = \frac{c^2}{\sqrt{x^2 - c^2}} + 39\]","\(-c\)","\(-\sqrt{c^2 - 39^2}\)","\(-\sqrt{39^2 - c^2}\)","\(-\sqrt{c^2 + 39^2}\)","3","","","mcq"
+"1","56","Which of the following functions has(have) a minimum value at \(-3\)?
+
+I. \(f(x) = -6(3)^x - 3\)
+II. \(g(x) = -3(6)^x\)","I only","II only","I and II","Neither I nor II","3","","","mcq"
+"1","57","In the \(xy\)-plane, a parabola has vertex \((9, -14)\) and intersects the \(x\)-axis at two points. If the equation of the parabola is written in the form \(y = ax^2 + bx + c\), where \(a\), \(b\), and \(c\) are constants, which of the following could be the value of \(a + b + c\)?","\(-23\)","\(-19\)","\(-14\)","\(-12\)","3","","","mcq"
+"1","58","The functions \(p\) and \(r\) are defined by the equations shown, where \(a\) and \(b\) are integer constants such that \(a < b\) and \(b < 0\). If \(y = p(x)\) and \(y = r(x)\) are graphed in the \(xy\)-plane, which of the following equations displays, as a constant or coefficient, the \(y\)-coordinate of the \(y\)-intercept of the graph of the corresponding function?
+
+I. \(p(x) = a(4.1)^x + b\)
+II. \(r(x) = a(4.1)^{x+b}\)","I only","II only","I and II","Neither I nor II","3","","","mcq"
+"1","59","The graphs of the equations in the given system of equations intersect at the point \((x, y)\) in the \(xy\)-plane. What is a possible value of \(x\)?
+
+\[\begin{aligned}8x + y &= -11\\2x^2 &= y + 341\end{aligned}\]","\(-15\)","\(-11\)","\(2\)","\(8\)","0","","","mcq"
+"1","60","The table above gives selected values of a polynomial function \(p\). Based on the values in the table, which of the following must be a factor of \(p\)?
+
+| \(x\) | \(p(x)\) |
+|---|---|
+| \(-2\) | \(5\) |
+| \(-1\) | \(0\) |
+| \(0\) | \(-3\) |
+| \(1\) | \(-1\) |
+| \(2\) | \(0\) |","\((x - 3)\)","\((x + 3)\)","\((x - 1)(x + 2)\)","\((x + 1)(x - 2)\)","3","","","mcq"
+"1","61","What is the sum of the solutions to the given equation?
+
+\(x(x + 1) - 56 = 4x(x - 7)\)","","","","","","29/3","","spr"
+"1","62","When the quadratic function \(f\) is graphed in the \(xy\)-plane, where \(y = f(x)\), its vertex is \((-3, 6)\). One of the \(x\)-intercepts of this graph is \(\left(-\frac{17}{4}, 0\right)\). What is the other \(x\)-intercept of the graph?","\(\left(-\frac{29}{4}, 0\right)\)","\(\left(-\frac{7}{4}, 0\right)\)","\(\left(\frac{5}{4}, 0\right)\)","\(\left(\frac{17}{4}, 0\right)\)","1","","","mcq"
+"1","63","Function \(f\) is a quadratic function where \(f(-20) = 0\) and \(f(-4) = 0\). The graph of \(y = f(x)\) in the \(xy\)-plane has a vertex at \((r, -64)\). What is the value of \(r\)?","","","","","","-12","","spr"
+"1","64","The function \(f\) is defined by \(f(x) = (x + 3)(x + 1)\). The graph of \(f\) in the \(xy\)-plane is a parabola. Which of the following intervals contains the \(x\)-coordinate of the vertex of the graph of \(f\)?","\(-4 < x < -3\)","\(-3 < x < 1\)","\(1 < x < 3\)","\(3 < x < 4\)","1","","","mcq"
+"1","65","If \(4^{8c} = \sqrt[3]{4^7}\), what is the value of \(c\)?","","","","","","7/24","","spr"
+"1","66","In the given system of equations, \(k\) is a positive integer constant. The system has no real solutions. What is the least possible value of \(k\)?
+
+\(y = -2.5\)
+\(y = x^2 + 8x + k\)","","","","","","14","","spr"
+"1","67","The function \(f\) is defined by \(f(x) = a^x + b\), where \(a\) and \(b\) are constants and \(a > 0\). In the \(xy\)-plane, the graph of \(y = f(x)\) has a \(y\)-intercept at \((0, -25)\) and passes through the point \((2, 23)\). What is the value of \(a + b\)?","","","","","","-19","","spr"
+"1","68","What is the sum of the solutions to the given equation?
+
+\(|x - 9| + 45 = 63\)","","","","","","18","","spr"
+"1","69","A landscaper is designing a rectangular garden. The length of the garden is to be \(5\) feet longer than the width. If the area of the garden will be \(104\) square feet, what will be the length, in feet, of the garden?","","","","","","13","","spr"
+"1","70","The function \(P\) models the population, in thousands, of a certain city \(t\) years after \(2005\). According to the model, the population is predicted to increase by \(n\%\) every \(18\) months. What is the value of \(n\)?
+
+\(P(t) = 290(1.04)^{\left(\frac{t}{2}\right)}\)","\(0.38\)","\(1.04\)","\(4\)","\(6\)","2","","","mcq"
+"1","71","The function \(f\) is defined by the given equation. Which of the following equivalent forms of the equation displays the maximum value of the function as a constant or coefficient?
+
+\(f(x) = -6x^2 + 60x - 126\)","\(f(x) = -6x^2 + 42x + 18x - 126\)","\(f(x) = -6x(x - 7) + 18(x - 7)\)","\(f(x) = -6(x - 5)^2 + 24\)","\(f(x) = -6(x - 7)(x - 3)\)","2","","","mcq"
+"1","72","In the \(xy\)-plane, the graph of \(y = x^2 - 9\) intersects line \(p\) at \((1, a)\) and \((5, b)\), where \(a\) and \(b\) are constants. What is the slope of line \(p\)?","\(6\)","\(2\)","\(-2\)","\(-6\)","0","","","mcq"
+"1","73","For the function \(f\), \(f(0) = 86\), and for each increase in \(x\) by \(1\), the value of \(f(x)\) decreases by \(80%\). What is the value of \(f(2)\)?","","","","","","3.44","","spr"
+"1","74","The equation above models the number of members, \(M\), of a gym \(t\) years after the gym opens. Of the following, which equation models the number of members of the gym \(q\) quarter years after the gym opens?
+
+\(M = 1,800(1.02)^t\)","\(M = 1,800(1.02)^{\frac{q}{4}}\)","\(M = 1,800(1.02)^{4q}\)","\(M = 1,800(1.005)^{4q}\)","\(M = 1,800(1.082)^q\)","0","","","mcq"
+"1","75","A solution to the given system of equations is \((x, y)\). What is the greatest possible value of \(x\)?
+
+\(y = x + 9\)
+\(y = x^2 + 16x + 63\)","\(-6\)","\(7\)","\(9\)","\(63\)","0","","","mcq"
+"1","76","The given equation relates the positive variables \(p\), \(q\), \(r\), and \(s\). Which of the following is equivalent to \(q\)?
+
+\(\frac{20}{p} = \frac{20}{q} - \frac{20}{r} - \frac{20}{s}\)","\(p + r + s\)","\(20(p + r + s)\)","\(\frac{prs}{pr + ps + rs}\)","\(\frac{prs}{20p + 20r + 20s}\)","2","","","mcq"
+"1","77","The functions \(f\) and \(g\) are defined by the given equations, where \(x \ge 0\). Which of the following equations displays, as a constant or coefficient, the maximum value of the function it defines, where \(x \ge 0\)?
+
+I. \(f(x) = 33(0.4)^{x + 3}\)
+II. \(g(x) = 33(0.16)(0.4)^{x - 2}\)","I only","II only","I and II","Neither I nor II","1","","","mcq"
+"1","78","The function \(f\) is defined by \(f(x) = ax^2 + bx + c\), where \(a\), \(b\), and \(c\) are constants. The graph of \(y = f(x)\) in the \(xy\)-plane passes through the points \((7, 0)\) and \((-3, 0)\). If \(a\) is an integer greater than \(1\), which of the following could be the value of \(a + b\)?","\(-6\)","\(-3\)","\(4\)","\(5\)","0","","","mcq"
+"1","79","The formula above can be used to approximate the dew point \(D\), in degrees Fahrenheit, given the temperature \(T\), in degrees Fahrenheit, and the relative humidity of \(H\) percent, where \(H > 50\). Which of the following expresses the relative humidity in terms of the temperature and the dew point?
+
+\(D = T - \frac{9}{25}(100 - H)\)","\(H = \frac{25}{9}(D - T) + 100\)","\(H = \frac{25}{9}(D - T) - 100\)","\(H = \frac{25}{9}(D + T) + 100\)","\(H = \frac{25}{9}(D + T) - 100\)","0","","","mcq"
+"1","80","Which of the following are solutions to the given equation, where \(a\) is a constant and \(a > 30\)?\n\n\[x - 29 = (x - a)(x - 29)\]\n\nI. \(a\)\nII. \(a + 1\)\nIII. \(29\)","\(I\) and \(II\) only","\(I\) and \(III\) only","\(II\) and \(III\) only","\(I\), \(II\), and \(III\)","2","","","mcq"
+"1","81","Which of the following is equivalent to \(\left(a + \frac{b}{2}\right)^2\)?","\(a^2 + \frac{b^2}{2}\)","\(a^2 + \frac{b^2}{4}\)","\(a^2 + \frac{ab}{2} + \frac{b^2}{2}\)","\(a^2 + ab + \frac{b^2}{4}\)","3","","","mcq"
+"1","82","Square P has a side length of \(x\) inches. Square Q has a perimeter that is \(176\) inches greater than the perimeter of square P. The function \(f\) gives the area of square Q, in square inches. Which of the following defines \(f\)?","\(f(x) = (x + 44)^2\)","\(f(x) = (x + 176)^2\)","\(f(x) = (176x + 44)^2\)","\(f(x) = (176x + 176)^2\)","0","","","mcq"
+"1","83","In the given system of equations, \(a\) is a constant. The graphs of the equations in the given system intersect at exactly one point, \((x, y)\), in the \(xy\)-plane. What is the value of \(x\)?\n\n\[y = 2x^2 - 21x + 64\]\n\[y = 3x + a\]","\(-8\)","\(-6\)","\(6\)","\(8\)","2","","","mcq"
+"1","84","The surface area of a cube is \(6\left(\frac{a}{4}\right)^2\), where \(a\) is a positive constant. Which of the following gives the perimeter of one face of the cube?","\(\frac{a}{4}\)","\(a\)","\(4a\)","\(6a\)","1","","","mcq"
+"1","85","According to a model, the estimated volume of a certain tree in a forest increases by \(13.9\%\) for every increase of \(100\) centimeters in the tree's height. The equation \(y = ab^{\frac{x}{100}}\) represents this model, where \(y\) represents the estimated volume, in cubic centimeters, of this tree in the forest, \(x\) represents the tree's height, in centimeters, and \(a\) and \(b\) are constants. In this equation, what is the value of \(b\)?","\(0.139\)","\(1\)","\(1.139\)","\(13.9\)","2","","","mcq"
+"1","86","In the \(xy\)-plane, the graph of \(y = 3x^2 - 14x\) intersects the graph of \(y = x\) at the points \((0, 0)\) and \((a, a)\). What is the value of \(a\)?","","","","","","5","","spr"
+"1","87","The graph of the given equation in the \(xy\)-plane has a \(y\)-intercept of \((r, s)\). Which of the following equivalent equations displays the value of \(s\) as a constant, a coefficient, or the base?\n\n\[y = 576^{(2x + 2)}\]","\(y = 331,776^{(x + 1)}\)","\(y = 24^{(4x + 4)}\)","\(\frac{1}{24}(24)^{(4x + 5)}\)","\(\frac{1}{576}(576)^{(2x + 3)}\)","0","","","mcq"
+"1","88","Which expression is equivalent to \(\frac{y + 12}{x - 8} + \frac{y(x - 8)}{x^2 - 8xy\)?","\(\frac{xy + y + 4}{x^2y - 16x^2y + 64xy}\)","\(\frac{xy + 9y + 12}{x^2y - 8xy + x - 8}\)","\(\frac{xy^2 + 13xy - 8y}{x^2y - 8xy}\)","\(\frac{xy^2 + 13xy - 8y}{x^3y - 16x^2y + 64xy}\)","2","","","mcq"
+"1","89","One of the factors of \(2x^3 + 42x^2 + 208x\) is \(x + b\), where \(b\) is a positive constant. What is the smallest possible value of \(b\)?","","","","","","8","","spr"
+"1","90","The function \(h\) is defined by \(h(x) = a^x + b\), where \(a\) and \(b\) are positive constants. The graph of \(y = h(x)\) in the \(xy\)-plane passes through the points \((0, 10)\) and \(\left(-2, \frac{325}{36}\right)\). What is the value of \(ab\)?","\(\frac{1}{4}\)","\(\frac{1}{2}\)","\(54\)","\(60\)","2","","","mcq"
+"1","91","The function \(f\) is defined by \(f(x) = a\sqrt{x} + b\), where \(a\) and \(b\) are constants. In the \(xy\)-plane, the graph of \(y = f(x)\) passes through the point \((-24, 0)\), and \(f(24) < 0\). Which of the following must be true?","\(f(0) = 24\)","\(f(0) = -24\)","\(a > b\)","\(a < b\)","3","","","mcq"
+"1","92","The table shows three values of \(x\) and their corresponding values of \(y\), where \(y = f(x) + 4\) and \(f\) is a quadratic function. What is the \(y\)-coordinate of the \(y\)-intercept of the graph of \(y = f(x)\) in the \(xy\)-plane?\n\n| \(x\) | \(y\) |\n|---|---|\n| \(21\) | \(-8\) |\n| \(23\) | \(8\) |\n| \(25\) | \(-8\) |","","","","","","-2112","","spr"
+"1","93","The given expression can be written in the form \(9x^4 + x^3 + ax^2 - x\), where \(a\) is a constant. What is the value of \(a\)?\n\n\[(9x^4 + 8x^3) - (7x^3 + 5x^2) - (3x^2 + x)\]","\(-8\)","\(-2\)","\(2\)","\(8\)","0","","","mcq"
+"1","94","A quadratic function models the height, in feet, of an object above the ground in terms of the time, in seconds, after the object is launched off an elevated surface. The model indicates the object has an initial height of \(10\) feet above the ground and reaches its maximum height of \(1,034\) feet above the ground \(8\) seconds after being launched. Based on the model, what is the height, in feet, of the object above the ground \(10\) seconds after being launched?","\(234\)","\(778\)","\(970\)","\(1,014\)","2","","","mcq"
+"1","95","The equation \(\frac{x^2 + 6x - 7}{x + 7} = ax + d\) is true for all \(x \neq -7\), where \(a\) and \(d\) are integers. What is the value of \(a + d\)?","\(-6\)","\(-1\)","\(0\)","\(1\)","2","","","mcq"
+"1","96","Which of the following expressions is equivalent to \(\frac{x^2 - 2x - 5}{x - 3}\)?","\(x - 5 - \frac{20}{x - 3}\)","\(x - 5 - \frac{10}{x - 3}\)","\(x + 1 - \frac{8}{x - 3}\)","\(x + 1 - \frac{2}{x - 3}\)","3","","","mcq"
+"1","97","How many solutions does the given equation have?\n\n\[|4x - 3| = -9\]","Zero","One","Two","Infinitely many","0","","","mcq"
+"1","98","One solution to the given equation can be written as \(x = \frac{-7 + \sqrt{k}}{2}\), where \(k\) is a constant. What is the value of \(k\)?\n\n\[x^2 + 7x + 5 = 0\]","","","","","","29","","spr"

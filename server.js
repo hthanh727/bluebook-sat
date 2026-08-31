@@ -8,6 +8,14 @@ const path = require('path');
 const fs = require('fs');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
+// Global crash protection for node process
+process.on('uncaughtException', (err) => {
+    console.error('Unhandled Exception trapped:', err);
+});
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('Unhandled Rejection trapped at:', promise, 'reason:', reason);
+});
+
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '100mb' }));
