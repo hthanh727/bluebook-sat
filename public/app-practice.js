@@ -1007,10 +1007,19 @@
               }
               
               // If it's a Math topic (or title contains 'math' or test type is math or questions are math), show Calculator and Reference sheet
+              const titleLower = (data.test.title || '').toLowerCase();
               const isMath = data.test.type === 'math' || 
-                             data.test.title.toLowerCase().includes('math') || 
-                             data.test.title.toLowerCase().includes('algebra') ||
-                             data.test.title.toLowerCase().includes('geometry') ||
+                             titleLower.includes('math') || 
+                             titleLower.includes('algebra') ||
+                             titleLower.includes('geometry') ||
+                             titleLower.includes('trigonometry') ||
+                             titleLower.includes('arithmetic') ||
+                             titleLower.includes('number') ||
+                             titleLower.includes('calc') ||
+                             titleLower.includes('problem') ||
+                             titleLower.includes('data') ||
+                             titleLower.includes('analysis') ||
+                             titleLower.includes('psda') ||
                              (SAT_QUESTIONS.length > 0 && SAT_QUESTIONS[0].section === 'math');
               if (isMath) {
                   dom.btnCalculator.style.display = 'inline-flex';

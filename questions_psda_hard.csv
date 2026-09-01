@@ -1,0 +1,108 @@
+question_number,question_id,question_type,prompt,option_a,option_b,option_c,option_d,correct_answer_index,correct_answer_text,image_url
+1,"1fbd3b67","mcq","The number \(a\) is \(190\%\) greater than the number \(b\). The number \(b\) is \(80\%\) less than \(24\). What is the value of \(a\)?","\(9.12\)","\(13.92\)","\(26.40\)","\(36.48\)",1,"",""
+2,"ecbdbe84","mcq","The table shown summarizes the number of employees at each of the \(17\) restaurants in a town.
+
+| Number of employees | Number of restaurants |
+| :--- | :--- |
+| \(2\) to \(7\) | \(2\) |
+| \(8\) to \(13\) | \(4\) |
+| \(14\) to \(19\) | \(2\) |
+| \(20\) to \(25\) | \(7\) |
+| \(26\) to \(31\) | \(2\) |
+
+Which of the following could be the median number of employees for the restaurants in this town?","\(2\)","\(9\)","\(15\)","\(21\)",3,"",""
+3,"f8a322d9","mcq","Two data sets of \(23\) integers each are summarized in the histograms shown. For each of the histograms, the first interval represents the frequency of integers greater than or equal to \(10\), but less than \(20\). The second interval represents the frequency of integers greater than or equal to \(20\), but less than \(30\), and so on. What is the smallest possible difference between the mean of data set A and the mean of data set B?","\(0\)","\(1\)","\(10\)","\(23\)",1,"","/images/psda_hard/q3_histograms.png"
+4,"3638f413","spr","Jeremy deposited \(x\) dollars in his investment account on January 1, 2001. The amount of money in the account doubled each year until Jeremy had \(480\) dollars in his investment account on January 1, 2005. What is the value of \(x\)?","","","","",-1,"30",""
+5,"1142af44","mcq","The frequency distribution below summarizes a set of data, where \(a\) is a positive integer.
+
+| Value | Frequency |
+| :--- | :--- |
+| \(1\) | \(a\) |
+| \(2\) | \(2a\) |
+| \(3\) | \(3a\) |
+| \(4\) | \(2a\) |
+| \(5\) | \(a\) |
+
+How much greater is the mean of the set of data than the median?","\(0\)","\(1\)","\(2\)","\(3\)",0,"",""
+6,"1e8ccffd","mcq","The mean score of \(8\) players in a basketball game was \(14.5\) points. If the highest individual score is removed, the mean score of the remaining \(7\) players becomes \(12\) points. What was the highest score?","\(20\)","\(24\)","\(32\)","\(36\)",2,"",""
+7,"1e1027a7","mcq","The scatterplot above shows a company’s ice cream sales \(d\), in dollars, and the high temperature \(t\), in degrees Celsius (\(^{\circ}\text{C}\)), on \(12\) different days. A line of best fit for the data is also shown. Which of the following could be an equation of the line of best fit?","\(d = 0.03t + 402\)","\(d = 10t + 402\)","\(d = 33t + 300\)","\(d = 33t + 84\)",3,"","/images/psda_hard/q7_scatterplot_icecream.png"
+8,"e7d48c8a","mcq","The dot plot represents a data set of the number of bursts for \(13\) eruptions of a steam vent. If an additional eruption with \(11\) bursts is added to this data set to create a new data set of \(14\) eruptions, which of the following measures will be greater for the new data set than for the original data set?
+
+I. The median number of bursts
+II. The mean number of bursts","I and II","I only","II only","Neither I nor II",2,"","/images/psda_hard/q8_dotplot_bursts.png"
+9,"8637294f","spr","If \(\frac{4a}{b} = 6.7\) and \(\frac{a}{bn} = 26.8\), what is the value of \(n\)?","","","","",-1,"0.0625",""
+10,"308084c5","mcq","The results of two random samples of votes for a proposition are shown below. The samples were selected from the same population, and the margins of error were calculated using the same method.
+
+| Sample | Percent in favor | Margin of error |
+| :--- | :--- | :--- |
+| A | \(52\%\) | \(4.2\%\) |
+| B | \(48\%\) | \(1.6\%\) |
+
+Which of the following is the most appropriate reason that the margin of error for sample A is greater than the margin of error for sample B?","Sample A had a smaller number of votes that could not be recorded.","Sample A had a higher percent of favorable responses.","Sample A had a larger sample size.","Sample A had a smaller sample size.",3,"",""
+11,"e635aede","mcq","In 2008, Zinah earned \(14\%\) more than in 2007, and in 2009 Zinah earned \(4\%\) more than in 2008. If Zinah earned \(y\) times as much in 2009 as in 2007, what is the value of \(y\)?","\(0.5600\)","\(1.0056\)","\(1.1800\)","\(1.1856\)",3,"",""
+12,"7d721177","mcq","The density of a certain type of wood is \(353\) kilograms per cubic meter. A sample of this type of wood is in the shape of a cube and has a mass of \(345\) kilograms. To the nearest hundredth of a meter, what is the length of one edge of this sample?","\(0.98\)","\(0.99\)","\(1.01\)","\(1.02\)",1,"",""
+13,"67c0200a","spr","The number \(a\) is \(70\%\) less than the positive number \(b\). The number \(c\) is \(80\%\) greater than \(a\). The number \(c\) is how many times \(b\)?","","","","",-1,"0.54",""
+14,"40e7a1a9","spr","\(210\) is \(p\%\) greater than \(30\). What is the value of \(p\)?","","","","",-1,"600",""
+15,"bf47ad54","mcq","Each of the following frequency tables represents a data set. Which data set has the greatest mean?","| Value | Frequency |
+| :--- | :--- |
+| \(70\) | \(4\) |
+| \(80\) | \(5\) |
+| \(90\) | \(6\) |
+| \(100\) | \(7\) |","| Value | Frequency |
+| :--- | :--- |
+| \(70\) | \(6\) |
+| \(80\) | \(6\) |
+| \(90\) | \(6\) |
+| \(100\) | \(6\) |","| Value | Frequency |
+| :--- | :--- |
+| \(70\) | \(7\) |
+| \(80\) | \(6\) |
+| \(90\) | \(6\) |
+| \(100\) | \(7\) |","| Value | Frequency |
+| :--- | :--- |
+| \(70\) | \(8\) |
+| \(80\) | \(5\) |
+| \(90\) | \(5\) |
+| \(100\) | \(8\) |",0,"",""
+16,"699af7b3","spr","The weight of sample A is \(468\%\) of the weight of sample B, and the weight of sample A is \(0.780\%\) of the weight of sample C. If the weight of sample C is \(p\%\) of the weight of sample B, what is the value of \(p\)?","","","","",-1,"60000",""
+17,"7d68096f","mcq","A trivia tournament organizer wanted to study the relationship between the number of points a team scores in a trivia round and the number of hours that a team practices each week. For the study, the organizer selected \(55\) teams at random from all trivia teams in a certain tournament. The table displays the information for the \(40\) teams in the sample that practiced for at least \(3\) hours per week.
+
+| Hours practiced | \(6\) to \(13\) points | \(14\) or more points | Total |
+| :--- | :--- | :--- | :--- |
+| \(3\) to \(5\) hours | \(6\) | \(4\) | \(10\) |
+| More than \(5\) hours | \(4\) | \(26\) | \(30\) |
+| Total | \(10\) | \(30\) | \(40\) |
+
+Which of the following is the largest population to which the results of the study can be generalized?","All trivia teams in the tournament that scored \(14\) or more points in the round","The \(55\) trivia teams in the sample","The \(40\) trivia teams in the sample that practiced for at least \(3\) hours per week","All trivia teams in the tournament",3,"",""
+18,"585de39a","spr","On May 10, 2015, there were \(83\) million Internet subscribers in Nigeria. The major Internet providers were MTN, Globacom, Airtel, Etisalat, and Visafone. By September 30, 2015, the number of Internet subscribers in Nigeria had increased to \(97\) million. If an Internet subscriber in Nigeria on September 30, 2015, is selected at random, the probability that the person selected was an MTN subscriber is \(0.43\). There were \(p\) million MTN subscribers in Nigeria on September 30, 2015. To the nearest integer, what is the value of \(p\)?","","","","",-1,"42",""
+19,"4ff597db","mcq","The mean amount of time that the \(20\) employees of a construction company have worked for the company is \(6.7\) years. After one of the employees leaves the company, the mean amount of time that the remaining employees have worked for the company is reduced to \(6.25\) years. How many years did the employee who left the company work for the company?","\(0.45\)","\(2.30\)","\(9.00\)","\(15.25\)",3,"",""
+20,"7b52985c","spr","The scatterplot shows the relationship between the length of time \(y\), in hours, a certain bird spent in flight and the number of days after January 11, \(x\).
+
+What is the average rate of change, in hours per day, of the length of time the bird spent in flight on January 13 to the length of time the bird spent in flight on January 15?","","","","",-1,"4.5","/images/psda_hard/q20_scatterplot_bird.png"
+21,"7ce2830a","mcq","A psychologist designed and conducted a study to determine whether playing a certain educational game increases middle school students’ accuracy in adding fractions. For the study, the psychologist chose a random sample of \(35\) students from all of the students at one of the middle schools in a large city. The psychologist found that students who played the game showed significant improvement in accuracy when adding fractions. What is the largest group to which the results of the study can be generalized?","The \(35\) students in the sample","All students at the school","All middle school students in the city","All students in the city",1,"",""
+22,"6a715bed","spr","The table summarizes the distribution of age and assigned group for \(90\) participants in a study.
+
+| | \(0\text{–}9\) years | \(10\text{–}19\) years | \(20+\) years | Total |
+| :--- | :--- | :--- | :--- | :--- |
+| Group A | \(7\) | \(14\) | \(9\) | \(30\) |
+| Group B | \(6\) | \(4\) | \(20\) | \(30\) |
+| Group C | \(17\) | \(12\) | \(1\) | \(30\) |
+| Total | \(30\) | \(30\) | \(30\) | \(90\) |
+
+One of these participants will be selected at random. What is the probability of selecting a participant from group A, given that the participant is at least \(10\) years of age? (Express your answer as a decimal or fraction, not as a percent.)","","","","",-1,"23/60",""
+23,"58ba7239","spr","The number \(a\) is \(55\%\) less than the number \(b\). The number \(b\) is \(320\%\) greater than \(160\). What is the value of \(a\)?","","","","",-1,"302.4",""
+24,"c7c6445f","mcq","A certain town has an area of \(4.36\) square miles. What is the area, in square yards, of this town? (\(1\text{ mile} = 1,760\text{ yards}\))","\(404\)","\(7,674\)","\(710,459\)","\(13,505,536\)",3,"",""
+25,"5267c3c7","mcq","The result of increasing the quantity \(x\) by \(400\%\) is \(60\). What is the value of \(x\)?","\(12\)","\(15\)","\(240\)","\(340\)",0,"",""
+26,"ed6b7e5f","spr","The table gives the distribution of topping and type of crust for customer orders at a pizza place.
+
+| Topping | Thin crust | Thick crust |
+| :--- | :--- | :--- |
+| Extra cheese | \(60\) | \(30\) |
+| Pepperoni | \(20\) | \(30\) |
+| Tomato | \(80\) | \(20\) |
+
+If one of these customer orders is selected at random, what is the probability of selecting an order with thin crust, given the topping is pepperoni? (Express your answer as a decimal or fraction, not as a percent.)","","","","",-1,"0.4",""
+27,"9ce8cbbe","mcq","Set K consists of all the positive integers that are less than or equal to \(160\), where none of the integers are repeated. If a number is selected at random from set K, what is the probability of selecting a number that is even and less than or equal to \(50\)?","\(\frac{5}{32}\)","\(\frac{3}{16}\)","\(\frac{5}{21}\)","\(\frac{5}{16}\)",0,"",""
+28,"4c5ea142","mcq","On average, a certain plant grows \(87\) millimeters every \(m\) months. At this rate, which expression represents the number of millimeters, on average, the plant grows every \(k\) years?","\(\frac{29m}{4k}\)","\(\frac{29k}{4m}\)","\(\frac{1,044m}{k}\)","\(\frac{1,044k}{m}\)",3,"",""
+29,"61f61789","spr","To study the moisture content in a group of trees, samples from the trunk of each tree were taken from \(25\) trees and cut in the shape of a cube. The length of the edge of one of these cubes is \(2.00\) centimeters. If this cube has a mass of \(2.56\) grams, what is the density of this cube, in grams per cubic centimeter?","","","","",-1,"0.32",""
+30,"d0430601","spr","Each dot in the scatterplot above represents the temperature and the number of people who visited a beach in Lagos, Nigeria, on one of eleven different days. The line of best fit for the data is also shown. The line of best fit for the data has a slope of approximately \(57\). According to this estimate, how many additional people per day are predicted to visit the beach for each \(5^{\circ}\text{C}\) increase in average temperature?","","","","",-1,"285","/images/psda_hard/q30_scatterplot_beach.png"

@@ -1,0 +1,536 @@
+require('dotenv').config({ override: true });
+const fs = require('fs');
+const path = require('path');
+const mysql = require('mysql2/promise');
+
+const TARGET_TOPIC_TITLE = 'Problem-Solving and Data Analysis';
+const TARGET_DIFFICULTY = 'Hard';
+
+const questions = [
+  {
+    question_number: 1,
+    question_id: '1fbd3b67',
+    question_type: 'mcq',
+    prompt: 'The number \\(a\\) is \\(190\\%\\) greater than the number \\(b\\). The number \\(b\\) is \\(80\\%\\) less than \\(24\\). What is the value of \\(a\\)?',
+    option_a: '\\(9.12\\)',
+    option_b: '\\(13.92\\)',
+    option_c: '\\(26.40\\)',
+    option_d: '\\(36.48\\)',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 2,
+    question_id: 'ecbdbe84',
+    question_type: 'mcq',
+    prompt: 'The table shown summarizes the number of employees at each of the \\(17\\) restaurants in a town.\n\n| Number of employees | Number of restaurants |\n| :--- | :--- |\n| \\(2\\) to \\(7\\) | \\(2\\) |\n| \\(8\\) to \\(13\\) | \\(4\\) |\n| \\(14\\) to \\(19\\) | \\(2\\) |\n| \\(20\\) to \\(25\\) | \\(7\\) |\n| \\(26\\) to \\(31\\) | \\(2\\) |\n\nWhich of the following could be the median number of employees for the restaurants in this town?',
+    option_a: '\\(2\\)',
+    option_b: '\\(9\\)',
+    option_c: '\\(15\\)',
+    option_d: '\\(21\\)',
+    correct_answer_index: 3,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 3,
+    question_id: 'f8a322d9',
+    question_type: 'mcq',
+    prompt: 'Two data sets of \\(23\\) integers each are summarized in the histograms shown. For each of the histograms, the first interval represents the frequency of integers greater than or equal to \\(10\\), but less than \\(20\\). The second interval represents the frequency of integers greater than or equal to \\(20\\), but less than \\(30\\), and so on. What is the smallest possible difference between the mean of data set A and the mean of data set B?',
+    option_a: '\\(0\\)',
+    option_b: '\\(1\\)',
+    option_c: '\\(10\\)',
+    option_d: '\\(23\\)',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: '/images/psda_hard/q3_histograms.png'
+  },
+  {
+    question_number: 4,
+    question_id: '3638f413',
+    question_type: 'spr',
+    prompt: 'Jeremy deposited \\(x\\) dollars in his investment account on January 1, 2001. The amount of money in the account doubled each year until Jeremy had \\(480\\) dollars in his investment account on January 1, 2005. What is the value of \\(x\\)?',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer_index: -1,
+    correct_answer_text: '30',
+    image_url: ''
+  },
+  {
+    question_number: 5,
+    question_id: '1142af44',
+    question_type: 'mcq',
+    prompt: 'The frequency distribution below summarizes a set of data, where \\(a\\) is a positive integer.\n\n| Value | Frequency |\n| :--- | :--- |\n| \\(1\\) | \\(a\\) |\n| \\(2\\) | \\(2a\\) |\n| \\(3\\) | \\(3a\\) |\n| \\(4\\) | \\(2a\\) |\n| \\(5\\) | \\(a\\) |\n\nHow much greater is the mean of the set of data than the median?',
+    option_a: '\\(0\\)',
+    option_b: '\\(1\\)',
+    option_c: '\\(2\\)',
+    option_d: '\\(3\\)',
+    correct_answer_index: 0,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 6,
+    question_id: '1e8ccffd',
+    question_type: 'mcq',
+    prompt: 'The mean score of \\(8\\) players in a basketball game was \\(14.5\\) points. If the highest individual score is removed, the mean score of the remaining \\(7\\) players becomes \\(12\\) points. What was the highest score?',
+    option_a: '\\(20\\)',
+    option_b: '\\(24\\)',
+    option_c: '\\(32\\)',
+    option_d: '\\(36\\)',
+    correct_answer_index: 2,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 7,
+    question_id: '1e1027a7',
+    question_type: 'mcq',
+    prompt: 'The scatterplot above shows a company’s ice cream sales \\(d\\), in dollars, and the high temperature \\(t\\), in degrees Celsius (\\(^{\\circ}\\text{C}\\)), on \\(12\\) different days. A line of best fit for the data is also shown. Which of the following could be an equation of the line of best fit?',
+    option_a: '\\(d = 0.03t + 402\\)',
+    option_b: '\\(d = 10t + 402\\)',
+    option_c: '\\(d = 33t + 300\\)',
+    option_d: '\\(d = 33t + 84\\)',
+    correct_answer_index: 3,
+    correct_answer_text: '',
+    image_url: '/images/psda_hard/q7_scatterplot_icecream.png'
+  },
+  {
+    question_number: 8,
+    question_id: 'e7d48c8a',
+    question_type: 'mcq',
+    prompt: 'The dot plot represents a data set of the number of bursts for \\(13\\) eruptions of a steam vent. If an additional eruption with \\(11\\) bursts is added to this data set to create a new data set of \\(14\\) eruptions, which of the following measures will be greater for the new data set than for the original data set?\n\nI. The median number of bursts\nII. The mean number of bursts',
+    option_a: 'I and II',
+    option_b: 'I only',
+    option_c: 'II only',
+    option_d: 'Neither I nor II',
+    correct_answer_index: 2,
+    correct_answer_text: '',
+    image_url: '/images/psda_hard/q8_dotplot_bursts.png'
+  },
+  {
+    question_number: 9,
+    question_id: '8637294f',
+    question_type: 'spr',
+    prompt: 'If \\(\\frac{4a}{b} = 6.7\\) and \\(\\frac{a}{bn} = 26.8\\), what is the value of \\(n\\)?',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer_index: -1,
+    correct_answer_text: '0.0625',
+    image_url: ''
+  },
+  {
+    question_number: 10,
+    question_id: '308084c5',
+    question_type: 'mcq',
+    prompt: 'The results of two random samples of votes for a proposition are shown below. The samples were selected from the same population, and the margins of error were calculated using the same method.\n\n| Sample | Percent in favor | Margin of error |\n| :--- | :--- | :--- |\n| A | \\(52\\%\\) | \\(4.2\\%\\) |\n| B | \\(48\\%\\) | \\(1.6\\%\\) |\n\nWhich of the following is the most appropriate reason that the margin of error for sample A is greater than the margin of error for sample B?',
+    option_a: 'Sample A had a smaller number of votes that could not be recorded.',
+    option_b: 'Sample A had a higher percent of favorable responses.',
+    option_c: 'Sample A had a larger sample size.',
+    option_d: 'Sample A had a smaller sample size.',
+    correct_answer_index: 3,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 11,
+    question_id: 'e635aede',
+    question_type: 'mcq',
+    prompt: 'In 2008, Zinah earned \\(14\\%\\) more than in 2007, and in 2009 Zinah earned \\(4\\%\\) more than in 2008. If Zinah earned \\(y\\) times as much in 2009 as in 2007, what is the value of \\(y\\)?',
+    option_a: '\\(0.5600\\)',
+    option_b: '\\(1.0056\\)',
+    option_c: '\\(1.1800\\)',
+    option_d: '\\(1.1856\\)',
+    correct_answer_index: 3,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 12,
+    question_id: '7d721177',
+    question_type: 'mcq',
+    prompt: 'The density of a certain type of wood is \\(353\\) kilograms per cubic meter. A sample of this type of wood is in the shape of a cube and has a mass of \\(345\\) kilograms. To the nearest hundredth of a meter, what is the length of one edge of this sample?',
+    option_a: '\\(0.98\\)',
+    option_b: '\\(0.99\\)',
+    option_c: '\\(1.01\\)',
+    option_d: '\\(1.02\\)',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 13,
+    question_id: '67c0200a',
+    question_type: 'spr',
+    prompt: 'The number \\(a\\) is \\(70\\%\\) less than the positive number \\(b\\). The number \\(c\\) is \\(80\\%\\) greater than \\(a\\). The number \\(c\\) is how many times \\(b\\)?',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer_index: -1,
+    correct_answer_text: '0.54',
+    image_url: ''
+  },
+  {
+    question_number: 14,
+    question_id: '40e7a1a9',
+    question_type: 'spr',
+    prompt: '\\(210\\) is \\(p\\%\\) greater than \\(30\\). What is the value of \\(p\\)?',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer_index: -1,
+    correct_answer_text: '600',
+    image_url: ''
+  },
+  {
+    question_number: 15,
+    question_id: 'bf47ad54',
+    question_type: 'mcq',
+    prompt: 'Each of the following frequency tables represents a data set. Which data set has the greatest mean?',
+    option_a: '| Value | Frequency |\n| :--- | :--- |\n| \\(70\\) | \\(4\\) |\n| \\(80\\) | \\(5\\) |\n| \\(90\\) | \\(6\\) |\n| \\(100\\) | \\(7\\) |',
+    option_b: '| Value | Frequency |\n| :--- | :--- |\n| \\(70\\) | \\(6\\) |\n| \\(80\\) | \\(6\\) |\n| \\(90\\) | \\(6\\) |\n| \\(100\\) | \\(6\\) |',
+    option_c: '| Value | Frequency |\n| :--- | :--- |\n| \\(70\\) | \\(7\\) |\n| \\(80\\) | \\(6\\) |\n| \\(90\\) | \\(6\\) |\n| \\(100\\) | \\(7\\) |',
+    option_d: '| Value | Frequency |\n| :--- | :--- |\n| \\(70\\) | \\(8\\) |\n| \\(80\\) | \\(5\\) |\n| \\(90\\) | \\(5\\) |\n| \\(100\\) | \\(8\\) |',
+    correct_answer_index: 0,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 16,
+    question_id: '699af7b3',
+    question_type: 'spr',
+    prompt: 'The weight of sample A is \\(468\\%\\) of the weight of sample B, and the weight of sample A is \\(0.780\\%\\) of the weight of sample C. If the weight of sample C is \\(p\\%\\) of the weight of sample B, what is the value of \\(p\\)?',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer_index: -1,
+    correct_answer_text: '60000',
+    image_url: ''
+  },
+  {
+    question_number: 17,
+    question_id: '7d68096f',
+    question_type: 'mcq',
+    prompt: 'A trivia tournament organizer wanted to study the relationship between the number of points a team scores in a trivia round and the number of hours that a team practices each week. For the study, the organizer selected \\(55\\) teams at random from all trivia teams in a certain tournament. The table displays the information for the \\(40\\) teams in the sample that practiced for at least \\(3\\) hours per week.\n\n| Hours practiced | \\(6\\) to \\(13\\) points | \\(14\\) or more points | Total |\n| :--- | :--- | :--- | :--- |\n| \\(3\\) to \\(5\\) hours | \\(6\\) | \\(4\\) | \\(10\\) |\n| More than \\(5\\) hours | \\(4\\) | \\(26\\) | \\(30\\) |\n| Total | \\(10\\) | \\(30\\) | \\(40\\) |\n\nWhich of the following is the largest population to which the results of the study can be generalized?',
+    option_a: 'All trivia teams in the tournament that scored \\(14\\) or more points in the round',
+    option_b: 'The \\(55\\) trivia teams in the sample',
+    option_c: 'The \\(40\\) trivia teams in the sample that practiced for at least \\(3\\) hours per week',
+    option_d: 'All trivia teams in the tournament',
+    correct_answer_index: 3,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 18,
+    question_id: '585de39a',
+    question_type: 'spr',
+    prompt: 'On May 10, 2015, there were \\(83\\) million Internet subscribers in Nigeria. The major Internet providers were MTN, Globacom, Airtel, Etisalat, and Visafone. By September 30, 2015, the number of Internet subscribers in Nigeria had increased to \\(97\\) million. If an Internet subscriber in Nigeria on September 30, 2015, is selected at random, the probability that the person selected was an MTN subscriber is \\(0.43\\). There were \\(p\\) million MTN subscribers in Nigeria on September 30, 2015. To the nearest integer, what is the value of \\(p\\)?',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer_index: -1,
+    correct_answer_text: '42',
+    image_url: ''
+  },
+  {
+    question_number: 19,
+    question_id: '4ff597db',
+    question_type: 'mcq',
+    prompt: 'The mean amount of time that the \\(20\\) employees of a construction company have worked for the company is \\(6.7\\) years. After one of the employees leaves the company, the mean amount of time that the remaining employees have worked for the company is reduced to \\(6.25\\) years. How many years did the employee who left the company work for the company?',
+    option_a: '\\(0.45\\)',
+    option_b: '\\(2.30\\)',
+    option_c: '\\(9.00\\)',
+    option_d: '\\(15.25\\)',
+    correct_answer_index: 3,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 20,
+    question_id: '7b52985c',
+    question_type: 'spr',
+    prompt: 'The scatterplot shows the relationship between the length of time \\(y\\), in hours, a certain bird spent in flight and the number of days after January 11, \\(x\\).\n\nWhat is the average rate of change, in hours per day, of the length of time the bird spent in flight on January 13 to the length of time the bird spent in flight on January 15?',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer_index: -1,
+    correct_answer_text: '4.5',
+    image_url: '/images/psda_hard/q20_scatterplot_bird.png'
+  },
+  {
+    question_number: 21,
+    question_id: '7ce2830a',
+    question_type: 'mcq',
+    prompt: 'A psychologist designed and conducted a study to determine whether playing a certain educational game increases middle school students’ accuracy in adding fractions. For the study, the psychologist chose a random sample of \\(35\\) students from all of the students at one of the middle schools in a large city. The psychologist found that students who played the game showed significant improvement in accuracy when adding fractions. What is the largest group to which the results of the study can be generalized?',
+    option_a: 'The \\(35\\) students in the sample',
+    option_b: 'All students at the school',
+    option_c: 'All middle school students in the city',
+    option_d: 'All students in the city',
+    correct_answer_index: 1,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 22,
+    question_id: '6a715bed',
+    question_type: 'spr',
+    prompt: 'The table summarizes the distribution of age and assigned group for \\(90\\) participants in a study.\n\n| | \\(0\\text{–}9\\) years | \\(10\\text{–}19\\) years | \\(20+\\) years | Total |\n| :--- | :--- | :--- | :--- | :--- |\n| Group A | \\(7\\) | \\(14\\) | \\(9\\) | \\(30\\) |\n| Group B | \\(6\\) | \\(4\\) | \\(20\\) | \\(30\\) |\n| Group C | \\(17\\) | \\(12\\) | \\(1\\) | \\(30\\) |\n| Total | \\(30\\) | \\(30\\) | \\(30\\) | \\(90\\) |\n\nOne of these participants will be selected at random. What is the probability of selecting a participant from group A, given that the participant is at least \\(10\\) years of age? (Express your answer as a decimal or fraction, not as a percent.)',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer_index: -1,
+    correct_answer_text: '23/60',
+    image_url: ''
+  },
+  {
+    question_number: 23,
+    question_id: '58ba7239',
+    question_type: 'spr',
+    prompt: 'The number \\(a\\) is \\(55\\%\\) less than the number \\(b\\). The number \\(b\\) is \\(320\\%\\) greater than \\(160\\). What is the value of \\(a\\)?',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer_index: -1,
+    correct_answer_text: '302.4',
+    image_url: ''
+  },
+  {
+    question_number: 24,
+    question_id: 'c7c6445f',
+    question_type: 'mcq',
+    prompt: 'A certain town has an area of \\(4.36\\) square miles. What is the area, in square yards, of this town? (\\(1\\text{ mile} = 1,760\\text{ yards}\\))',
+    option_a: '\\(404\\)',
+    option_b: '\\(7,674\\)',
+    option_c: '\\(710,459\\)',
+    option_d: '\\(13,505,536\\)',
+    correct_answer_index: 3,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 25,
+    question_id: '5267c3c7',
+    question_type: 'mcq',
+    prompt: 'The result of increasing the quantity \\(x\\) by \\(400\\%\\) is \\(60\\). What is the value of \\(x\\)?',
+    option_a: '\\(12\\)',
+    option_b: '\\(15\\)',
+    option_c: '\\(240\\)',
+    option_d: '\\(340\\)',
+    correct_answer_index: 0,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 26,
+    question_id: 'ed6b7e5f',
+    question_type: 'spr',
+    prompt: 'The table gives the distribution of topping and type of crust for customer orders at a pizza place.\n\n| Topping | Thin crust | Thick crust |\n| :--- | :--- | :--- |\n| Extra cheese | \\(60\\) | \\(30\\) |\n| Pepperoni | \\(20\\) | \\(30\\) |\n| Tomato | \\(80\\) | \\(20\\) |\n\nIf one of these customer orders is selected at random, what is the probability of selecting an order with thin crust, given the topping is pepperoni? (Express your answer as a decimal or fraction, not as a percent.)',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer_index: -1,
+    correct_answer_text: '0.4',
+    image_url: ''
+  },
+  {
+    question_number: 27,
+    question_id: '9ce8cbbe',
+    question_type: 'mcq',
+    prompt: 'Set K consists of all the positive integers that are less than or equal to \\(160\\), where none of the integers are repeated. If a number is selected at random from set K, what is the probability of selecting a number that is even and less than or equal to \\(50\\)?',
+    option_a: '\\(\\frac{5}{32}\\)',
+    option_b: '\\(\\frac{3}{16}\\)',
+    option_c: '\\(\\frac{5}{21}\\)',
+    option_d: '\\(\\frac{5}{16}\\)',
+    correct_answer_index: 0,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 28,
+    question_id: '4c5ea142',
+    question_type: 'mcq',
+    prompt: 'On average, a certain plant grows \\(87\\) millimeters every \\(m\\) months. At this rate, which expression represents the number of millimeters, on average, the plant grows every \\(k\\) years?',
+    option_a: '\\(\\frac{29m}{4k}\\)',
+    option_b: '\\(\\frac{29k}{4m}\\)',
+    option_c: '\\(\\frac{1,044m}{k}\\)',
+    option_d: '\\(\\frac{1,044k}{m}\\)',
+    correct_answer_index: 3,
+    correct_answer_text: '',
+    image_url: ''
+  },
+  {
+    question_number: 29,
+    question_id: '61f61789',
+    question_type: 'spr',
+    prompt: 'To study the moisture content in a group of trees, samples from the trunk of each tree were taken from \\(25\\) trees and cut in the shape of a cube. The length of the edge of one of these cubes is \\(2.00\\) centimeters. If this cube has a mass of \\(2.56\\) grams, what is the density of this cube, in grams per cubic centimeter?',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer_index: -1,
+    correct_answer_text: '0.32',
+    image_url: ''
+  },
+  {
+    question_number: 30,
+    question_id: 'd0430601',
+    question_type: 'spr',
+    prompt: 'Each dot in the scatterplot above represents the temperature and the number of people who visited a beach in Lagos, Nigeria, on one of eleven different days. The line of best fit for the data is also shown. The line of best fit for the data has a slope of approximately \\(57\\). According to this estimate, how many additional people per day are predicted to visit the beach for each \\(5^{\\circ}\\text{C}\\) increase in average temperature?',
+    option_a: '',
+    option_b: '',
+    option_c: '',
+    option_d: '',
+    correct_answer_index: -1,
+    correct_answer_text: '285',
+    image_url: '/images/psda_hard/q30_scatterplot_beach.png'
+  }
+];
+
+function convertMarkdownTablesToHtml(text) {
+    if (!text || typeof text !== 'string' || !text.includes('|---')) return text;
+    const tableRegex = /(?:\|[^\n]+\|\r?\n)+(?:\|[-:\s|]+\|\r?\n)(?:\|[^\n]+\|\r?\n?)+/g;
+    return text.replace(tableRegex, (match) => {
+        const lines = match.trim().split(/\r?\n/).filter(line => line.trim().startsWith('|'));
+        if (lines.length < 3) return match;
+        const parseRow = (rowStr) => rowStr.split('|').slice(1, -1).map(cell => cell.trim());
+        const headers = parseRow(lines[0]);
+        const bodyRows = lines.slice(2).map(parseRow);
+        let html = '<table class="sat-table"><thead><tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr></thead><tbody>';
+        bodyRows.forEach(row => {
+            html += '<tr>' + row.map(cell => `<td>${cell}</td>`).join('') + '</tr>';
+        });
+        html += '</tbody></table>';
+        return html;
+    });
+}
+
+function escapeCsv(val) {
+    if (val === null || val === undefined) return '""';
+    const str = convertMarkdownTablesToHtml(String(val));
+    const escaped = str.replace(/"/g, '""');
+    return `"${escaped}"`;
+}
+
+async function main() {
+    console.log(`🚀 Processing ${questions.length} questions for "${TARGET_TOPIC_TITLE}" (${TARGET_DIFFICULTY})...`);
+
+    // 1. Export CSV
+    const csvHeader = 'question_number,question_id,question_type,prompt,option_a,option_b,option_c,option_d,correct_answer_index,correct_answer_text,image_url\n';
+    const csvRows = questions.map(q => [
+        q.question_number,
+        escapeCsv(q.question_id),
+        escapeCsv(q.question_type),
+        escapeCsv(q.prompt),
+        escapeCsv(q.option_a),
+        escapeCsv(q.option_b),
+        escapeCsv(q.option_c),
+        escapeCsv(q.option_d),
+        q.correct_answer_index,
+        escapeCsv(q.correct_answer_text),
+        escapeCsv(q.image_url)
+    ].join(','));
+    
+    const csvPath = path.join(__dirname, 'questions_psda_hard.csv');
+    fs.writeFileSync(csvPath, csvHeader + csvRows.join('\n'), 'utf8');
+    console.log(`💾 Saved CSV to: ${csvPath}`);
+
+    // 2. Export Raw JSON
+    const jsonPath = path.join(__dirname, 'questions_psda_hard_raw.json');
+    fs.writeFileSync(jsonPath, JSON.stringify(questions, null, 2), 'utf8');
+    console.log(`💾 Saved Raw JSON to: ${jsonPath}`);
+
+    // 3. Connect to Database & Import
+    const pool = mysql.createPool({
+        host: process.env.DB_HOST || 'localhost',
+        user: process.env.DB_USER || 'root',
+        password: process.env.DB_PASSWORD || '',
+        database: process.env.DB_NAME || 'defaultdb',
+        port: parseInt(process.env.DB_PORT || '18921'),
+        ssl: { rejectUnauthorized: false },
+        waitForConnections: true,
+        connectionLimit: 5
+    });
+
+    const connection = await pool.getConnection();
+    try {
+        // Find or create test
+        const [testRows] = await connection.query(
+            "SELECT id FROM tests WHERE title = ? AND type = 'topic' AND difficulty = ?",
+            [TARGET_TOPIC_TITLE, TARGET_DIFFICULTY]
+        );
+
+        let testId;
+        if (testRows.length > 0) {
+            testId = testRows[0].id;
+            console.log(`Found existing test with ID: ${testId}`);
+        } else {
+            const [insertRes] = await connection.query(
+                "INSERT INTO tests (title, type, difficulty, allow_practice) VALUES (?, 'topic', ?, 1)",
+                [TARGET_TOPIC_TITLE, TARGET_DIFFICULTY]
+            );
+            testId = insertRes.insertId;
+            console.log(`Created new test "${TARGET_TOPIC_TITLE}" (${TARGET_DIFFICULTY}) with ID: ${testId}`);
+        }
+
+        // Delete existing questions for this test
+        await connection.query('DELETE FROM questions WHERE test_id = ?', [testId]);
+        console.log(`Cleared existing questions for test ID: ${testId}`);
+
+        // Bulk Insert
+        await connection.beginTransaction();
+        let count = 0;
+        for (const q of questions) {
+            const promptFormatted = convertMarkdownTablesToHtml(q.prompt);
+            const optA = convertMarkdownTablesToHtml(q.option_a || '');
+            const optB = convertMarkdownTablesToHtml(q.option_b || '');
+            const optC = convertMarkdownTablesToHtml(q.option_c || '');
+            const optD = convertMarkdownTablesToHtml(q.option_d || '');
+
+            const options = q.question_type === 'mcq' ? JSON.stringify([optA, optB, optC, optD]) : null;
+            await connection.query(
+                `INSERT INTO questions 
+                (test_id, section, module, question_number, passage, prompt, options, correct_answer_index, correct_answer_text, image_url, question_type)
+                VALUES (?, 'math', 1, ?, NULL, ?, ?, ?, ?, ?, ?)`,
+                [
+                    testId,
+                    q.question_number,
+                    promptFormatted,
+                    options,
+                    q.question_type === 'mcq' ? q.correct_answer_index : null,
+                    q.question_type === 'spr' ? (q.correct_answer_text || '') : null,
+                    q.image_url || null,
+                    q.question_type
+                ]
+            );
+            count++;
+        }
+
+        await connection.commit();
+        console.log(`🎉 Successfully imported all ${count} questions into test ID ${testId} ("${TARGET_TOPIC_TITLE}" - ${TARGET_DIFFICULTY})!`);
+
+    } catch (err) {
+        await connection.rollback();
+        console.error('❌ Database insertion error:', err);
+    } finally {
+        connection.release();
+        await pool.end();
+    }
+}
+
+main().catch(err => {
+    console.error('Fatal error:', err);
+    process.exit(1);
+});

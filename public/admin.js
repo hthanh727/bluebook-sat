@@ -172,7 +172,11 @@
                                        titleLower.includes('trigonometry') ||
                                        titleLower.includes('arithmetic') ||
                                        titleLower.includes('number') ||
-                                       titleLower.includes('calc');
+                                       titleLower.includes('calc') ||
+                                       titleLower.includes('problem') ||
+                                       titleLower.includes('data') ||
+                                       titleLower.includes('analysis') ||
+                                       titleLower.includes('psda');
                     typeLabel = isMathTopic ? 'Math (Chuyên đề)' : 'Reading & Writing (Chuyên đề)';
                 }
 
@@ -1100,7 +1104,11 @@
                                        titleLower.includes('trigonometry') ||
                                        titleLower.includes('arithmetic') ||
                                        titleLower.includes('number') ||
-                                       titleLower.includes('calc');
+                                       titleLower.includes('calc') ||
+                                       titleLower.includes('problem') ||
+                                       titleLower.includes('data') ||
+                                       titleLower.includes('analysis') ||
+                                       titleLower.includes('psda');
                     typeLabel = isMathTopic ? 'Math (Chuyên đề)' : 'Reading & Writing (Chuyên đề)';
                 }
 
