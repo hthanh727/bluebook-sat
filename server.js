@@ -24,6 +24,17 @@ app.use(express.urlencoded({ limit: '100mb', extended: true }));
 // Init Gemini
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'MISSING_KEY');
 
+// Normalize incoming URL for Vercel Serverless
+app.use((req, res, next) => {
+    const matched = req.headers['x-matched-path'] || req.headers['x-vercel-matched-path'];
+    if (matched && matched.startsWith('/api')) {
+        req.url = matched;
+    } else if (req.url.startsWith('/public/api/')) {
+        req.url = req.url.replace('/public/api/', '/api/');
+    }
+    next();
+});
+
 // Serve static frontend files
 app.use(express.static(path.join(__dirname, 'public'), { extensions: ['html'] }));
 
