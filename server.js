@@ -28,7 +28,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'MISSING_KEY'
 app.use(express.static(path.join(__dirname, 'public'), { extensions: ['html'] }));
 
 // MySQL Connection Pool
-const pool = mysql.createPool({
+const poolConfig = {
     host: process.env.DB_HOST || 'localhost',
     user: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD || '',
@@ -37,7 +37,14 @@ const pool = mysql.createPool({
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
-});
+};
+
+// If connecting to remote database (like Aiven), enable SSL
+if (process.env.DB_HOST && (process.env.DB_HOST.includes('aivencloud.com') || process.env.DB_HOST !== 'localhost' || process.env.DB_SSL === 'true')) {
+    poolConfig.ssl = { rejectUnauthorized: false };
+}
+
+const pool = mysql.createPool(poolConfig);
 
 // Run migrations on startup
 pool.query('ALTER TABLE tests ADD COLUMN allow_practice TINYINT(1) DEFAULT 1')
@@ -194,8 +201,8 @@ app.get('/api/tests', authenticateToken, async (req, res) => {
 
         res.json(rows);
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: 'Server error' });
+        console.error('Error fetching tests:', err);
+        res.status(500).json({ message: 'Server error', error: err.message });
     }
 });
 
