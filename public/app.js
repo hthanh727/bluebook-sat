@@ -342,7 +342,7 @@ function renderQuestion() {
             </div>
         `;
     } else if (q.passage) {
-      dom.passageContainer.innerHTML = `<div class="passage-text" id="passageText">${q.passage.replace(/\n/g, '<br>')}</div>`;
+      dom.passageContainer.innerHTML = `<div class="passage-text" id="passageText">${convertMarkdownTablesToHtml(q.passage).replace(/\n/g, '<br>')}</div>`;
     } else {
       dom.passageContainer.innerHTML = `<div class="passage-text" id="passageText"><em>No passage for this question.</em></div>`;
     }
