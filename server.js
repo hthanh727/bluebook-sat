@@ -50,69 +50,15 @@ const poolConfig = {
     queueLimit: 0
 };
 
-// If connecting to remote database (like Aiven), enable SSL
-if (process.env.DB_HOST && (process.env.DB_HOST.includes('aivencloud.com') || process.env.DB_HOST !== 'localhost' || process.env.DB_SSL === 'true')) {
+// Enable SSL only if explicitly requested
+if (process.env.DB_SSL === 'true') {
     poolConfig.ssl = { rejectUnauthorized: false };
 }
 
 const pool = mysql.createPool(poolConfig);
 
-// Run migrations on startup
-pool.query('ALTER TABLE tests ADD COLUMN allow_practice TINYINT(1) DEFAULT 1')
-    .then(() => {
-        console.log("Migration 'allow_practice' added to 'tests' table successfully!");
-    })
-    .catch(err => {
-        if (err.code === 'ER_DUP_FIELDNAME') {
-            console.log("Column 'allow_practice' already exists.");
-        } else {
-            console.error("Migration error 'allow_practice':", err);
-        }
-    });
+// Startup initialization (database schema already migrated)
 
-pool.query('ALTER TABLE tests ADD COLUMN difficulty VARCHAR(50) DEFAULT NULL')
-    .then(() => {
-        console.log("Migration 'difficulty' added to 'tests' table successfully!");
-    })
-    .catch(err => {
-        if (err.code === 'ER_DUP_FIELDNAME') {
-            console.log("Column 'difficulty' already exists.");
-        } else {
-            console.error("Migration error 'difficulty':", err);
-        }
-    });
-
-pool.query('ALTER TABLE tests MODIFY COLUMN type VARCHAR(50) NOT NULL')
-    .then(() => {
-        console.log("Migration 'type' modified to VARCHAR(50) successfully!");
-    })
-    .catch(err => {
-        console.error("Migration error 'type' modification:", err);
-    });
-
-pool.query(`
-    CREATE TABLE IF NOT EXISTS recordings (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        title VARCHAR(255) NOT NULL,
-        description TEXT,
-        video_url VARCHAR(512) NOT NULL,
-        pdf_url VARCHAR(512) DEFAULT NULL,
-        pdf_name VARCHAR(255) DEFAULT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-`)
-    .then(() => {
-        console.log("Table 'recordings' created or already exists successfully!");
-    })
-    .catch(err => {
-        console.error("Migration error creating recordings table:", err);
-    });
-
-// Migration for existing recordings table
-pool.query('ALTER TABLE recordings ADD COLUMN pdf_url VARCHAR(512) DEFAULT NULL')
-    .catch(() => {});
-pool.query('ALTER TABLE recordings ADD COLUMN pdf_name VARCHAR(255) DEFAULT NULL')
-    .catch(() => {});
 
 // Ensure uploads/pdf dir exists
 const pdfUploadDir = path.join(__dirname, 'public', 'uploads', 'pdf');
@@ -192,6 +138,35 @@ app.put('/api/user/name', authenticateToken, async (req, res) => {
     }
 });
 
+let backupCache = null;
+function getBackupTestData(testId) {
+    try {
+        if (!backupCache) {
+            const backupPath = path.join(__dirname, 'backup_all_tests.json');
+            if (fs.existsSync(backupPath)) {
+                backupCache = JSON.parse(fs.readFileSync(backupPath, 'utf8'));
+            }
+        }
+        if (backupCache) {
+            const test = (backupCache.tests || []).find(t => String(t.id) === String(testId));
+            const questions = (backupCache.questions || []).filter(q => String(q.test_id) === String(testId));
+            if (test && questions.length > 0) {
+                return { test, questions };
+            }
+        }
+    } catch(e) {
+        console.error('getBackupTestData error:', e);
+    }
+    return null;
+}
+
+const memoryQuestionCache = new Map();
+
+const withDbTimeout = (promise, ms = 2000) => Promise.race([
+    promise,
+    new Promise((_, reject) => setTimeout(() => reject(new Error('DB_TIMEOUT')), ms))
+]);
+
 app.get('/api/tests', authenticateToken, async (req, res) => {
     try {
         const query = `
@@ -200,11 +175,11 @@ app.get('/api/tests', authenticateToken, async (req, res) => {
             FROM tests t 
             ORDER BY t.created_at DESC
         `;
-        const [rows] = await pool.query(query);
+        const [rows] = await withDbTimeout(pool.query(query), 3000);
 
         if (req.user && req.user.role === 'student') {
-            const [locks] = await pool.query('SELECT test_id FROM test_locks WHERE user_id = ?', [req.user.id]);
-            const lockedTestIds = new Set(locks.map(l => l.test_id));
+            const [locks] = await withDbTimeout(pool.query('SELECT test_id FROM test_locks WHERE user_id = ?', [req.user.id]), 2000).catch(() => [[]]);
+            const lockedTestIds = new Set((locks || []).map(l => l.test_id));
             rows.forEach(row => {
                 row.is_locked = lockedTestIds.has(row.id);
             });
@@ -212,31 +187,69 @@ app.get('/api/tests', authenticateToken, async (req, res) => {
 
         res.json(rows);
     } catch (err) {
-        console.error('Error fetching tests:', err);
+        console.warn('DB error/timeout in /api/tests, falling back to backup_all_tests.json:', err.message);
+        try {
+            const backupPath = path.join(__dirname, 'backup_all_tests.json');
+            if (fs.existsSync(backupPath)) {
+                const backup = JSON.parse(fs.readFileSync(backupPath, 'utf8'));
+                const tests = (backup.tests || []).map(t => {
+                    const count = (backup.questions || []).filter(q => q.test_id === t.id).length;
+                    return { ...t, question_count: count, is_locked: false };
+                });
+                return res.json(tests);
+            }
+        } catch(fallbackErr) {
+            console.error('Backup fallback failed for tests:', fallbackErr);
+        }
         res.status(500).json({ message: 'Server error', error: err.message });
     }
 });
 
 app.get('/api/tests/:id/questions', authenticateToken, async (req, res) => {
+    const testId = req.params.id;
     try {
-        const testId = req.params.id;
-
         if (req.user && req.user.role === 'student') {
-            const [locks] = await pool.query('SELECT 1 FROM test_locks WHERE test_id = ? AND user_id = ?', [testId, req.user.id]);
-            if (locks.length > 0) {
+            const [locks] = await withDbTimeout(pool.query('SELECT 1 FROM test_locks WHERE test_id = ? AND user_id = ?', [testId, req.user.id]), 1200).catch(() => [[]]);
+            if (locks && locks.length > 0) {
                 return res.status(403).json({ message: 'Test is locked for you' });
             }
         }
 
-        const [testRows] = await pool.query('SELECT * FROM tests WHERE id = ?', [req.params.id]);
-        if (testRows.length === 0) return res.status(404).json({ message: 'Test not found' });
+        if (memoryQuestionCache.has(testId)) {
+            return res.json(memoryQuestionCache.get(testId));
+        }
+
+        const [testRows] = await withDbTimeout(pool.query('SELECT * FROM tests WHERE id = ?', [testId]), 1500);
+        if (!testRows || testRows.length === 0) {
+            const backupData = getBackupTestData(testId);
+            if (backupData) {
+                memoryQuestionCache.set(testId, backupData);
+                return res.json(backupData);
+            }
+            return res.status(404).json({ message: 'Test not found' });
+        }
 
         const test = testRows[0];
-        const [questions] = await pool.query('SELECT * FROM questions WHERE test_id = ? ORDER BY module ASC, question_number ASC', [req.params.id]);
+        const [questions] = await withDbTimeout(pool.query('SELECT * FROM questions WHERE test_id = ? ORDER BY module ASC, question_number ASC', [testId]), 1500);
 
-        res.json({ test, questions });
+        if (!questions || questions.length === 0) {
+            const backupData = getBackupTestData(testId);
+            if (backupData) {
+                memoryQuestionCache.set(testId, backupData);
+                return res.json(backupData);
+            }
+        }
+
+        const result = { test, questions };
+        memoryQuestionCache.set(testId, result);
+        res.json(result);
     } catch (err) {
-        console.error(err);
+        console.warn('DB query timed out or failed in /api/tests/:id/questions, using backup_all_tests.json:', err.message);
+        const backupData = getBackupTestData(testId);
+        if (backupData) {
+            memoryQuestionCache.set(testId, backupData);
+            return res.json(backupData);
+        }
         res.status(500).json({ message: 'Server error' });
     }
 });
