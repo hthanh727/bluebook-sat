@@ -1,0 +1,1290 @@
+[
+  {
+    "question_number": 1,
+    "prompt": "In the \\(xy\\)-plane, line \\(k\\) and line \\(l\\) are perpendicular and intersect at the point \\((2, 8)\\). If line \\(k\\) is defined by the equation \\(y = mx + b\\), where \\(m\\) and \\(b\\) are constants and \\(m > 1\\), which of the following points lies on line \\(l\\)?",
+    "option_a": "\\((3, 8 - \\frac{1}{m})\\)",
+    "option_b": "\\((3, 8 + \\frac{1}{m})\\)",
+    "option_c": "\\((3, 8 - m)\\)",
+    "option_d": "\\((3, 8 + m)\\)"
+  },
+  {
+    "question_number": 2,
+    "prompt": "The function \\(f\\) is defined by \\(f(x) = m\\sqrt{-x} - n\\), where \\(m\\) and \\(n\\) are constants. If \\(f(8) = 0\\) and \\(f(4) < -16\\), which of the following must be true?",
+    "option_a": "\\(m > -8\\)",
+    "option_b": "\\(n + m = 0\\)",
+    "option_c": "\\(n + m > 0\\)",
+    "option_d": "\\(n - m > 0\\)"
+  },
+  {
+    "question_number": 3,
+    "prompt": "\\((3x + p)(5x^2 - 45)(2x^2 - 16x + 6p) = 0\\)\n\nIn the given equation, \\(p\\) is a positive constant. The sum of the solutions to the equation is \\(\\frac{20}{3}\\). What is the value of \\(p\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 4,
+    "prompt": "For the function \\(f\\), for every increase of \\(\\frac{1}{2}\\) in the value of \\(x\\), the value of \\(f(x)\\) increases by a factor of \\(c\\), where \\(c\\) is a constant. Which of the following equivalent forms of function \\(f\\) displays the value of \\(c\\) as the base or the coefficient?",
+    "option_a": "\\(f(x) = 38(2)^{6x}\\)",
+    "option_b": "\\(f(x) = 38(8)^{2x}\\)",
+    "option_c": "\\(f(x) = 38(64)^x\\)",
+    "option_d": "\\(f(x) = 38(4,096)^{\\frac{x}{2}}\\)"
+  },
+  {
+    "question_number": 5,
+    "prompt": "A square map has a side length of \\(35\\) inches, and \\(1\\) inch on the map represents an actual distance of \\(17\\) miles. A smaller version of the same map is printed as a square with the side length \\(55\\%\\) shorter than the side length of the previous map. On the smaller map, which of the following is closest to the actual distance, in miles, represented by \\(1\\) inch?",
+    "option_a": "\\(7.65\\)",
+    "option_b": "\\(10.97\\)",
+    "option_c": "\\(19.25\\)",
+    "option_d": "\\(37.78\\)"
+  },
+  {
+    "question_number": 6,
+    "prompt": "A certain investment account offers a special interest rate for the first \\(4\\) months the account is open followed by a lower interest rate for the remainder of the time the account is open. Akeyla opened one of these accounts with an original account balance of \\(\\$700.00\\) and did not make any other deposits or withdrawals. \\(4\\) months after Akeyla opened the account, the balance had increased by \\(0.6\\%\\) of the original balance. \\(6\\) months after Akeyla opened the account, the balance had increased by an additional \\(0.1\\%\\) of the balance at the end of the first \\(4\\) months. Every \\(2\\) months after the first \\(6\\) months, the balance had increased by an additional \\(0.1\\%\\) of the balance \\(2\\) months before. Which of the following equations could represent the account balance \\(B(x)\\) in dollars, \\(x\\) months after the account was opened, where \\(x \\ge 4\\)?",
+    "option_a": "\\(B(x) = 704.20(1.001)^{\\frac{x-4}{2}}\\)",
+    "option_b": "\\(B(x) = 700.00(1.001)^{\\frac{x-4}{2}}\\)",
+    "option_c": "\\(B(x) = 704.20(1.001)^{2(x-4)}\\)",
+    "option_d": "\\(B(x) = 700.00(1.001)^{2(x-4)}\\)"
+  },
+  {
+    "question_number": 7,
+    "prompt": "\\(34z^{14} + bz^7 + 70\\)\n\nIn the given expression, \\(b\\) is a positive integer. If \\(qz^7 + r\\) is a factor of the expression, where \\(q\\) and \\(r\\) are positive integers, what is the greatest possible value of \\(b\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 8,
+    "prompt": "\\(f(x) = ax^2 + 6x + c\\)\n\nIn the given quadratic function, \\(a\\) and \\(c\\) are constants. The graph of \\(y = f(x)\\) in the \\(xy\\)-plane is a parabola that opens upward and has a vertex at the point \\((h, k)\\), where \\(h\\) and \\(k\\) are constants. If \\(k > 0\\) and \\(f(-7) = f(5)\\), which of the following must be true?\n\nI. \\(c > 3\\)\nII. \\(a \\le 3\\)",
+    "option_a": "I only",
+    "option_b": "II only",
+    "option_c": "I and II",
+    "option_d": "Neither I nor II"
+  },
+  {
+    "question_number": 9,
+    "prompt": "A group of friends decided to divide the \\(\\$800\\) cost of a trip equally among themselves. When two of the friends decided not to go on the trip, those remaining still divided the \\(\\$800\\) cost equally, but each friend's share of the cost increased by \\(\\$20\\). How many friends were in the group originally?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 10,
+    "prompt": "Function \\(f\\) is defined by \\(f(x) = -a^x + b\\), where \\(a\\) and \\(b\\) are constants. In the \\(xy\\)-plane, the graph of \\(y = f(x) - 12\\) has a \\(y\\)-intercept at \\((0, -\\frac{75}{7})\\). The product of \\(a\\) and \\(b\\) is \\(320\\). What is the value of \\(a\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 11,
+    "prompt": "For the given equation, \\(8rx^2 - 80sx + 8r = 0\\) where \\(r\\) and \\(s\\) are constants such that \\(r > 0\\), \\(s < 0\\), and \\(\\frac{r}{s} > k\\). What is the least value of \\(k\\) that ensures the equation has two distinct real solutions?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 12,
+    "prompt": "For the function \\(f\\), for each increase in the value of \\(x\\) by \\(c\\), where \\(c\\) is a positive constant, the value of \\(f(x)\\) increases by a factor of \\(16\\). Which of the following equivalent forms of the function \\(f\\) displays \\(\\frac{1}{c}\\) as a coefficient of \\(x\\)?",
+    "option_a": "\\(f(x) = 139(16^{\\frac{1}{3}})^{\\frac{1}{2}x}\\)",
+    "option_b": "\\(f(x) = 139(8^{\\frac{1}{3}})^{\\frac{2}{3}x}\\)",
+    "option_c": "\\(f(x) = 139(8^2)^{\\frac{1}{9}x}\\)",
+    "option_d": "\\(f(x) = 139(64^{\\frac{2}{3}})^{\\frac{1}{6}x}\\)"
+  },
+  {
+    "question_number": 13,
+    "prompt": "Function \\(f\\) is a quadratic function. The graph of \\(y = f(x)\\) in the \\(xy\\)-plane has a vertex at \\((9, -7)\\), contains the point \\((8, -9)\\), and has a \\(y\\)-intercept at \\((0, a)\\). The graph of \\(y = 6 \\cdot f(x)\\) has a \\(y\\)-intercept at \\((0, b)\\). What is the positive difference between \\(a\\) and \\(b\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 14,
+    "prompt": "\\(f(x) = 250(5)^x\\) \\newline The function \\(f\\) is defined by the given equation. If \\(g(x) = f(x - 2)\\), which of the following equations defines the function \\(g\\)?",
+    "option_a": "\\(g(x) = 10(5)^x\\)",
+    "option_b": "\\(g(x) = 125(5)^x\\)",
+    "option_c": "\\(g(x) = 250(25)^x\\)",
+    "option_d": "\\(g(x) = 250(10)^x\\)"
+  },
+  {
+    "question_number": 15,
+    "prompt": "A real estate company offers a series of three webinars. \\(2,000\\) people attended the first webinar. \\(65\\%\\) of the people who attended the first webinar attended the second webinar, and \\(44\\%\\) of the people who attended both the first and second webinar attended the third webinar. Of those who attended the first but did not attend the second webinar, \\(31\\%\\) attended the third webinar. How many people attended both the first and third webinars but did not attend the second webinar?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 16,
+    "prompt": "The functions \\(f\\) and \\(g\\) are defined by the given equations, where \\(x \\ge 0\\). Which of the following equations displays, as a constant or coefficient, the maximum value of the function it defines, where \\(x \\ge 0\\)? \\newline I. \\(f(x) = 16(1.24)^x + 43\\) \\newline II. \\(g(x) = 8(0.72)^x\\)",
+    "option_a": "I only",
+    "option_b": "II only",
+    "option_c": "I and II",
+    "option_d": "Neither I nor II."
+  },
+  {
+    "question_number": 17,
+    "prompt": "\\(z(w) = (0.829)^{2w}\\) \\newline The function \\(z\\) is defined by the equation shown. The value of \\(z(w)\\) decreases by \\(p\\%\\) for each increase by \\(1\\) in the value of \\(w\\). Which of the following is closest to the value of \\(p\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 18,
+    "prompt": "On a plot of land, \\(52.0\\%\\) of the square footage is farmland and the remaining square footage is pasture. There are buildings on exactly \\(21.5\\%\\) of the square footage of the farmland, and there are buildings on exactly \\(14.0\\%\\) of the square footage of the pasture. If there are buildings on exactly \\(p\\%\\) of the square footage of the plot of land, what is the value of \\(p\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 19,
+    "prompt": "When several resistors are connected in series in a circuit, the total resistance of the circuit is the sum of the resistances of these resistors. A certain circuit consists of \\(8\\) resistors connected in series, where the resistance of each resistor is positive. This circuit has a total resistance of \\(130\\) ohms. The total resistance of \\(3\\) resistors in this circuit is \\(90\\) ohms. Which inequality best represents all possible values of the resistance \\(z\\), in ohms, of one of the other \\(5\\) resistors in this circuit?",
+    "option_a": "\\(0 < z < 8\\)",
+    "option_b": "\\(0 < z < 40\\)",
+    "option_c": "\\(40 < z < 90\\)",
+    "option_d": "\\(40 < z < 130\\)"
+  },
+  {
+    "question_number": 20,
+    "prompt": "\\((x - k)^2 = (k - 5a)(x - k)\\) In the given equation, \\(a\\) and \\(k\\) are constants, where \\(k > 5a\\). The sum of the solutions to the equation is \\(3k + 32\\). What is the value of \\(a\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 21,
+    "prompt": "The expression \\(6x^4 + 17x^2 + 7\\) can be rewritten as \\((3x^2 + a)(2x^2 + b)\\), where \\(a\\) and \\(b\\) are positive integers, or as \\((3x^2 + c)(2x^2 + d)\\), where \\(c\\) and \\(d\\) are positive nonintegers. What is the value of \\(a + c\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 22,
+    "prompt": "In a set of four consecutive odd integers, where the integers are ordered from least to greatest, the first integer is represented by \\(z\\). The product of \\(24\\) and the third odd integer in the set is at most the value of \\(86\\) less than the sum of the first and fourth odd integers in the set. What is the greatest possible value of \\(z\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 23,
+    "prompt": "The function \\(f\\) is defined by \\(f(x) = \\frac{x^2 + ax + b}{2x + c}\\), where \\(a\\), \\(b\\), and \\(c\\) are constants. The graph of the function \\(f\\) in the \\(xy\\)-plane, where \\(y = f(x)\\), does not intersect the line \\(x = 4\\). If \\(f(5) = f(6) = 0\\), what is the value of \\(a + b + c\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 24,
+    "prompt": "If \\( x = \\sqrt[2n]{2x^n + 35} \\), where \\( n \\) is a positive integer constant, what is the value of \\( x^n \\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 25,
+    "prompt": "An object's speed, in meters per hour, is increasing at a rate of \\(1,650\\) meters per hour per second. Which of the following is closest to this rate in feet per second squared? (Use \\(1\\text{ meter} = 3.28\\text{ feet}\\).)",
+    "option_a": "\\(0.14\\)",
+    "option_b": "\\(1.50\\)",
+    "option_c": "\\(8.38\\)",
+    "option_d": "\\(90.2\\)"
+  },
+  {
+    "question_number": 26,
+    "prompt": "The equation \\( h = \\frac{9(u - 273.15)}{5} + 32 \\) gives the corresponding temperature \\( h \\), in degrees Fahrenheit, of any substance that has a temperature of \\( u \\) kelvins, where \\( u > 0 \\). If a substance has a temperature of \\( 809.33 \\) degrees Fahrenheit, what is the corresponding temperature, in kelvins, of this substance?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 27,
+    "prompt": "The positive number \\( a \\) is \\( 2,184\\% \\) of the sum of the positive numbers \\( b \\) and \\( c \\), and \\( b \\) is \\( 84\\% \\) of \\( c \\). What percent of \\( b \\) is \\( a \\)?",
+    "option_a": "\\( 4,784 \\)",
+    "option_b": "\\( 2,600 \\)",
+    "option_c": "\\( 40.19 \\)",
+    "option_d": "\\( 22.68 \\)"
+  },
+  {
+    "question_number": 28,
+    "prompt": "If \\( \\frac{\\sqrt{p^7}}{\\sqrt{p^4}} = t^{\\frac{5}{4}} \\) in the given equation, where \\( p > 1 \\) and \\( t > 1 \\). If \\( t = p^{2n-1} \\), where \\( n \\) is a constant. What is the value of \\( n \\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 29,
+    "prompt": "A painting studio is offering a promotion where the first class is free, the second class is half off the regular price, and the remaining classes are regularly priced. If the regular price of a class is \\( \\$26.40 \\), which function \\( f \\) gives the total cost, in dollars, of \\( x \\) classes taken using this promotion, where \\( x > 2 \\)?",
+    "option_a": "\\( f(x) = 26.40(x - 1) + 13.20 \\)",
+    "option_b": "\\( f(x) = 26.40(x - 2) + 13.20 \\)",
+    "option_c": "\\( f(x) = 26.40(x - 1) + 13.20(x - 2) \\)",
+    "option_d": "\\( f(x) = 26.40(x - 2) + 13.20(x - 1) \\)"
+  },
+  {
+    "question_number": 30,
+    "prompt": "The function \\( f \\) is defined by \\( f(x) = \\frac{|x|}{a} \\), where \\( a < 0 \\). What is the product of \\( f(17a) \\) and \\( f(8a) \\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 31,
+    "prompt": "In the \\( xy \\)-plane, a parabola has vertex \\( (9, -14) \\) and intersects the \\( x \\)-axis at two points. If the equation of the parabola is written in the form \\( y = ax^2 + bx + c \\) where \\( a \\), \\( b \\), and \\( c \\) are constants, which of the following could be the value of \\( a + b + c \\)?",
+    "option_a": "\\( -23 \\)",
+    "option_b": "\\( -19 \\)",
+    "option_c": "\\( -14 \\)",
+    "option_d": "\\( -12 \\)"
+  },
+  {
+    "question_number": 32,
+    "prompt": "The function \\( f \\) is defined by \\( y = ax^2 + bx + c \\), where \\( a \\), \\( b \\), and \\( c \\) are constants. The graph of \\( y = f(x) \\) in the \\( xy \\)-plane passes through the points \\( (-16, 0) \\) and \\( (9, 0) \\). If \\( a \\) is an integer greater than \\( 3 \\), what is the smallest possible value of \\( 3b - 2a \\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 33,
+    "prompt": "The function \\( f \\) is defined by \\( f(x) = ax^2 + bx + c \\), where \\( a \\), \\( b \\), and \\( c \\) are constants and \\( 4 < b < 7 \\). The graph of \\( y = f(x) \\) is such that \\( f(1) = f(5) \\). If \\( b \\) is an integer, what could be the value of \\( ab \\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 34,
+    "prompt": "The function \\( p \\) is defined by \\( p(x) = a((x + 6)^2 - b)((x + 6)^2 - c) \\), where \\( a \\), \\( b \\), and \\( c \\) are constants. In the \\( xy \\)-plane, the graph of \\( y = p(x) \\) passes through the points \\( (-7, 24) \\) and \\( (0, 899) \\). What is the value of \\( p(-12) + p(-5) \\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 35,
+    "prompt": "Kyle invented a new temperature scale he called the Tutorllini scale. The function \\(T\\) is defined by \\(T(x) = \\left(\\frac{3}{4}\\right)\\left(\\frac{26x}{7} - 800\\) + 15.50\\), which gives the temperature, in degrees Torte, that corresponds to a temperature of \\(x\\) degrees Celsius. If a temperature increased by \\(3.3\\) degrees Torte, by how much did the temperature increase, in degrees Celsius?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 36,
+    "prompt": "The functions \\( f \\) and \\( g \\) are given by \\( f(x) = x - 4 \\) and \\( g(x) = 3x^2 + kx - 108 \\), where \\( k \\) is a constant. If \\( f(x) \\cdot g(x) = 3x^3 - 12x^2 - 108x + 432 \\), what is the value of \\( k \\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 37,
+    "prompt": "The function \\( f(x) = 5,470(0.64)^{\\frac{x}{12}} \\) gives the value, in dollars, of a certain piece of equipment after \\( x \\) months of use. If the value of the equipment decreases each year by \\( p\\% \\) of its value the preceding year, what is the value of \\( p \\)?",
+    "option_a": "4",
+    "option_b": "5",
+    "option_c": "36",
+    "option_d": "64"
+  },
+  {
+    "question_number": 38,
+    "prompt": "The given equation relates the distinct positive real numbers \\(w\\), \\(x\\), and \\(y\\). Which equation correctly expresses \\(w\\) in terms of \\(x\\) and \\(y\\)? \\[ \\frac{14x}{7y} = 2\\sqrt{w + 19} \\]",
+    "option_a": "\\(w = \\sqrt{\\frac{x}{y}} - 19\\)",
+    "option_b": "\\(w = \\sqrt{\\frac{28x}{14y}} - 19\\)",
+    "option_c": "\\(w = \\left(\\frac{x}{y}\\right)^2 - 19\\)",
+    "option_d": "\\(w = \\left(\\frac{28x}{14y}\\right)^2 - 19\\)"
+  },
+  {
+    "question_number": 39,
+    "prompt": "A quadratic function models the height, in feet, of an object above the ground in terms of the time, in seconds, after the object was launched. According to the model, the object was launched from a height of \\(0\\) feet and reached its maximum height of \\(1,600\\) feet \\(10\\) seconds after it was launched. Based on the model, what was the height, in feet, of the object \\(7\\) seconds after it was launched?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 40,
+    "prompt": "The solutions to \\(x^2 + 12x + 35 = 0\\) are \\(r\\) and \\(s\\), where \\(r < s\\). The solutions to \\(x^2 + 12x + 27 = 0\\) are \\(t\\) and \\(u\\), where \\(t < u\\). The solutions to \\(x^2 + 24x + c = 0\\), where \\(c\\) is a constant, are \\(r + u\\) and \\(s + t\\). What is the value of \\(c\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 41,
+    "prompt": "For groups of \\(25\\) or more people, a museum charges \\(21\\) dollars per person for the first \\(10\\) people and \\(10\\) dollars for each additional person. Which function gives the total charge, in dollars, for a tour group with \\(n\\) people, where \\(n\\) is greater than or equal to \\(25\\)?",
+    "option_a": "\\(f(n) = 21n\\)",
+    "option_b": "\\(f(n) = 10n\\)",
+    "option_c": "\\(f(n) = 210 + 10(n - 10)\\)",
+    "option_d": "\\(f(n) = 200 + 21(n - 10)\\)"
+  },
+  {
+    "question_number": 42,
+    "prompt": "A chemical reaction in a closed container produces a gas, and the volume \\(V\\) of gas produced over time \\(t\\) (in minutes) can be modeled by a quadratic function. At \\(t = 5.0\\) minutes, the volume of gas produced is \\(40.0\\) liters, and at \\(t = 15.0\\) minutes, the volume of gas produced is \\(160.0\\) liters. If the reaction starts at \\(t = 0\\) with no gas produced, what will be the volume of gas produced at \\(t = 25.0\\) minutes?",
+    "option_a": "\\(375.2\\) liters",
+    "option_b": "\\(483.6\\) liters",
+    "option_c": "\\(423.3\\) liters",
+    "option_d": "\\(333.5\\) liters"
+  },
+  {
+    "question_number": 43,
+    "prompt": "If \\(p(x) = x^2 + kx + 4\\) has no real zeros, what is the range of possible values for \\(k\\)?",
+    "option_a": "\\(k < -4\\)",
+    "option_b": "\\(-4 < k < 4\\)",
+    "option_c": "\\(k > 4\\)",
+    "option_d": "No range, \\(k\\) can be any real number."
+  },
+  {
+    "question_number": 44,
+    "prompt": "The function \\(f(x) = \\frac{|x|}{s - 10}\\) where \\(s < 0\\). What is the sum of \\(f(15s)\\) and \\(f(3s)\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 45,
+    "prompt": "The system of equations above has exactly one solution. If \\(k\\) is a positive constant, what is the value of \\(k\\)? \\[ \\begin{aligned} y &= 5kx^2 + 2x + 3 \\\\ \\frac{y}{10} &= -x \\end{aligned} \\]",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 46,
+    "prompt": "In the equation \\(43x^2 + (43d + e)x + de = 0\\), \\(d\\) and \\(e\\) are positive constants. If the sum of the solutions to the given equation is \\(k(43d + e)\\), where \\(k\\) is a constant, what is the value of \\(k\\)?",
+    "option_a": "\\(\\frac{1}{45}\\)",
+    "option_b": "\\(-\\frac{1}{43}\\)",
+    "option_c": "\\(-43\\)",
+    "option_d": "\\(45\\)"
+  },
+  {
+    "question_number": 47,
+    "prompt": "A total of \\(454\\) gardeners selected at random were asked if they preferred perennials or annuals. The results of the survey are shown in the table above. According to these results, if \\(5,448\\) gardeners were choosing plants, how many more would prefer perennials than would prefer annuals?\n\n| Survey Results | |\n|---|---|\n| Annuals | \\(159\\) |\n| Perennials | \\(295\\) |",
+    "option_a": "\\(136\\)",
+    "option_b": "\\(1,632\\)",
+    "option_c": "\\(1,908\\)",
+    "option_d": "\\(3,540\\)"
+  },
+  {
+    "question_number": 48,
+    "prompt": "In a sequence of numbers, each term is \\(10\\) greater than the preceding term. The first term is \\(15\\), and \\(f(n)\\) represents the \\(n^{\\text{th}}\\) term in the sequence. Which of the following functions models this situation?",
+    "option_a": "\\(f(n) = 15(10)^{(n-1)}\\)",
+    "option_b": "\\(f(n) = 15(10)^n\\)",
+    "option_c": "\\(f(n) = 15 + 10n\\)",
+    "option_d": "\\(f(n) = 15 + (n - 1)(10)\\)"
+  },
+  {
+    "question_number": 49,
+    "prompt": "In the equation \\(-2x^2 + 32x - k = 0\\), \\(k\\) is a constant. What is the value of \\(m\\) if the equation has exactly one real solution when \\(k = m + 1\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 50,
+    "prompt": "The given system of equations has infinitely many solutions. If \\( a \\) is a constant, what is the value of \\( a \\)? \\[ \\begin{aligned} 5y &= 3 - ax \\\\ -x + 6 &= 10y + 5x \\end{aligned} \\]",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 51,
+    "prompt": "A commercial printing service charges \\(\\$17\\) to print \\(100\\) flyers, plus an additional fee per flyer for orders larger than \\(100\\). The total cost for \\(350\\) flyers is \\(\\$42\\). Which function \\(f\\) gives the total cost, in dollars, for \\(x\\) flyers, where \\(x \\geq 100\\)?",
+    "option_a": "\\(f(x) = 0.10x + 7\\)",
+    "option_b": "\\(f(x) = 0.10x + 17\\)",
+    "option_c": "\\(f(x) = 0.12x + 17\\)",
+    "option_d": "\\(f(x) = 0.17x\\)"
+  },
+  {
+    "question_number": 52,
+    "prompt": "A bookstore purchases novels at a cost of \\(12.00\\) dollars each and sells them at a price that is \\(350\\%\\) of the purchase cost. After a promotional event, the unsold novels are offered at a clearance price, which is \\(70\\%\\) off the selling price. The store also offers a special deal where customers can buy a bookmark for an additional \\(\\$1.50\\) with each novel. What is the clearance price of each novel, in dollars?",
+    "option_a": "\\(12.60\\)",
+    "option_b": "\\(14.10\\)",
+    "option_c": "\\(15.00\\)",
+    "option_d": "\\(16.50\\)"
+  },
+  {
+    "question_number": 53,
+    "prompt": "Jake has a monthly budget of \\(500\\) dollars for groceries. He plans to reduce this budget by \\(10\\%\\) each month for the next three months to save for a holiday. After these three months, he will further reduce his budget by a fixed amount of \\(30\\) dollars each month for the remaining two months of the year. Let \\(b_n\\) represent Jake's grocery budget for the \\(n\\)-th month. Which equation can help him find his new budget \\(b_n\\) for any month \\(n\\) within this year, where \\(1 \\le n \\le 12\\)?",
+    "option_a": "\\(b_n = 500 \\times 0.90^n\\) for \\(1 \\le n \\le 3\\), \\(b_n = b_{n-1} - 30\\) for \\(4 \\le n \\le 12\\)",
+    "option_b": "\\(b_n = 10 \\times 0.90^n\\) for \\(1 \\le n \\le 5\\), \\(b_n = b_{n-1} - 30\\) for \\(5 \\le n \\le 12\\)",
+    "option_c": "\\(b_n = 500 \\times 0.1^n\\) for \\(1 \\le n \\le 3\\), \\(b_n = b_{n-1} - 30\\) for \\(4 \\le n \\le 12\\)",
+    "option_d": "\\(b_n = 50 \\times 0.90^n\\) for \\(1 \\le n \\le 3\\), \\(b_n = b_{n-1} - 30\\) for \\(4 \\le n \\le 12\\)"
+  },
+  {
+    "question_number": 54,
+    "prompt": "Given the expression \\(\\sqrt[4]{40n} \\times (\\sqrt[5]{40n})^3\\), find the value of \\(y\\) for which the expression is equivalent to \\((40n)^{30y}\\), where \\(n > 1\\).",
+    "option_a": "\\(\\frac{17}{600}\\)",
+    "option_b": "\\(\frac{10}{600}\\)",
+    "option_c": "\\(\frac{7}{600}\\)",
+    "option_d": "\\(\frac{14}{600}\\)"
+  },
+  {
+    "question_number": 55,
+    "prompt": "A business owner plans to purchase the same model of chair for each of the \\(81\\) employees. The total budget to spend on these chairs is \\(\\$14,000\\), which includes a \\(7\\%\\) sales tax. Which of the following is closest to the maximum possible price per chair, before sales tax, the business owner could pay based on this budget?",
+    "option_a": "\\(\\$148.15\\)",
+    "option_b": "\\(\\$161.53\\)",
+    "option_c": "\\(\\$172.84\\)",
+    "option_d": "\\(\\$184.94\\)"
+  },
+  {
+    "question_number": 56,
+    "prompt": "The function \\(f\\) is defined by \\(f(x) = 5(0.92)^{3x}\\). The equation can be rewritten as \\(f(x) = 5\\left(1 - \\frac{p}{100}\\right)^x\\), where \\(p\\) is a constant. Which of the following is closest to the value of \\(p\\)?",
+    "option_a": "\\(8\\)",
+    "option_b": "\\(12\\)",
+    "option_c": "\\(22\\)",
+    "option_d": "\\(24\\)"
+  },
+  {
+    "question_number": 57,
+    "prompt": "If \\(x > 0\\) and \\(x \\neq 3\\), which of the following is equivalent to the expression above? \\[ \\frac{1}{\\frac{1}{x-3} + \\frac{1}{x+4}} \\]",
+    "option_a": "\\(2x + 1\\)",
+    "option_b": "\\(x^2 + x - 12\\)",
+    "option_c": "\\(\\frac{x^2 + x - 12}{2x + 1}\\)",
+    "option_d": "\\(\\frac{2x + 1}{x^2 + x - 12}\\)"
+  },
+  {
+    "question_number": 58,
+    "prompt": "There are \\(b\\) bricks that need to be stacked. After \\(k\\) of them have been stacked, then in terms of \\(b\\) and \\(k\\), what percent of the bricks have not yet been stacked?",
+    "option_a": "\\(\\frac{b}{100(b-k)}\\%\\)",
+    "option_b": "\\(\\frac{100(b-k)}{b}\\%\\)",
+    "option_c": "\\(\\frac{100b}{k}\\%\\)",
+    "option_d": "\\(\\frac{100k}{b}\\%\\)"
+  },
+  {
+    "question_number": 59,
+    "prompt": "Roberto is an insurance agent who sells two types of policies: a \\(\\$50,000\\) policy and a \\(\\$100,000\\) policy. Last month, his goal was to sell at least \\(57\\) insurance policies. While he did not meet his goal, the total value of the policies he sold was over \\(\\$3,000,000\\). Which of the following systems of inequalities describes \\(x\\), the possible number of \\(\\$50,000\\) policies, and \\(y\\), the possible number of \\(\\$100,000\\) policies, that Roberto sold last month?",
+    "option_a": "\\\\(\\\\begin{aligned} x + y &< 57 \\\\\\\\ 50,000x + 100,000y &< 3,000,000 \\\\end{aligned}\\\\)",
+    "option_b": "\\\\(\\\\begin{aligned} x + y &> 57 \\\\\\\\ 50,000x + 100,000y &> 3,000,000 \\\\end{aligned}\\\\)",
+    "option_c": "\\\\(\\\\begin{aligned} x + y &< 57 \\\\\\\\ 50,000x + 100,000y &> 3,000,000 \\\\end{aligned}\\\\)",
+    "option_d": "\\\\(\\\\begin{aligned} x + y &> 57 \\\\\\\\ 50,000x + 100,000y &< 3,000,000 \\\\end{aligned}\\\\)"
+  },
+  {
+    "question_number": 60,
+    "prompt": "Which of the following equivalent forms of the given function \\(f\text{ defined by }f(x) = 3^{-2(x+1)}\\) displays, as the base or the coefficient, the \\(y\\)-coordinate of the \\(y\\)-intercept of the graph of \\(y = f(x)\\) in the \\(xy\\)-plane?",
+    "option_a": "\\(f(x) = \\left(\\frac{1}{3}\\right)^{(2x+2)}\\)",
+    "option_b": "\\(f(x) = \\frac{1}{9}\\left(\\frac{1}{3}\\right)^{2x}\\)",
+    "option_c": "\\(f(x) = 81^{\\left(-\\frac{1}{2}x-\\frac{1}{2}\\right)}\\)",
+    "option_d": "\\(f(x) = 3^{(-2x-2)}\\)"
+  },
+  {
+    "question_number": 61,
+    "prompt": "In the given system of equations, \\(p\\) is a constant. If the system has no solution, what is the value of \\(p\\)? \\[ \\begin{aligned} \\frac{3}{2}y - \\frac{1}{4}x &= \\frac{2}{3} - \\frac{3}{2}y \\\\ \\frac{1}{6}x + \\frac{3}{6} &= py + \\frac{9}{5} \\end{aligned} \\]",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 62,
+    "prompt": "For line \\(h\\), the table shows three values of \\(x\\) and their corresponding values of \\(y\\). Line \\(k\\) is the result of translating line \\(h\\) down \\(5\\) units in the \\(xy\\)-plane. What is the \\(x\\)-intercept of line \\(k\\)?\n\n| \\(x\\) | \\(y\\) |\n|---|---|\n| \\(18\\) | \\(130\\) |\n| \\(23\\) | \\(160\\) |\n| \\(26\\) | \\(178\\) |",
+    "option_a": "\\\\((-\\\\frac{26}{3}, 0)\\\\)",
+    "option_b": "\\\\((-\\\\frac{9}{2}, 0)\\\\)",
+    "option_c": "\\\\((-\\\\frac{11}{3}, 0)\\\\)",
+    "option_d": "\\\\((-\\\\frac{17}{6}, 0)\\\\)"
+  },
+  {
+    "question_number": 63,
+    "prompt": "Adam\\'s school is a \\(20\\)-minute walk or a \\(5\\)-minute bus ride away from his house. The bus runs once every \\(30\\) minutes, and the number of minutes, \\(w\\), that Adam waits for the bus varies between \\(0\\) and \\(30\\). Which of the following inequalities gives the values of \\(w\\) for which it would be faster for Adam to walk to school?",
+    "option_a": "\\(w - 5 < 20\\)",
+    "option_b": "\\(w - 5 > 20\\)",
+    "option_c": "\\(w + 5 < 20\\)",
+    "option_d": "\\(w + 5 > 20\\)"
+  },
+  {
+    "question_number": 64,
+    "prompt": "Alan drives an average of \\(100\\) miles each week. His car can travel an average of \\(25\\) miles per gallon of gasoline. Alan would like to reduce his weekly expenditure on gasoline by \\(\\$5\\). Assuming gasoline costs \\(\\$4\\) per gallon, which equation can Alan use to determine how many fewer average miles, \\(m\\), he should drive each week?",
+    "option_a": "\\(\\frac{25}{4}m = 95\\)",
+    "option_b": "\\(\\frac{25}{4}m = 5\\)",
+    "option_c": "\\(\\frac{4}{25}m = 95\\)",
+    "option_d": "\\(\\frac{4}{25}m = 5\\)"
+  },
+  {
+    "question_number": 65,
+    "prompt": "A laundry service is buying detergent and fabric softener from its supplier. The supplier will deliver no more than \\(300\\) pounds in a shipment. Each container of detergent weighs \\(7.35\\) pounds, and each container of fabric softener weighs \\(6.2\\) pounds. The service wants to buy at least twice as many containers of detergent as containers of fabric softener. Let \\(d\\) represent the number of containers of detergent, and let \\(s\\) represent the number of containers of fabric softener, where \\(d\\) and \\(s\\) are nonnegative integers. Which of the following systems of inequalities best represents this situation?",
+    "option_a": "\\(7.35d + 6.2s \\leq 300\\) \\\\ \\(d \\geq 2s\\)",
+    "option_b": "\\(7.35d + 6.2s \\leq 300\\) \\\\ \\(2d \\geq s\\)",
+    "option_c": "\\(14.7d + 6.2s \\leq 300\\) \\\\ \\(d \\geq 2s\\)",
+    "option_d": "\\(14.7d + 6.2s \\leq 300\\) \\\\ \\(2d \\geq s\\)"
+  },
+  {
+    "question_number": 66,
+    "prompt": "A local transit company sells a monthly pass for \\(\\$95\\) that allows an unlimited number of trips of any length. Tickets for individual trips cost \\(\\$1.50\\), \\(\\$2.50\\), or \\(\\$3.50\\), depending on the length of the trip. What is the minimum number of trips per month for which a monthly pass could cost less than purchasing individual tickets for trips?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 67,
+    "prompt": "In the given system of equations, \\(t\\) is a constant. If the system has no solution, what is the value of \\(t\\)?\n\n\\[\\begin{cases} 4x - 6y = 10y + 2 \\\\ ty = \\frac{1}{2} + 2x \\end{cases}\\]",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 68,
+    "prompt": "In the system of equations below, \\(a\\) and \\(c\\) are constants.\n\\[\\begin{cases} ax + y = c \\\\ \\frac{1}{2}x + \\frac{1}{3}y = \\frac{1}{6} \\end{cases}\\]\nIf the system of equations has an infinite number of solutions \\((x, y)\\), what is the value of \\(a\\)?",
+    "option_a": "\\(-\\frac{1}{2}\\)",
+    "option_b": "\\(0\\)",
+    "option_c": "\\(\\frac{1}{2}\\)",
+    "option_d": "\\(\\frac{3}{2}\\)"
+  },
+  {
+    "question_number": 69,
+    "prompt": "A certain product costs a company \\(\\$65\\) to make. The product is sold by a salesperson who earns a commission that is equal to \\(20\\%\\) of the sales price of the product. The profit the company makes for each unit is equal to the sales price minus the combined cost of making the product and the commission. If the sales price of the product is \\(\\$100\\), which of the following equations gives the number of units, \\(u\\), of the product the company sold to make a profit of \\(\\$6,840\\)?",
+    "option_a": "\\((100(1 - 0.2) - 65)u = 6,840\\)",
+    "option_b": "\\((100 - 65)(1 - 0.8)u = 6,840\\)",
+    "option_c": "\\(0.8(100) - 65u = 6,840\\)",
+    "option_d": "\\((0.2(100) + 65)u = 6,840\\)"
+  },
+  {
+    "question_number": 70,
+    "prompt": "A psychologist set up an experiment to study the tendency of a person to select the first item when presented with a series of items. In the experiment, \\(300\\) people were presented with a set of five pictures arranged in random order. Each person was asked to choose the most appealing picture. Of the first \\(150\\) participants, \\(36\\) chose the first picture in the set. Among the remaining \\(150\\) participants, \\(p\\) people chose the first picture in the set. If more than \\(20\\%\\) of all participants chose the first picture in the set, which of the following inequalities best describes the possible values of \\(p\\)?",
+    "option_a": "\\(p > 0.20(300 - 36)\\), where \\(p \\leq 150\\)",
+    "option_b": "\\(p > 0.20(300 + 36)\\), where \\(p \\leq 150\\)",
+    "option_c": "\\(p - 36 > 0.20(300)\\), where \\(p \\leq 150\\)",
+    "option_d": "\\(p + 36 > 0.20(300)\\), where \\(p \\leq 150\\)"
+  },
+  {
+    "question_number": 71,
+    "prompt": "Oil and gas production in a certain area dropped from \\(4\\) million barrels in \\(2000\\) to \\(1.9\\) million barrels in \\(2013\\). Assuming that the oil and gas production decreased at a constant rate, which of the following linear functions \\(f\\) best models the production, in millions of barrels, \\(t\\) years after the year \\(2000\\)?",
+    "option_a": "\\(f(t) = \\frac{21}{130}t + 4\\)",
+    "option_b": "\\(f(t) = \\frac{19}{130}t + 4\\)",
+    "option_c": "\\(f(t) = -\\frac{21}{130}t + 4\\)",
+    "option_d": "\\(f(t) = -\\frac{19}{130}t + 4\\)"
+  },
+  {
+    "question_number": 72,
+    "prompt": "One gallon of paint will cover 220 square feet of a surface. A room has a total wall area of \\(w\\) square feet. Which equation represents the total amount of paint \\(P\\), in gallons, needed to paint the walls of the room twice?",
+    "option_a": "\\(P = \\frac{w}{110}\\)",
+    "option_b": "\\(P = 440w\\)",
+    "option_c": "\\(P = \\frac{w}{220}\\)",
+    "option_d": "\\(P = 220w\\)"
+  },
+  {
+    "question_number": 73,
+    "prompt": "\\(I = \\frac{V}{R}\\). The formula above is Ohm's law for an electric circuit with current \\(I\\), in amperes, potential difference \\(V\\), in volts, and resistance \\(R\\), in ohms. A circuit has a resistance of 500 ohms, and its potential difference will be generated by \\(n\\) six-volt batteries that produce a total potential difference of \\(6n\\) volts. If the circuit is to have a current of no more than 0.25 ampere, what is the greatest number, \\(n\\), of six-volt batteries that can be used?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 74,
+    "prompt": "The table above shows the coordinates of three points on a line in the \\(xy\\)-plane, where \\(k\\) and \\(n\\) are constants. If the slope of the line is 2, what is the value of \\(k + n\\)?\n\n| \\(x\\) | \\(y\\) |\n|---|---|\n| 3 | 7 |\n| \\(k\\) | 11 |\n| 12 | \\(n\\) |",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 75,
+    "prompt": "A shipping service restricts the dimensions of the boxes it will ship for a certain type of service. The restriction states that for boxes shaped like rectangular prisms, the sum of the perimeter of the base of the box and the height of the box cannot exceed 130 inches. The perimeter of the base is determined using the width and length of the box. If a box has a height of 60 inches and its length is 2.5 times the width, which inequality shows the allowable width \\(x\\), in inches, of the box?",
+    "option_a": "\\(0 < x \\le 10\\)",
+    "option_b": "\\(0 < x \\le 11\\frac{2}{3}\\)",
+    "option_c": "\\(0 < x \\le 17\\frac{1}{2}\\)",
+    "option_d": "\\(0 < x \\le 20\\)"
+  },
+  {
+    "question_number": 76,
+    "prompt": "Ken is working this summer as part of a crew on a farm. He earned \\$8 per hour for the first 10 hours he worked this week. Because of his performance, his crew leader raised his salary to \\$10 per hour for the rest of the week. Ken saves \\(90\\%\\) of his earnings from each week. What is the least number of hours he must work the rest of the week to save at least \\$270 for the week?",
+    "option_a": "38",
+    "option_b": "33",
+    "option_c": "22",
+    "option_d": "16"
+  },
+  {
+    "question_number": 77,
+    "prompt": "The table above gives the typical amounts of energy per gram, expressed in both food calories and kilojoules, of the three macronutrients in food. If the 180 food calories in a granola bar come entirely from \\(p\\) grams of protein, \\(f\\) grams of fat, and \\(c\\) grams of carbohydrate, which of the following expresses \\(f\\) in terms of \\(p\\) and \\(c\\)?\n\n| Energy per Gram of Typical Macronutrients | | |\n|---|---|---|\n| Macronutrient | Food calories | Kilojoules |\n| Protein | 4.0 | 16.7 |\n| Fat | 9.0 | 37.7 |\n| Carbohydrate | 4.0 | 16.7 |",
+    "option_a": "\\(f = 20 + \\frac{4}{9}(p + c)\\)",
+    "option_b": "\\(f = 20 - \\frac{4}{9}(p + c)\\)",
+    "option_c": "\\(f = 20 - \\frac{4}{9}(p - c)\\)",
+    "option_d": "\\(f = 20 + \\frac{9}{4}(p + c)\\)"
+  },
+  {
+    "question_number": 78,
+    "prompt": "The equation \\(9x + 5 = a(x + b)\\), where \\(a\\) and \\(b\\) are constants, has no solutions. Which of the following must be true?\n\nI. \\(a = 9\\)\nII. \\(b = 5\\)\nIII. \\(b \\neq \\frac{5}{9}\\)",
+    "option_a": "None",
+    "option_b": "I only",
+    "option_c": "I and II only",
+    "option_d": "I and III only"
+  },
+  {
+    "question_number": 79,
+    "prompt": "How many liters of a \\(25\\%\\) saline solution must be added to \\(3\\) liters of a \\(10\\%\\) saline solution to obtain a \\(15\\%\\) saline solution?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 80,
+    "prompt": "A science teacher is preparing the \\(5\\) stations of a science laboratory. Each station will have either Experiment A materials or Experiment B materials, but not both. Experiment A requires \\(6\\) teaspoons of salt, and Experiment B requires \\(4\\) teaspoons of salt. If \\(x\\) is the number of stations that will be set up for Experiment A and the remaining stations will be set up for Experiment B, which of the following expressions represents the total number of teaspoons of salt required?",
+    "option_a": "\\(5x\\)",
+    "option_b": "\\(10x\\)",
+    "option_c": "\\(2x+20\\)",
+    "option_d": "\\(10x+20\\)"
+  },
+  {
+    "question_number": 81,
+    "prompt": "For groups of \\(25\\) or more people, a museum charges \\(\\$21\\) per person for the first \\(25\\) people and \\(\\$14\\) for each additional person. Which function \\(f\\) gives the total charge, in dollars, for a tour group with \\(n\\) people, where \\(n \\geq 25\\)?",
+    "option_a": "\\(f(n) = 14n + 175\\)",
+    "option_b": "\\(f(n) = 14n + 525\\)",
+    "option_c": "\\(f(n) = 35n - 350\\)",
+    "option_d": "\\(f(n) = 14n + 21\\)"
+  },
+  {
+    "question_number": 82,
+    "prompt": "In the \\(xy\\)-plane, a line with equation \\(2y = 4.5\\) intersects a parabola at exactly one point. If the parabola has equation \\(y = -4x^2 + bx\\), where \\(b\\) is a positive constant, what is the value of \\(b\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 83,
+    "prompt": "\\((ax + 3)(5x^2 - bx + 4) = 20x^3 - 9x^2 - 2x + 12\\) \\(\\newline\\) The equation above is true for all \\(x\\), where \\(a\\) and \\(b\\) are constants. What is the value of \\(ab\\)?",
+    "option_a": "\\(18\\)",
+    "option_b": "\\(20\\)",
+    "option_c": "\\(24\\)",
+    "option_d": "\\(40\\)"
+  },
+  {
+    "question_number": 84,
+    "prompt": "A culture of bacteria is growing at an exponential rate, as shown in the table below. \\(\\newline\\) | Day | Number of bacteria per milliliter at end of day | \\| :---: | :---: | \\| 1 | \\(2.5 \\times 10^5\\) | \\| 2 | \\(5.0 \\times 10^5\\) | \\| 3 | \\(1.0 \\times 10^6\\) | \\(\\newline\\) At this rate, on which day would the number of bacteria per milliliter reach \\(5.12 \\times 10^6\\)?",
+    "option_a": "Day \\(5\\)",
+    "option_b": "Day \\(9\\)",
+    "option_c": "Day \\(11\\)",
+    "option_d": "Day \\(12\\)"
+  },
+  {
+    "question_number": 85,
+    "prompt": "In the equation above, \\(t\\) is a constant. If the equation \\(x^2 - 4x = t\\) has no real solutions, which of the following could be the value of \\(t\\)?",
+    "option_a": "\\(-3\\)",
+    "option_b": "\\(-1\\)",
+    "option_c": "\\(1\\)",
+    "option_d": "\\(3\\)"
+  },
+  {
+    "question_number": 86,
+    "prompt": "The population \\(P\\) of a certain city \\(y\\) years after the last census is modeled by the equation below, where \\(r\\) is a constant and \\(P_0\\) is the population when \\(y = 0\\). \\(\\newline\\) \\(P = P_0(1 + r)^y\\) \\(\\newline\\) If during this time the population of the city decreases by a fixed percent each year, which of the following must be true?",
+    "option_a": "\\(r < -1\\)",
+    "option_b": "\\(-1 < r < 0\\)",
+    "option_c": "\\(0 < r < 1\\)",
+    "option_d": "\\(r > 1\\)"
+  },
+  {
+    "question_number": 87,
+    "prompt": "The table above gives selected values of a polynomial function \\(p\\). \\(\\newline\\) | \\(x\\) | \\(p(x)\\) | \\| :---: | :---: | \\| -2 | \\(5\\) | \\| -1 | \\(0\\) | \\| 0 | \\(-3\\) | \\| 1 | \\(-1\\) | \\| 2 | \\(0\\) | \\(\\newline\\) Based on the values in the table, which of the following must be a factor of \\(p\\)?",
+    "option_a": "\\((x - 3)\\)",
+    "option_b": "\\((x + 3)\\)",
+    "option_c": "\\((x - 1)(x + 2)\\)",
+    "option_d": "\\((x + 1)(x - 2)\\)"
+  },
+  {
+    "question_number": 88,
+    "prompt": "When the quadratic function \\(f\\) is graphed in the \\(xy\\)-plane, where \\(y = f(x)\\), its vertex is \\((-3, 6)\\). One of the \\(x\\)-intercepts of this graph is \\((-\\frac{17}{4}, 0)\\). What is the other \\(x\\)-intercept of the graph?",
+    "option_a": "\\((-\\frac{29}{4}, 0)\\)",
+    "option_b": "\\((-\\frac{7}{4}, 0)\\)",
+    "option_c": "\\((\\frac{5}{4}, 0)\\)",
+    "option_d": "\\((\\frac{17}{4}, 0)\\)"
+  },
+  {
+    "question_number": 89,
+    "prompt": "One of the factors of \\(2x^3 + 42x^2 + 208x\\) is \\(x + b\\), where \\(b\\) is a positive constant. What is the smallest possible value of \\(b\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 90,
+    "prompt": "The function \\(h\\) is defined by \\(h(x) = ax^2 + b\\), where \\(a\\) and \\(b\\) are positive constants. The graph of \\(y = h(x)\\) in the \\(xy\\)-plane passes through the points \\((0, 10)\\) and \\((-2, 36)\\). What is the value of \\(ab\\)?",
+    "option_a": "\\(\\frac{1}{4}\\)",
+    "option_b": "\\(\\frac{1}{2}\\)",
+    "option_c": "\\(54\\)",
+    "option_d": "\\(60\\)"
+  },
+  {
+    "question_number": 91,
+    "prompt": "The table shows three values of \\(x\\) and their corresponding values of \\(y\\), where \\(y = f(x) + 4\\) and \\(f\\) is a quadratic function. What is the \\(y\\)-coordinate of the \\(y\\)-intercept of the graph of \\(y = f(x)\\) in the \\(xy\\)-plane?\n\n| \\(x\\) | \\(y\\) |\n|---|---|\n| \\(21\\) | \\(-8\\) |\n| \\(23\\) | \\(8\\) |\n| \\(25\\) | \\(-8\\) |",
+    "option_a": "\\(\\frac{1}{4}\\)",
+    "option_b": "\\(\\frac{1}{2}\\)",
+    "option_c": "\\(54\\)",
+    "option_d": "\\(60\\)"
+  },
+  {
+    "question_number": 92,
+    "prompt": "A quadratic function models the height, in feet, of an object above the ground in terms of the time, in seconds, after the object is launched off an elevated surface. The model indicates the object has an initial height of \\(10\\) feet above the ground and reaches its maximum height of \\(1,034\\) feet above the ground \\(8\\) seconds after being launched. Based on the model, what is the height, in feet, of the object above the ground \\(10\\) seconds after being launched?",
+    "option_a": "\\(234\\)",
+    "option_b": "\\(778\\)",
+    "option_c": "\\(970\\)",
+    "option_d": "\\(1,014\\)"
+  },
+  {
+    "question_number": 93,
+    "prompt": "If \\(a = c + d\\), which of the following is equivalent to the expression \\(x^2 - c^2 - 2cd - d^2\\)?",
+    "option_a": "\\((x + a)^2\\)",
+    "option_b": "\\((x - a)^2\\)",
+    "option_c": "\\((x + a)(x - a)\\)",
+    "option_d": "\\(x^2 - ax - a^2\\)"
+  },
+  {
+    "question_number": 94,
+    "prompt": "The total distance \\(d\\), in meters, traveled by an object moving in a straight line can be modeled by a quadratic function that is defined in terms of \\(t\\), where \\(t\\) is the time in seconds. At a time of \\(10.0\\) seconds, the total distance traveled by the object is \\(50.0\\) meters, and at a time of \\(20.0\\) seconds, the total distance traveled by the object is \\(200.0\\) meters. If the object was at a distance of \\(0\\) meters when \\(t = 0\\), then what is the total distance traveled, in meters, by the object after \\(30.0\\) seconds?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 95,
+    "prompt": "The given function \\(p\\) models the population of Lowell \\(t\\) years after a census. \\(p(t) = 90,000(1.06)^t\\). Which of the following functions best models the population of Lowell \\(m\\) months after the census?",
+    "option_a": "\\(r(m) = \\frac{90,000}{12}(1.06)^m\\)",
+    "option_b": "\\(r(m) = 90,000\\left(\\frac{1.06}{12}\\right)^m\\)",
+    "option_c": "\\(r(m) = 90,000\\left(\\frac{1.06}{12}\\right)^{\\frac{m}{12}}\\)",
+    "option_d": "\\(r(m) = 90,000(1.06)^{\\frac{m}{12}}\\)"
+  },
+  {
+    "question_number": 96,
+    "prompt": "Let the function \\(p\\) be defined as\n\n\\[p(x) = \\frac{(x - c)^2 + 160}{2c}\\]\n\nwhere \\(c\\) is a constant. If \\(p(c) = 10\\), what is the value of \\(p(12)\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 97,
+    "prompt": "In the given equation, \\(64x^2 + bx + 25 = 0\\), \\(b\\) is a constant. For which of the following values of \\(b\\) will the equation have more than one real solution?",
+    "option_a": "\\(-91\\)",
+    "option_b": "\\(-80\\)",
+    "option_c": "5",
+    "option_d": "40"
+  },
+  {
+    "question_number": 98,
+    "prompt": "A school district is forming a committee to discuss plans for the construction of a new high school. Of those invited to join the committee, \\(15\\%\\) are parents of students, \\(45\\%\\) are teachers from the current high school, \\(25\\%\\) are school and district administrators, and the remaining \\(6\\) individuals are students. How many more teachers were invited to join the committee than school and district administrators?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 99,
+    "prompt": "The number \\(a\\) is \\(70\\%\\) less than the positive number \\(b\\). The number \\(c\\) is \\(80\\%\\) greater than \\(a\\). The number \\(c\\) is how many times \\(b\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 100,
+    "prompt": "A certain park has an area of \\(11,863,808\\) square yards. What is the area, in square miles, of this park? \\((1 \\text{ mile} = 1,760 \\text{ yards})\\)",
+    "option_a": "\\(1.96\\)",
+    "option_b": "\\(3.83\\)",
+    "option_c": "\\(3,444.39\\)",
+    "option_d": "\\(6,740.8\\)"
+  },
+  {
+    "question_number": 101,
+    "prompt": "Which of the following has \\(x + 2b\\) as a factor where \\(b\\) is a positive integer?",
+    "option_a": "\\(3x^2 + 7x + 14b\\)",
+    "option_b": "\\(3x^2 + 28x + 14b\\)",
+    "option_c": "\\(3x^2 + 42x + 14b\\)",
+    "option_d": "\\(3x^2 + 49x + 14b\\)"
+  },
+  {
+    "question_number": 102,
+    "prompt": "\\(y = x - c\\) and \\(y = -4(x - 10)^2\\). The system above has more than 1 solution. What is the minimum value of \\(C\\)?",
+    "option_a": "10",
+    "option_b": "\\(\\frac{159}{16}\\)",
+    "option_c": "\\(\\frac{161}{12}\\)",
+    "option_d": "\\(-\\frac{159}{16}\\)"
+  },
+  {
+    "question_number": 103,
+    "prompt": "A farmer wants to buy some cows and chickens. She has a budget of \\(\\$1,000\\) and wants to buy at least a total of \\(50\\) animals. The price for each cow is \\(\\$200\\) and the price for each chicken is \\(\\$20\\). What is the maximum number of cows she can buy while maintaining the budget?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 104,
+    "prompt": "The quadratic function \\(f(x) = x^2 + 3x - 4\\) and \\(g(x) = x^2 + 6x - 16\\). The quadratic function \\(f(x)\\) has \\(2\\) solutions \\(j\\) and \\(k\\), where \\(j < k\\). The quadratic function \\(g(x)\\) has \\(2\\) solutions \\(l\\) and \\(m\\), where \\(l < m\\). The quadratic function \\(h(x) = 0.5x^2 + 9x + c\\). If \\(k + j\\) and \\(l + m\\) are solutions to \\(h(x)\\), what is the value of \\(c\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 105,
+    "prompt": "The quadratic function \\(a(x + 3.25)^2 - d\\) has \\(2\\) factors, \\((x + 8.75)(x - c)\\). What is the value of \\(d\\)?",
+    "option_a": "\\(\\frac{169}{9}\\)",
+    "option_b": "\\(\\frac{169}{16}\\)",
+    "option_c": "\\(\\frac{315}{16}\\)",
+    "option_d": "\\(\\frac{315}{169}\\)"
+  },
+  {
+    "question_number": 106,
+    "prompt": "How many \\(x\\)-intercepts does the function \\(f(x) = x(8x + 3)^4(2x + 1)^3\\) have?",
+    "option_a": "\\(2\\)",
+    "option_b": "\\(7\\)",
+    "option_c": "\\(1\\)",
+    "option_d": "\\(3\\)"
+  },
+  {
+    "question_number": 107,
+    "prompt": "\\(\\sin(\\angle Q) = \\cos(\\angle S)\\). If angle \\(Q = x + 43\\) and angle \\(S = \\frac{24x - 3}{2}\\), what is the value of \\(x\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 108,
+    "prompt": "The function \\(p\\) is defined by \\(p(x) = c(2.5^x + 2.5^d)\\), where \\(c\\) and \\(d\\) are positive integer constants and \\(c < d\\). The functions \\(q\\) and \\(r\\) are equivalent to function \\(p\\), where \\(s\\) and \\(t\\) are constants. Which of the following equations displays the \\(y\\)-coordinate of the \\(y\\)-intercept of the graph of \\(y = p(x)\\) in the \\(xy\\)-plane as a constant or coefficient?\\n\\nI. \\(q(x) = c(2.5^x + s)\\)\\nII. \\(r(x) = c(2.5)^x + t\\)",
+    "option_a": "I only",
+    "option_b": "II only",
+    "option_c": "I and II",
+    "option_d": "Neither I nor II"
+  },
+  {
+    "question_number": 109,
+    "prompt": "The mass of object A is \\(498\\%\\) of the mass of object B, and the mass of object A is \\(0.830\\%\\) of the mass of object C. If the mass of object C is \\(p\\%\\) of the mass of object B, what is the value of \\(p\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 110,
+    "prompt": "Given \\(x^2 - (5u - 5)x + 1 = 0\\), when one of the solutions to the quadratic equation above is \\(x = a\\), and \\(a + \\frac{1}{a} = 3u\\). What is the value of \\(u\\)?",
+    "option_a": "\\(1\\)",
+    "option_b": "\\(1.5\\)",
+    "option_c": "\\(2\\)",
+    "option_d": "\\(2.5\\)"
+  },
+  {
+    "question_number": 111,
+    "prompt": "The composition of an animal is defined as the muscles, bones, and fat of the animal. A scientist studied the composition of one young swamp buffalo and determined the buffalo had \\(133\\) kilograms of muscle, which made up approximately \\(65.9\\%\\) of its composition. Of the remaining composition of this buffalo, approximately \\(46.2\\%\\) was bone, and the remainder was fat. Based on these approximations, to the nearest tenth, how many kilograms of this buffalo's composition was bone?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 112,
+    "prompt": "One gallon of sealant costs \\(\\$29\\) and will cover \\(300\\) square feet of a surface. A deck has a total surface area of \\(d\\) square feet. Which equation represents the cost \\(c\\), in dollars, of the sealant needed to cover the deck twice?",
+    "option_a": "\\(c = \\frac{300d}{29}\\)",
+    "option_b": "\\(c = \\frac{600d}{29}\\)",
+    "option_c": "\\(c = 29\\left(\\frac{d}{150}\\)\\)",
+    "option_d": "\\(c = 29\\left(\\frac{d}{300}\\)\\)"
+  },
+  {
+    "question_number": 113,
+    "prompt": "For a certain position, an employer offers an hourly wage of \\(\\$17.00\\) at the start of employment. One year after the start of employment, the hourly wage is increased by \\(7\\%\\) of the hourly wage at the start of employment. For the next five years, at the end of every \\(6\\)-month interval, the hourly wage is increased by \\(3\\%\\) of the hourly wage at the end of the previous \\(6\\)-month interval. Which of the following functions \\(H\\) models the hourly wage, in dollars, \\(x\\) years after the start of employment, where \\(1 \\leq x \\leq 6\\)?",
+    "option_a": "\\(H(x) = 18.19(1.03)^{2(x-1)}\\)",
+    "option_b": "\\(H(x) = 18.19(1.03)^{\\frac{1}{2}(x-1)}\\)",
+    "option_c": "\\(H(x) = 18.19(1.03)^{6(x-1)}\\)",
+    "option_d": "\\(H(x) = 18.19(1.03)^{\\frac{1}{6}(x-1)}\\)"
+  },
+  {
+    "question_number": 114,
+    "prompt": "The function \\(f\\) is defined by \\(f(x) = ax^2 + bx + c\\), where \\(a\\), \\(b\\), and \\(c\\) are constants. The graph of \\(y = f(x)\\) in the \\(xy\\)-plane passes through the points \\((18, 0)\\) and \\((-11, 0)\\). If \\(a\\) is an integer greater than \\(1\\), which of the following could be the value of \\(a + b\\)?",
+    "option_a": "\\(-12\\)",
+    "option_b": "\\(-6\\)",
+    "option_c": "\\(7\\)",
+    "option_d": "\\(14\\)"
+  },
+  {
+    "question_number": 115,
+    "prompt": "The function \\(f\\) is defined by \\(f(x) = (x - 4)(x - 6)(x + k)\\), where \\(k\\) is a constant. In the \\(xy\\)-plane, the graph of \\(y = f(x)\\) passes through the point \\((-3, 0)\\). What is the value of \\(f(0)\\)?",
+    "option_a": "-189",
+    "option_b": "-3",
+    "option_c": "7",
+    "option_d": "72"
+  },
+  {
+    "question_number": 116,
+    "prompt": "The function \\(g\\) is a quadratic function. In the \\(xy\\)-plane, the graph of \\(y = g(x)\\) has a vertex at \\((-1, -4)\\) and passes through the points \\((-2, -43)\\) and \\((1, -160)\\). What is the value of \\(g(0) - g(2)\\)?",
+    "option_a": "\\(-121\\)",
+    "option_b": "\\(0\\)",
+    "option_c": "\\(117\\)",
+    "option_d": "\\(312\\)"
+  },
+  {
+    "question_number": 117,
+    "prompt": "The function \\(f\\) is defined by the given equation \\(f(x) = k(1.84)^x\\), where \\(k\\) is a constant. The value of \\(f(x)\\) increases by \\(p\\%\\) for every increase of \\(x\\) by \\(1\\). For which of the following functions, where \\(k\\) is a constant, does the value of \\(g(x)\\) increase by \\(p\\%\\) for every increase of \\(x\\) by \\(4\\)?",
+    "option_a": "g(x) = k(1.84)^{\\frac{x}{4}}",
+    "option_b": "g(x) = k(1.84)^x",
+    "option_c": "g(x) = k(1.84)^{x-4}",
+    "option_d": "g(x) = k(1.84)^{x+4}"
+  },
+  {
+    "question_number": 118,
+    "prompt": "In the given pair of equations, \\(a\\) and \\(b\\) are constants. The graph of this pair of equations in the \\(xy\\)-plane is a pair of perpendicular lines. Which of the following pairs of equations also represents a pair of perpendicular lines?\\n\\n\\(\\begin{cases} 5x + 7y = 1 \\\\ ax + by = 1 \\end{cases}\\)",
+    "option_a": "\\\\(\\\\begin{cases} 10x + 7y = 1 \\\\\\\\ ax - 2by = 1 \\\\end{cases}\\\\)",
+    "option_b": "\\\\(\\\\begin{cases} 10x + 7y = 1 \\\\\\\\ ax + 2by = 1 \\\\end{cases}\\\\)",
+    "option_c": "\\\\(\\\\begin{cases} 10x + 7y = 1 \\\\\\\\ 2ax + by = 1 \\\\end{cases}\\\\)",
+    "option_d": "\\\\(\\\\begin{cases} 5x - 7y = 1 \\\\\\\\ ax + by = 1 \\\\end{cases}\\\\)"
+  },
+  {
+    "question_number": 119,
+    "prompt": "An exponential function \\(f\\) is defined by \\(f(x) = c^x\\), where \\(c\\) is a constant greater than \\(1\\). If \\(f(7) = 9 \\cdot f(5)\\), what is the value of \\(c\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 120,
+    "prompt": "Which expression is a factor of \\(36x^2(x + 12) - 36(x + 12)^2\\)?",
+    "option_a": "\\(-12x + 144\\)",
+    "option_b": "\\(2x + 12\\)",
+    "option_c": "\\(6x + 6\\)",
+    "option_d": "\\(24x - 144\\)"
+  },
+  {
+    "question_number": 121,
+    "prompt": "The model \\(f(x) = -0.0038400x^2 + 15.236x - 15,103\\) gives the predicted average Arctic sea ice area \\(f(x)\\), in millions of square kilometers, for September of each year \\(x\\), where \\(x\\) represents a year and \\(1979 \\leq x \\leq 2012\\). Based on the model, what is the positive difference, in millions of square kilometers, between the predicted average Arctic sea ice area for September of the year 1991 and the predicted average Arctic sea ice area for September of the year 1992? (Round your answer to the nearest thousandth.)",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 122,
+    "prompt": "Which of the following equivalent forms of the given function \\(f(x) = 4^{-(2+x)}\\) displays the \\(y\\)-coordinate of the \\(y\\)-intercept of its graph in the \\(xy\\)-plane as a constant?",
+    "option_a": "\\(f(x) = \\frac{1}{16} \\left(\\frac{1}{4}\\right)^x\\)",
+    "option_b": "\\(f(x) = \\left(\\frac{1}{4}\\right)^{(2+x)}\\",
+    "option_c": "\\(f(x) = 2^{-2(2+x)}\\",
+    "option_d": "\\(f(x) = 4^{-(2-x)}\\)"
+  },
+  {
+    "question_number": 123,
+    "prompt": "In the given equation \\(77x^2 + (7j + 11k)x + jk = 0\\), \\(j\\) and \\(k\\) are positive constants. The product of the solutions to the given equation is \\(ajk\\), where \\(a\\) is a constant. What is the value of \\(a\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 124,
+    "prompt": "The equation of a parabola is given in the form \\(y = a(x-h)^2 + k\\), where \\(a\\), \\(b\\), and \\(c\\) are constants (specifically representing \\(y = ax^2 + bx + c\\)). In the \\(xy\\)-plane, the parabola has vertex \\((5, -9)\\) and has zero \\(x\\)-intercepts. Which of the following could be the value of \\(a - b - c\\)?",
+    "option_a": "\\(-47\\)",
+    "option_b": "\\(-5\\)",
+    "option_c": "\\(9\\)",
+    "option_d": "\\(23\\)"
+  },
+  {
+    "question_number": 125,
+    "prompt": "When the price of a particular product is \\(\\$120\\), no products are sold. As the number of products increases by \\(1\\), the price decreases by \\(\\$2.50\\). If the total revenue for all products sold was \\(\\$1,444\\), what was the total number of products sold? (\\text{revenue} = \\text{price} \\times \\text{number of products sold})",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 126,
+    "prompt": "The function \\(f\\) is defined by a quadratic equation, where \\(a\\) and \\(b\\) are integer constants. If \\(f(32) > 0\\), \\(f(35) < 0\\), and \\(f(38) > 0\\), which of the following could be the value of \\(a + b\\)?",
+    "option_a": "\\(35\\)",
+    "option_b": "\\(37\\)",
+    "option_c": "\\(67\\)",
+    "option_d": "\\(69\\)"
+  },
+  {
+    "question_number": 127,
+    "prompt": "The expression \\(kx\\) represents the result of decreasing a positive force, \\(x\\), acting on an object by \\(0.42\\%\\). What is the value of \\(k\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 128,
+    "prompt": "The equation \n\\[ \\frac{1}{cx} = \\frac{x}{128} + \\frac{1}{c} \\]\nis given, where \\(c\\) is a constant. If the equation has exactly one solution, what is the value of \\(c\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 129,
+    "prompt": "If \n\\[ \\sqrt[7]{343n^9} = (n^x \\cdot 7)^y \\]\nand \\(n > 0\\), what is the value of \\(x + y\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 130,
+    "prompt": "The speed of object \\(K\\) is \\(9,525\\%\\) of the speed of object \\(J\\), and the speed of object \\(K\\) is \\(0.025\\%\\) of the speed of object \\(L\\). If the speed of object \\(L\\) is \\(x\\%\\) of the speed of object \\(J\\), what is the value of \\(\\frac{x}{1,000}\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 131,
+    "prompt": "For each real number \\(r\\), which of the following points \\((x, y)\\) lies on the graph of both equations in the \\(xy\\)-plane for the given system?\n\n\\[\\begin{aligned} 3x + 2y &= 6 \\\\ 6x + 4y &= 12 \\end{aligned}\\]",
+    "option_a": "\\((r, 3 - \\frac{3}{2}r)\\)",
+    "option_b": "\\((r, 3 - \\frac{r}{2})\\)",
+    "option_c": "\\((3 - r, 3 - \\frac{3}{2}r)\\)",
+    "option_d": "\\((3, 2 - \\frac{3}{2}r)\\)"
+  },
+  {
+    "question_number": 132,
+    "prompt": "In the given expression, \\(a\\) and \\(b\\) are constants such that \\(\\sin a^\\circ = 0.50\\), \\(\\cos b^\\circ = 0.99\\), and \\(0 < b < 90\\). What is the value of the given expression\n\\[ 2\\cos(90^\\circ - a) \\cdot \\cos b^\\circ + \\sin(a + y) \\cdot \\sin(90^\\circ - b)^\\circ \\]\nwhen \\(y = 0\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 133,
+    "prompt": "In the given equation, \\(k\\) is a constant. The equation \\(\\sqrt{k - x} = 43 - x\\) has exactly one real solution. What is the minimum possible value of \\(4k\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 134,
+    "prompt": "For what value of \\(k\\) does the system of linear equations in the variables \\(x\\) and \\(y\\) have no solutions?\n\n\\[\\begin{aligned} -6.4x &= 4y + 2.1 \\\\ ky + 3.2x &= 5.8 \\end{aligned}\\]",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 135,
+    "prompt": "The function \\(p\\) is defined by \\(p(x) = a((x + 5)^2 - b)((x + 5)^2 - c)\\) where \\(a\\), \\(b\\), and \\(c\\) are constants. In the \\(xy\\)-plane, the graph of \\(y = p(x)\\) passes through the points \\((-4, 34)\\) and \\((0, 150)\\). What is the value of \\(p(-10) + p(-4)\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 136,
+    "prompt": "The functions \\(f\\) and \\(g\\) are defined by the given equations, where \\(2 \\leq x \\leq 5\\). Which of the following equations displays, as a constant or coefficient, the maximum value of the function it defines, where \\(2 \\leq x \\leq 5\\)?\n\nI. \\(f(x) = 6.25(5.76)(0.4)^x\\)\nII. \\(g(x) = 75(3.75)^{x-5}\\)",
+    "option_a": "I only",
+    "option_b": "II only",
+    "option_c": "I and II",
+    "option_d": "Neither I nor II"
+  },
+  {
+    "question_number": 137,
+    "prompt": "In the given equations, \\(a\\) and \\(b\\) are constants, \\(a > 1\\) and \\(b > 1\\). What is the value of \\(x\\)?\n\\[ \\frac{\\sqrt[7]{a^5}}{\\sqrt{b^5}} = 1 \\text{ (noted from formatting, wait: } \\sqrt[7]{a^5} = \\sqrt{b^5} \\text{ and } a^{3x-3} = b^3\\text{)} \\]",
+    "option_a": "\\(\\frac{27}{21}\\)",
+    "option_b": "\\(\\frac{21}{27}\\)",
+    "option_c": "\\(\\frac{32}{21}\\)",
+    "option_d": "\\(\\frac{38}{21}\\)"
+  },
+  {
+    "question_number": 138,
+    "prompt": "The function \\(P\\) is defined by \\(P(t) = 260(1.03)^{t/8}\\) and models the population, in thousands, of a certain city \\(t\\) years after 2009. According to the model, the population is predicted to increase by \\(n\\%\\) every 8 months. What is the value of \\(n\\)?",
+    "option_a": "0.22",
+    "option_b": "1.03",
+    "option_c": "2",
+    "option_d": "3"
+  },
+  {
+    "question_number": 139,
+    "prompt": "In the given system of equations, \\(k\\) and \\(m\\) are constants. The system has a solution of \\((2, y)\\).\n\n\\[\\begin{aligned} 7kx + 13my &= 20.5 \\\\ 6kx + 5my &= -48 \\end{aligned}\\]\n\nWhat is the value of \\(k\\)?",
+    "option_a": "-11",
+    "option_b": "-13",
+    "option_c": "-15",
+    "option_d": "-18"
+  },
+  {
+    "question_number": 140,
+    "prompt": "The exponential function \\(f\\) is defined by \\(f(x) = ab^x\\), where \\(a\\) and \\(b\\) are positive constants. If \\(f(s) = t\\) and \\(f(s + 1) = -0.87t\\), where \\(s\\) and \\(t\\) are constants, what is the value of \\(b\\)?",
+    "option_a": "0.13",
+    "option_b": "0.87",
+    "option_c": "1.13",
+    "option_d": "1.87"
+  },
+  {
+    "question_number": 141,
+    "prompt": "In the given system of equations, \\(a\\) and \\(b\\) are constants. If there are infinitely many solutions to this system, what is the value of \\(a + b\\)?\n\n\\[\\begin{aligned}\\frac{1}{2}x + ay &= 16\\\\4y &= 48 - bx\\end{aligned}\\]",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 142,
+    "prompt": "The equation of a parabola is written in the form \\(y = ax^2 + bx + c\\), where \\(a\\), \\(b\\), and \\(c\\) are constants. When graphed in the \\(xy\\)-plane, the parabola has vertex \\((-1, 4)\\) and does not intersect the \\(x\\)-axis. Which of the following could be the value of \\(a - b - c\\)?",
+    "option_a": "-5",
+    "option_b": "-4",
+    "option_c": "0",
+    "option_d": "4"
+  },
+  {
+    "question_number": 143,
+    "prompt": "Quadratic function \\(h\\) is defined by \\(h(x) = ax^2 - 2x + c\\), where \\(a\\) and \\(c\\) are constants. The graph of \\(y = h(x)\\) in the \\(xy\\)-plane is a parabola that opens downward and has a vertex of \\((h, k)\\), where \\(k > 0\\). If \\(h(1) = h(-13)\\), which of the following must be true?\n\nI. \\(-1 < a < 0\\)\nII. \\(c > 0\\)",
+    "option_a": "I only",
+    "option_b": "II only",
+    "option_c": "I and II",
+    "option_d": "Neither I nor II"
+  },
+  {
+    "question_number": 144,
+    "prompt": "When graphed in the \\(xy\\)-plane, the given system of equations has exactly one real solution at \\((x, y)\\). If \\(k\\) is a constant, what is the value of \\(x\\)?\n\n\\[\\begin{aligned}y &= 7x - k\\\\y &= 3x^2 + 37x + 84\\end{aligned}\\]",
+    "option_a": "\\(-9\\)",
+    "option_b": "\\(-5\\)",
+    "option_c": "\\(5\\)",
+    "option_d": "\\(9\\)"
+  },
+  {
+    "question_number": 145,
+    "prompt": "In the \\(xy\\)-plane, the graph of the equation \\(y = -x^2 + 9x - 100\\) intersects the line \\(y = c\\) at exactly one point. What is the value of \\(c\\)?",
+    "option_a": "\\(-\\frac{481}{4}\\)",
+    "option_b": "\\(-100\\)",
+    "option_c": "\\(-\\frac{319}{4}\\)",
+    "option_d": "\\(-\\frac{9}{2}\\)"
+  },
+  {
+    "question_number": 146,
+    "prompt": "The equation above is true for all values of \\(x \\neq -\\frac{b}{2\\times 3}\\) (or rather \\(x \\neq -\\frac{b}{2}\\)), where \\(b\\) is a constant. What is the value of \\(b\\)?\n\n\\[\\frac{10x^2 + 13x + 14}{2x + b} = 5x - 1 + \\frac{17}{2x + b}\\]",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 147,
+    "prompt": "An online course platform offers two plans: a flat fee of \\(100\\) dollars for unlimited courses or pay-per-course at rates of \\(15\\), \\(25\\), or \\(35\\) dollars. What is the minimum number of courses one needs to take for the flat fee to always be more economical?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 148,
+    "prompt": "In the given quadratic function \\(f(x) = -2x^2 + bx + c\\), \\(b\\) and \\(c\\) are constants. The graph of \\(y = f(x)\\) is a parabola that has a vertex at the point \\((h, k)\\), where \\(h\\) and \\(k\\) are constants. If \\(k < 0\\) and \\(f(-5) = f(7)\\), which of the following must be true?\n\nI. \\(c < -1\\)\nII. \\(b \\geq 3\\)",
+    "option_a": "I only",
+    "option_b": "II only",
+    "option_c": "I and II",
+    "option_d": "Neither I nor II"
+  },
+  {
+    "question_number": 149,
+    "prompt": "The function \\(f\\) is defined by \\(f(x) = 9x^2 + kx - 21\\), where \\(k\\) is a constant. In the \\(xy\\)-plane, the graph of \\(y = f(x)\\) passes through the points \\((r, 23)\\) and \\((2r, 139)\\), where \\(r\\) is a constant. Which of the following could be the value of \\(k\\)?",
+    "option_a": "\\(4\\)",
+    "option_b": "\\(12\\)",
+    "option_c": "\\(116\\)",
+    "option_d": "\\(162\\)"
+  },
+  {
+    "question_number": 150,
+    "prompt": "The function \\(f\\) is defined by \\(f(x) = a\\sqrt{-x} + b\\), where \\(a\\) and \\(b\\) are constants. In the \\(xy\\)-plane, the graph of \\(y = f(x)\\) passes through the point \\((5, 0)\\), and \\(f(-12) > f(-7)\\). Which of the following must be true?",
+    "option_a": "\\(a < f(b)\\)",
+    "option_b": "\\(a > b\\)",
+    "option_c": "\\(f(3) < f(-2b)\\)",
+    "option_d": "\\(a < b\\)"
+  },
+  {
+    "question_number": 151,
+    "prompt": "An object's speed, in meters per hour, is increasing at a rate of \\(1,490\\) meters per hour per second. Which of the following is closest to this rate in feet per second squared? (Use \\(1\\text{ meter} = 3.28\\text{ feet}\\).)",
+    "option_a": "\\(0.126\\)",
+    "option_b": "\\(1.36\\)",
+    "option_c": "\\(7.57\\)",
+    "option_d": "\\(81.5\\)"
+  },
+  {
+    "question_number": 152,
+    "prompt": "Let \\(q\\) and \\(r\\) be two numbers such that \\(q\\) is \\(30\\%\\) of the sum of \\(q\\) and \\(r\\), and \\(r = 3.102\\). If \\(m\\) is another number, what is \\(20\\%\\) of the sum \\(m + q + r\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 153,
+    "prompt": "The equation \\(x^2 - 4x - 4 = 0\\) has solutions \\(x = a + b\\sqrt{c}\\) and \\(x = a - b\\sqrt{c}\\), where \\(a\\), \\(b\\), and \\(c\\) are positive integers. What is the value of \\(ab - c\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 154,
+    "prompt": "One method of calculating the approximate age, in years, of a tree of a particular species is to multiply the diameter of the tree, in inches, by a constant called the growth factor for that species. The table below gives the growth factors for eight species of trees.\n\n| Species of tree | Growth factor |\n| :--- | :--- |\n| Red maple | 4.5 |\n| River birch | 3.5 |\n| Cottonwood | 2.0 |\n| Black walnut | 4.5 |\n| White birch | 5.0 |\n| American elm | 4.0 |\n| Pin oak | 3.0 |\n| Shagbark hickory | 7.5 |\n\nIf a white birch tree and a pin oak tree each now have a diameter of \\(1\\) foot, which of the following will be closest to the difference, in inches, of their diameters \\(10\\) years from now? \\((\\text{1 foot} = 12 \\text{ inches})\\).",
+    "option_a": "\\(1.0\\)",
+    "option_b": "\\(1.2\\)",
+    "option_c": "\\(1.3\\)",
+    "option_d": "\\(1.4\\)"
+  },
+  {
+    "question_number": 155,
+    "prompt": "A psychologist set up an experiment to study the tendency of a person to select the first item when presented with a series of items. In the experiment, \\(300\\) people were presented with a set of five pictures arranged in random order. Each person was asked to choose the most appealing picture. Of the first \\(150\\) participants, \\(36\\) chose the first picture in the set. Among the remaining \\(150\\) participants, \\(p\\) people chose the first picture in the set. If more than \\(20\\%\\) of all participants chose the first picture in the set, which of the following inequalities best describes the possible values of \\(p\\)?",
+    "option_a": "\\(p > 0.20(300 - 36)\\), where \\(p \\leq 150\\)",
+    "option_b": "\\(p > 0.20(300 + 36)\\), where \\(p \\leq 150\\)",
+    "option_c": "\\(p - 36 > 0.20(300)\\), where \\(p \\leq 150\\)",
+    "option_d": "\\(p + 36 > 0.20(300)\\), where \\(p \\leq 150\\)"
+  },
+  {
+    "question_number": 156,
+    "prompt": "The function \\(q\\) is defined by \\(q(x) = a|x - 9|^2 - 87|x - 9| + b\\), where \\(a\\) and \\(b\\) are constants and \\(a > b > 87\\). If \\(q(639) = h\\) and \\(q(-621) = k\\), where \\(h\\) and \\(k\\) are constants, what is the value of \\(9(-639)^{h-k} + 621(9)^{k-h}\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 157,
+    "prompt": "For the quadratic function \\(f\\) shown, \\(a\\), \\(b\\), and \\(c\\) are constants. For the graph of \\(y = f(x)\\) in the \\(xy\\)-plane, the quadratic function \\(f\\) opens upward, and the coordinates of its vertex are both negative. Which of the following could be true?\n\n158. \\(a < 0, b < 0, c < 0\\)\n\n159. \\(a < 0, b > 0, c > 0\\)\n\n160. \\(a > 0, b < 0, c < 0\\)\n\n161. \\(a > 0, b > 0, c > 0\\)",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 162,
+    "prompt": "In the given expression \\(34z^{18} + bz^9 + 30\\), \\(b\\) is a positive integer. If \\(qz^9 + r\\) is a factor of the expression, where \\(q\\) and \\(r\\) are positive integers, what is the greatest possible value of \\(b\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 163,
+    "prompt": "Arturo builds and sells two types of steel tables. The revenue Arturo generates from selling each square table is \\(2\\) times his cost to build a square table, and the revenue Arturo generates from selling each hexagonal table is \\(2.5\\) times his cost to build a hexagonal table. In one year, Arturo's total cost to build tables was \\(\\$42,120\\), and he generated a total revenue of \\(\\$101,250\\) from selling all the tables he built that year. For that year, how much greater is the revenue Arturo generated from selling hexagonal tables than the revenue he generated from selling square tables?",
+    "option_a": "\\(\\$16,200\\)",
+    "option_b": "\\(\\$25,920\\)",
+    "option_c": "\\(\\$59,130\\)",
+    "option_d": "\\(\\$68,850\\)"
+  },
+  {
+    "question_number": 164,
+    "prompt": "The function \\(v(x) = \\frac{x^2 + bx + c}{(x - 7)(x - 17)}\\) where \\(b\\) and \\(c\\) are constants goes through the points \\((0, \\frac{99}{119})\\) and \\((11, 0)\\). There is another point where \\(v(q) = 0\\). What is the value of \\(q\\)?",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": ""
+  },
+  {
+    "question_number": 165,
+    "prompt": "The function \\(f(x) = 6(x - a)(x - b)(x - c)\\) is defined by the given equation, where \\(a\\), \\(b\\), and \\(c\\) are distinct constants. When \\(a < x < b\\), the value of \\(f(x)\\) is positive. The graph of \\(y = f(x)\\) in the \\(xy\\)-plane contains the point \\((r, s)\\), where \\(r\\) and \\(s\\) are constants. If \\(s = 9\\), which of the following could be true?\n\nI. \\(r < a\\)\nII. \\(b < r < c\\)\nIII. \\(r > c\\)",
+    "option_a": "I only",
+    "option_b": "III only",
+    "option_c": "I and III only",
+    "option_d": "II and III only"
+  }
+]

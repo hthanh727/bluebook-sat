@@ -1,0 +1,48 @@
+section,module,question_number,passage,prompt,question_type,option_a,option_b,option_c,option_d,correct_answer_index,correct_answer_text,image_url,domain,difficulty
+"math","1","1","","A square map has a side length of 45 inches, and 1 inch on the map represents an actual distance of 13 miles. A smaller version of the same map is printed as a square with the side length 70% shorter than the side length of the previous map. On the smaller map, which of the following is closest to the actual distance, in miles, represented by 1 inch?","mcq","3.90","7.65","31.50","43.33","3","","","Problem-Solving and Data Analysis","Hard"
+"math","1","2","","The graph of \(y = f(x) + 2\) is shown below. Which equation defines the function \(f(x)\)?","mcq","\(f(x) = -5^x + 1\)","\(f(x) = -5^x + 3\)","\(f(x) = -5^x + 4\)","\(f(x) = -5^x + 5\)","1","","/images/adv_math_set2/q2.png","Advanced Math","Hard"
+"math","1","3","","Right rectangular prism \(X\) is similar to right rectangular prism \(Y\). The surface area of right rectangular prism \(X\) is 59 square centimeters (\(\text{cm}^2\)), and the surface area of right rectangular prism \(Y\) is 1,475 \(\text{cm}^2\). The volume of right rectangular prism \(Y\) is 1,500 \(\text{cm}^3\). What is the sum of the volumes, in \(\text{cm}^3\), of right rectangular prism \(X\) and right rectangular prism \(Y\)?","spr","","","","","","1512","","Geometry and Trigonometry","Hard"
+"math","1","4","","The function \(f\) is defined by \(f(x) = ab^{\frac{x}{n}}\), where \(a\), \(b\), and \(n\) are constants, and \(b\) and \(n\) are integers. If \(f(2) = 6\) and \(f(5) = 162\), what is the value of \(f(7)\)?","spr","","","","","","1458","","Advanced Math","Hard"
+"math","1","5","","The function \(f\) is a quadratic function. In the \(xy\)-plane, the graph of \(y = f(x)\) has a vertex at \((1, 6)\) and passes through the points \((2, 40)\) and \((-1, 142)\). What is the value of \(f(-2) - f(0)\)?","mcq","108","176","272","312","2","","","Advanced Math","Hard"
+"math","1","6","","The function \(f\) is defined by the equation \(f(x) = \sqrt{3x + 8}\). If \(f(a) = -9a\), where \(a\) is a constant, what is the value of \(a\)?","mcq","\(\frac{1}{3}\)","\(\frac{8}{27}\)","\(-\frac{8}{27}\)","\(-\frac{1}{3}\)","2","","","Advanced Math","Hard"
+"math","1","7","","In the given equation, \(a\) and \(b\) are positive constants.
+
+$$24x^2 - (12a + 2b)x + ab = 0$$
+
+The sum of the solutions to the given equation is \(k(6a + b)\), where \(k\) is a constant. What is the value of \(k\)?","spr","","","","","","1/12","","Advanced Math","Hard"
+"math","1","8","","For the right circular cone shown, \(B\) is a point on the circumference of the base, and the length of segment \(AB\) (not shown) is 84 centimeters. If the height of the cone is 42 centimeters and the volume of the cone is \(k\pi\) cubic centimeters, what is the value of \(k\)?","spr","","","","","","74088","/images/adv_math_set2/q8.png","Geometry and Trigonometry","Hard"
+"math","1","9","","The function \(f\) is defined by \(f(x) = \frac{|x|}{a} - 14\), where \(a < 0\). What is the product of \(f(15a)\) and \(f(8a)\)?","spr","","","","","","638","","Advanced Math","Hard"
+"math","1","10","","The perimeter of an equilateral triangle is 876 centimeters. The three vertices of the triangle lie on a circle. The radius of the circle is \(w\sqrt{3}\) centimeters. What is the value of \(w\)?","spr","","","","","","292/3","","Geometry and Trigonometry","Hard"
+"math","1","11","","In triangle \(ABC\), the measure of angle \(A\) is \(52^\circ\) and \(AC = 35\). In triangle \(PQR\), the measure of angle \(P\) is \(52^\circ\) and \(PR = 105\). Which additional piece of information is sufficient to prove that triangle \(ABC\) is similar to triangle \(PQR\)?","mcq","\(AB = 30\) and \(PQ = 30\).","\(AB = 30\) and \(QR = 90\).","The measures of angle \(B\) and angle \(R\) are \(34^\circ\) and \(94^\circ\), respectively.","The measures of angle \(B\) and angle \(Q\) are \(52^\circ\) and \(34^\circ\), respectively.","2","","","Geometry and Trigonometry","Medium"
+"math","1","12","","A cooking school is offering a promotion where the first class is free, the second class is half off the regular price, and the remaining classes are regularly priced. If the regular price of a class is \$22.80, which function \(f\) gives the total cost, in dollars, of \(x\) classes taken using this promotion, where \(x \ge 2\)?","mcq","\(f(x) = 22.80(x - 1) + 11.40\)","\(f(x) = 22.80(x - 2) + 11.40\)","\(f(x) = 22.80(x - 1) + 11.40(x - 2)\)","\(f(x) = 22.80(x - 2) + 11.40(x - 1)\)","1","","","Heart of Algebra","Medium"
+"math","1","13","","The shaded region shown represents the solutions to \(rx + ty \ge -77\), where \(r\) and \(t\) are constants. What is the value of \(r + t\)?","mcq","8","6","-6","-7","0","","/images/adv_math_set2/q13.png","Heart of Algebra","Hard"
+"math","1","14","","The positive number \(a\) is 2,047% of the sum of the positive numbers \(b\) and \(c\), and \(b\) is 89% of \(c\). What percent of \(b\) is \(a\)?","mcq","21.36%","38.69%","2,300%","4,347%","3","","","Problem-Solving and Data Analysis","Hard"
+"math","1","15","","$$y = x - c$$
+$$y = -6(x - 12)^2$$
+
+In the given system of equations, \(c\) is a constant. The system has two distinct real solutions. Which of the following could be the value of \(c\)?","mcq","7","11","\(\frac{287}{24}\)","17","3","","","Advanced Math","Hard"
+"math","1","16","","In triangle \(RST\), the measure of angle \(R\) is \(39^\circ\), the measure of angle \(S\) is \(x^\circ\), and the measure of angle \(T\) is \((5x - 3)^\circ\). Point \(L\) lies on \(RS\), point \(K\) lies on \(ST\), and \(\overline{LK}\) is parallel to \(\overline{RT}\). What is the measure, in degrees, of angle \(\angle SKL\)?
+(Disregard the degree symbol when entering your answer.)","spr","","","","","","117","","Geometry and Trigonometry","Medium"
+"math","1","17","","The function is defined by \(f(x) = -10(2)^{\frac{x}{3}}\). Which table gives four values of \(x\) and their corresponding values of \(f(x)\) for the given exponential function?","mcq","| \(x\) | -3 | 0 | 3 | 6 |
+| :--- | :--- | :--- | :--- | :--- |
+| \(f(x)\) | -5 | 0 | -20 | -40 |","| \(x\) | -3 | 0 | 3 | 6 |
+| :--- | :--- | :--- | :--- | :--- |
+| \(f(x)\) | -5 | -10 | -20 | -40 |","| \(x\) | -3 | 0 | 3 | 6 |
+| :--- | :--- | :--- | :--- | :--- |
+| \(f(x)\) | 5 | 10 | -20 | -40 |","| \(x\) | -3 | 0 | 3 | 6 |
+| :--- | :--- | :--- | :--- | :--- |
+| \(f(x)\) | -5 | 0 | -20 | -30 |","1","","","Advanced Math","Medium"
+"math","1","18","","$$\sqrt{p^4} = t^{\frac{5}{6}}$$
+
+In the given equation, \(p > 1\) and \(t > 1\). If \(t = p^{2n-1}\), where \(n\) is a constant, what is the value of \(n\)?","spr","","","","","","17/10","","Advanced Math","Hard"
+"math","1","19","","A clothing store buys shirts at a wholesale price of \$6.00 each and resells them each at a retail price that is 310% of the wholesale price. At the end of the season, any remaining shirts are marked at a discounted price that is 75% off the retail price. What is the discounted price of each remaining shirt, in dollars?","spr","","","","","","4.65","","Problem-Solving and Data Analysis","Medium"
+"math","1","20","","A right rectangular prism has a base area of \(16t\) square centimeters (\(\text{cm}^2\)). The length of the base of the rectangular prism is \(\frac{8}{3}\) cm, and the height of the rectangular prism is 9 cm. Which expression represents the surface area, in \(\text{cm}^2\), of the right rectangular prism?","mcq","\(32t + 96\)","\(140t + 48\)","\(800t + 48\)","\(144t\)","1","","","Geometry and Trigonometry","Medium"
+"math","1","21","","The function \(f\) is defined by \(f(x) = 53(0.15)^x\). For any positive integer \(n\), the value of \(f(n)\) is \(p\%\) less than the value of \(f(n - 1)\). What is the value of \(p\)?","mcq","15","47","53","85","3","","","Advanced Math","Medium"
+"math","1","22","","The dot plots represent the distributions of values in data sets A and B.
+
+Which of the following statements must be true?
+
+I. The median of data set A is equal to the median of data set B.
+II. The standard deviation of data set A is equal to the standard deviation of data set B.","mcq","I and II","I only","II only","Neither I nor II","1","","/images/adv_math_set2/q22.png","Problem-Solving and Data Analysis","Hard"
+"math","1","23","","In a set of four consecutive odd integers, where the integers are ordered from least to greatest, the first integer is represented by \(x\). The product of 28 and the third odd integer in the set is at most the value of 50 less than the sum of the first and fourth odd integers in the set. What is the greatest possible value of \(x\)?","spr","","","","","","-7","","Heart of Algebra","Hard"
+"math","1","24","","The figure shows a rectangular pool surrounded by a concrete path that is \(x\) feet wide on all sides. The pool is 21 ft long and 13 ft wide. The area of the concrete path is \(240\text{ ft}^2\). What is the value of \(x\)?","mcq","3","6","20","40","0","","/images/adv_math_set2/q25.png","Advanced Math","Medium"
