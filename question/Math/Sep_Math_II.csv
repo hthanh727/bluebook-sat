@@ -1,0 +1,77 @@
+module,question_number,prompt,option_a,option_b,option_c,option_d,correct_answer,correct_answer_text,image_url,question_type,domain,difficulty
+1,1,"What value of \(p\) is the solution to the equation \(\frac{p}{2} - 9 = 11\)?","20","22","40","80","C","","","mcq","Algebra","Easy"
+1,2,"The function \(f\) is defined by \(f(x) = 2x + 5\). What is the value of \(f(x)\) when \(x = 100\)?","","","","","","205","","spr","Algebra","Easy"
+1,3,"Each face of a fair 16-sided die is labeled with a number from 1 through 16, with a different number appearing on each face. If the die is rolled one time, what is the probability of rolling a 2?","\(\frac{15}{16}\)","\(\frac{14}{16}\)","\(\frac{2}{16}\)","\(\frac{1}{16}\)","D","","","mcq","Problem-Solving and Data Analysis","Easy"
+1,4,"For the function \(f\), the table shows four values of \(x\) and their corresponding values of \(f(x)\).
+
+| \(x\) | \(f(x)\) |
+| :---: | :---: |
+| 1 | 2,000 |
+| 2 | 400 |
+| 3 | 80 |
+| 4 | 16 |
+
+Which of the following could describe this function?","Decreasing exponential","Increasing exponential","Decreasing linear","Increasing linear","A","","","mcq","Advanced Math","Easy"
+1,5,"A rectangle has a length of 3 centimeters and a width of 2 centimeters. What is the perimeter, in centimeters, of this rectangle?","","","","","","10","","spr","Geometry and Trigonometry","Easy"
+1,6,"The function \(f\) is defined by \(f(x) = -\frac{4}{13}x + 13\). What is the slope of the graph of \(y = f(x)\) in the xy-plane?","-13","\(-\frac{4}{13}\)","\(\frac{1}{13}\)","4","B","","","mcq","Algebra","Easy"
+1,7,"Line \(k\) is defined by \(y = 3x + 13\). Line \(j\) is perpendicular to line \(k\) in the xy-plane. What is the slope of line \(j\)?","\(-\frac{1}{3}\)","\(\frac{1}{10}\)","\(-\frac{1}{16}\)","\(\frac{1}{39}\)","A","","","mcq","Algebra","Medium"
+1,8,"The function \(f(x) = 1,200(0.5)^{x/15}\) gives the predicted intensity of a beam \(f(x)\), in number of photons in the beam, \(x\) millimeters below the surface of a certain material. What is the best interpretation of \(f(15) = 600\)?","A beam at the surface of the material has a predicted intensity of 15 photons in the beam.","A beam at the surface of the material has a predicted intensity of 600 photons in the beam.","A beam 15 millimeters below the surface of the material has a predicted intensity of 600 photons in the beam.","A beam 600 millimeters below the surface of the material has a predicted intensity of 1,200 photons in the beam.","C","","","mcq","Advanced Math","Medium"
+1,9,"In triangle \(ABC\), the measure of angle \(A\) is \(36^\circ\), the measure of angle \(B\) is \(90^\circ\), and the measure of angle \(C\) is \(\left(\frac{k}{2}\right)^\circ\). What is the value of \(k\)?","45","54","72","108","D","","","mcq","Geometry and Trigonometry","Medium"
+1,10,"For the exponential function \(g\), the table shows four values of \(x\) and their corresponding values of \(g(x)\).
+
+| \(x\) | \(g(x)\) |
+| :---: | :---: |
+| -1 | 42 |
+| 0 | 1 |
+| 1 | \(\frac{1}{42}\) |
+| 2 | \(\frac{1}{1,764}\) |
+
+Which equation defines \(g\)?","\(g(x) = -42^x\)","\(g(x) = -\left(\frac{1}{42}\right)^x\)","\(g(x) = 42^x\)","\(g(x) = \left(\frac{1}{42}\right)^x\)","D","","","mcq","Advanced Math","Medium"
+1,11,"The expression \((3x + 4)(x + 6)\) can be written in the form \(ax^2 + bx + c\), where \(a\), \(b\), and \(c\) are constants. What is the value of \(a + b + c\)?","","","","","","49","","spr","Advanced Math","Medium"
+1,12,"A space probe uses a square-shaped solar sail to move through space. The side length of the solar sail is \(8.89w\) meters, where \(w\) is the width, in meters, of the space probe. Which equation gives the area \(A\), in square meters, of the solar sail?","\(A = (w + 8.89)(w + 8.89)\)","\(A = (4)(8.89w)\)","\(A = (8.89w)(8.89w)\)","\(A = \left(\frac{8.89}{w}\right)\left(\frac{8.89}{w}\right)\)","C","","","mcq","Advanced Math","Easy"
+1,13,"Line \(t\) intersects both line \(r\) and line \(s\). In the figure, line \(r\) is parallel to line \(s\). At the intersection of line \(t\) and line \(r\), one angle is labeled \(x^\circ\). At the intersection of line \(t\) and line \(s\), one angle is labeled \(49^\circ\). What is the value of \(x\)?","","","","","","49","images/sep_math_2/m1_q13.png","spr","Geometry and Trigonometry","Easy"
+1,14,"A farmer gave two groups of chickens different types of chicken feed for a month to measure the effect on egg production. The lists give the number of eggs collected from each chicken in each group:
+
+• Group G: 8, 16, 18, 18, 23
+• Group H: 16, 18, 18, 23
+
+Which statement correctly compares the median number of eggs collected for group G and group H?","The median for group G is equal to the median for group H.","The median for group G is greater than the median for group H.","The median for group G is less than the median for group H.","There is not enough information to compare the medians.","A","","","mcq","Problem-Solving and Data Analysis","Medium"
+1,15,"Given the equation \(\sqrt{28} = \sqrt{\frac{1}{x}}\), what is the solution to the equation?","784","28","\(\frac{1}{28}\)","\(\frac{1}{784}\)","C","","","mcq","Advanced Math","Medium"
+1,16,"Given \(x^2 - 2x = 10\), what is one of the solutions to the equation?","\(\sqrt{10}\)","\(1 + \sqrt{11}\)","11","\(10 + \sqrt{2}\)","B","","","mcq","Advanced Math","Medium"
+1,17,"The graph of the polynomial function \(f\) in the xy-plane, where \(y = f(x)\), passes through the point \((7, 9)\). What is the value of \(f(7)\)?","7","9","16","63","B","","","mcq","Advanced Math","Easy"
+1,18,"A circuit consists of 7 resistors connected in series with a total resistance of 80 ohms. The resistance of each resistor is positive. The total resistance of 3 resistors in this circuit is 60 ohms. Which inequality best represents all possible values of the resistance \(x\), in ohms, of one of the remaining 4 resistors?","\(20 < x < 80\)","\(20 < x < 60\)","\(0 < x < 20\)","\(0 < x < 5\)","C","","","mcq","Algebra","Medium"
+1,19,"The measure of angle \(A\) is \(\frac{\pi}{282}\) radians. The measure of angle \(B\) is 47 times the measure of angle \(A\). What is the value of \(\cos B\)?","0","\(\frac{1}{2}\)","\(\frac{\sqrt{2}}{2}\)","\(\frac{\sqrt{3}}{2}\)","D","","","mcq","Geometry and Trigonometry","Hard"
+1,20,"On a plot of land, 52.0% of the square footage is farmland and the remaining square footage is pasture. There are buildings on exactly 23.5% of the farmland, and on 11.0% of the pasture. If there are buildings on \(p\%\) of the total land, what is the value of \(p\)?","","","","","","17.5","","spr","Problem-Solving and Data Analysis","Hard"
+1,21,"In right triangle \(QRS\), angle \(R\) is a right angle, \(QR < RS\), and the length of side \(RS\) is 49. Which expression represents the length of segment \(QS\)?","\(49\cos Q\)","\(49\sin Q\)","\(\frac{49}{\cos Q}\)","\(\frac{49}{\sin Q}\)","D","","images/sep_math_2/m1_q21.png","mcq","Geometry and Trigonometry","Hard"
+1,22,"A moving truck rental company charges $165 for the first hour and $95 for each additional hour, plus the cost of gas used (\(w\)). Which equation represents the total cost \(y\) for \(x\) hours where \(x \ge 1\)?","\(y = 95(x - 1) + w\)","\(y = 165 + 95 + w\)","\(y = 165 + 95x + w\)","\(y = 165 + 95(x - 1) + w\)","D","","","mcq","Algebra","Medium"
+2,1,"From left to right, the values of the vertical bars in the box plot above are 3, 5, 6, 7, and 9, and it summarizes 15 data values. What is the median of this data set?","2","3","6","7","C","","images/sep_math_2/m2_q1.png","mcq","Problem-Solving and Data Analysis","Easy"
+2,2,"The graph of a function is shown in the xy-plane. What is the y-coordinate of the y-intercept of the graph?","","","","","","3","images/sep_math_2/m2_q2.png","spr","Advanced Math","Easy"
+2,3,"A scatterplot shows data points with a line of best fit slanting up from left to right, passing through the approximate coordinates (10, 16.4), (8, 14.4), and (12, 18.4). Which equation best represents the line of best fit?","\(y = -x - 6.4\)","\(y = -x + 6.4\)","\(y = x - 6.4\)","\(y = x + 6.4\)","D","","images/sep_math_2/m2_q3.png","mcq","Problem-Solving and Data Analysis","Easy"
+2,4,"The function \(f\) is defined by \(f(x) = 3x - 7\). If \(f(a) + 1 = 2a\), what is the value of \(a\)?","-1","1","5","6","D","","","mcq","Algebra","Medium"
+2,5,"What is the area, in square centimeters, of a rectangle with a length of 38 centimeters and a width of 33 centimeters?","71","142","1,089","1,254","D","","","mcq","Geometry and Trigonometry","Easy"
+2,6,"Given the equation \(9x + x = 2x + x + 5\), which of the following equations has the same solution?","\(7x = -5\)","\(7x = 5\)","\(x = -5\)","\(x = 5\)","B","","","mcq","Algebra","Easy"
+2,7,"Which expression is equivalent to \(1,024w^2 - 484\)?","\((32w - 22)(32w - 22)\)","\((16w - 11)(16w + 11)\)","\((16w - 11)(16w - 11)\)","\((32w - 22)(32w + 22)\)","D","","","mcq","Advanced Math","Medium"
+2,8,"The number of stamps in Levi’s collection is 125% of the number of stamps in Marissa’s collection. If there are 400 stamps in Marissa’s collection, how many stamps are in Levi’s collection?","100","320","500","900","C","","","mcq","Problem-Solving and Data Analysis","Easy"
+2,9,"For a party, 41 hamburger buns are needed. Hamburger buns are sold in packages of 8. What is the minimum number of packages that should be bought for the party?","","","","","","6","","spr","Problem-Solving and Data Analysis","Easy"
+2,10,"The function \(f(x) = 5x + 360\) gives the total mass, in grams, of a jar and the \(x\) marbles inside it. What is the best interpretation of \(f(0) = 360\)?","The mass of each marble is 0 grams.","The mass of each marble is 360 grams.","The total mass of the jar with 0 marbles inside is 360 grams.","The total mass of the jar with 360 marbles inside is 0 grams.","C","","","mcq","Algebra","Easy"
+2,11,"For the linear function \(f\), the graph of \(y = f(x)\) in the xy-plane has a slope of -18 and passes through the point (0, 0). Which equation defines \(f\)?","\(f(x) = -18x\)","\(f(x) = -12x\)","\(f(x) = -6x\)","\(f(x) = x\)","A","","","mcq","Algebra","Easy"
+2,12,"What is the x-intercept of the graph of \(y = \frac{33 - x}{ax + b}\) in the xy-plane, where \(a\) and \(b\) are positive constants?","\(\left(-\frac{b}{a}, 0\right)\)","\(\left(0, \frac{33}{b}\right)\)","\((0, -33)\)","\((33, 0)\)","D","","","mcq","Advanced Math","Medium"
+2,13,"The function \(f\) is defined by \(f(x) = 8x^3 + 5\). What is the value of \(f(2)\)?","","","","","","69","","spr","Advanced Math","Easy"
+2,14,"What are all possible solutions to the equation \((z + 6)(z - 3) = 0\)?","-6 and -3","-6 and 3","6 and -3","6 and 3","B","","","mcq","Advanced Math","Easy"
+2,15,"In the xy-plane, the graphs of \(y = 3x + 10\) and \(y = 2x + 4\) intersect at \((x, y)\). What is the value of \(x\)?","","","","","","-6","","spr","Algebra","Easy"
+2,16,"Triangle \(CAE\) is similar to triangle \(CBD\). Angle \(CDB\) and angle \(CEA\) are right angles. The measure of angle \(CBD\) is \(55^\circ\), and \(AE = 27\). What is the measure of angle \(CAE\)?","\((27 \cdot 55)^\circ\)","\((27 + 55)^\circ\)","\(55^\circ\)","\(27^\circ\)","C","","images/sep_math_2/m2_q16.png","mcq","Geometry and Trigonometry","Medium"
+2,17,"The table shows four values of \(x\) and their corresponding values of \(y\). There is a linear relationship between \(x\) and \(y\).
+
+| \(x\) | \(y\) |
+| :---: | :---: |
+| -12 | 124 |
+| -6 | 88 |
+| 6 | 16 |
+| 12 | -20 |
+
+Which of the following equations represents this relationship?","\(36x + 6y = 52\)","\(36x + 6y = 312\)","\(6x + 36y = 52\)","\(6x + 36y = 312\)","B","","","mcq","Algebra","Medium"
+2,18,"The equation \(r = \frac{t^2 + 7a}{18}\) relates positive variables \(a\), \(r\), and \(t\). Which equation correctly expresses \(a\) in terms of \(r\) and \(t\)?","\(a = \frac{18r - t^2}{7}\)","\(a = \frac{\sqrt{18r} - t}{7}\)","\(a = \frac{\sqrt{7r} + t}{18}\)","\(a = \frac{t^2 + 7r}{18}\)","A","","","mcq","Advanced Math","Medium"
+2,19,"The function \(f(x) = 510(0.92)^x\) estimates the remaining mass in grams of paper bags \(x\) days after being placed in a bacteria environment. What is the best interpretation of the point \((1, 469.20)\) on the graph?","The estimated remaining mass 1 day after placement is 469.20 grams less than it was the day before.","The mass is decreasing by 469.20 grams per day.","The estimated remaining mass 1 day after placement is 469.20 grams.","The estimated remaining mass 469.20 days after placement is 1 gram.","C","","","mcq","Advanced Math","Medium"
+2,20,"Town A has a population density of 120 people per square mile and a population of 20,640. Town B has a density of 90 people per square mile and a population of 3,870. The area of Town A is \(k\) times the area of Town B. What is the value of \(k\)?","","","","","","4","","spr","Problem-Solving and Data Analysis","Hard"
+2,21,"A circle in the xy-plane has its center at \((2, -5)\) and passes through the point \((7, 7)\). What is the equation of the circle?","\((x - 2)^2 + (y + 5)^2 = 169\)","\((x + 2)^2 + (y - 5)^2 = 169\)","\((x - 2)^2 + (y + 5)^2 = 13\)","\((x + 2)^2 + (y - 5)^2 = 13\)","A","","","mcq","Geometry and Trigonometry","Hard"
+2,22,"If \(3x + 2y = 12\) and \(x - y = 4\), what is the value of \(x + y\)?","","","","","","4","","spr","Algebra","Medium"
