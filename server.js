@@ -44,14 +44,38 @@ const poolConfig = {
     user: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD || '',
     database: process.env.DB_NAME || 'bluebook_db',
-    port: process.env.DB_PORT || 3306,
+    port: Number(process.env.DB_PORT) || 3306,
     waitForConnections: true,
     connectionLimit: 10,
-    queueLimit: 0
+    queueLimit: 0,
+    connectTimeout: 15000
 };
 
-// Enable SSL only if explicitly requested
-if (process.env.DB_SSL === 'true') {
+// Support DATABASE_URL if provided (e.g. from Vercel)
+if (process.env.DATABASE_URL) {
+    try {
+        const dbUrl = new URL(process.env.DATABASE_URL);
+        poolConfig.host = dbUrl.hostname || poolConfig.host;
+        poolConfig.port = Number(dbUrl.port) || poolConfig.port;
+        poolConfig.user = decodeURIComponent(dbUrl.username) || poolConfig.user;
+        poolConfig.password = decodeURIComponent(dbUrl.password) || poolConfig.password;
+        if (dbUrl.pathname && dbUrl.pathname.length > 1) {
+            poolConfig.database = dbUrl.pathname.replace(/^\//, '');
+        }
+    } catch (e) {
+        console.warn('Failed to parse DATABASE_URL:', e.message);
+    }
+}
+
+// Enable SSL if explicitly requested or if connecting to Aiven Cloud
+const isAiven = Boolean(poolConfig.host && poolConfig.host.includes('aivencloud.com'));
+const isSslRequested = process.env.DB_SSL === 'true' || 
+                      process.env.DB_SSL === 'TRUE' || 
+                      process.env.DB_SSL === 'REQUIRED' || 
+                      process.env.DB_SSL === 'require' ||
+                      isAiven;
+
+if (isSslRequested) {
     poolConfig.ssl = { rejectUnauthorized: false };
 }
 
@@ -108,8 +132,8 @@ app.post('/api/login', async (req, res) => {
         const token = jwt.sign({ id: user.id, email: user.email, role: user.role, name: user.name }, JWT_SECRET, { expiresIn: '8h' });
         res.json({ token, user: { id: user.id, email: user.email, role: user.role, name: user.name } });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Server error' });
+        console.error('Login error:', error);
+        res.status(500).json({ message: 'Server error', error: error.message });
     }
 });
 

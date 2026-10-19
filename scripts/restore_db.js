@@ -103,6 +103,19 @@ async function restore() {
     )
   `);
 
+  await connection.query(`
+    CREATE TABLE IF NOT EXISTS bookmarks (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        test_id VARCHAR(50) NOT NULL,
+        question_id INT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE KEY unique_bookmark (user_id, question_id),
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+        FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
+    )
+  `);
+
   // Read backup
   console.log("Reading backup_all_tests.json...");
   const backup = JSON.parse(fs.readFileSync('backup_all_tests.json', 'utf8'));
@@ -114,6 +127,7 @@ async function restore() {
   await connection.query('TRUNCATE TABLE test_locks');
   await connection.query('TRUNCATE TABLE tests');
   await connection.query('TRUNCATE TABLE users');
+  await connection.query('TRUNCATE TABLE bookmarks');
   if (backup.recordings) await connection.query('TRUNCATE TABLE recordings');
 
   // Insert users
