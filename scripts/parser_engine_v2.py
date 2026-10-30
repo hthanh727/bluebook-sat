@@ -76,7 +76,8 @@ def clean_reading_passage(text, has_image):
             "A student is collecting",
             "Tribal nations employ",
             "While US public charities",
-            "The roofs on the buildings"
+            "The roofs on the buildings",
+            "Employing high-performance"
         ]
         for pstart in passages_starts:
             idx = full.find(pstart)
@@ -84,12 +85,117 @@ def clean_reading_passage(text, has_image):
                 return full[idx:].strip()
     return full.strip()
 
+def extract_reading_passage_formatted(page, has_image):
+    # 1. Get horizontal line segments in left passage area (x < 375, 35 <= y <= 385)
+    raw_lines = []
+    for d in page.get_drawings():
+        r = d['rect']
+        if r.height <= 3 and r.width > 1 and r.x1 <= 375 and 35 <= r.y0 <= 385:
+            raw_lines.append(r)
+    
+    raw_lines.sort(key=lambda r: (round(r.y0, 1), r.x0))
+    merged_lines = []
+    for r in raw_lines:
+        if not merged_lines:
+            merged_lines.append(fitz.Rect(r))
+        else:
+            prev = merged_lines[-1]
+            if abs(prev.y0 - r.y0) < 1.5 and r.x0 <= prev.x1 + 6:
+                prev.x1 = max(prev.x1, r.x1)
+            else:
+                merged_lines.append(fitz.Rect(r))
+    merged_lines = [m for m in merged_lines if m.width >= 10]
+
+    # 2. Extract spans from left column
+    pdict = page.get_text('dict')
+    raw_spans = []
+    for b in pdict.get('blocks', []):
+        if b.get('type') != 0:
+            continue
+        bbox = b['bbox']
+        if bbox[0] >= 370 or bbox[1] < 35 or bbox[3] > 385:
+            continue
+        b_text = ''.join(s['text'] for l in b.get('lines', []) for s in l.get('spans', []))
+        if 'stewiesat' in b_text.lower() or 'stewie education' in b_text.lower():
+            continue
+            
+        for l in b.get('lines', []):
+            for s in l.get('spans', []):
+                t = s['text']
+                if not t:
+                    continue
+                s_bbox = s['bbox']
+                if s_bbox[2] > 370 or s_bbox[1] < 35 or s_bbox[3] > 385:
+                    continue
+                raw_spans.append(s)
+                
+    visual_lines = []
+    for s in raw_spans:
+        y_base = s['bbox'][3]
+        placed = False
+        for vl in visual_lines:
+            if abs(vl['baseline'] - y_base) < 4:
+                vl['spans'].append(s)
+                placed = True
+                break
+        if not placed:
+            visual_lines.append({'baseline': y_base, 'spans': [s]})
+            
+    visual_lines.sort(key=lambda vl: vl['baseline'])
+    
+    out_lines = []
+    for vl in visual_lines:
+        spans = vl['spans']
+        line_y = vl['baseline']
+        hl_on_line = [m for m in merged_lines if abs(m.y0 - line_y) < 5]
+        
+        elements = []
+        for s in spans:
+            s_bbox = s['bbox']
+            is_u = False
+            for hl in hl_on_line:
+                overlap = min(s_bbox[2], hl.x1) - max(s_bbox[0], hl.x0)
+                if overlap > (s_bbox[2] - s_bbox[0]) * 0.4:
+                    is_u = True
+                    break
+            elements.append({'type': 'span', 'text': s['text'], 'x0': s_bbox[0], 'x1': s_bbox[2], 'u': is_u})
+            
+        for hl in hl_on_line:
+            overlaps = any(min(s['bbox'][2], hl.x1) - max(s['bbox'][0], hl.x0) > 3 for s in spans)
+            if not overlaps:
+                elements.append({'type': 'blank', 'text': ' _______ ', 'x0': hl.x0, 'x1': hl.x1, 'u': False})
+                
+        elements.sort(key=lambda el: el['x0'])
+        
+        line_str = ''
+        in_u = False
+        for el in elements:
+            t = el['text']
+            if el['u']:
+                if not in_u:
+                    line_str += '<u>' + t
+                    in_u = True
+                else:
+                    line_str += t
+            else:
+                if in_u:
+                    line_str += '</u>' + t
+                    in_u = False
+                else:
+                    line_str += t
+        if in_u:
+            line_str += '</u>'
+        out_lines.append(line_str)
+        
+    full = '\n'.join(out_lines).strip()
+    full = re.sub(r' +', ' ', full)
+    return clean_reading_passage(full, has_image)
+
 def parse_reading_question(doc, page_idx, test_name, module, q_num):
     page = doc[page_idx]
     has_image = (test_name, "reading", module, q_num) in IMAGE_MAP
     
     blocks = page.get_text("blocks")
-    left_blocks = []
     right_blocks = []
     
     for b in blocks:
@@ -100,15 +206,12 @@ def parse_reading_question(doc, page_idx, test_name, module, q_num):
             continue
         if b[3] > 385 and ('Stewie' in text or 'stewiesat' in text or 'Page' in text):
             continue
-        if b[0] < 365:
-            left_blocks.append(b)
-        else:
+        if b[0] >= 365:
             right_blocks.append(b)
             
-    left_blocks.sort(key=lambda b: b[1])
     right_blocks.sort(key=lambda b: b[1])
     
-    passage = clean_reading_passage("\n\n".join(b[4].strip() for b in left_blocks), has_image)
+    passage = extract_reading_passage_formatted(page, has_image)
     
     bA, bB, bC, bD = None, None, None, None
     prompt_blocks = []

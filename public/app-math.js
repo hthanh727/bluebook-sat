@@ -55,13 +55,16 @@
     isSubmitted: false,
   };
 
+  const actualTestType = new URLSearchParams(window.location.search).get('type');
+  const storageSuffix = actualTestType === 'full' ? 'full-math' : (state.testType || 'math');
+
   // ---- Local Persistence & Resilient Auto-Save ----
   function saveLocalState() {
     if (!state.testId) return;
     try {
-      localStorage.setItem(`sat-answers-${state.testId}-${state.testType}`, JSON.stringify(state.answers));
-      localStorage.setItem(`sat-flagged-${state.testId}-${state.testType}`, JSON.stringify(state.flagged));
-      localStorage.setItem(`sat-resume-${state.testId}-${state.testType}`, JSON.stringify({
+      localStorage.setItem(`sat-answers-${state.testId}-${storageSuffix}`, JSON.stringify(state.answers));
+      localStorage.setItem(`sat-flagged-${state.testId}-${storageSuffix}`, JSON.stringify(state.flagged));
+      localStorage.setItem(`sat-resume-${state.testId}-${storageSuffix}`, JSON.stringify({
         currentQuestion: state.currentQuestion,
         currentModule: state.currentModule
       }));
@@ -73,13 +76,17 @@
   function clearLocalExamData() {
     if (!state.testId) return;
     try {
-      localStorage.removeItem(`sat-answers-${state.testId}-${state.testType}`);
-      localStorage.removeItem(`sat-flagged-${state.testId}-${state.testType}`);
-      localStorage.removeItem(`sat-resume-${state.testId}-${state.testType}`);
-      localStorage.removeItem(`sat-timer-${state.testId}-${state.testType}-1`);
-      localStorage.removeItem(`sat-timer-${state.testId}-${state.testType}-2`);
+      localStorage.removeItem(`sat-answers-${state.testId}-${storageSuffix}`);
+      localStorage.removeItem(`sat-flagged-${state.testId}-${storageSuffix}`);
+      localStorage.removeItem(`sat-resume-${state.testId}-${storageSuffix}`);
+      localStorage.removeItem(`sat-timer-${state.testId}-${storageSuffix}-1`);
+      localStorage.removeItem(`sat-timer-${state.testId}-${storageSuffix}-2`);
       localStorage.removeItem(`sat-practice-mode-${state.testId}`);
       localStorage.removeItem(`sat-practice-submitted-${state.testId}`);
+      if (actualTestType === 'full') {
+        localStorage.removeItem(`sat-timer-${state.testId}-full-1`);
+        localStorage.removeItem(`sat-timer-${state.testId}-full-2`);
+      }
     } catch(e) {}
   }
 
@@ -248,6 +255,10 @@
 
   function renderQuestion() {
     if (!SAT_MATH_QUESTIONS || SAT_MATH_QUESTIONS.length === 0) return;
+    if (state.currentQuestion >= SAT_MATH_QUESTIONS.length || state.currentQuestion < 0) {
+      state.currentQuestion = 0;
+      state.currentModule = 1;
+    }
     const q = SAT_MATH_QUESTIONS[state.currentQuestion];
     if (!q) return;
 
@@ -1274,7 +1285,7 @@ function convertMarkdownTablesToHtml(text) {
         state.flagged = new Array(numQ).fill(false);
 
         // 1. First restore answers and flags from localStorage if available
-        const localAnswers = localStorage.getItem(`sat-answers-${testId}-${state.testType}`);
+        const localAnswers = localStorage.getItem(`sat-answers-${testId}-${storageSuffix}`);
         if (localAnswers) {
             try {
                 const parsedLocal = JSON.parse(localAnswers);
@@ -1288,7 +1299,7 @@ function convertMarkdownTablesToHtml(text) {
             } catch(e) {}
         }
 
-        const localFlagged = localStorage.getItem(`sat-flagged-${testId}-${state.testType}`);
+        const localFlagged = localStorage.getItem(`sat-flagged-${testId}-${storageSuffix}`);
         if (localFlagged) {
             try {
                 const parsedFlags = JSON.parse(localFlagged);
@@ -1366,14 +1377,23 @@ function convertMarkdownTablesToHtml(text) {
             console.warn('Could not fetch server progress in math, using local cache:', progErr);
         }
         
-        const savedResume = localStorage.getItem(`sat-resume-${testId}-${state.testType}`);
+        const savedResume = localStorage.getItem(`sat-resume-${testId}-${storageSuffix}`);
         if (savedResume && !state.reviewMode) {
             try {
                 const s = JSON.parse(savedResume);
                 if (s.currentModule) state.currentModule = s.currentModule;
-                if (s.currentQuestion !== undefined) state.currentQuestion = s.currentQuestion;
+                if (s.currentQuestion !== undefined && s.currentQuestion >= 0 && s.currentQuestion < numQ) {
+                    state.currentQuestion = s.currentQuestion;
+                } else {
+                    state.currentQuestion = 0;
+                }
             } catch(e) {}
         }
+        if (state.currentQuestion >= numQ || state.currentQuestion < 0) {
+            state.currentQuestion = 0;
+            state.currentModule = 1;
+        }
+
         // Fetch bookmarks
         try {
             const bkRes = await fetch(`/api/tests/${testId}/bookmarks`, {
@@ -1389,7 +1409,7 @@ function convertMarkdownTablesToHtml(text) {
 
         renderQuestion();
 
-        const savedTimer = localStorage.getItem(`sat-timer-${testId}-${state.testType}-${state.currentModule}`);
+        const savedTimer = localStorage.getItem(`sat-timer-${testId}-${storageSuffix}-${state.currentModule}`);
         if (savedTimer !== null) {
             state.timerSeconds = parseInt(savedTimer, 10);
         }
