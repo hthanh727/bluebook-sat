@@ -191,6 +191,65 @@ const withDbTimeout = (promise, ms = 2000) => Promise.race([
     new Promise((_, reject) => setTimeout(() => reject(new Error('DB_TIMEOUT')), ms))
 ]);
 
+let isSyncing = false;
+async function syncBackupToDatabase() {
+    if (isSyncing) return;
+    isSyncing = true;
+    try {
+        const backupPath = path.join(__dirname, 'backup_all_tests.json');
+        if (!fs.existsSync(backupPath)) return;
+        const backup = JSON.parse(fs.readFileSync(backupPath, 'utf8'));
+        if (!backup.tests || backup.tests.length === 0) return;
+
+        const [dbRows] = await withDbTimeout(pool.query('SELECT id, title FROM tests'), 3000);
+        const existingIds = new Set(dbRows.map(r => r.id));
+        const existingTitles = new Set(dbRows.map(r => (r.title || '').trim().toLowerCase()));
+
+        for (const bt of backup.tests) {
+            const bTitle = (bt.title || '').trim().toLowerCase();
+            if (!existingIds.has(bt.id) && !existingTitles.has(bTitle)) {
+                console.log(`[AutoSync] Syncing test '${bt.title}' (ID: ${bt.id}) to DB...`);
+                await pool.query(
+                    'INSERT IGNORE INTO tests (id, title, type, allow_practice, difficulty) VALUES (?, ?, ?, ?, ?)',
+                    [bt.id, bt.title, bt.type, bt.allow_practice !== undefined ? bt.allow_practice : 1, bt.difficulty || null]
+                );
+
+                const testQuestions = (backup.questions || []).filter(q => q.test_id === bt.id);
+                for (const q of testQuestions) {
+                    await pool.query(
+                        `INSERT IGNORE INTO questions (
+                            id, test_id, question_number, passage, prompt, options,
+                            correct_answer_index, correct_answer_text, module, image_url,
+                            question_type, section, domain, difficulty
+                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                        [
+                            q.id || null,
+                            bt.id,
+                            q.question_number,
+                            q.passage || null,
+                            q.prompt,
+                            q.options ? (typeof q.options === 'string' ? q.options : JSON.stringify(q.options)) : null,
+                            q.correct_answer_index,
+                            q.correct_answer_text || null,
+                            q.module || 1,
+                            q.image_url || null,
+                            q.question_type || 'choice',
+                            q.section || (bt.type === 'math' ? 'math' : 'reading'),
+                            q.domain || null,
+                            q.difficulty || null
+                        ]
+                    ).catch(() => {});
+                }
+                console.log(`[AutoSync] Synced test '${bt.title}' with ${testQuestions.length} questions.`);
+            }
+        }
+    } catch (err) {
+        // Silently skip if DB is unavailable or timed out
+    } finally {
+        isSyncing = false;
+    }
+}
+
 app.get('/api/tests', authenticateToken, async (req, res) => {
     try {
         const query = `
@@ -208,6 +267,38 @@ app.get('/api/tests', authenticateToken, async (req, res) => {
                 row.is_locked = lockedTestIds.has(row.id);
             });
         }
+
+        // Always merge any tests from backup_all_tests.json that are missing in DB rows
+        try {
+            const backupPath = path.join(__dirname, 'backup_all_tests.json');
+            if (fs.existsSync(backupPath)) {
+                const backup = JSON.parse(fs.readFileSync(backupPath, 'utf8'));
+                const existingIds = new Set(rows.map(r => r.id));
+                const existingTitles = new Set(rows.map(r => (r.title || '').trim().toLowerCase()));
+
+                for (const bt of (backup.tests || [])) {
+                    const bTitle = (bt.title || '').trim().toLowerCase();
+                    if (!existingIds.has(bt.id) && !existingTitles.has(bTitle)) {
+                        const count = (backup.questions || []).filter(q => q.test_id === bt.id).length;
+                        rows.push({
+                            id: bt.id,
+                            title: bt.title,
+                            type: bt.type,
+                            created_at: bt.created_at || new Date().toISOString(),
+                            allow_practice: bt.allow_practice !== undefined ? bt.allow_practice : 1,
+                            difficulty: bt.difficulty || null,
+                            question_count: count,
+                            is_locked: false
+                        });
+                    }
+                }
+            }
+        } catch (mergeErr) {
+            console.warn('Error merging backup tests:', mergeErr.message);
+        }
+
+        // Trigger background sync to MySQL if connected
+        syncBackupToDatabase().catch(() => {});
 
         res.json(rows);
     } catch (err) {
@@ -283,8 +374,19 @@ app.post('/api/save-progress', authenticateToken, async (req, res) => {
     const { test_id, answers, score, completed } = req.body;
     try {
         // Find test type
-        const [testRows] = await pool.query('SELECT type FROM tests WHERE id = ?', [test_id]);
-        if (testRows.length === 0) return res.status(404).json({ message: 'Test not found' });
+        let [testRows] = await pool.query('SELECT type FROM tests WHERE id = ?', [test_id]);
+        if (testRows.length === 0) {
+            const backupData = getBackupTestData(test_id);
+            if (backupData && backupData.test) {
+                await pool.query(
+                    'INSERT IGNORE INTO tests (id, title, type, allow_practice, difficulty) VALUES (?, ?, ?, ?, ?)',
+                    [backupData.test.id, backupData.test.title, backupData.test.type, backupData.test.allow_practice !== undefined ? backupData.test.allow_practice : 1, backupData.test.difficulty || null]
+                ).catch(() => {});
+                testRows = [{ type: backupData.test.type }];
+            } else {
+                return res.status(404).json({ message: 'Test not found' });
+            }
+        }
         const test_type = testRows[0].type;
 
         // Check if progress exists
