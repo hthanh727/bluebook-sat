@@ -21,9 +21,13 @@ IMAGE_MAP = {
     ("2026 September Int 3 @stewiesat", "math", 2, 2): "images/2026_sep_int_3/m_m2_q2.png",
 
     # 2026 September Int 2
+    ("2026 September Int 2 @stewiesat", "reading", 1, 9): "images/2026_sep_int_2/r_m1_q9.png",
+    ("2026 September Int 2 @stewiesat", "reading", 1, 10): "images/2026_sep_int_2/r_m1_q10.png",
     ("2026 September Int 2 @stewiesat", "reading", 1, 11): "images/2026_sep_int_2/r_m1_q11.png",
+    ("2026 September Int 2 @stewiesat", "reading", 2, 10): "images/2026_sep_int_2/r_m2_q10.png",
     ("2026 September Int 2 @stewiesat", "reading", 2, 12): "images/2026_sep_int_2/r_m2_q12.png",
     ("2026 September Int 2 @stewiesat", "reading", 2, 13): "images/2026_sep_int_2/r_m2_q13.png",
+    ("2026 September Int 2 @stewiesat", "math", 1, 3): "images/2026_sep_int_2/m_m1_q3.png",
     ("2026 September Int 2 @stewiesat", "math", 1, 4): "images/2026_sep_int_2/m_m1_q4.png",
     ("2026 September Int 2 @stewiesat", "math", 1, 7): "images/2026_sep_int_2/m_m1_q7.png",
     ("2026 September Int 2 @stewiesat", "math", 1, 11): "images/2026_sep_int_2/m_m1_q11.png",
@@ -48,7 +52,38 @@ IMAGE_MAP = {
     ("2026 October Int 2 @stewiesat", "math", 2, 16): "images/2026_oct_int_2/m_m2_q16.png",
 }
 
+IMAGE_BBOXES = {
+    # 2026 September Int 3
+    ("2026 September Int 3 @stewiesat", "math", 1, 10): (45, 68, 500, 192),
+    ("2026 September Int 3 @stewiesat", "math", 1, 20): (45, 68, 520, 205),
+    ("2026 September Int 3 @stewiesat", "math", 1, 22): (250, 68, 480, 225),
+    ("2026 September Int 3 @stewiesat", "math", 2, 2): (260, 68, 460, 195),
+
+    # 2026 September Int 2
+    ("2026 September Int 2 @stewiesat", "math", 1, 3): (300, 95, 425, 238),
+    ("2026 September Int 2 @stewiesat", "math", 1, 4): (270, 85, 450, 205),
+    ("2026 September Int 2 @stewiesat", "math", 1, 7): (270, 85, 450, 210),
+    ("2026 September Int 2 @stewiesat", "math", 1, 11): (320, 115, 410, 220),
+    ("2026 September Int 2 @stewiesat", "math", 1, 12): (270, 85, 450, 205),
+    ("2026 September Int 2 @stewiesat", "math", 1, 13): (45, 68, 500, 198),
+    ("2026 September Int 2 @stewiesat", "math", 1, 15): (45, 68, 500, 215),
+    ("2026 September Int 2 @stewiesat", "math", 2, 5): (230, 135, 490, 335),
+    ("2026 September Int 2 @stewiesat", "math", 2, 7): (45, 68, 500, 220),
+    ("2026 September Int 2 @stewiesat", "math", 2, 20): (45, 75, 500, 270),
+
+    # 2026 October Int 2
+    ("2026 October Int 2 @stewiesat", "math", 1, 2): (45, 30, 360, 200),
+    ("2026 October Int 2 @stewiesat", "math", 1, 11): (45, 30, 360, 200),
+    ("2026 October Int 2 @stewiesat", "math", 1, 19): (45, 30, 360, 270),
+    ("2026 October Int 2 @stewiesat", "math", 2, 1): (45, 30, 360, 300),
+    ("2026 October Int 2 @stewiesat", "math", 2, 3): (260, 75, 460, 170),
+    ("2026 October Int 2 @stewiesat", "math", 2, 7): (300, 75, 420, 125),
+    ("2026 October Int 2 @stewiesat", "math", 2, 14): (75, 85, 200, 195),
+    ("2026 October Int 2 @stewiesat", "math", 2, 16): (45, 30, 360, 205),
+}
+
 def clean_reading_passage(text, has_image):
+    text = text.replace('\u2019', "'").replace('’', "'").replace('‘', "'").replace('“', '"').replace('”', '"').replace('\ufffd', "'")
     lines = text.split('\n')
     cleaned = []
     for l in lines:
@@ -77,7 +112,9 @@ def clean_reading_passage(text, has_image):
             "Tribal nations employ",
             "While US public charities",
             "The roofs on the buildings",
-            "Employing high-performance"
+            "Employing high-performance",
+            "In 2006, Nitya Kallivayalil",
+            "Scientists collected information about brown bears"
         ]
         for pstart in passages_starts:
             idx = full.find(pstart)
@@ -277,43 +314,372 @@ def parse_reading_question(doc, page_idx, test_name, module, q_num):
         "difficulty": "Medium"
     }
 
-def clean_math_text(text):
-    text = text.replace('\uf8f1', '{').replace('\uf8f2', '').replace('\uf8f3', '')
-    text = text.replace('◦', '^\\circ')
-    text = text.replace('−', '-')
-    text = re.sub(r'\s+', ' ', text).strip()
-    return text
+# ==================== ADVANCED MATH LATEX ENGINE ====================
+
+def is_math_font(font_name):
+    fn = font_name.lower()
+    return fn.startswith('cm') or 'math' in fn or 'msam' in fn or 'msbm' in fn
+
+def extract_math_text_with_latex(page, clip_rect=None, exclude_rects=None, wrap_math=True):
+    """
+    Extracts text from a page or clipped area, reconstructing:
+    1. Square roots (\\sqrt{...})
+    2. Fractions (\\frac{numerator}{denominator})
+    3. Superscripts (x^{2}, a^{x}) and subscripts (x_{1})
+    4. Math symbols (− -> -, ≤ -> \\le, ≥ -> \\ge, π -> \\pi, ◦ -> ^\\circ, · -> \\cdot, △ -> \\triangle)
+    5. Filters out watermarks (stewiesat, Roboto, NotoSans)
+    6. Excludes any text in exclude_rects (e.g. cropped images)
+    """
+    pdict = page.get_text('dict')
+    drawings = page.get_drawings()
+    
+    if exclude_rects is None:
+        exclude_rects = []
+        
+    # 1. Collect candidate horizontal lines
+    cand_lines = []
+    for d in drawings:
+        r = d['rect']
+        if r.height <= 2.5 and 2.5 <= r.width <= 150 and 40 <= r.y0 <= 380:
+            r_box = fitz.Rect(r.x0, r.y0 - 1.5, r.x1, r.y1 + 1.5)
+            if clip_rect and not fitz.Rect(clip_rect).intersects(r_box):
+                continue
+            if any(fitz.Rect(ex).intersects(r_box) for ex in exclude_rects):
+                continue
+            cand_lines.append(r)
+
+    # 2. Collect all spans
+    all_spans = []
+    for b in pdict['blocks']:
+        if b.get('type') != 0:
+            continue
+        for l in b['lines']:
+            for s in l['spans']:
+                t = s['text']
+                font = s['font']
+                # Ignore watermarks and footers
+                if 'Roboto' in font or 'NotoSans' in font or 'stewiesat' in t.lower() or s['size'] > 30:
+                    continue
+                s_bbox = fitz.Rect(s['bbox'])
+                if s_bbox.y0 < 35 or s_bbox.y1 > 385:
+                    continue
+                if clip_rect and not fitz.Rect(clip_rect).intersects(s_bbox):
+                    continue
+                if any(fitz.Rect(ex).contains(s_bbox) or (fitz.Rect(ex).intersects(s_bbox) and s_bbox.intersects(fitz.Rect(ex))) for ex in exclude_rects):
+                    continue
+                if 'Mark for Review' in t or 'image included' in t:
+                    continue
+                all_spans.append(s)
+
+    used_span_ids = set()
+    special_constructs = []
+
+    # 3. Detect square roots: horizontal line with '√' immediately to its left
+    for line in cand_lines:
+        rad_candidates = [
+            (i, s) for i, s in enumerate(all_spans)
+            if '√' in s['text'] and abs(s['bbox'][2] - line.x0) < 4 and abs(s['bbox'][1] - line.y0) < 18
+        ]
+        if rad_candidates:
+            # It's a square root!
+            rad_idx, rad_span = rad_candidates[0]
+            under = [
+                (i, s) for i, s in enumerate(all_spans)
+                if line.x0 - 2 <= s['bbox'][0] and s['bbox'][2] <= line.x1 + 4 and 0 <= s['bbox'][1] - line.y1 <= 16
+            ]
+            under.sort(key=lambda x: x[1]['bbox'][0])
+            under_str = "".join(x[1]['text'] for x in under).strip()
+            if not under_str:
+                under_str = "x"
+            sqrt_latex = f"\\sqrt{{{under_str}}}"
+            
+            min_x = rad_span['bbox'][0]
+            max_x = max(line.x1, max((x[1]['bbox'][2] for x in under), default=line.x1))
+            min_y = rad_span['bbox'][1]
+            max_y = max(line.y1, max((x[1]['bbox'][3] for x in under), default=line.y1))
+            
+            special_constructs.append({
+                'bbox': (min_x, min_y, max_x, max_y),
+                'y_base': max_y,
+                'latex': sqrt_latex,
+                'span_indices': [rad_idx] + [x[0] for x in under]
+            })
+            used_span_ids.add(rad_idx)
+            for x in under: used_span_ids.add(x[0])
+
+    # 4. Detect fractions: remaining horizontal lines with text above and below
+    for line in cand_lines:
+        # If this line was already consumed by sqrt
+        if any(abs(c['bbox'][1] - line.y0) < 20 and c['bbox'][0] <= line.x0 <= c['bbox'][2] for c in special_constructs if '\\sqrt' in c['latex']):
+            continue
+            
+        above = []
+        below = []
+        for i, s in enumerate(all_spans):
+            if i in used_span_ids:
+                continue
+            sb = fitz.Rect(s['bbox'])
+            overlap_x = min(sb.x1, line.x1) - max(sb.x0, line.x0)
+            if overlap_x > -2:
+                if 0 <= (line.y0 - sb.y1) <= 15 or abs(sb.y1 - line.y0) < 4:
+                    above.append((i, s))
+                elif 0 <= (sb.y0 - line.y1) <= 15 or abs(sb.y0 - line.y1) < 4:
+                    below.append((i, s))
+        
+        if above and below:
+            above.sort(key=lambda x: x[1]['bbox'][0])
+            below.sort(key=lambda x: x[1]['bbox'][0])
+            num_str = "".join(x[1]['text'] for x in above).strip()
+            den_str = "".join(x[1]['text'] for x in below).strip()
+            
+            # Clean symbols inside fraction
+            num_str = num_str.replace('−', '-').replace('π', '\\pi')
+            den_str = den_str.replace('−', '-').replace('π', '\\pi')
+            
+            frac_latex = f"\\frac{{{num_str}}}{{{den_str}}}"
+            
+            min_x = min(min(x[1]['bbox'][0] for x in above), min(x[1]['bbox'][0] for x in below), line.x0)
+            max_x = max(max(x[1]['bbox'][2] for x in above), max(x[1]['bbox'][2] for x in below), line.x1)
+            min_y = min(x[1]['bbox'][1] for x in above)
+            max_y = max(x[1]['bbox'][3] for x in below)
+            
+            special_constructs.append({
+                'bbox': (min_x, min_y, max_x, max_y),
+                'y_base': (line.y0 + line.y1) / 2 + 5,
+                'latex': frac_latex,
+                'span_indices': [x[0] for x in above] + [x[0] for x in below]
+            })
+            for x in above: used_span_ids.add(x[0])
+            for x in below: used_span_ids.add(x[0])
+
+    # 5. Group remaining spans + constructs into visual lines
+    items = []
+    for i, s in enumerate(all_spans):
+        if i in used_span_ids:
+            continue
+        items.append({
+            'type': 'span',
+            'bbox': s['bbox'],
+            'y_base': s['bbox'][3],
+            'size': s['size'],
+            'font': s['font'],
+            'text': s['text'],
+            'flags': s['flags']
+        })
+    for sc in special_constructs:
+        items.append({
+            'type': 'construct',
+            'bbox': sc['bbox'],
+            'y_base': sc['y_base'],
+            'size': 10.0,
+            'font': 'CMR10',
+            'text': sc['latex'],
+            'flags': 0
+        })
+
+    items.sort(key=lambda it: it['y_base'])
+    lines = []
+    for it in items:
+        placed = False
+        for l in lines:
+            if abs(l['y_base'] - it['y_base']) < 6:
+                l['items'].append(it)
+                if it['type'] == 'span':
+                    l['y_base'] = max(l['y_base'], it['y_base'])
+                placed = True
+                break
+        if not placed:
+            lines.append({'y_base': it['y_base'], 'items': [it]})
+
+    lines.sort(key=lambda l: l['y_base'])
+
+    # 6. Format each line with superscripts / subscripts and math delimiters
+    formatted_lines = []
+    for l in lines:
+        line_items = l['items']
+        line_items.sort(key=lambda it: it['bbox'][0])
+        
+        sizes = [it['size'] for it in line_items if it['type'] == 'span' and it['text'].strip()]
+        base_size = max(sizes) if sizes else 10.0
+        base_y1 = l['y_base']
+
+        # Determine if pure math line
+        non_math_words = []
+        for it in line_items:
+            if it['type'] == 'span':
+                fn = it['font'].lower()
+                is_m = is_math_font(fn) or (it['size'] <= base_size * 0.82)
+                if not is_m:
+                    w = re.findall(r'[a-zA-Z]{2,}', it['text'])
+                    non_math_words.extend(w)
+
+        is_pure_math_line = len(non_math_words) == 0 and any(
+            it['type'] == 'construct' or is_math_font(it['font'].lower()) for it in line_items
+        )
+
+        chunks = []
+        for it in line_items:
+            if it['type'] == 'construct':
+                chunks.append({'text': it['text'], 'is_math': True, 'x0': it['bbox'][0], 'x1': it['bbox'][2]})
+            else:
+                t = it['text']
+                is_super = (it['size'] <= base_size * 0.82 and it['bbox'][3] < base_y1 - 1.5) or any(it['font'].endswith(x) for x in ['7', '5', '6'])
+                is_sub = (it['size'] <= base_size * 0.82 and it['bbox'][1] > base_y1 - 4) and not is_super
+                is_m = is_math_font(it['font'].lower()) or is_super or is_sub
+                
+                # Replace special chars
+                t = t.replace('−', '-').replace('≤', '\\le ').replace('≥', '\\ge ')
+                t = t.replace('π', '\\pi ').replace('◦', '^\\circ ').replace('·', '\\cdot ')
+                t = t.replace('△', '\\triangle ')
+                t = t.replace('\uf8f1', '{').replace('\uf8f2', '').replace('\uf8f3', '')
+                t = t.replace('\x10', '(').replace('\x11', ')').replace('\x12', '(').replace('\x13', ')')
+                
+                if is_super:
+                    t = f"^{{{t.strip()}}}"
+                elif is_sub:
+                    t = f"_{{{t.strip()}}}"
+                    
+                chunks.append({'text': t, 'is_math': is_m, 'x0': it['bbox'][0], 'x1': it['bbox'][2]})
+
+        if not wrap_math:
+            out = ''
+            prev_x1 = None
+            for c in chunks:
+                if prev_x1 is not None and (c['x0'] - prev_x1) > 2.5 and not out.endswith(' '):
+                    out += ' '
+                out += c['text']
+                prev_x1 = c['x1']
+            cleaned_line = re.sub(r' +', ' ', out).strip()
+            if cleaned_line:
+                formatted_lines.append(cleaned_line)
+            continue
+
+        if is_pure_math_line:
+            out = ''
+            prev_x1 = None
+            for c in chunks:
+                if prev_x1 is not None and (c['x0'] - prev_x1) > 2.5 and not out.endswith(' '):
+                    out += ' '
+                out += c['text']
+                prev_x1 = c['x1']
+            clean = re.sub(r' +', ' ', out).strip()
+            if any(sym in clean for sym in ['=', '<', '>', '\\frac', '\\sqrt', '+', '-', '*']):
+                formatted_lines.append(f"\\[{clean}\\]")
+            elif clean:
+                formatted_lines.append(clean)
+            continue
+
+        # Mixed line: combine contiguous math items
+        out = ''
+        prev_x1 = None
+        in_math = False
+        cur_math = ''
+        for c in chunks:
+            t = c['text']
+            m = c['is_math']
+            has_lead_sp = t.startswith(' ')
+            t_clean = t.strip()
+            if not t_clean:
+                continue
+
+            need_space = (prev_x1 is not None and (c['x0'] - prev_x1) > 2.0) or has_lead_sp
+            
+            if m:
+                if not in_math:
+                    if (need_space or (out and out[-1].isalnum())) and not out.endswith(' '):
+                        out += ' '
+                    in_math = True
+                    cur_math = t_clean
+                else:
+                    if need_space:
+                        cur_math += ' '
+                    cur_math += t_clean
+            else:
+                if in_math:
+                    trail_punc = ''
+                    while cur_math and cur_math[-1] in [',', '.', ';', '?', ':']:
+                        trail_punc = cur_math[-1] + trail_punc
+                        cur_math = cur_math[:-1]
+                    cur_math_stripped = cur_math.strip()
+                    if cur_math_stripped:
+                        out += f"\\({cur_math_stripped}\\){trail_punc}"
+                    in_math = False
+                    cur_math = ''
+                if (need_space or (out and out[-1].isalnum())) and not out.endswith(' ') and t_clean[0] not in [',', '.', ';', '?', ':', ')']:
+                    out += ' '
+                out += t_clean
+            prev_x1 = c['x1']
+            
+        if in_math:
+            trail_punc = ''
+            while cur_math and cur_math[-1] in [',', '.', ';', '?', ':']:
+                trail_punc = cur_math[-1] + trail_punc
+                cur_math = cur_math[:-1]
+            cur_math_stripped = cur_math.strip()
+            if cur_math_stripped:
+                out += f"\\({cur_math_stripped}\\){trail_punc}"
+
+        cleaned_line = re.sub(r' +', ' ', out).strip()
+        if cleaned_line:
+            formatted_lines.append(cleaned_line)
+
+    return "\n\n".join(formatted_lines)
+
+def wrap_math_formulas_in_prompt(prompt_text):
+    return prompt_text
 
 def parse_math_question(doc, page_idx, test_name, module, q_num):
     page = doc[page_idx]
     has_image = (test_name, "math", module, q_num) in IMAGE_MAP
+    img_bbox = IMAGE_BBOXES.get((test_name, "math", module, q_num), None)
+    exclude_rects = [img_bbox] if img_bbox else []
     
     txt_all = page.get_text()
     is_spr = 'answer preview' in txt_all.lower()
-    
-    blocks = page.get_text("blocks")
-    # Check if 2-column layout (question on the right side)
-    # A question is 2-column if there are blocks on the right containing "Mark for Review" or if options are x > 370
-    is_2_col = any(b[0] > 370 and 'mark for review' in b[4].lower() for b in blocks)
-    
-    if is_2_col:
-        content_blocks = [b for b in blocks if b[0] > 370 and 55 < b[1] < 380 and 'Stewie' not in b[4] and 'stewiesat' not in b[4]]
-    else:
-        content_blocks = [b for b in blocks if 55 < b[1] < 380 and 'Stewie' not in b[4] and 'stewiesat' not in b[4]]
-        
-    content_blocks = [b for b in content_blocks if not (re.match(r'^\d+\s*\]?\s*Mark for Review', b[4].strip()) and b[1] < 60)]
-    content_blocks.sort(key=lambda b: (b[1], b[0]))
+    is_2_col = any(b[0] > 370 and 'mark for review' in b[4].lower() for b in page.get_text('blocks'))
     
     ans_key = ALL_KEYS[test_name]["math"][str(module)][str(q_num)]
     
+    # 1. Option boxes
+    raw_boxes = [d['rect'] for d in page.get_drawings() if d['rect'].width > 120 and d['rect'].height > 15 and 80 < d['rect'].y0 < 370]
+    if is_2_col:
+        raw_boxes = [b for b in raw_boxes if b.x0 > 370]
+    else:
+        raw_boxes = [b for b in raw_boxes if b.x0 < 100]
+        
+    boxes = []
+    for b in raw_boxes:
+        if not any(abs(b.y0 - u.y0) < 3 for u in boxes):
+            boxes.append(b)
+    boxes.sort(key=lambda b: b.y0)
+    
+    # 2. Extract Prompt
+    ap_y0 = None
+    for b in page.get_text('blocks'):
+        if 'answer preview' in b[4].lower():
+            ap_y0 = b[1]
+            break
+
     if is_spr:
-        prompt_blocks = []
-        for b in content_blocks:
-            if 'answer preview' in b[4].lower():
-                break
-            prompt_blocks.append(b)
-        raw_prompt = " ".join(b[4].strip() for b in prompt_blocks).strip()
-        prompt = clean_math_prompt_advanced(raw_prompt, has_image, is_2_col)
+        first_y = (ap_y0 - 2) if ap_y0 else 360
+    elif boxes:
+        first_y = boxes[0].y0
+    else:
+        first_y = 360
+
+    if is_2_col:
+        prompt_clip = fitz.Rect(375, 55, 680, first_y)
+    else:
+        prompt_clip = fitz.Rect(45, 55, 680, first_y)
+        
+    raw_prompt = extract_math_text_with_latex(page, clip_rect=prompt_clip, exclude_rects=exclude_rects)
+    # Clean leading question number / header
+    prompt = re.sub(r'^\d+\s*\]?\s*(\|?\s*ë?\s*image included)?\s*(ABC)?\s*', '', raw_prompt).strip()
+    if is_spr:
+        prompt = re.sub(r'\s*Answer Preview:.*$', '', prompt, flags=re.DOTALL).strip()
+    prompt = wrap_math_formulas_in_prompt(prompt)
+
+    if is_spr:
         return {
             "question_number": q_num,
             "original_question_number": q_num,
@@ -330,78 +696,26 @@ def parse_math_question(doc, page_idx, test_name, module, q_num):
             "difficulty": "Medium"
         }
     else:
-        # MCQ
-        raw_boxes = [d['rect'] for d in page.get_drawings() if d['rect'].width > 120 and d['rect'].height > 15 and 80 < d['rect'].y0 < 370]
-        if is_2_col:
-            raw_boxes = [b for b in raw_boxes if b.x0 > 370]
+        # MCQ options
+        opt_list = []
+        if len(boxes) == 4:
+            for i, (b, letter) in enumerate(zip(boxes, ['A', 'B', 'C', 'D'])):
+                opt_raw = extract_math_text_with_latex(page, clip_rect=b, wrap_math=False)
+                # Strip leading option letter label
+                opt_c = re.sub(r'^(\^\{' + letter + r'\}|' + letter + r')\s*', '', opt_raw).strip()
+                # Wrap math formulas / numbers in \( ... \)
+                # If option is English sentence (has multiple normal words without =), don't wrap in math
+                words_count = len(re.findall(r'\b[a-zA-Z]{3,}\b', opt_c))
+                is_sentence = words_count >= 3 and not any(c in opt_c for c in ['=', '<', '>', '\\frac', '\\sqrt'])
+                if is_sentence:
+                    opt_formatted = opt_c
+                else:
+                    opt_formatted = f"\\({opt_c}\\)"
+                opt_list.append(opt_formatted)
         else:
-            raw_boxes = [b for b in raw_boxes if b.x0 < 100]
-            
-        boxes = []
-        for b in raw_boxes:
-            if not any(abs(b.y0 - u.y0) < 3 for u in boxes):
-                boxes.append(b)
-        boxes.sort(key=lambda b: b.y0)
-        
-        matched_opts = []
-        for b in boxes:
-            t = page.get_text('text', clip=b).strip()
-            if re.match(r'^[ABCD](\s*\n|\s+)', t):
-                matched_opts.append((b, t))
-                
-        if len(matched_opts) == 4:
-            first_y = matched_opts[0][0].y0
-            prompt_blocks = [b for b in content_blocks if b[3] <= first_y + 5]
-            raw_prompt = " ".join(b[4].strip() for b in prompt_blocks).strip()
-            prompt = clean_math_prompt_advanced(raw_prompt, has_image, is_2_col)
-            
-            def clean_box_opt(t, letter):
-                t = re.sub(r'^' + letter + r'(\s*\n|\s+)', '', t).strip()
-                t = t.replace('\x10', '(').replace('\x11', ')').replace('\x12', '(').replace('\x13', ')')
-                t = t.replace('\uf8f1', '{').replace('\uf8f2', '').replace('\uf8f3', '')
-                t = t.replace('◦', '^\\circ').replace('−', '-')
-                return re.sub(r'\s+', ' ', t).strip()
-                
-            opt_list = [
-                clean_box_opt(matched_opts[0][1], 'A'),
-                clean_box_opt(matched_opts[1][1], 'B'),
-                clean_box_opt(matched_opts[2][1], 'C'),
-                clean_box_opt(matched_opts[3][1], 'D'),
-            ]
-        else:
-            bA, bB, bC, bD = None, None, None, None
-            prompt_blocks = []
-            for b in content_blocks:
-                t = b[4].strip()
-                if not bA and re.match(r'^A\s*\n', t):
-                    bA = b
-                elif bA and not bB and re.match(r'^B\s*\n', t):
-                    bB = b
-                elif bB and not bC and re.match(r'^C\s*\n', t):
-                    bC = b
-                elif bC and not bD and re.match(r'^D\s*\n', t):
-                    bD = b
-                elif not bA:
-                    prompt_blocks.append(b)
-            raw_prompt = " ".join(b[4].strip() for b in prompt_blocks).strip()
-            prompt = clean_math_prompt_advanced(raw_prompt, has_image, is_2_col)
-            
-            def clean_b_opt(b, letter):
-                if not b: return ""
-                t = b[4].strip()
-                t = re.sub(r'^' + letter + r'\s*\n\s*', '', t).strip()
-                t = t.replace('\x10', '(').replace('\x11', ')').replace('\x12', '(').replace('\x13', ')')
-                t = t.replace('\uf8f1', '{').replace('\uf8f2', '').replace('\uf8f3', '')
-                t = t.replace('◦', '^\\circ').replace('−', '-')
-                return re.sub(r'\s+', ' ', t).strip()
-                
-            opt_list = [
-                clean_b_opt(bA, 'A'),
-                clean_b_opt(bB, 'B'),
-                clean_b_opt(bC, 'C'),
-                clean_b_opt(bD, 'D'),
-            ]
-            
+            # Fallback if boxes != 4
+            opt_list = ["A", "B", "C", "D"]
+
         opt_indices = {'A': 0, 'B': 1, 'C': 2, 'D': 3}
         correct_idx = opt_indices.get(ans_key, 0)
         return {
@@ -419,47 +733,3 @@ def parse_math_question(doc, page_idx, test_name, module, q_num):
             "domain": "Math",
             "difficulty": "Medium"
         }
-
-def clean_math_prompt_advanced(prompt, has_image, is_2_col):
-    prompt = clean_math_text(prompt)
-    prompt = re.sub(r'^\d+\s*\]?\s*Mark for Review\s*(\|?\s*ë?\s*image included)?\s*(ABC)?\s*', '', prompt).strip()
-    if has_image:
-        if is_2_col:
-            # Nothing from graph is in prompt because it was restricted to right column!
-            return prompt
-        # 1-col: Remove graph/diagram annotations
-        starts = [
-            "In the figure shown",
-            "In the figure,",
-            "In triangle",
-            "The line models",
-            "The scatterplot shows",
-            "The graph of the function",
-            "The graph shown",
-            "The shaded region",
-            "A certain company",
-            "The frequency table",
-            "Area (square feet)",
-            "What is the best interpretation",
-            "Which of the following",
-            "For the quadratic function",
-            "For the exponential function",
-            "A space probe",
-            "The figure shown"
-        ]
-        # If prompt starts with the question statement directly:
-        for s in starts:
-            idx = prompt.find(s)
-            if idx != -1:
-                # Also if prompt contains trailing graph numbers after '?', strip them
-                cleaned = prompt[idx:].strip()
-                qmark = cleaned.rfind('?')
-                if qmark != -1 and qmark + 1 < len(cleaned):
-                    # Check if trailing text after '?' is just diagram numbers/letters
-                    after = cleaned[qmark+1:].strip()
-                    if len(after) > 0 and (re.match(r'^[\d\s\-\.,xyrscbadABCEQRSLWhlw]+$', after) or len(after) < 30):
-                        cleaned = cleaned[:qmark+1].strip()
-                return cleaned
-                
-        prompt = re.sub(r'^Note:\s*[Ff]igure not drawn to scale\.?\s*', '', prompt).strip()
-    return prompt.strip()

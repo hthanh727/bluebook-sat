@@ -326,6 +326,14 @@ function renderQuestion() {
     const displayNum = state.currentModule === 1 ? sectionQIndex + 1 : sectionQIndex - half + 1;
     dom.questionNavLabel.innerHTML = `Question ${displayNum} of ${half} <span class="arrow-down"></span>`;
 
+    // Image (if any)
+    let imageHtml = '';
+    if (q.image_url && isImageUrl(q.image_url)) {
+      const resolved = resolveImageUrl(q.image_url);
+      const cleanImg = resolved.replace(/^\/+/, '');
+      imageHtml = `<img src="${resolved}" class="question-image" loading="eager" fetchpriority="high" alt="Question Image" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='/${cleanImg}';}else if(this.dataset.retried==='1'){this.dataset.retried='2';this.src='/public/${cleanImg}';}" />`;
+    }
+
     // Passage
     if (currentSec === 'math' && q.question_type === 'spr') {
         dom.passageContainer.innerHTML = `
@@ -342,17 +350,14 @@ function renderQuestion() {
             </div>
         `;
     } else if (q.passage) {
-      dom.passageContainer.innerHTML = `<div class="passage-text" id="passageText">${convertMarkdownTablesToHtml(q.passage).replace(/\n/g, '<br>')}</div>`;
+      if (imageHtml) {
+        dom.passageContainer.innerHTML = `${imageHtml}<div class="passage-text" id="passageText" style="margin-top:12px;">${convertMarkdownTablesToHtml(q.passage).replace(/\n/g, '<br>')}</div>`;
+        imageHtml = ''; // Prepend to passage, do not duplicate in question container
+      } else {
+        dom.passageContainer.innerHTML = `<div class="passage-text" id="passageText">${convertMarkdownTablesToHtml(q.passage).replace(/\n/g, '<br>')}</div>`;
+      }
     } else {
       dom.passageContainer.innerHTML = `<div class="passage-text" id="passageText"><em>No passage for this question.</em></div>`;
-    }
-
-    // Image (if any)
-    let imageHtml = '';
-    if (q.image_url && isImageUrl(q.image_url)) {
-      const resolved = resolveImageUrl(q.image_url);
-      const cleanImg = resolved.replace(/^\/+/, '');
-      imageHtml = `<img src="${resolved}" class="question-image" loading="eager" fetchpriority="high" alt="Question Image" onerror="if(!this.dataset.retried){this.dataset.retried='1';this.src='/${cleanImg}';}else if(this.dataset.retried==='1'){this.dataset.retried='2';this.src='/public/${cleanImg}';}" />`;
     }
 
 function convertMarkdownTablesToHtml(text) {
