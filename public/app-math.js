@@ -1259,7 +1259,7 @@ function convertMarkdownTablesToHtml(text) {
         }
         
         let filteredQuestions = data.questions;
-        const actualTestType = new URLSearchParams(window.location.search).get('type');
+        const actualTestType = new URLSearchParams(window.location.search).get('type') || (data.test ? data.test.type : null);
         if (actualTestType === 'full') {
             filteredQuestions = data.questions.filter(q => {
                 const sec = q.section ? q.section.toLowerCase() : 'math';

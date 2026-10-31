@@ -123,11 +123,11 @@ def clean_reading_passage(text, has_image):
     return full.strip()
 
 def extract_reading_passage_formatted(page, has_image):
-    # 1. Get horizontal line segments in left passage area (x < 375, 35 <= y <= 385)
+    # 1. Get horizontal line segments in left passage area (x < 375, 22 <= y <= 385)
     raw_lines = []
     for d in page.get_drawings():
         r = d['rect']
-        if r.height <= 3 and r.width > 1 and r.x1 <= 375 and 35 <= r.y0 <= 385:
+        if r.height <= 3 and r.width > 1 and r.x1 <= 375 and 22 <= r.y0 <= 385:
             raw_lines.append(r)
     
     raw_lines.sort(key=lambda r: (round(r.y0, 1), r.x0))
@@ -150,10 +150,12 @@ def extract_reading_passage_formatted(page, has_image):
         if b.get('type') != 0:
             continue
         bbox = b['bbox']
-        if bbox[0] >= 370 or bbox[1] < 35 or bbox[3] > 385:
+        if bbox[0] >= 370 or bbox[1] < 22 or bbox[3] > 385:
             continue
         b_text = ''.join(s['text'] for l in b.get('lines', []) for s in l.get('spans', []))
         if 'stewiesat' in b_text.lower() or 'stewie education' in b_text.lower():
+            continue
+        if 'section 1' in b_text.lower() or 'reading and writing' in b_text.lower() or 'reading & writing' in b_text.lower():
             continue
             
         for l in b.get('lines', []):
@@ -162,7 +164,7 @@ def extract_reading_passage_formatted(page, has_image):
                 if not t:
                     continue
                 s_bbox = s['bbox']
-                if s_bbox[2] > 370 or s_bbox[1] < 35 or s_bbox[3] > 385:
+                if s_bbox[2] > 370 or s_bbox[1] < 22 or s_bbox[3] > 385:
                     continue
                 raw_spans.append(s)
                 
@@ -418,9 +420,13 @@ def extract_math_text_with_latex(page, clip_rect=None, exclude_rects=None, wrap_
         for i, s in enumerate(all_spans):
             if i in used_span_ids:
                 continue
+            s_text = s['text'].strip()
+            if s_text in ['\x10', '\x11', '\x12', '\x13', '(', ')', '[', ']', '{', '}']:
+                continue
             sb = fitz.Rect(s['bbox'])
             overlap_x = min(sb.x1, line.x1) - max(sb.x0, line.x0)
-            if overlap_x > -2:
+            span_mid_x = (sb.x0 + sb.x1) / 2
+            if overlap_x > 0 and (line.x0 - 2 <= span_mid_x <= line.x1 + 2):
                 if 0 <= (line.y0 - sb.y1) <= 15 or abs(sb.y1 - line.y0) < 4:
                     above.append((i, s))
                 elif 0 <= (sb.y0 - line.y1) <= 15 or abs(sb.y0 - line.y1) < 4:
@@ -433,8 +439,9 @@ def extract_math_text_with_latex(page, clip_rect=None, exclude_rects=None, wrap_
             den_str = "".join(x[1]['text'] for x in below).strip()
             
             # Clean symbols inside fraction
-            num_str = num_str.replace('−', '-').replace('π', '\\pi')
-            den_str = den_str.replace('−', '-').replace('π', '\\pi')
+            for s_old, s_new in [('−', '-'), ('π', '\\pi'), ('\x10', '('), ('\x11', ')'), ('\x12', '('), ('\x13', ')')]:
+                num_str = num_str.replace(s_old, s_new)
+                den_str = den_str.replace(s_old, s_new)
             
             frac_latex = f"\\frac{{{num_str}}}{{{den_str}}}"
             

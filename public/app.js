@@ -1484,6 +1484,10 @@ function convertMarkdownTablesToHtml(text) {
         }
         
         let filteredQuestions = data.questions;
+        if (data.test && data.test.type === 'full') {
+            state.testType = 'full';
+            if (!sectionParam) state.currentSection = 'reading';
+        }
         if (state.testType === 'full') {
             filteredQuestions = data.questions.filter(q => {
                 const sec = q.section ? q.section.toLowerCase() : 'reading';

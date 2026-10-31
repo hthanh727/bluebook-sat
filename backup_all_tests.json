@@ -143,7 +143,7 @@
       "id": 50,
       "title": "2026 September Int 3 @stewiesat",
       "type": "full",
-      "created_at": "2026-10-30T14:36:57.200Z",
+      "created_at": "2026-10-31T05:13:51.184Z",
       "allow_practice": 1,
       "difficulty": null
     },
@@ -151,7 +151,7 @@
       "id": 51,
       "title": "2026 September Int 2 @stewiesat",
       "type": "full",
-      "created_at": "2026-10-30T14:36:57.200Z",
+      "created_at": "2026-10-31T05:13:51.194Z",
       "allow_practice": 1,
       "difficulty": null
     },
@@ -159,7 +159,7 @@
       "id": 52,
       "title": "2026 October Int 2 @stewiesat",
       "type": "full",
-      "created_at": "2026-10-30T14:36:57.200Z",
+      "created_at": "2026-10-31T05:13:51.195Z",
       "allow_practice": 1,
       "difficulty": null
     }
@@ -17638,7 +17638,7 @@
       "difficulty": "Hard"
     },
     {
-      "id": 5045,
+      "id": 5339,
       "test_id": 50,
       "question_number": 1,
       "original_question_number": 1,
@@ -17655,7 +17655,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5046,
+      "id": 5340,
       "test_id": 50,
       "question_number": 2,
       "original_question_number": 2,
@@ -17672,7 +17672,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5047,
+      "id": 5341,
       "test_id": 50,
       "question_number": 3,
       "original_question_number": 3,
@@ -17689,7 +17689,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5048,
+      "id": 5342,
       "test_id": 50,
       "question_number": 4,
       "original_question_number": 4,
@@ -17706,7 +17706,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5049,
+      "id": 5343,
       "test_id": 50,
       "question_number": 5,
       "original_question_number": 5,
@@ -17723,7 +17723,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5050,
+      "id": 5344,
       "test_id": 50,
       "question_number": 6,
       "original_question_number": 6,
@@ -17740,7 +17740,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5051,
+      "id": 5345,
       "test_id": 50,
       "question_number": 7,
       "original_question_number": 7,
@@ -17757,7 +17757,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5052,
+      "id": 5346,
       "test_id": 50,
       "question_number": 8,
       "original_question_number": 8,
@@ -17774,7 +17774,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5053,
+      "id": 5347,
       "test_id": 50,
       "question_number": 9,
       "original_question_number": 9,
@@ -17791,7 +17791,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5054,
+      "id": 5348,
       "test_id": 50,
       "question_number": 10,
       "original_question_number": 10,
@@ -17808,7 +17808,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5055,
+      "id": 5349,
       "test_id": 50,
       "question_number": 11,
       "original_question_number": 11,
@@ -17825,7 +17825,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5056,
+      "id": 5350,
       "test_id": 50,
       "question_number": 12,
       "original_question_number": 12,
@@ -17842,7 +17842,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5057,
+      "id": 5351,
       "test_id": 50,
       "question_number": 13,
       "original_question_number": 13,
@@ -17859,7 +17859,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5058,
+      "id": 5352,
       "test_id": 50,
       "question_number": 14,
       "original_question_number": 14,
@@ -17876,7 +17876,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5059,
+      "id": 5353,
       "test_id": 50,
       "question_number": 15,
       "original_question_number": 15,
@@ -17893,7 +17893,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5060,
+      "id": 5354,
       "test_id": 50,
       "question_number": 16,
       "original_question_number": 16,
@@ -17910,7 +17910,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5061,
+      "id": 5355,
       "test_id": 50,
       "question_number": 17,
       "original_question_number": 17,
@@ -17927,7 +17927,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5062,
+      "id": 5356,
       "test_id": 50,
       "question_number": 18,
       "original_question_number": 18,
@@ -17944,7 +17944,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5063,
+      "id": 5357,
       "test_id": 50,
       "question_number": 19,
       "original_question_number": 19,
@@ -17961,7 +17961,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5064,
+      "id": 5358,
       "test_id": 50,
       "question_number": 20,
       "original_question_number": 20,
@@ -17978,7 +17978,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5065,
+      "id": 5359,
       "test_id": 50,
       "question_number": 21,
       "original_question_number": 21,
@@ -17995,7 +17995,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5066,
+      "id": 5360,
       "test_id": 50,
       "question_number": 22,
       "original_question_number": 22,
@@ -18012,7 +18012,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5067,
+      "id": 5361,
       "test_id": 50,
       "question_number": 23,
       "original_question_number": 23,
@@ -18029,7 +18029,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5068,
+      "id": 5362,
       "test_id": 50,
       "question_number": 24,
       "original_question_number": 24,
@@ -18046,7 +18046,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5069,
+      "id": 5363,
       "test_id": 50,
       "question_number": 25,
       "original_question_number": 25,
@@ -18063,7 +18063,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5070,
+      "id": 5364,
       "test_id": 50,
       "question_number": 26,
       "original_question_number": 26,
@@ -18080,7 +18080,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5071,
+      "id": 5365,
       "test_id": 50,
       "question_number": 27,
       "original_question_number": 27,
@@ -18097,7 +18097,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5072,
+      "id": 5366,
       "test_id": 50,
       "question_number": 1,
       "original_question_number": 1,
@@ -18114,7 +18114,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5073,
+      "id": 5367,
       "test_id": 50,
       "question_number": 2,
       "original_question_number": 2,
@@ -18131,7 +18131,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5074,
+      "id": 5368,
       "test_id": 50,
       "question_number": 3,
       "original_question_number": 3,
@@ -18148,7 +18148,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5075,
+      "id": 5369,
       "test_id": 50,
       "question_number": 4,
       "original_question_number": 4,
@@ -18165,7 +18165,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5076,
+      "id": 5370,
       "test_id": 50,
       "question_number": 5,
       "original_question_number": 5,
@@ -18182,7 +18182,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5077,
+      "id": 5371,
       "test_id": 50,
       "question_number": 6,
       "original_question_number": 6,
@@ -18199,7 +18199,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5078,
+      "id": 5372,
       "test_id": 50,
       "question_number": 7,
       "original_question_number": 7,
@@ -18216,7 +18216,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5079,
+      "id": 5373,
       "test_id": 50,
       "question_number": 8,
       "original_question_number": 8,
@@ -18233,7 +18233,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5080,
+      "id": 5374,
       "test_id": 50,
       "question_number": 9,
       "original_question_number": 9,
@@ -18250,7 +18250,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5081,
+      "id": 5375,
       "test_id": 50,
       "question_number": 10,
       "original_question_number": 10,
@@ -18267,7 +18267,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5082,
+      "id": 5376,
       "test_id": 50,
       "question_number": 11,
       "original_question_number": 11,
@@ -18284,7 +18284,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5083,
+      "id": 5377,
       "test_id": 50,
       "question_number": 12,
       "original_question_number": 12,
@@ -18301,7 +18301,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5084,
+      "id": 5378,
       "test_id": 50,
       "question_number": 13,
       "original_question_number": 13,
@@ -18318,7 +18318,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5085,
+      "id": 5379,
       "test_id": 50,
       "question_number": 14,
       "original_question_number": 14,
@@ -18335,7 +18335,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5086,
+      "id": 5380,
       "test_id": 50,
       "question_number": 15,
       "original_question_number": 15,
@@ -18352,7 +18352,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5087,
+      "id": 5381,
       "test_id": 50,
       "question_number": 16,
       "original_question_number": 16,
@@ -18369,7 +18369,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5088,
+      "id": 5382,
       "test_id": 50,
       "question_number": 17,
       "original_question_number": 17,
@@ -18386,7 +18386,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5089,
+      "id": 5383,
       "test_id": 50,
       "question_number": 18,
       "original_question_number": 18,
@@ -18403,7 +18403,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5090,
+      "id": 5384,
       "test_id": 50,
       "question_number": 19,
       "original_question_number": 19,
@@ -18420,7 +18420,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5091,
+      "id": 5385,
       "test_id": 50,
       "question_number": 20,
       "original_question_number": 20,
@@ -18437,7 +18437,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5092,
+      "id": 5386,
       "test_id": 50,
       "question_number": 21,
       "original_question_number": 21,
@@ -18454,7 +18454,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5093,
+      "id": 5387,
       "test_id": 50,
       "question_number": 22,
       "original_question_number": 22,
@@ -18471,7 +18471,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5094,
+      "id": 5388,
       "test_id": 50,
       "question_number": 23,
       "original_question_number": 23,
@@ -18488,7 +18488,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5095,
+      "id": 5389,
       "test_id": 50,
       "question_number": 24,
       "original_question_number": 24,
@@ -18505,7 +18505,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5096,
+      "id": 5390,
       "test_id": 50,
       "question_number": 25,
       "original_question_number": 25,
@@ -18522,7 +18522,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5097,
+      "id": 5391,
       "test_id": 50,
       "question_number": 26,
       "original_question_number": 26,
@@ -18539,7 +18539,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5098,
+      "id": 5392,
       "test_id": 50,
       "question_number": 27,
       "original_question_number": 27,
@@ -18556,7 +18556,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5099,
+      "id": 5393,
       "test_id": 50,
       "question_number": 1,
       "original_question_number": 1,
@@ -18573,7 +18573,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5100,
+      "id": 5394,
       "test_id": 50,
       "question_number": 2,
       "original_question_number": 2,
@@ -18590,7 +18590,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5101,
+      "id": 5395,
       "test_id": 50,
       "question_number": 3,
       "original_question_number": 3,
@@ -18607,7 +18607,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5102,
+      "id": 5396,
       "test_id": 50,
       "question_number": 4,
       "original_question_number": 4,
@@ -18624,7 +18624,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5103,
+      "id": 5397,
       "test_id": 50,
       "question_number": 5,
       "original_question_number": 5,
@@ -18641,7 +18641,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5104,
+      "id": 5398,
       "test_id": 50,
       "question_number": 6,
       "original_question_number": 6,
@@ -18658,7 +18658,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5105,
+      "id": 5399,
       "test_id": 50,
       "question_number": 7,
       "original_question_number": 7,
@@ -18675,7 +18675,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5106,
+      "id": 5400,
       "test_id": 50,
       "question_number": 8,
       "original_question_number": 8,
@@ -18692,7 +18692,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5107,
+      "id": 5401,
       "test_id": 50,
       "question_number": 9,
       "original_question_number": 9,
@@ -18709,7 +18709,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5108,
+      "id": 5402,
       "test_id": 50,
       "question_number": 10,
       "original_question_number": 10,
@@ -18726,7 +18726,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5109,
+      "id": 5403,
       "test_id": 50,
       "question_number": 11,
       "original_question_number": 11,
@@ -18743,7 +18743,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5110,
+      "id": 5404,
       "test_id": 50,
       "question_number": 12,
       "original_question_number": 12,
@@ -18760,7 +18760,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5111,
+      "id": 5405,
       "test_id": 50,
       "question_number": 13,
       "original_question_number": 13,
@@ -18777,12 +18777,12 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5112,
+      "id": 5406,
       "test_id": 50,
       "question_number": 14,
       "original_question_number": 14,
       "passage": null,
-      "prompt": "\\[\\sqrt{x}\\]\n\n\\(26 = \\frac{r1}{x}\\). What is the solution to the given equation?",
+      "prompt": "\\[\\sqrt{x} r\\]\n\n\\(26 = \\frac{1}{x}\\). What is the solution to the given equation?",
       "options": "[\"\\\\(\\\\frac{1}{26}\\\\)\",\"\\\\(26\\\\)\",\"\\\\(676\\\\)\",\"\\\\(\\\\frac{1}{676}\\\\)\"]",
       "correct_answer_index": 0,
       "correct_answer_text": null,
@@ -18794,7 +18794,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5113,
+      "id": 5407,
       "test_id": 50,
       "question_number": 15,
       "original_question_number": 15,
@@ -18811,7 +18811,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5114,
+      "id": 5408,
       "test_id": 50,
       "question_number": 16,
       "original_question_number": 16,
@@ -18828,7 +18828,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5115,
+      "id": 5409,
       "test_id": 50,
       "question_number": 17,
       "original_question_number": 17,
@@ -18845,7 +18845,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5116,
+      "id": 5410,
       "test_id": 50,
       "question_number": 18,
       "original_question_number": 18,
@@ -18862,7 +18862,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5117,
+      "id": 5411,
       "test_id": 50,
       "question_number": 19,
       "original_question_number": 19,
@@ -18879,7 +18879,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5118,
+      "id": 5412,
       "test_id": 50,
       "question_number": 20,
       "original_question_number": 20,
@@ -18896,7 +18896,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5119,
+      "id": 5413,
       "test_id": 50,
       "question_number": 21,
       "original_question_number": 21,
@@ -18913,7 +18913,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5120,
+      "id": 5414,
       "test_id": 50,
       "question_number": 22,
       "original_question_number": 22,
@@ -18930,7 +18930,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5121,
+      "id": 5415,
       "test_id": 50,
       "question_number": 1,
       "original_question_number": 1,
@@ -18947,7 +18947,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5122,
+      "id": 5416,
       "test_id": 50,
       "question_number": 2,
       "original_question_number": 2,
@@ -18964,7 +18964,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5123,
+      "id": 5417,
       "test_id": 50,
       "question_number": 3,
       "original_question_number": 3,
@@ -18981,12 +18981,12 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5124,
+      "id": 5418,
       "test_id": 50,
       "question_number": 4,
       "original_question_number": 4,
       "passage": null,
-      "prompt": "The function \\(j\\) is defined by \\(j(x) = \\frac{8x + 4}{5p}\\), and the function \\(k\\) is defined by \\(k(x) = \\frac{j(x)p}{x + 2}\\), where \\(p\\) is a positive constant. What is the value of \\(k(7)\\)?",
+      "prompt": "( )\n\nThe function \\(j\\) is defined by \\(j(x) = \\frac{8x + 4}{5p}\\), and the function \\(k\\) is defined by \\(k(x) = \\frac{jxp}{x + 2}\\), where \\(p\\) is a positive constant. What is the value of \\(k(7)\\)?",
       "options": "[\"\\\\(\\\\frac{28}{5}\\\\)\",\"\\\\(\\\\frac{4}{3}\\\\)\",\"\\\\(\\\\frac{20}{3}\\\\)\",\"\\\\(\\\\frac{8}{5}\\\\)\"]",
       "correct_answer_index": 1,
       "correct_answer_text": null,
@@ -18998,7 +18998,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5125,
+      "id": 5419,
       "test_id": 50,
       "question_number": 5,
       "original_question_number": 5,
@@ -19015,7 +19015,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5126,
+      "id": 5420,
       "test_id": 50,
       "question_number": 6,
       "original_question_number": 6,
@@ -19032,7 +19032,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5127,
+      "id": 5421,
       "test_id": 50,
       "question_number": 7,
       "original_question_number": 7,
@@ -19049,7 +19049,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5128,
+      "id": 5422,
       "test_id": 50,
       "question_number": 8,
       "original_question_number": 8,
@@ -19066,7 +19066,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5129,
+      "id": 5423,
       "test_id": 50,
       "question_number": 9,
       "original_question_number": 9,
@@ -19083,12 +19083,12 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5130,
+      "id": 5424,
       "test_id": 50,
       "question_number": 10,
       "original_question_number": 10,
       "passage": null,
-      "prompt": "\\(G\\frac{7}{a temperature increased by 16.80 kelvins, by how much did the temperature increase, in degrees G?4}(x) = (x - 250) + 28\\). The function \\(G\\) gives the temperature, in degrees on a laboratory scale G, that corresponds to a temperature of \\(x\\) kelvins. If",
+      "prompt": "\\(G(x) = \\frac{7}{4}(x - 250) + 28\\). The function \\(G\\) gives the temperature, in degrees on a laboratory scale G, that corresponds to a temperature of \\(x\\) kelvins. If\n\na temperature increased by 16.80 kelvins, by how much did the temperature increase, in degrees G?",
       "options": "[\"\\\\(29.40\\\\)\",\"\\\\(437.00\\\\)\",\"\\\\(465.00\\\\)\",\"\\\\(57.40\\\\)\"]",
       "correct_answer_index": 0,
       "correct_answer_text": null,
@@ -19100,7 +19100,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5131,
+      "id": 5425,
       "test_id": 50,
       "question_number": 11,
       "original_question_number": 11,
@@ -19117,13 +19117,13 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5132,
+      "id": 5426,
       "test_id": 50,
       "question_number": 12,
       "original_question_number": 12,
       "passage": null,
       "prompt": "What is the \\(x\\)-intercept of the graph of \\(px + 18y = 3\\) in the \\(xy\\)-plane, where \\(p\\) is a positive constant?",
-      "options": "[\"\\\\((p, 0)\\\\)\",\"\\\\(\\\\frac{\\u00123}{p}, 0)\\\\)\",\"\\\\(\\\\frac{\\u0010 p}{18}, 0)\\\\)\",\"\\\\(\\\\frac{\\u0012 1}{18}, 0)\\\\)\"]",
+      "options": "[\"\\\\((p, 0)\\\\)\",\"\\\\((\\\\frac{3}{p}, 0)\\\\)\",\"\\\\((\\\\frac{p}{18}, 0)\\\\)\",\"\\\\((\\\\frac{1}{18}, 0)\\\\)\"]",
       "correct_answer_index": 1,
       "correct_answer_text": null,
       "module": 2,
@@ -19134,7 +19134,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5133,
+      "id": 5427,
       "test_id": 50,
       "question_number": 13,
       "original_question_number": 13,
@@ -19151,7 +19151,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5134,
+      "id": 5428,
       "test_id": 50,
       "question_number": 14,
       "original_question_number": 14,
@@ -19168,13 +19168,13 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5135,
+      "id": 5429,
       "test_id": 50,
       "question_number": 15,
       "original_question_number": 15,
       "passage": null,
       "prompt": "\\(5xy + 8xt - 22yt = 0\\). In the given equation, \\(x\\) and \\(y\\) are positive and \\(x < y\\). Which equation correctly expresses \\(t\\) in terms of \\(x\\) and \\(y\\)?",
-      "options": "[\"\\\\(t = \\\\frac{xy}{4(y -x)}\\\\)\",\"\\\\(t = \\\\frac{1}{4}\\\\)\",\"\\\\(t = \\\\frac{5xy}{8x -22y}\\\\)\",\"\\\\(t = \\\\frac{5xy}{22y -8x}\\\\)\"]",
+      "options": "[\"\\\\(t = \\\\frac{xy}{4(y -x}\\n\\n)\\\\)\",\"\\\\(t = \\\\frac{1}{4}\\\\)\",\"\\\\(t = \\\\frac{5xy}{8x -22y}\\\\)\",\"\\\\(t = \\\\frac{5xy}{22y -8x}\\\\)\"]",
       "correct_answer_index": 3,
       "correct_answer_text": null,
       "module": 2,
@@ -19185,12 +19185,12 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5136,
+      "id": 5430,
       "test_id": 50,
       "question_number": 16,
       "original_question_number": 16,
       "passage": null,
-      "prompt": "\\(f(x) = (1.06)^{3}^{-}^{5}^{x}\\). The function \\(f\\) is defined by the given equation. The equation can be rewritten as \\(f(x) = a(1 - \\frac{p\u0011}{100}^{x}\\), where \\(a\\) and \\(p\\) are\n\nconstants. Which of the following is closest to the value of \\(p\\)?",
+      "prompt": "\\(f(x) = (1.06)^{3}^{-}^{5}^{x}\\). The function \\(f\\) is defined by the given equation. The equation can be rewritten as \\(f(x) = a(1 - \\frac{p}{100})^{x}\\), where \\(a\\) and \\(p\\) are\n\nconstants. Which of the following is closest to the value of \\(p\\)?",
       "options": "[\"\\\\(75\\\\)\",\"\\\\(52\\\\)\",\"\\\\(25\\\\)\",\"\\\\(18\\\\)\"]",
       "correct_answer_index": 2,
       "correct_answer_text": null,
@@ -19202,7 +19202,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5137,
+      "id": 5431,
       "test_id": 50,
       "question_number": 17,
       "original_question_number": 17,
@@ -19219,7 +19219,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5138,
+      "id": 5432,
       "test_id": 50,
       "question_number": 18,
       "original_question_number": 18,
@@ -19236,7 +19236,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5139,
+      "id": 5433,
       "test_id": 50,
       "question_number": 19,
       "original_question_number": 19,
@@ -19253,7 +19253,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5140,
+      "id": 5434,
       "test_id": 50,
       "question_number": 20,
       "original_question_number": 20,
@@ -19270,7 +19270,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5141,
+      "id": 5435,
       "test_id": 50,
       "question_number": 21,
       "original_question_number": 21,
@@ -19287,7 +19287,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5142,
+      "id": 5436,
       "test_id": 50,
       "question_number": 22,
       "original_question_number": 22,
@@ -19304,7 +19304,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5143,
+      "id": 5437,
       "test_id": 51,
       "question_number": 1,
       "original_question_number": 1,
@@ -19321,7 +19321,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5144,
+      "id": 5438,
       "test_id": 51,
       "question_number": 2,
       "original_question_number": 2,
@@ -19338,7 +19338,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5145,
+      "id": 5439,
       "test_id": 51,
       "question_number": 3,
       "original_question_number": 3,
@@ -19355,7 +19355,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5146,
+      "id": 5440,
       "test_id": 51,
       "question_number": 4,
       "original_question_number": 4,
@@ -19372,7 +19372,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5147,
+      "id": 5441,
       "test_id": 51,
       "question_number": 5,
       "original_question_number": 5,
@@ -19389,7 +19389,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5148,
+      "id": 5442,
       "test_id": 51,
       "question_number": 6,
       "original_question_number": 6,
@@ -19406,7 +19406,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5149,
+      "id": 5443,
       "test_id": 51,
       "question_number": 7,
       "original_question_number": 7,
@@ -19423,7 +19423,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5150,
+      "id": 5444,
       "test_id": 51,
       "question_number": 8,
       "original_question_number": 8,
@@ -19440,7 +19440,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5151,
+      "id": 5445,
       "test_id": 51,
       "question_number": 9,
       "original_question_number": 9,
@@ -19457,7 +19457,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5152,
+      "id": 5446,
       "test_id": 51,
       "question_number": 10,
       "original_question_number": 10,
@@ -19474,7 +19474,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5153,
+      "id": 5447,
       "test_id": 51,
       "question_number": 11,
       "original_question_number": 11,
@@ -19491,7 +19491,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5154,
+      "id": 5448,
       "test_id": 51,
       "question_number": 12,
       "original_question_number": 12,
@@ -19508,7 +19508,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5155,
+      "id": 5449,
       "test_id": 51,
       "question_number": 13,
       "original_question_number": 13,
@@ -19525,7 +19525,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5156,
+      "id": 5450,
       "test_id": 51,
       "question_number": 14,
       "original_question_number": 14,
@@ -19542,7 +19542,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5157,
+      "id": 5451,
       "test_id": 51,
       "question_number": 15,
       "original_question_number": 15,
@@ -19559,7 +19559,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5158,
+      "id": 5452,
       "test_id": 51,
       "question_number": 16,
       "original_question_number": 16,
@@ -19576,7 +19576,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5159,
+      "id": 5453,
       "test_id": 51,
       "question_number": 17,
       "original_question_number": 17,
@@ -19593,7 +19593,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5160,
+      "id": 5454,
       "test_id": 51,
       "question_number": 18,
       "original_question_number": 18,
@@ -19610,7 +19610,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5161,
+      "id": 5455,
       "test_id": 51,
       "question_number": 19,
       "original_question_number": 19,
@@ -19627,7 +19627,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5162,
+      "id": 5456,
       "test_id": 51,
       "question_number": 20,
       "original_question_number": 20,
@@ -19644,7 +19644,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5163,
+      "id": 5457,
       "test_id": 51,
       "question_number": 21,
       "original_question_number": 21,
@@ -19661,7 +19661,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5164,
+      "id": 5458,
       "test_id": 51,
       "question_number": 22,
       "original_question_number": 22,
@@ -19678,7 +19678,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5165,
+      "id": 5459,
       "test_id": 51,
       "question_number": 23,
       "original_question_number": 23,
@@ -19695,7 +19695,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5166,
+      "id": 5460,
       "test_id": 51,
       "question_number": 24,
       "original_question_number": 24,
@@ -19712,7 +19712,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5167,
+      "id": 5461,
       "test_id": 51,
       "question_number": 25,
       "original_question_number": 25,
@@ -19729,7 +19729,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5168,
+      "id": 5462,
       "test_id": 51,
       "question_number": 26,
       "original_question_number": 26,
@@ -19746,7 +19746,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5169,
+      "id": 5463,
       "test_id": 51,
       "question_number": 27,
       "original_question_number": 27,
@@ -19763,7 +19763,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5170,
+      "id": 5464,
       "test_id": 51,
       "question_number": 1,
       "original_question_number": 1,
@@ -19780,7 +19780,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5171,
+      "id": 5465,
       "test_id": 51,
       "question_number": 2,
       "original_question_number": 2,
@@ -19797,7 +19797,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5172,
+      "id": 5466,
       "test_id": 51,
       "question_number": 3,
       "original_question_number": 3,
@@ -19814,7 +19814,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5173,
+      "id": 5467,
       "test_id": 51,
       "question_number": 4,
       "original_question_number": 4,
@@ -19831,7 +19831,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5174,
+      "id": 5468,
       "test_id": 51,
       "question_number": 5,
       "original_question_number": 5,
@@ -19848,7 +19848,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5175,
+      "id": 5469,
       "test_id": 51,
       "question_number": 6,
       "original_question_number": 6,
@@ -19865,7 +19865,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5176,
+      "id": 5470,
       "test_id": 51,
       "question_number": 7,
       "original_question_number": 7,
@@ -19882,7 +19882,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5177,
+      "id": 5471,
       "test_id": 51,
       "question_number": 8,
       "original_question_number": 8,
@@ -19899,7 +19899,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5178,
+      "id": 5472,
       "test_id": 51,
       "question_number": 9,
       "original_question_number": 9,
@@ -19916,7 +19916,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5179,
+      "id": 5473,
       "test_id": 51,
       "question_number": 10,
       "original_question_number": 10,
@@ -19933,7 +19933,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5180,
+      "id": 5474,
       "test_id": 51,
       "question_number": 11,
       "original_question_number": 11,
@@ -19950,7 +19950,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5181,
+      "id": 5475,
       "test_id": 51,
       "question_number": 12,
       "original_question_number": 12,
@@ -19967,7 +19967,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5182,
+      "id": 5476,
       "test_id": 51,
       "question_number": 13,
       "original_question_number": 13,
@@ -19984,7 +19984,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5183,
+      "id": 5477,
       "test_id": 51,
       "question_number": 14,
       "original_question_number": 14,
@@ -20001,7 +20001,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5184,
+      "id": 5478,
       "test_id": 51,
       "question_number": 15,
       "original_question_number": 15,
@@ -20018,7 +20018,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5185,
+      "id": 5479,
       "test_id": 51,
       "question_number": 16,
       "original_question_number": 16,
@@ -20035,7 +20035,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5186,
+      "id": 5480,
       "test_id": 51,
       "question_number": 17,
       "original_question_number": 17,
@@ -20052,7 +20052,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5187,
+      "id": 5481,
       "test_id": 51,
       "question_number": 18,
       "original_question_number": 18,
@@ -20069,7 +20069,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5188,
+      "id": 5482,
       "test_id": 51,
       "question_number": 19,
       "original_question_number": 19,
@@ -20086,7 +20086,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5189,
+      "id": 5483,
       "test_id": 51,
       "question_number": 20,
       "original_question_number": 20,
@@ -20103,7 +20103,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5190,
+      "id": 5484,
       "test_id": 51,
       "question_number": 21,
       "original_question_number": 21,
@@ -20120,7 +20120,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5191,
+      "id": 5485,
       "test_id": 51,
       "question_number": 22,
       "original_question_number": 22,
@@ -20137,7 +20137,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5192,
+      "id": 5486,
       "test_id": 51,
       "question_number": 23,
       "original_question_number": 23,
@@ -20154,7 +20154,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5193,
+      "id": 5487,
       "test_id": 51,
       "question_number": 24,
       "original_question_number": 24,
@@ -20171,7 +20171,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5194,
+      "id": 5488,
       "test_id": 51,
       "question_number": 25,
       "original_question_number": 25,
@@ -20188,7 +20188,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5195,
+      "id": 5489,
       "test_id": 51,
       "question_number": 26,
       "original_question_number": 26,
@@ -20205,7 +20205,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5196,
+      "id": 5490,
       "test_id": 51,
       "question_number": 27,
       "original_question_number": 27,
@@ -20222,7 +20222,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5197,
+      "id": 5491,
       "test_id": 51,
       "question_number": 1,
       "original_question_number": 1,
@@ -20239,7 +20239,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5198,
+      "id": 5492,
       "test_id": 51,
       "question_number": 2,
       "original_question_number": 2,
@@ -20256,7 +20256,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5199,
+      "id": 5493,
       "test_id": 51,
       "question_number": 3,
       "original_question_number": 3,
@@ -20273,7 +20273,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5200,
+      "id": 5494,
       "test_id": 51,
       "question_number": 4,
       "original_question_number": 4,
@@ -20290,7 +20290,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5201,
+      "id": 5495,
       "test_id": 51,
       "question_number": 5,
       "original_question_number": 5,
@@ -20307,7 +20307,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5202,
+      "id": 5496,
       "test_id": 51,
       "question_number": 6,
       "original_question_number": 6,
@@ -20324,7 +20324,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5203,
+      "id": 5497,
       "test_id": 51,
       "question_number": 7,
       "original_question_number": 7,
@@ -20341,7 +20341,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5204,
+      "id": 5498,
       "test_id": 51,
       "question_number": 8,
       "original_question_number": 8,
@@ -20358,12 +20358,12 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5205,
+      "id": 5499,
       "test_id": 51,
       "question_number": 9,
       "original_question_number": 9,
       "passage": null,
-      "prompt": "\\[\\frac{n}{The given equation relates the quantities36}-12m + = -3k\\]\n\n\\(m\\), \\(n\\), and \\(k\\). Which equation correctly expresses \\(n\\) in terms of \\(m\\) and \\(k\\)?",
+      "prompt": "\\[-12m + \\frac{n}{36} = -3k\\]\n\nThe given equation relates the quantities \\(m\\), \\(n\\), and \\(k\\). Which equation correctly expresses \\(n\\) in terms of \\(m\\) and \\(k\\)?",
       "options": "[\"\\\\(n = -3k + 12m + 36\\\\)\",\"\\\\(n = -2k -12m -36\\\\)\",\"\\\\(n = \\\\frac{-3k + 12m}{36}\\\\)\",\"\\\\(n = 36(-3k + 12m)\\\\)\"]",
       "correct_answer_index": 3,
       "correct_answer_text": null,
@@ -20375,7 +20375,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5206,
+      "id": 5500,
       "test_id": 51,
       "question_number": 10,
       "original_question_number": 10,
@@ -20392,7 +20392,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5207,
+      "id": 5501,
       "test_id": 51,
       "question_number": 11,
       "original_question_number": 11,
@@ -20409,7 +20409,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5208,
+      "id": 5502,
       "test_id": 51,
       "question_number": 12,
       "original_question_number": 12,
@@ -20426,13 +20426,13 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5209,
+      "id": 5503,
       "test_id": 51,
       "question_number": 13,
       "original_question_number": 13,
       "passage": null,
       "prompt": "In triangle \\(QRS\\) shown, \\(QR < RS\\). Which expression represents the length of \\(QS\\)?",
-      "options": "[\"\\\\(18 cos(Q)\\\\)\",\"\\\\(18 cos(S)\\\\)\",\"\\\\(\\\\frac{18}{cos(Q)}\\\\)\",\"\\\\(\\\\frac{18}{cos(S)}\\\\)\"]",
+      "options": "[\"\\\\(18 cos(Q)\\\\)\",\"\\\\(18 cos(S)\\\\)\",\"\\\\(\\\\frac{18}{cos(Q}\\n\\n)\\\\)\",\"\\\\(\\\\frac{18}{cos(S}\\n\\n)\\\\)\"]",
       "correct_answer_index": 3,
       "correct_answer_text": null,
       "module": 1,
@@ -20443,7 +20443,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5210,
+      "id": 5504,
       "test_id": 51,
       "question_number": 14,
       "original_question_number": 14,
@@ -20460,7 +20460,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5211,
+      "id": 5505,
       "test_id": 51,
       "question_number": 15,
       "original_question_number": 15,
@@ -20477,7 +20477,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5212,
+      "id": 5506,
       "test_id": 51,
       "question_number": 16,
       "original_question_number": 16,
@@ -20494,7 +20494,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5213,
+      "id": 5507,
       "test_id": 51,
       "question_number": 17,
       "original_question_number": 17,
@@ -20511,7 +20511,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5214,
+      "id": 5508,
       "test_id": 51,
       "question_number": 18,
       "original_question_number": 18,
@@ -20528,7 +20528,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5215,
+      "id": 5509,
       "test_id": 51,
       "question_number": 19,
       "original_question_number": 19,
@@ -20545,7 +20545,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5216,
+      "id": 5510,
       "test_id": 51,
       "question_number": 20,
       "original_question_number": 20,
@@ -20562,7 +20562,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5217,
+      "id": 5511,
       "test_id": 51,
       "question_number": 21,
       "original_question_number": 21,
@@ -20579,7 +20579,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5218,
+      "id": 5512,
       "test_id": 51,
       "question_number": 22,
       "original_question_number": 22,
@@ -20596,7 +20596,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5219,
+      "id": 5513,
       "test_id": 51,
       "question_number": 1,
       "original_question_number": 1,
@@ -20613,7 +20613,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5220,
+      "id": 5514,
       "test_id": 51,
       "question_number": 2,
       "original_question_number": 2,
@@ -20630,7 +20630,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5221,
+      "id": 5515,
       "test_id": 51,
       "question_number": 3,
       "original_question_number": 3,
@@ -20647,7 +20647,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5222,
+      "id": 5516,
       "test_id": 51,
       "question_number": 4,
       "original_question_number": 4,
@@ -20664,7 +20664,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5223,
+      "id": 5517,
       "test_id": 51,
       "question_number": 5,
       "original_question_number": 5,
@@ -20681,7 +20681,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5224,
+      "id": 5518,
       "test_id": 51,
       "question_number": 6,
       "original_question_number": 6,
@@ -20698,7 +20698,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5225,
+      "id": 5519,
       "test_id": 51,
       "question_number": 7,
       "original_question_number": 7,
@@ -20715,7 +20715,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5226,
+      "id": 5520,
       "test_id": 51,
       "question_number": 8,
       "original_question_number": 8,
@@ -20732,7 +20732,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5227,
+      "id": 5521,
       "test_id": 51,
       "question_number": 9,
       "original_question_number": 9,
@@ -20749,13 +20749,13 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5228,
+      "id": 5522,
       "test_id": 51,
       "question_number": 10,
       "original_question_number": 10,
       "passage": null,
       "prompt": "A space probe uses a square-shaped solar sail to move through space. The side length of the solar sail is \\(7.25w\\) meters, where \\(w\\) is the width, in meters,\n\nof the space probe. Which equation gives the area \\(A\\), in square meters, of the solar sail?",
-      "options": "[\"\\\\(A = (w + 7.25)(w + 7.25)\\\\)\",\"\\\\(A = 4(7.25w)\\\\)\",\"\\\\(A = (7.25w)(7.25w)\\\\)\",\"\\\\(A = \\\\frac{\\u00127.25\\u0013 \\u0012}{w}\\\\frac{7.25\\u0013}{w}\\\\)\"]",
+      "options": "[\"\\\\(A = (w + 7.25)(w + 7.25)\\\\)\",\"\\\\(A = 4(7.25w)\\\\)\",\"\\\\(A = (7.25w)(7.25w)\\\\)\",\"\\\\(A = (\\\\frac{7.25}{w}) (\\\\frac{7.25}{w})\\\\)\"]",
       "correct_answer_index": 2,
       "correct_answer_text": null,
       "module": 2,
@@ -20766,12 +20766,12 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5229,
+      "id": 5523,
       "test_id": 51,
       "question_number": 11,
       "original_question_number": 11,
       "passage": null,
-      "prompt": "\\[\\frac{x}{4}+ \\frac{y}{10}= \\frac{13}{10}\\]\n\nAn engineer connects resistors in series. The resistors in the series have a total resistance of \\(\\frac{13}{The equation above represents this situation.10}\\)ohms. There are \\(x\\) resistors of type A, each with a\n\nresistance of \\(a\\) ohms, and \\(y\\) resistors of type B, each with a resistance of \\(b\\) ohms. According to the equation,\n\nwhat is the positive difference between \\(a\\) and \\(b\\)?",
+      "prompt": "\\[\\frac{x}{4}+ \\frac{y}{10} = \\frac{13}{10}\\]\n\nAn engineer connects resistors in series. The resistors in the series have a total resistance of \\(\\frac{13}{10}\\) ohms. There are \\(x\\) resistors of type A, each with a\n\nresistance of \\(a\\) ohms, and \\(y\\) resistors of type B, each with a resistance of \\(b\\) ohms. The equation above represents this situation. According to the equation,\n\nwhat is the positive difference between \\(a\\) and \\(b\\)?",
       "options": "[\"\\\\(\\\\frac{3}{20}\\\\)\",\"\\\\(\\\\frac{7}{20}\\\\)\",\"\\\\(\\\\frac{1}{10}\\\\)\",\"\\\\(\\\\frac{13}{10}\\\\)\"]",
       "correct_answer_index": 0,
       "correct_answer_text": null,
@@ -20783,12 +20783,12 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5230,
+      "id": 5524,
       "test_id": 51,
       "question_number": 12,
       "original_question_number": 12,
       "passage": null,
-      "prompt": "Consider the following system of inequalities:\n\n\\[48 -6x\\]\n\n\\[\\frac{yy <}{Which inequality represents the possible values of6}> 10\\]\n\n\\(x\\) for all solutions \\((x, y)\\) that satisfy the system in the \\(xy\\)-plane?",
+      "prompt": "Consider the following system of inequalities:\n\n\\[< 48 -6x\\]\n\n\\[\\frac{yy}{6}> 10\\]\n\nWhich inequality represents the possible values of \\(x\\) for all solutions \\((x, y)\\) that satisfy the system in the \\(xy\\)-plane?",
       "options": "[\"\\\\(x > 2\\\\)\",\"\\\\(x < 2\\\\)\",\"\\\\(x > -2\\\\)\",\"\\\\(x < -2\\\\)\"]",
       "correct_answer_index": 3,
       "correct_answer_text": null,
@@ -20800,7 +20800,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5231,
+      "id": 5525,
       "test_id": 51,
       "question_number": 13,
       "original_question_number": 13,
@@ -20817,7 +20817,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5232,
+      "id": 5526,
       "test_id": 51,
       "question_number": 14,
       "original_question_number": 14,
@@ -20834,7 +20834,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5233,
+      "id": 5527,
       "test_id": 51,
       "question_number": 15,
       "original_question_number": 15,
@@ -20851,12 +20851,12 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5234,
+      "id": 5528,
       "test_id": 51,
       "question_number": 16,
       "original_question_number": 16,
       "passage": null,
-      "prompt": "\\[\\frac{9}{The function5}F(x) = (x -273.15) + 32\\]\n\n\\(F\\) gives the temperature, in degrees Fahrenheit, that corresponds to a temperature of \\(x\\) kelvins. If a temperature increased by 2.10 kelvins,\n\nby how much did the temperature increase, in degrees Fahrenheit?",
+      "prompt": "\\[F(x) = \\frac{9}{5}(x -273.15) + 32\\]\n\nThe function \\(F\\) gives the temperature, in degrees Fahrenheit, that corresponds to a temperature of \\(x\\) kelvins. If a temperature increased by 2.10 kelvins,\n\nby how much did the temperature increase, in degrees Fahrenheit?",
       "options": "[\"\\\\(3.78\\\\)\",\"\\\\(35.78\\\\)\",\"\\\\(487.89\\\\)\",\"\\\\(519.89\\\\)\"]",
       "correct_answer_index": 0,
       "correct_answer_text": null,
@@ -20868,7 +20868,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5235,
+      "id": 5529,
       "test_id": 51,
       "question_number": 17,
       "original_question_number": 17,
@@ -20885,7 +20885,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5236,
+      "id": 5530,
       "test_id": 51,
       "question_number": 18,
       "original_question_number": 18,
@@ -20902,7 +20902,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5237,
+      "id": 5531,
       "test_id": 51,
       "question_number": 19,
       "original_question_number": 19,
@@ -20919,7 +20919,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5238,
+      "id": 5532,
       "test_id": 51,
       "question_number": 20,
       "original_question_number": 20,
@@ -20936,7 +20936,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5239,
+      "id": 5533,
       "test_id": 51,
       "question_number": 21,
       "original_question_number": 21,
@@ -20953,7 +20953,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5240,
+      "id": 5534,
       "test_id": 51,
       "question_number": 22,
       "original_question_number": 22,
@@ -20970,7 +20970,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5241,
+      "id": 5535,
       "test_id": 52,
       "question_number": 1,
       "original_question_number": 1,
@@ -20987,11 +20987,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5242,
+      "id": 5536,
       "test_id": 52,
       "question_number": 2,
       "original_question_number": 2,
-      "passage": "vironmental salinity changes during tidal cycles. How, then, do they _______ in-\nternal salt levels? Some organisms maintain high concentrations of phosphates\nthat allow them to affect the concentration of internal electrolytes—including\nsalt—in response to external changes. It may be that coastal foraminifera do\nthe same.",
+      "passage": "Single-celled foraminifera inhabiting coastal waters experience significant en-\nvironmental salinity changes during tidal cycles. How, then, do they _______ in-\nternal salt levels? Some organisms maintain high concentrations of phosphates\nthat allow them to affect the concentration of internal electrolytes—including\nsalt—in response to external changes. It may be that coastal foraminifera do\nthe same.",
       "prompt": "Which choice completes the text with the most logical and precise word or phrase?",
       "options": "[\"counteract\",\"elude\",\"tolerate\",\"regulate\"]",
       "correct_answer_index": 3,
@@ -21004,11 +21004,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5243,
+      "id": 5537,
       "test_id": 52,
       "question_number": 3,
       "original_question_number": 3,
-      "passage": "concentrate on people who live above sea level, researchers Suleiman A. Al-\nSweedan and Moath Alhaj have instead chosen the _______ path in their recent\nwork of studying the blood of people who live below sea level, in locations\nsuch as the California towns of Westmorland and Thermal.",
+      "passage": "Though most studies of the effect of altitude on blood chemistry usually\nconcentrate on people who live above sea level, researchers Suleiman A. Al-\nSweedan and Moath Alhaj have instead chosen the _______ path in their recent\nwork of studying the blood of people who live below sea level, in locations\nsuch as the California towns of Westmorland and Thermal.",
       "prompt": "Which choice completes the text with the most logical and precise word or phrase?",
       "options": "[\"predictable\",\"innovative\",\"idealistic\",\"timeworn\"]",
       "correct_answer_index": 1,
@@ -21021,11 +21021,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5244,
+      "id": 5538,
       "test_id": 52,
       "question_number": 4,
       "original_question_number": 4,
-      "passage": "cybersecurity education programs.",
+      "passage": "While once _______ , basic computer security training that only teaches recog-\nnition of obvious scams cannot provide enough protection against today's\nsophisticated fake emails, which employ such subtle deception techniques\nthat many organizations now require their staff to complete comprehensive\ncybersecurity education programs.",
       "prompt": "Which choice completes the text with the most logical and precise word or phrase?",
       "options": "[\"uncommon\",\"superficial\",\"sufficient\",\"affordable\"]",
       "correct_answer_index": 2,
@@ -21038,11 +21038,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5245,
+      "id": 5539,
       "test_id": 52,
       "question_number": 5,
       "original_question_number": 5,
-      "passage": "and unadorned surfaces, the architects prioritized utility and simplicity over\ngrandeur.",
+      "passage": "The architectural firm's design for the new municipal library was deliber-\nately _______ ; by rejecting ornate embellishments in favor of clean lines\nand unadorned surfaces, the architects prioritized utility and simplicity over\ngrandeur.",
       "prompt": "Which choice completes the text with the most logical and precise word or phrase?",
       "options": "[\"austere\",\"capricious\",\"ostentatious\",\"convoluted\"]",
       "correct_answer_index": 0,
@@ -21055,11 +21055,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5246,
+      "id": 5540,
       "test_id": 52,
       "question_number": 6,
       "original_question_number": 6,
-      "passage": "someone he intends to meet with about a business matter.\nHe was breathing hard but not because he had been galloping. On the contrary,\nsince he had approached near enough to his destination to believe he could\nhave seen smoke if there had been smoke, he had ridden slower and slower.\nNevertheless he now sat the horse before the gap in the fence, breathing hard\nenough through his nose and even sweating a little, looking at the sagging\nbroken-backed cabin set in its inevitable treeless and grassless plot and weath-\nered to the color of an old bee-hive, with that expression of tense and rapid\nspeculation of a man approaching a dud howitzer [artillery] shell.",
+      "passage": "The following text is adapted from the 1940 novel The Hamlet by William\nFaulkner. In Mississippi, a man is riding a horse toward the residence of\nsomeone he intends to meet with about a business matter.\nHe was breathing hard but not because he had been galloping. On the contrary,\nsince he had approached near enough to his destination to believe he could\nhave seen smoke if there had been smoke, he had ridden slower and slower.\nNevertheless he now sat the horse before the gap in the fence, breathing hard\nenough through his nose and even sweating a little, looking at the sagging\nbroken-backed cabin set in its inevitable treeless and grassless plot and weath-\nered to the color of an old bee-hive, with that expression of tense and rapid\nspeculation of a man approaching a dud howitzer [artillery] shell.",
       "prompt": "Which choice best states the main purpose of the text?",
       "options": "[\"To contrast the man’s desire to attend the meeting with his awareness of the risk involved in attending it\",\"To compare the upcoming meeting to a far more serious experience from earlier in the man’s life\",\"To depict the man’s insistence on meeting despite the inconvenience of traveling on horseback\",\"To portray the man’s anxiety about the meeting as reflected by his physical state and demeanor\"]",
       "correct_answer_index": 3,
@@ -21072,11 +21072,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5247,
+      "id": 5541,
       "test_id": 52,
       "question_number": 7,
       "original_question_number": 7,
-      "passage": "knowledge with hands-on environmental work. Arborists assess tree health\nand perform maintenance such as pruning to promote safety and prevent\nproblems. Forestry researchers collect data on growth patterns and biodiversity\nin the wild. Forest ecologists conduct field research and analyze ecosystems to\nunderstand how forests respond to changes in weather patterns. With this blend\nof scientific understanding and practical application, forestry professionals\naddress a variety of complex environmental challenges.",
+      "passage": "Modern forestry offers diverse career opportunities that integrate scientific\nknowledge with hands-on environmental work. Arborists assess tree health\nand perform maintenance such as pruning to promote safety and prevent\nproblems. Forestry researchers collect data on growth patterns and biodiversity\nin the wild. Forest ecologists conduct field research and analyze ecosystems to\nunderstand how forests respond to changes in weather patterns. With this blend\nof scientific understanding and practical application, forestry professionals\naddress a variety of complex environmental challenges.",
       "prompt": "Which choice best describes the main purpose of the text?",
       "options": "[\"To explain technological advances in modern forestry and demonstrate how they’ve transformed traditional practices\",\"To analyze environmental challenges facing forests and describe how modern professionals address these problems\",\"To compare career opportunities in modern forestry and explain which positions offer the best job security\",\"To highlight career opportunities in modern forestry and describe how they integrate scientific knowledge and hands-on work\"]",
       "correct_answer_index": 3,
@@ -21089,11 +21089,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5248,
+      "id": 5542,
       "test_id": 52,
       "question_number": 8,
       "original_question_number": 8,
-      "passage": "<u>that overloading these fragile ecosystems with industrial runoff can degrade</u>\n<u>microbial communities, ultimately compromising their filtration efficiency.</u>\nWithout strict municipal regulations on chemical discharge, the natural buffer-\ning capacity of such wetlands could permanently diminish.",
+      "passage": "Ecologist Dr. Elena Vance observed that urban wetlands filter pollutants at\nrates comparable to modern treatment facilities. <u>However, Vance cautions</u>\n<u>that overloading these fragile ecosystems with industrial runoff can degrade</u>\n<u>microbial communities, ultimately compromising their filtration efficiency.</u>\nWithout strict municipal regulations on chemical discharge, the natural buffer-\ning capacity of such wetlands could permanently diminish.",
       "prompt": "Which choice best describes the primary function of the underlined sentence in the overall structure of the text?",
       "options": "[\"It introduces a technical method for measuring chemical pollutants in urban watersheds.\",\"It qualifies the earlier praise of wetlands by noting a condition under which their benefits are compromised.\",\"It dismisses artificial wastewater treatment facilities as ineffective alterna- tives.\",\"It refutes a prevailing hypothesis regarding microbial diversity in aquatic environments.\"]",
       "correct_answer_index": 1,
@@ -21106,11 +21106,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5249,
+      "id": 5543,
       "test_id": 52,
       "question_number": 9,
       "original_question_number": 9,
-      "passage": "and short cones in the retina help sense bright light and color. Olo can only\nbe seen by activating the medium cones. Fong and his team activated these\ncones by using a targeted laser technology to stimulate just the medium cone\ncells.",
+      "passage": "James Fong and his team claim to have discovered a new color, which they\nnamed olo. Olo is a very saturated blue-green color that can't be seen with\nthe human eye under natural conditions. In the human eye, long, medium,\nand short cones in the retina help sense bright light and color. Olo can only\nbe seen by activating the medium cones. Fong and his team activated these\ncones by using a targeted laser technology to stimulate just the medium cone\ncells.",
       "prompt": "According to the text, how can the color olo be seen?",
       "options": "[\"By activating only the medium cones in the retina\",\"By activating the long, medium, and short cones in the retina\",\"By activating both the long and short cones in the retina\",\"By activating only the long cones in the retina\"]",
       "correct_answer_index": 0,
@@ -21123,7 +21123,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5250,
+      "id": 5544,
       "test_id": 52,
       "question_number": 10,
       "original_question_number": 10,
@@ -21140,11 +21140,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5251,
+      "id": 5545,
       "test_id": 52,
       "question_number": 11,
       "original_question_number": 11,
-      "passage": "\"the influence of technology on the scale, the pace, or the pattern of human\naffairs\"; however, some critics assert that<u> cyberpunk is a literary movement</u>\n<u>that is in large part aesthetic rather than idea driven.</u>",
+      "passage": "Editor Jared Shurin's enormous 2023 anthology The Big Book of Cyberpunk\ncomprises 108 stories. Shurin's volume is chronologically expansive, fea-\nturing such stories as James Tiptree Jr.'s \"The Girl Who Was Plugged In\"\n(1973) and Erica Satifka's \"Act of Providence\" (2021). In his introduction,\nShurin defines cyberpunk as a subgenre of speculative fiction concerning\n\"the influence of technology on the scale, the pace, or the pattern of human\naffairs\"; however, some critics assert that<u> cyberpunk is a literary movement</u>\n<u>that is in large part aesthetic rather than idea driven.</u>",
       "prompt": "Which quotation from a literary critic would be the most effective evidence in support of the underlined claim?",
       "options": "[\"“Not all the stories anthologized in The Big Book of Cyberpunk were first published as stand-alone short stories in magazines or journals: for example, qntm’s 2021 story ‘Lena’ was originally self-published on the author’s site qntm.org.”\",\"“The stories in The Big Book of Cyberpunk share a number of common themes indicative of cyberpunk as a whole: body modification; resistance to authority; the ways in which technological advancements alter human behavior.”\",\"“Shurin’s characterization of cyberpunk is remarkably generous: it is a categorization that might well serve for the entire field of science fiction in general, rather than cyberpunk in particular.”\",\"“A key component of cyberpunk that differentiates it from other subgenres of science fiction is an affection for the totems of 1980s pop culture, such as the mirrored sunglasses that were then popular.”\"]",
       "correct_answer_index": 3,
@@ -21157,7 +21157,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5252,
+      "id": 5546,
       "test_id": 52,
       "question_number": 12,
       "original_question_number": 12,
@@ -21174,7 +21174,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5253,
+      "id": 5547,
       "test_id": 52,
       "question_number": 13,
       "original_question_number": 13,
@@ -21191,11 +21191,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5254,
+      "id": 5548,
       "test_id": 52,
       "question_number": 14,
       "original_question_number": 14,
-      "passage": "play, Odysseus and Neoptolemus must retrieve Philoctetes—a master archer\nwho is believed necessary for the Greeks to win the Trojan War—from a cave\non a deserted island where Odysseus and others had abandoned him with\na debilitating injury earlier in the war. Odysseus suggests that the plan for\nreturning with Philoctetes rests on Neoptolemus not having been part of the\ngroup that abandoned him:",
+      "passage": "Philoctetes is a play by Sophocles that was first performed in 409 BCE. In the\nplay, Odysseus and Neoptolemus must retrieve Philoctetes—a master archer\nwho is believed necessary for the Greeks to win the Trojan War—from a cave\non a deserted island where Odysseus and others had abandoned him with\na debilitating injury earlier in the war. Odysseus suggests that the plan for\nreturning with Philoctetes rests on Neoptolemus not having been part of the\ngroup that abandoned him:",
       "prompt": "Which quotation from Philoctetes most effectively illustrates the claim?",
       "options": "[\"“Since the prize of victory is so dear, / Endure it [acting deceitfully]— We’ll be just another day / But now, for one brief hour, devote thyself / To serve me without shame.”\",\"“Go near now silently, and make me know / If still he persevere, and hold this spot, / Or have roamed elsewhere, that informed of this / I may proceed with what remains to say, / And we may act in concert.”\",\"“Now let me show, why thine approach to him / Is safe and trustful as mine cannot be / Thou didst sail forth, not to redeem thine oath, / Nor by constraint, nor with the foremost band. / All which reproaches I must bear.”\",\"“No moment for this talk, / Lest he discern my coming, and I lose / The scheme, wherewith I think to catch him soon.”\"]",
       "correct_answer_index": 2,
@@ -21208,11 +21208,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5255,
+      "id": 5549,
       "test_id": 52,
       "question_number": 15,
       "original_question_number": 15,
-      "passage": "larly described as autobiographical. That characterization is apt—there are\nmany parallels between the experiences of the novel's protagonist, Ferdinand\nBardamu, and those of Céline—but it should not be taken to mean that every\nperson or event depicted in Journey to the End of the Night has a real-life\nanalogue. Much of the novel is pure invention, and readers who neglect this\nfact and instead focus excessively on correspondences between the novel and\nCéline's life can thus _______",
+      "passage": "Louis-Ferdinand Céline's 1932 novel Journey to the End of the Night is regu-\nlarly described as autobiographical. That characterization is apt—there are\nmany parallels between the experiences of the novel's protagonist, Ferdinand\nBardamu, and those of Céline—but it should not be taken to mean that every\nperson or event depicted in Journey to the End of the Night has a real-life\nanalogue. Much of the novel is pure invention, and readers who neglect this\nfact and instead focus excessively on correspondences between the novel and\nCéline's life can thus _______",
       "prompt": "Which choice most logically completes the text?",
       "options": "[\"fail to appreciate how much creativity Céline shows in the book.\",\"overemphasize the extent to which Céline took inspiration from earlier writers.\",\"refuse to acknowledge that Céline drew on real-world material when writing Journey to the End of the Night.\",\"misrepresent Journey to the End of the Night as being more widely read than it actually is.\"]",
       "correct_answer_index": 0,
@@ -21225,11 +21225,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5256,
+      "id": 5550,
       "test_id": 52,
       "question_number": 16,
       "original_question_number": 16,
-      "passage": "convenience and immediacy, expecting next-day delivery. In response to this\nchallenge and others, such as the increasing volume of parcels to be delivered,\ndelivery companies are continually looking for ways to make last-mile delivery\nmore efficient. One advance in last-mile delivery is the use of self-service\nlockers (containers where consumers can pick up their parcels using a unique\ncode). This approach, while promising, also introduces new obstacles (e.g.,\nconvenient placement of self-service lockers is challenging). It is therefore\nlikely that _______",
+      "passage": "Last-mile delivery, the final stage in the delivery of products to customers,\nis subject to increasing pressure as consumers place greater emphasis on\nconvenience and immediacy, expecting next-day delivery. In response to this\nchallenge and others, such as the increasing volume of parcels to be delivered,\ndelivery companies are continually looking for ways to make last-mile delivery\nmore efficient. One advance in last-mile delivery is the use of self-service\nlockers (containers where consumers can pick up their parcels using a unique\ncode). This approach, while promising, also introduces new obstacles (e.g.,\nconvenient placement of self-service lockers is challenging). It is therefore\nlikely that _______",
       "prompt": "Which choice most logically completes the text?",
       "options": "[\"delivery companies will need to keep experimenting with new ideas for last-mile delivery if they hope to keep pace with consumers’ expectations.\",\"delivery companies will continue promising next-day delivery out of a desire to meet consumers’ expectations.\",\"advances in last-mile technologies will slow as delivery companies focus more on meeting customer expectations for increased convenience.\",\"innovations in the use of self-service lockers for last-mile delivery will stall unless delivery companies shift their focus to methods with fewer complications.\"]",
       "correct_answer_index": 0,
@@ -21242,11 +21242,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5257,
+      "id": 5551,
       "test_id": 52,
       "question_number": 17,
       "original_question_number": 17,
-      "passage": "September.",
+      "passage": "With an average summer temperature of 82.5 degrees Fahrenheit, Nicosia is\none European _______ many travelers recommend, especially from June to\nSeptember.",
       "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
       "options": "[\"city, which\",\"city in which,\",\"city that\",\"city, that\"]",
       "correct_answer_index": 2,
@@ -21259,11 +21259,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5258,
+      "id": 5552,
       "test_id": 52,
       "question_number": 18,
       "original_question_number": 18,
-      "passage": "As nanotechnology evolves, medical technology _______ to evolve as well.",
+      "passage": "Nanoengineers have developed synthesized mesoporous silica nanoparticles\nthat are used to transport genes and medicines to specific cells in the body.\nAs nanotechnology evolves, medical technology _______ to evolve as well.",
       "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
       "options": "[\"had likely continued\",\"would likely have continued\",\"had likely been continuing\",\"will likely continue\"]",
       "correct_answer_index": 3,
@@ -21276,11 +21276,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5259,
+      "id": 5553,
       "test_id": 52,
       "question_number": 19,
       "original_question_number": 19,
-      "passage": "the demanding pointe work that became increasingly common in early 20th-\ncentury ballet, internationally known ballerina Anna Pavlova redesigned her\npointe shoes. The modifications she made—adding a stiffened leather sole\nand hardened toe _______ began the modernization of ballet's iconic footwear.",
+      "passage": "To more easily balance the weight of her body on her toes while performing\nthe demanding pointe work that became increasingly common in early 20th-\ncentury ballet, internationally known ballerina Anna Pavlova redesigned her\npointe shoes. The modifications she made—adding a stiffened leather sole\nand hardened toe _______ began the modernization of ballet's iconic footwear.",
       "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
       "options": "[\"box,\",\"box—\",\"box\",\"box:\"]",
       "correct_answer_index": 1,
@@ -21293,11 +21293,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5260,
+      "id": 5554,
       "test_id": 52,
       "question_number": 20,
       "original_question_number": 20,
-      "passage": "cient games was _______ provide entertainment during leisure time, to reflect\ncultural beliefs, and to develop strategic thinking skills among players.",
+      "passage": "Archaeological evidence indicates that board games have existed in human\nsocieties for at least five millennia, with examples discovered in the tombs\nof ancient Egypt and the ruins of Mesopotamia. The purpose of these an-\ncient games was _______ provide entertainment during leisure time, to reflect\ncultural beliefs, and to develop strategic thinking skills among players.",
       "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
       "options": "[\"threefold. To\",\"threefold: to\",\"threefold; to\",\"threefold to\"]",
       "correct_answer_index": 1,
@@ -21310,11 +21310,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5261,
+      "id": 5555,
       "test_id": 52,
       "question_number": 21,
       "original_question_number": 21,
-      "passage": "Shady Solís's hypothesis about the Peruvian site's _______ nearly 5,000 years\nago, the ancient city preceded the Olmec civilization to the north by a full\nmillennium, a revelation that fundamentally altered our understanding of\nurban development in the Western Hemisphere.",
+      "passage": "Extensive radiocarbon dating of reed samples from Caral confirmed Ruth\nShady Solís's hypothesis about the Peruvian site's _______ nearly 5,000 years\nago, the ancient city preceded the Olmec civilization to the north by a full\nmillennium, a revelation that fundamentally altered our understanding of\nurban development in the Western Hemisphere.",
       "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
       "options": "[\"age, built\",\"age: built\",\"age and built\",\"age built\"]",
       "correct_answer_index": 1,
@@ -21327,11 +21327,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5262,
+      "id": 5556,
       "test_id": 52,
       "question_number": 22,
       "original_question_number": 22,
-      "passage": "discovered compounds that led to the creation of vibrant artificial colorants.\nCommercial applications of this new synthetic dye technology—beginning\nwith the purple dye called mauve, discovered by William Perkin in 1856—\n_______ responsible for launching what one science historian calls a \"manu-\nfacturing revolution based on chemistry.\"",
+      "passage": "Chemists investigating the properties of coal tar in the mid-nineteenth century\ndiscovered compounds that led to the creation of vibrant artificial colorants.\nCommercial applications of this new synthetic dye technology—beginning\nwith the purple dye called mauve, discovered by William Perkin in 1856—\n_______ responsible for launching what one science historian calls a \"manu-\nfacturing revolution based on chemistry.\"",
       "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
       "options": "[\"was\",\"is\",\"were\",\"has been\"]",
       "correct_answer_index": 2,
@@ -21344,11 +21344,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5263,
+      "id": 5557,
       "test_id": 52,
       "question_number": 23,
       "original_question_number": 23,
-      "passage": "which radiates upward. This causes the air near the ground to cool. _______\ntiny water droplets begin to form as the cooling air reaches its dew point and\ncan no longer hold its moisture as invisible vapor. Finally, as more droplets\naccumulate, a visible layer of fog develops close to the ground.",
+      "passage": "How does a clear evening become foggy? First, the ground releases heat,\nwhich radiates upward. This causes the air near the ground to cool. _______\ntiny water droplets begin to form as the cooling air reaches its dew point and\ncan no longer hold its moisture as invisible vapor. Finally, as more droplets\naccumulate, a visible layer of fog develops close to the ground.",
       "prompt": "Which choice completes the text with the most logical transition?",
       "options": "[\"Similarly,\",\"Lastly,\",\"Instead,\",\"Next,\"]",
       "correct_answer_index": 3,
@@ -21361,11 +21361,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5264,
+      "id": 5558,
       "test_id": 52,
       "question_number": 24,
       "original_question_number": 24,
-      "passage": "plex partnerships with microscopic organisms for survival. The researchers\nfound that special fungi called endophytes live inside tree leaves and serve as\na defense mechanism. _______ these endophytes help by fighting off diseases\nand boosting the tree's immune system.",
+      "passage": "Scientists studying forest restoration have discovered that trees depend on com-\nplex partnerships with microscopic organisms for survival. The researchers\nfound that special fungi called endophytes live inside tree leaves and serve as\na defense mechanism. _______ these endophytes help by fighting off diseases\nand boosting the tree's immune system.",
       "prompt": "Which choice completes the text with the most logical transition?",
       "options": "[\"In conclusion,\",\"Nevertheless,\",\"Alternatively,\",\"Specifically,\"]",
       "correct_answer_index": 3,
@@ -21378,11 +21378,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5265,
+      "id": 5559,
       "test_id": 52,
       "question_number": 25,
       "original_question_number": 25,
-      "passage": "nated in the Pontic-Caspian steppe roughly 6,000 years ago. _______ , recent\nancient genomic analyses combined with phylogenetic linguistic modeling\nhave provided compelling evidence supporting an earlier agricultural origin\nsouth of the Caucasus.",
+      "passage": "For decades, historical linguists hypothesized that Proto-Indo-European origi-\nnated in the Pontic-Caspian steppe roughly 6,000 years ago. _______ , recent\nancient genomic analyses combined with phylogenetic linguistic modeling\nhave provided compelling evidence supporting an earlier agricultural origin\nsouth of the Caucasus.",
       "prompt": "Which choice completes the text with the most logical transition?",
       "options": "[\"In addition\",\"However\",\"Consequently\",\"For example\"]",
       "correct_answer_index": 1,
@@ -21395,11 +21395,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5266,
+      "id": 5560,
       "test_id": 52,
       "question_number": 26,
       "original_question_number": 26,
-      "passage": "• Pistol shrimp are small marine crustaceans that hunt using a specialized\noversized claw.\n• When the claw snaps shut rapidly, it pushes water through a narrow\ngroove at extreme speeds.\n• This high-speed water jet creates a bubble that pops forcefully near the\nshrimp's prey.\n• The popping bubble generates shock waves powerful enough to stun\nsmall fish.",
+      "passage": "While researching a topic, a student has taken the following notes:\n• Pistol shrimp are small marine crustaceans that hunt using a specialized\noversized claw.\n• When the claw snaps shut rapidly, it pushes water through a narrow\ngroove at extreme speeds.\n• This high-speed water jet creates a bubble that pops forcefully near the\nshrimp's prey.\n• The popping bubble generates shock waves powerful enough to stun\nsmall fish.",
       "prompt": "The student wants to introduce pistol shrimp to an audience unfamiliar with these crustaceans. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
       "options": "[\"Some crustaceans use a specialized claw to create high-speed water jets and a bubble that stuns the small fish they prey on.\",\"Pistol shrimp are small marine creatures that use a specialized oversized claw to generate shock waves powerful enough to stun small fish.\",\"Pushing water through a narrow groove at extreme speeds, the snapping shut of the shrimp’s claw sets the shock-wave hunting process in motion.\",\"Pistol shrimp are preyed on by small marine crustaceans that create high- speed water jets to stun their prey.\"]",
       "correct_answer_index": 1,
@@ -21412,11 +21412,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5267,
+      "id": 5561,
       "test_id": 52,
       "question_number": 27,
       "original_question_number": 27,
-      "passage": "• Elizabeth Catlett (1915–2012) was a celebrated African American artist.\n• She is best known for creating sculptures and prints that explore the\nBlack experience.\n• Standing Mother and Child is a 1980 sculpture by Catlett.\n• New Generation is a 1992 print by Catlett.",
+      "passage": "While researching a topic, a student has taken the following notes:\n• Elizabeth Catlett (1915–2012) was a celebrated African American artist.\n• She is best known for creating sculptures and prints that explore the\nBlack experience.\n• Standing Mother and Child is a 1980 sculpture by Catlett.\n• New Generation is a 1992 print by Catlett.",
       "prompt": "The student wants to provide an example of one of Catlett’s sculptures. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
       "options": "[\"The print New Generation was created by celebrated artist Elizabeth Catlett in 1992.\",\"The sculpture Standing Mother and Child was created by celebrated artist Elizabeth Catlett in 1980.\",\"Artist Elizabeth Catlett is best known for creating sculptures and prints that explore the Black experience.\",\"Elizabeth Catlett, a celebrated artist, was born in 1915.\"]",
       "correct_answer_index": 1,
@@ -21429,7 +21429,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5268,
+      "id": 5562,
       "test_id": 52,
       "question_number": 1,
       "original_question_number": 1,
@@ -21446,11 +21446,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5269,
+      "id": 5563,
       "test_id": 52,
       "question_number": 2,
       "original_question_number": 2,
-      "passage": "warehouses to be immediately transferred to trucks for delivery to their final\ndestinations. Some centers are so efficient that even the largest delivery trucks\ncan be filled in a matter of minutes.",
+      "passage": "To maximize _______ , package distribution centers employ advanced schedul-\ning systems and strategic staging areas that allow for goods received from\nwarehouses to be immediately transferred to trucks for delivery to their final\ndestinations. Some centers are so efficient that even the largest delivery trucks\ncan be filled in a matter of minutes.",
       "prompt": "Which choice completes the text with the most logical and precise word or phrase?",
       "options": "[\"throughput\",\"staffing\",\"overhead\",\"liability\"]",
       "correct_answer_index": 0,
@@ -21463,11 +21463,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5270,
+      "id": 5564,
       "test_id": 52,
       "question_number": 3,
       "original_question_number": 3,
-      "passage": "_______ influence production schedules, allowing rapid solution generation\nfor manufacturing planning problems. The algorithms help identify efficient\nproduction schedules by processing those quantifiable inputs (e.g., demand\npatterns and capacity constraints) without exhaustively testing all possible\nscenarios.",
+      "passage": "Researchers have developed algorithms that take into account how various\n_______ influence production schedules, allowing rapid solution generation\nfor manufacturing planning problems. The algorithms help identify efficient\nproduction schedules by processing those quantifiable inputs (e.g., demand\npatterns and capacity constraints) without exhaustively testing all possible\nscenarios.",
       "prompt": "Which choice completes the text with the most logical and precise word or phrase?",
       "options": "[\"optimizations\",\"predictions\",\"parameters\",\"anomalies\"]",
       "correct_answer_index": 2,
@@ -21480,11 +21480,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5271,
+      "id": 5565,
       "test_id": 52,
       "question_number": 4,
       "original_question_number": 4,
-      "passage": "portrayals that often serve as _______ : as the Phoenix, Jean Grey loses control\nof a force and destroys an entire planet, showing the corrupting influence of\npower.",
+      "passage": "Marvel Girl's ability to lift modest loads with her mind is illustrative of the\nlamentably lackluster powers bestowed on many female superheroes, but\neven those with more formidable powers have been subject to unflattering\nportrayals that often serve as _______ : as the Phoenix, Jean Grey loses control\nof a force and destroys an entire planet, showing the corrupting influence of\npower.",
       "prompt": "Which choice completes the text with the most logical and precise word or phrase?",
       "options": "[\"venerations\",\"admonitions\",\"obfuscations\",\"exonerations\"]",
       "correct_answer_index": 1,
@@ -21497,11 +21497,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5272,
+      "id": 5566,
       "test_id": 52,
       "question_number": 5,
       "original_question_number": 5,
-      "passage": "<u>arc trajectory back to the Sun's surface.</u> High-resolution images show these\neruptions produce thin streams of hot gas moving at speeds between 55 and\n200 kilometers per second. Although these are impressive speeds, they are not\nsufficient to overcome the confining forces of the Sun's gravity and magnetic\nfield, so the material is pulled back down.",
+      "passage": "Research on minor solar eruptions in magnetically quiet regions revealed an\ninteresting pattern. <u>Material expelled during these events follows a narrow</u>\n<u>arc trajectory back to the Sun's surface.</u> High-resolution images show these\neruptions produce thin streams of hot gas moving at speeds between 55 and\n200 kilometers per second. Although these are impressive speeds, they are not\nsufficient to overcome the confining forces of the Sun's gravity and magnetic\nfield, so the material is pulled back down.",
       "prompt": "Which choice best describes the function of the underlined sentence in the text as a whole?",
       "options": "[\"It describes a natural phenomenon that is explained later in the text.\",\"It presents a research finding that challenges the view mentioned in the first sentence of the text.\",\"It acknowledges an exception to the pattern described in the first sentence of the text.\",\"It discusses a natural occurrence that leads to the consequences explained later in the text.\"]",
       "correct_answer_index": 0,
@@ -21514,11 +21514,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5273,
+      "id": 5567,
       "test_id": 52,
       "question_number": 6,
       "original_question_number": 6,
-      "passage": "Blue Hole near San Salvador Island, blue holes are large underwater sinkholes:\npits filled with dark blue water that contrasts with lighter blue shallower\nwaters surrounding them. The formation of blue holes typically involves\nseveral natural processes, including the dissolution of limestone or other\nrocks. Currently, the deepest blue hole on record is the Taam Ja' Blue Hole in\nChetumal Bay, Mexico, which is reported by Laura Carrillo and colleagues\nas extending at least 420 meters below sea level.",
+      "passage": "With examples ranging from Dean's Blue Hole in the Bahamas to Watling's\nBlue Hole near San Salvador Island, blue holes are large underwater sinkholes:\npits filled with dark blue water that contrasts with lighter blue shallower\nwaters surrounding them. The formation of blue holes typically involves\nseveral natural processes, including the dissolution of limestone or other\nrocks. Currently, the deepest blue hole on record is the Taam Ja' Blue Hole in\nChetumal Bay, Mexico, which is reported by Laura Carrillo and colleagues\nas extending at least 420 meters below sea level.",
       "prompt": "Which choice best describes the overall structure of the text?",
       "options": "[\"It describes the appearance of a particular type of sinkhole, compares the formations of two sinkholes of that type, and then names the researchers who discovered the deepest known sinkhole of that type.\",\"It compares a deep sinkhole to a shallower one, details the processes by which both sinkholes formed, and emphasizes the remarkable depth of the deeper sinkhole.\",\"It explains how a particular sinkhole formed, evaluates that sinkhole’s un- usual appearance, and names a research team that is studying the sinkhole.\",\"It defines a kind of sinkhole, describes its typical appearance and forma- tion, and provides information about the deepest known sinkhole.\"]",
       "correct_answer_index": 3,
@@ -21531,11 +21531,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5274,
+      "id": 5568,
       "test_id": 52,
       "question_number": 7,
       "original_question_number": 7,
-      "passage": "Rabindranath Tagore's 1921 nonfiction book Glimpses of Bengal.\nText 1\nThe wood I walk in on this mild May day, with the young yellow-brown\nfoliage of the oaks between me and the blue sky, the white star-flowers and\nthe blue-eyed speedwell and the ground ivy at my feet, what grove of tropic\npalms, what strange ferns or splendid broad-petalled blossoms, could ever\nthrill such deep and delicate fibres within me as this home scene?\nText 2\nMy feelings seem to be those of our ancient earth in the daily ecstasy of its\nsun-kissed life; my own consciousness seems to stream through each blade of\ngrass, each sucking root, to rise with the sap through the trees, to break out\nwith joyous thrills in the waving fields of corn, in the rustling palm leaves.",
+      "passage": "Text 1 is from George Eliot's 1860 novel The Mill on the Floss. Text 2 is from\nRabindranath Tagore's 1921 nonfiction book Glimpses of Bengal.\nText 1\nThe wood I walk in on this mild May day, with the young yellow-brown\nfoliage of the oaks between me and the blue sky, the white star-flowers and\nthe blue-eyed speedwell and the ground ivy at my feet, what grove of tropic\npalms, what strange ferns or splendid broad-petalled blossoms, could ever\nthrill such deep and delicate fibres within me as this home scene?\nText 2\nMy feelings seem to be those of our ancient earth in the daily ecstasy of its\nsun-kissed life; my own consciousness seems to stream through each blade of\ngrass, each sucking root, to rise with the sap through the trees, to break out\nwith joyous thrills in the waving fields of corn, in the rustling palm leaves.",
       "prompt": "Which choice best describes a notable difference in how the references to palm trees function in Text 1 and Text 2?",
       "options": "[\"While the narrator of Text 1 and the author of Text 2 both refer to metaphorical palm trees, only the narrator of Text 1 suggests that the palm trees are representative of home.\",\"While palm trees form part of a series conveying the variety of the natural world in both texts, only the author of Text 2 recognizes how closely interconnected palm trees are with other plants in their environment.\",\"While the narrator of Text 1 and the author of Text 2 both discuss palm trees to suggest the value of experiencing the natural world, only the narrator of Text 1 alludes to the labor that goes into cultivating real palm trees.\",\"While palm trees serve to evoke natural beauty in both texts, only the author of Text 2 expresses a close sense of identification with palm trees.\"]",
       "correct_answer_index": 3,
@@ -21548,11 +21548,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5275,
+      "id": 5569,
       "test_id": 52,
       "question_number": 8,
       "original_question_number": 8,
-      "passage": "riddles of early medieval England contain \"implicit vestiges\" of an interactive\nperformance context, scholar Jill Frederick argues. Locative phrases (e.g.,\n\"here\" and \"now\") scattered throughout the riddles indicate the space shared\nby their speakers and audiences; the common refrain \"say what I am called\"\ninvites a verbalized response; and the conflation of many of the riddles' speak-\ners with their solutions (typically animals, objects, or natural phenomena)\nsuggests a form of dramatic impersonation perhaps meant to entertain during\npublic gatherings.",
+      "passage": "Primarily encountered by modern readers as inert written texts, the vernacular\nriddles of early medieval England contain \"implicit vestiges\" of an interactive\nperformance context, scholar Jill Frederick argues. Locative phrases (e.g.,\n\"here\" and \"now\") scattered throughout the riddles indicate the space shared\nby their speakers and audiences; the common refrain \"say what I am called\"\ninvites a verbalized response; and the conflation of many of the riddles' speak-\ners with their solutions (typically animals, objects, or natural phenomena)\nsuggests a form of dramatic impersonation perhaps meant to entertain during\npublic gatherings.",
       "prompt": "Which choice best states the main idea of the text?",
       "options": "[\"It is reasonable to conclude based on textual evidence from the vernacular riddles of early medieval England that they were mainly performed at large public gatherings, though documentation of the locations in which they were performed is unlikely to exist.\",\"Linguistic evidence found within the vernacular riddles of early medieval England suggests that they may have been intended to be performed in communal settings, though this isn’t how they are generally experienced by readers today.\",\"People of early medieval England likely found that era’s vernacular riddles to be more amusing than modern readers do, given that there is substantial evidence to indicate that they are best experienced in the context of an interactive performance rather than exclusively as written texts.\",\"Scholars once assumed that the vernacular riddles of early medieval Eng- land were originally intended to be read silently, but newly uncovered historical documents corroborate Jill Frederick’s assertion that they may in fact have been intended primarily for oral performance.\"]",
       "correct_answer_index": 1,
@@ -21565,11 +21565,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5276,
+      "id": 5570,
       "test_id": 52,
       "question_number": 9,
       "original_question_number": 9,
-      "passage": "pronunciation of the s consonant replaced the Castilian pronunciation.",
+      "passage": "In the Mexican dialect of Spanish, the consonant s is pronounced with greater\ntension in the tongue than it is in Castilian, the dominant dialect in Spain,\nresulting in a sharper sound. Margarita Hidalgo, a linguist at San Diego\nState University, argues that Mexican Spanish acquired this pronunciation\nfrom Nahuatl, the language of the Nahua people in Mexico: as the Spanish\ncolonizers of Mexico incorporated Nahuatl words into their speech, and as\nmore and more Nahuas spoke Spanish as a second language, the Nahuatl\npronunciation of the s consonant replaced the Castilian pronunciation.",
       "prompt": "Information in the text best supports which statement about the consonant s?",
       "options": "[\"The pronunciation of this consonant is the principal difference between the Mexican and Castilian dialects of Spanish.\",\"This consonant appears in a higher percentage of Nahuatl vocabulary than of Castilian vocabulary.\",\"The pronunciation of this consonant in Nahuatl may have been affected by its pronunciation in Mexican Spanish.\",\"The pronunciation of this consonant requires greater tension in the tongue in Nahuatl than in Castilian.\"]",
       "correct_answer_index": 3,
@@ -21582,11 +21582,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5277,
+      "id": 5571,
       "test_id": 52,
       "question_number": 10,
       "original_question_number": 10,
-      "passage": "seasons. While these crops are known for increasing biodiversity, Axel Don\nand his coauthor argued in a 2015 study that cover crops' role in supporting\nsoil carbon sequestration deserves more attention. Cover crops remove carbon\ndioxide (CO2) from the air and convert it to organic compounds; some of\nthese compounds are stored in the soil as soil organic carbon (SOC), which\ncontributes to the buildup of SOC stocks over time. Based on data from\nnumerous farm fields, Don and his coauthor concluded that cover crops con-\ntribute meaningfully to soil carbon sequestration and, if widely adopted, could\nhelp offset agricultural emissions of atmospheric CO2 and other greenhouse\ngases.",
+      "passage": "Cover crops, such as teff, are planted by many farmers between main growing\nseasons. While these crops are known for increasing biodiversity, Axel Don\nand his coauthor argued in a 2015 study that cover crops' role in supporting\nsoil carbon sequestration deserves more attention. Cover crops remove carbon\ndioxide (CO2) from the air and convert it to organic compounds; some of\nthese compounds are stored in the soil as soil organic carbon (SOC), which\ncontributes to the buildup of SOC stocks over time. Based on data from\nnumerous farm fields, Don and his coauthor concluded that cover crops con-\ntribute meaningfully to soil carbon sequestration and, if widely adopted, could\nhelp offset agricultural emissions of atmospheric CO2 and other greenhouse\ngases.",
       "prompt": "Which finding, if true, would be most consistent with Don and his coauthor’s conclusion?",
       "options": "[\"Teff captures considerably more CO2 in fields where it is the sole cover crop compared with fields where it is grown alongside other species of cover crops.\",\"Cover crops generally exhibit reduced carbon sequestration rates in fields exposed to high levels of greenhouse gas emissions compared with fields exposed to low levels of those emissions.\",\"SOC stocks vary more in fields where cover crops have been grown for decades compared with fields where cover crops have only recently been introduced.\",\"SOC stocks tend to be significantly lower in fields without cover crops compared with fields where cover crops have been grown for several years.\"]",
       "correct_answer_index": 3,
@@ -21599,11 +21599,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5278,
+      "id": 5572,
       "test_id": 52,
       "question_number": 11,
       "original_question_number": 11,
-      "passage": "some modularity in that different language tasks activate these areas to varying\ndegrees, comprehension also invokes other areas of the brain more strongly\nassociated with nonlinguistic functions. For example, understanding a de-\nscription of a person performing physical actions might call on parts of the\nlistener's brain associated with sensory-motor functions, whereas a highly\nemotive account will likely activate areas associated with affective processing.\nThus, beyond the areas most strongly associated with linguistic functions,",
+      "passage": "While the brain regions most strongly associated with language tasks have\nsome modularity in that different language tasks activate these areas to varying\ndegrees, comprehension also invokes other areas of the brain more strongly\nassociated with nonlinguistic functions. For example, understanding a de-\nscription of a person performing physical actions might call on parts of the\nlistener's brain associated with sensory-motor functions, whereas a highly\nemotive account will likely activate areas associated with affective processing.\nThus, beyond the areas most strongly associated with linguistic functions,",
       "prompt": "Which choice most logically completes the text?",
       "options": "[\"the specific combination of brain regions involved in comprehending speech is likely contingent on the total context in which the speech is embedded.\",\"the brain regions associated with sensory-motor functions are often in- volved in general comprehension, even in contexts that don’t involve descriptions of physical movement.\",\"the brain regions most strongly associated with affective processing acti- vate whenever a listener believes an utterance has emotional connotations, even if the speaker did not intend those connotations.\",\"the areas of the brain that activate when processing speech will typically include areas primarily responsible for nonlinguistic functions, although the exact combination of areas may be impossible to determine.\"]",
       "correct_answer_index": 0,
@@ -21616,11 +21616,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5279,
+      "id": 5573,
       "test_id": 52,
       "question_number": 12,
       "original_question_number": 12,
-      "passage": "mining is permitted, but the area's biodiversity is poorly understood. The vast\nmajority of invertebrate species found in a recent survey of the CCZ were\nhitherto unknown to scientists, and sampling for animal life has been highly\nconcentrated in the eastern part of the zone. Some species like Psychropotes\ndyscrita were identified both morphologically and molecularly (using DNA\nanalysis), whereas Discantenna metallica and other species for which molec-\nular sampling was impracticable were identified solely based on physical\nmorphology. Since molecular analysis does not require distinguishing subtle\nphysiological differences, it is _______",
+      "passage": "The Clarion-Clipperton Zone (CCZ) is an expanse of abyssal plain and\nseamounts (underwater mountains) between Hawai'i and Mexico in which\nmining is permitted, but the area's biodiversity is poorly understood. The vast\nmajority of invertebrate species found in a recent survey of the CCZ were\nhitherto unknown to scientists, and sampling for animal life has been highly\nconcentrated in the eastern part of the zone. Some species like Psychropotes\ndyscrita were identified both morphologically and molecularly (using DNA\nanalysis), whereas Discantenna metallica and other species for which molec-\nular sampling was impracticable were identified solely based on physical\nmorphology. Since molecular analysis does not require distinguishing subtle\nphysiological differences, it is _______",
       "prompt": "Which choice most logically completes the text?",
       "options": "[\"more frequently used for identifying species with physiological character- istics like those of Psychropotes dyscrita than morphological analysis is.\",\"capable of providing greater physiological detail about a species than is the method used for Discantenna metallica.\",\"better suited to distinguishing Discantenna metallica from morphologi- cally similar species than to distinguishing Psychropotes dyscrita from morphologically similar species.\",\"more likely to properly distinguish between morphologically similar but distinct invertebrate species than is the method used to identify Discant- enna metallica.\"]",
       "correct_answer_index": 3,
@@ -21633,11 +21633,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5280,
+      "id": 5574,
       "test_id": 52,
       "question_number": 13,
       "original_question_number": 13,
-      "passage": "Paleontologists historically hypothesized that sauropod dinosaurs held their\nlong necks vertically aloft like modern giraffes, allowing them to browse\nundisturbed foliage at the tops of towering forest canopies.\nText 2\nBiomechanical simulations conducted by Dr. Raymond Kent suggest that\nsauropod cervical vertebrae lacked the dorsal articulation required for sus-\ntained vertical posture. Kent asserts that sauropods instead swept their necks\nhorizontally to forage broad swaths of low vegetation with minimal locomo-\ntion.",
+      "passage": "Text 1\nPaleontologists historically hypothesized that sauropod dinosaurs held their\nlong necks vertically aloft like modern giraffes, allowing them to browse\nundisturbed foliage at the tops of towering forest canopies.\nText 2\nBiomechanical simulations conducted by Dr. Raymond Kent suggest that\nsauropod cervical vertebrae lacked the dorsal articulation required for sus-\ntained vertical posture. Kent asserts that sauropods instead swept their necks\nhorizontally to forage broad swaths of low vegetation with minimal locomo-\ntion.",
       "prompt": "Based on the texts, how would the author of Text 2 most likely respond to the hypothesis discussed in Text 1?",
       "options": "[\"By arguing that giraffes and sauropods share identical vertebral morphol- ogy.\",\"By disputing the claim that sauropods sustained a predominantly vertical neck orientation.\",\"By demonstrating that sauropods relied entirely on high-canopy gym- nosperms for nutrition.\",\"By showing that sauropod neck fossils are too degraded for accurate biomechanical modeling.\"]",
       "correct_answer_index": 1,
@@ -21650,11 +21650,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5281,
+      "id": 5575,
       "test_id": 52,
       "question_number": 14,
       "original_question_number": 14,
-      "passage": "conspecifics (other members of the same species) in an organism's immediate\nsurroundings, enabling the organism to avoid competition with conspecifics\nfor the resources; RSA is widely believed to play a crucial role in maintaining\necological stability. Among tree species in the Barro Colorado Island plot\n◦\n(latitude 9.15N) and other tropical forest sites, there is little correlation\nbetween conspecific aggregation and the abundance of a given species in the\nwider local area, so RSA is expected, but in the Fenglin Nature Reserve (lati-\n◦\ntude 48.08N) and other temperate forest sites, the aggregation-abundance\ncorrelation for tree species is strongly negative. Mathematical modeling sug-\ngests, however, that ecological niche distinction may mitigate the apparent\nrisk to temperate ecological stability engendered by this pattern: _______",
+      "passage": "Rare species advantage (RSA) describes the situation in which there are few\nconspecifics (other members of the same species) in an organism's immediate\nsurroundings, enabling the organism to avoid competition with conspecifics\nfor the resources; RSA is widely believed to play a crucial role in maintaining\necological stability. Among tree species in the Barro Colorado Island plot\n◦\n(latitude 9.15N) and other tropical forest sites, there is little correlation\nbetween conspecific aggregation and the abundance of a given species in the\nwider local area, so RSA is expected, but in the Fenglin Nature Reserve (lati-\n◦\ntude 48.08N) and other temperate forest sites, the aggregation-abundance\ncorrelation for tree species is strongly negative. Mathematical modeling sug-\ngests, however, that ecological niche distinction may mitigate the apparent\nrisk to temperate ecological stability engendered by this pattern: _______",
       "prompt": "Which choice most logically completes the text?",
       "options": "[\"as a tree species in temperate forests becomes more abundant, individuals of that species are more likely to be found near conspecifics, enabling abundant species to exploit localized resources to a greater extent than rare species can.\",\"even though rare tree species in temperate forests tend to cluster with conspecifics more than rare tree species in tropical forests do, they are sufficiently rare locally that they benefit from RSA more than rare tropical species do.\",\"although rare tree species in temperate forests encounter relatively high lo- cal competition from conspecifics, they can thrive by exploiting resources that are underexploited by other local species.\",\"while an increase in abundance in one tree species often leads to a re- duction in abundance of nearby species, temperate tree species tend to play different roles in the same ecosystem, reducing the expected effect of abundance on aggregation.\"]",
       "correct_answer_index": 2,
@@ -21667,11 +21667,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5282,
+      "id": 5576,
       "test_id": 52,
       "question_number": 15,
       "original_question_number": 15,
-      "passage": "strategies during the planning stage. As a result, the project is more likely to\nsucceed.",
+      "passage": "A premortem is an exercise in which teams imagine their project has already\nfailed, then brainstorm possible reasons for that failure. Despite its appar-\nent pessimism, _______ prompting teams to proactively develop mitigation\nstrategies during the planning stage. As a result, the project is more likely to\nsucceed.",
       "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
       "options": "[\"effective uncovering of potential problems by the team in this activity is done early,\",\"this activity effectively uncovers potential problems early,\",\"potential problems are effectively uncovered by this activity early,\",\"teams effectively uncover potential problems early with this activity,\"]",
       "correct_answer_index": 1,
@@ -21684,11 +21684,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5283,
+      "id": 5577,
       "test_id": 52,
       "question_number": 16,
       "original_question_number": 16,
-      "passage": "mous for breaking the four-minute-mile barrier at Oxford's Iffley Road Track\nin 1954, _______ confined to the realm of athletics: Bannister also became a\npioneering neurologist in the field of autonomic disorders—conditions affect-\ning involuntary nervous system responses—and established the field's first\nspecialized scientific journal.",
+      "passage": "The trailblazing achievements of Roger Bannister, the English track star fa-\nmous for breaking the four-minute-mile barrier at Oxford's Iffley Road Track\nin 1954, _______ confined to the realm of athletics: Bannister also became a\npioneering neurologist in the field of autonomic disorders—conditions affect-\ning involuntary nervous system responses—and established the field's first\nspecialized scientific journal.",
       "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
       "options": "[\"isn’t\",\"hasn’t been\",\"wasn’t\",\"weren’t\"]",
       "correct_answer_index": 3,
@@ -21701,11 +21701,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5284,
+      "id": 5578,
       "test_id": 52,
       "question_number": 17,
       "original_question_number": 17,
-      "passage": "versatile repertoire of acrobatic feats. Her specialized skills included standing\non the wing of a flying aircraft and shooting a bow and arrow at a _______\nperfect balance during aerial maneuvers, such as vertical loops; and even\nwalking across the wing as an aircraft flew at full speed beneath a bridge.",
+      "passage": "As one of aviation's earliest female stunt performers, Gladys Ingle developed a\nversatile repertoire of acrobatic feats. Her specialized skills included standing\non the wing of a flying aircraft and shooting a bow and arrow at a _______\nperfect balance during aerial maneuvers, such as vertical loops; and even\nwalking across the wing as an aircraft flew at full speed beneath a bridge.",
       "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
       "options": "[\"target; maintaining\",\"target maintaining\",\"target. Maintaining\",\"target, maintaining\"]",
       "correct_answer_index": 0,
@@ -21718,11 +21718,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5285,
+      "id": 5579,
       "test_id": 52,
       "question_number": 18,
       "original_question_number": 18,
-      "passage": "consistent and seemingly deliberate placement of petroglyphs (rock carvings)\nnear water analyzed several sites on Caribbean islands. They discovered that\nmany of the pools near petroglyphs had consistent water levels year-round,\ncreating perfect reflecting surfaces for the carved symbols on the rocks.",
+      "passage": "During a recent investigation, archaeologists _______ an explanation for the\nconsistent and seemingly deliberate placement of petroglyphs (rock carvings)\nnear water analyzed several sites on Caribbean islands. They discovered that\nmany of the pools near petroglyphs had consistent water levels year-round,\ncreating perfect reflecting surfaces for the carved symbols on the rocks.",
       "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
       "options": "[\"had sought\",\"sought\",\"seeking\",\"were seeking\"]",
       "correct_answer_index": 2,
@@ -21735,11 +21735,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5286,
+      "id": 5580,
       "test_id": 52,
       "question_number": 19,
       "original_question_number": 19,
-      "passage": "Cobain's minor-key vocals from \"Smells Like Teen Spirit\" over the Jackson\n5's major-key blues progression from \"Rockin' _______ by inserting the grunge\nsinger's vocal melody as pitch-shifted \"blue notes\" within the pop-soul group's\nharmonic framework, creates an intensified \"bluesy\" effect and subverts the\nexpectations of listeners familiar with either musical source.",
+      "passage": "For his mash-up \"Smells Like Rockin' Robin,\" DJ Mark Vidler layered Kurt\nCobain's minor-key vocals from \"Smells Like Teen Spirit\" over the Jackson\n5's major-key blues progression from \"Rockin' _______ by inserting the grunge\nsinger's vocal melody as pitch-shifted \"blue notes\" within the pop-soul group's\nharmonic framework, creates an intensified \"bluesy\" effect and subverts the\nexpectations of listeners familiar with either musical source.",
       "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
       "options": "[\"Robin,” a technique that\",\"Robin.” A technique that\",\"Robin”; a technique that,\",\"Robin”—a technique that,\"]",
       "correct_answer_index": 3,
@@ -21752,11 +21752,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5287,
+      "id": 5581,
       "test_id": 52,
       "question_number": 20,
       "original_question_number": 20,
-      "passage": "Carver revolutionized farming practices in the American _______ promoting\nsystematic crop rotation techniques that replenished essential nitrogen in\ndepleted soils.",
+      "passage": "During the late nineteenth century, agricultural chemist George Washington\nCarver revolutionized farming practices in the American _______ promoting\nsystematic crop rotation techniques that replenished essential nitrogen in\ndepleted soils.",
       "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
       "options": "[\"South, by\",\"South by\",\"South; by\",\"South: by\"]",
       "correct_answer_index": 1,
@@ -21769,11 +21769,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5288,
+      "id": 5582,
       "test_id": 52,
       "question_number": 21,
       "original_question_number": 21,
-      "passage": "2016aps was a supernova (the explosion of a massive _______ in the constella-\ntion Draco, 3.6 billion light-years from Earth, the transient yet powerful blast\npropelled particles and debris into space at extremely high speeds.",
+      "passage": "Named for the year in which it was detected by English astronomers, SN\n2016aps was a supernova (the explosion of a massive _______ in the constella-\ntion Draco, 3.6 billion light-years from Earth, the transient yet powerful blast\npropelled particles and debris into space at extremely high speeds.",
       "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
       "options": "[\"star). Occurring\",\"star) occurring\",\"star) and occurring\",\"star), occurring\"]",
       "correct_answer_index": 0,
@@ -21786,11 +21786,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5289,
+      "id": 5583,
       "test_id": 52,
       "question_number": 22,
       "original_question_number": 22,
-      "passage": "panies in North America and Europe is a result of several factors, including\nthe country's investments in technical education, but the most serendipitous is\nIndia's large number of English speakers. English is spoken by more people\nin India—129 million—than in any nation except the US. _______ only about\n10% of Indians speak English.",
+      "passage": "India's prominence as a supplier of information technology services to com-\npanies in North America and Europe is a result of several factors, including\nthe country's investments in technical education, but the most serendipitous is\nIndia's large number of English speakers. English is spoken by more people\nin India—129 million—than in any nation except the US. _______ only about\n10% of Indians speak English.",
       "prompt": "Which choice completes the text with the most logical transition?",
       "options": "[\"However, English is not the first language for most English speakers in India;\",\"Granted, this numerical advantage is due more to population size than to language penetration;\",\"As a result, careers in information technology services are not available to all people in India;\",\"Accordingly, 90% of people in India—over one billion people—do not speak the language;\"]",
       "correct_answer_index": 1,
@@ -21803,11 +21803,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5290,
+      "id": 5584,
       "test_id": 52,
       "question_number": 23,
       "original_question_number": 23,
-      "passage": "fecal analysis to determine the ratio of three plant subtypes (graminoids, forbs,\nand browse) within the diets of North American ungulates. The researchers\ndid not perform this analysis on all such ungulates, _______ they focused\nexclusively on elk in Wyoming.",
+      "passage": "In a 1993 study by Vales and Peek, the researchers used microhistological\nfecal analysis to determine the ratio of three plant subtypes (graminoids, forbs,\nand browse) within the diets of North American ungulates. The researchers\ndid not perform this analysis on all such ungulates, _______ they focused\nexclusively on elk in Wyoming.",
       "prompt": "Which choice completes the text with the most logical transition?",
       "options": "[\"for instance;\",\"in other words;\",\"regardless;\",\"however;\"]",
       "correct_answer_index": 3,
@@ -21820,11 +21820,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5291,
+      "id": 5585,
       "test_id": 52,
       "question_number": 24,
       "original_question_number": 24,
-      "passage": "strings. _______ under the Hornbostel-Sachs system, the saraswati veena is a\nchordophone.",
+      "passage": "The Hornbostel-Sachs system classifies musical instruments by how they\nproduce sound. For example, an instrument that is popular in India called\nthe saraswati veena produces sound primarily through the vibration of its\nstrings. _______ under the Hornbostel-Sachs system, the saraswati veena is a\nchordophone.",
       "prompt": "Which choice completes the text with the most logical transition?",
       "options": "[\"Furthermore,\",\"Thus,\",\"Similarly,\",\"Instead,\"]",
       "correct_answer_index": 1,
@@ -21837,11 +21837,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5292,
+      "id": 5586,
       "test_id": 52,
       "question_number": 25,
       "original_question_number": 25,
-      "passage": "the version later published in book form. _______ as scholar Philip Allingham\nnotes, serialized texts were the versions in which the nineteenth-century\nreadership first \"saw itself and its world reflected, and to which it responded,\noften with great emotion.\"",
+      "passage": "Between February 1876 and September 1876, George Eliot's novel Daniel\nDeronda was serialized in eight parts in Blackwood's Magazine. Scholars\ntypically regard the serial version of Eliot's novel as less authoritative than\nthe version later published in book form. _______ as scholar Philip Allingham\nnotes, serialized texts were the versions in which the nineteenth-century\nreadership first \"saw itself and its world reflected, and to which it responded,\noften with great emotion.\"",
       "prompt": "Which choice completes the text with the most logical transition?",
       "options": "[\"Accordingly, they emphasize the appeal of the serial version for Victorian audiences;\",\"Still, the serial version is important to an understanding of the novel’s historical context;\",\"Consequently, the book version of the novel is often favored over the serial version;\",\"However, others regard the serial version as a more faithful representation of Eliot’s intentions;\"]",
       "correct_answer_index": 1,
@@ -21854,11 +21854,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5293,
+      "id": 5587,
       "test_id": 52,
       "question_number": 26,
       "original_question_number": 26,
-      "passage": "• The Highpointers Club is a hiking club.\n• One of the main goals among club members is to reach the highest\npoints in all fifty US states.\n• Those who achieve this are called 50 Completers.\n• In Suk Han became a 50 Completer on November 15, 2013.\n• The highest point in Wisconsin is Timms Hill, at 1,951 ft.\n• The highest point in Wyoming is Gannett Peak, at 13,809 ft.",
+      "passage": "While researching a topic, a student has taken the following notes:\n• The Highpointers Club is a hiking club.\n• One of the main goals among club members is to reach the highest\npoints in all fifty US states.\n• Those who achieve this are called 50 Completers.\n• In Suk Han became a 50 Completer on November 15, 2013.\n• The highest point in Wisconsin is Timms Hill, at 1,951 ft.\n• The highest point in Wyoming is Gannett Peak, at 13,809 ft.",
       "prompt": "Which choice most effectively uses information from the given sentences to explain the 50 Completers hiking challenge to a new audience?",
       "options": "[\"If you are looking for a new hiking challenge, consider joining the High- pointers Club, as did In Suk Han, a hiker who successfully reached the highest point in every US state.\",\"Not until after you have reached the highest points in all fifty US states— including Timms Hill in Wisconsin and Gannett Peak in Wyoming—can you include yourself among the 50 Completers of the Highpointers Club.\",\"On November 15, 2013, In Suk Han finally completed the feat of reaching the highest point in all fifty US states, including Timms Hill in Wisconsin and Gannett Peak in Wyoming.\",\"Hikers aiming to count themselves among the 50 Completers must reach not only Wisconsin’s Timms Hill but also the even higher peak of Gannett Peak in Wyoming.\"]",
       "correct_answer_index": 1,
@@ -21871,11 +21871,11 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5294,
+      "id": 5588,
       "test_id": 52,
       "question_number": 27,
       "original_question_number": 27,
-      "passage": "• Enhanced rock weathering (ERW) is a method of spreading crushed\nbasalt on farmland to capture carbon dioxide (CO2) and improve soil\nhealth.\n• ERW increases crop yields and removes harmful CO2 from the air.\n• ERW offers a low-cost, low-tech alternative to expensive, energy-\nintensive carbon capture methods.\n• The CO2 captured by ERW becomes stable bicarbonate in soil water,\nwhich eventually streams into the ocean to remain safely stored for\nhundreds of years.\n• ERW can improve rural economies by reducing farmers' need for fertil-\nizers and increasing their earnings from carbon credits.",
+      "passage": "While researching a topic, a student has taken the following notes:\n• Enhanced rock weathering (ERW) is a method of spreading crushed\nbasalt on farmland to capture carbon dioxide (CO2) and improve soil\nhealth.\n• ERW increases crop yields and removes harmful CO2 from the air.\n• ERW offers a low-cost, low-tech alternative to expensive, energy-\nintensive carbon capture methods.\n• The CO2 captured by ERW becomes stable bicarbonate in soil water,\nwhich eventually streams into the ocean to remain safely stored for\nhundreds of years.\n• ERW can improve rural economies by reducing farmers' need for fertil-\nizers and increasing their earnings from carbon credits.",
       "prompt": "The student wants to explain why ERW is a superior method for capturing CO2. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
       "options": "[\"ERW improves soil health and helps farmers increase their income from selling carbon credits.\",\"ERW removes CO2 from the air in a way that is both low-cost and low- tech.\",\"The CO2 captured by ERW becomes stable bicarbonate, which improves soil health by remaining in the ocean for hundreds of years.\",\"ERW is a method of spreading crushed basalt on farmland to capture CO2, improving rural economies.\"]",
       "correct_answer_index": 1,
@@ -21888,7 +21888,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5295,
+      "id": 5589,
       "test_id": 52,
       "question_number": 1,
       "original_question_number": 1,
@@ -21905,7 +21905,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5296,
+      "id": 5590,
       "test_id": 52,
       "question_number": 2,
       "original_question_number": 2,
@@ -21922,7 +21922,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5297,
+      "id": 5591,
       "test_id": 52,
       "question_number": 3,
       "original_question_number": 3,
@@ -21939,13 +21939,13 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5298,
+      "id": 5592,
       "test_id": 52,
       "question_number": 4,
       "original_question_number": 4,
       "passage": null,
       "prompt": "Which expression is equivalent to \\(29x^{2} + 29\\)?",
-      "options": "[\"\\\\(29(x^{2} + 1)\\\\)\",\"\\\\(29(x^{2} + 29)\\\\)\",\"\\\\(29(29x^{2} + 1)\\\\)\",\"\\\\(29(x^{2} + \\\\frac{1\\u0013}{29}\\\\)\"]",
+      "options": "[\"\\\\(29(x^{2} + 1)\\\\)\",\"\\\\(29(x^{2} + 29)\\\\)\",\"\\\\(29(29x^{2} + 1)\\\\)\",\"\\\\(29(x^{2} + \\\\frac{1}{29})\\\\)\"]",
       "correct_answer_index": 0,
       "correct_answer_text": null,
       "module": 1,
@@ -21956,7 +21956,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5299,
+      "id": 5593,
       "test_id": 52,
       "question_number": 5,
       "original_question_number": 5,
@@ -21973,7 +21973,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5300,
+      "id": 5594,
       "test_id": 52,
       "question_number": 6,
       "original_question_number": 6,
@@ -21990,7 +21990,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5301,
+      "id": 5595,
       "test_id": 52,
       "question_number": 7,
       "original_question_number": 7,
@@ -22007,12 +22007,12 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5302,
+      "id": 5596,
       "test_id": 52,
       "question_number": 8,
       "original_question_number": 8,
       "passage": null,
-      "prompt": "Triangle \\(XY Z\\), where \\(A\\), \\(B\\) correspond to \\(X\\), \\(Y\\), and In triangle \\(ABC\\), the length of \\(AB\\) is \\(180\\) and\n\nthe length of \\(\\frac{ABC is similar to triangle}{BC}\\)is \\(900\\). In triangle \\(XY Z\\), the length of \\(\\frac{, and C}{Y Z}\\)is \\(80\\). What is the length of \\(\\frac{Z, respectively.}{XY ?}\\)",
+      "prompt": "Triangle \\(ABC\\) is similar to triangle \\(XY Z\\), where \\(A\\), \\(B\\) correspond to \\(X\\), \\(Y\\), and \\(Z\\), respectively. In triangle \\(ABC\\), the length of \\(AB\\) is \\(180\\) and\n\nthe length of \\(\\frac{}{BC}\\)is \\(900\\). In triangle \\(XY Z\\), the length of \\(\\frac{, and C}{Y Z}\\)is \\(80\\). What is the length of \\(XY\\)?",
       "options": "[\"\\\\(288\\\\)\",\"\\\\(196\\\\)\",\"\\\\(80\\\\)\",\"\\\\(16\\\\)\"]",
       "correct_answer_index": 3,
       "correct_answer_text": null,
@@ -22024,7 +22024,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5303,
+      "id": 5597,
       "test_id": 52,
       "question_number": 9,
       "original_question_number": 9,
@@ -22041,7 +22041,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5304,
+      "id": 5598,
       "test_id": 52,
       "question_number": 10,
       "original_question_number": 10,
@@ -22058,7 +22058,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5305,
+      "id": 5599,
       "test_id": 52,
       "question_number": 11,
       "original_question_number": 11,
@@ -22075,13 +22075,13 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5306,
+      "id": 5600,
       "test_id": 52,
       "question_number": 12,
       "original_question_number": 12,
       "passage": null,
       "prompt": "What is the \\(x\\)-intercept of the graph of \\(y = \\frac{21 -x}{ax + b}\\) in the \\(xy\\)-plane, where \\(a\\) and \\(b\\) are positive constants?",
-      "options": "[\"\\\\((21, 0)\\\\)\",\"\\\\((0, -21)\\\\)\",\"\\\\((0, \\\\frac{21\\u0013}{b}\\\\)\",\"\\\\((-\\\\frac{b}{a}, 0)\\\\)\"]",
+      "options": "[\"\\\\((21, 0)\\\\)\",\"\\\\((0, -21)\\\\)\",\"\\\\((0, \\\\frac{21}{b})\\\\)\",\"\\\\((-\\\\frac{b}{a}, 0)\\\\)\"]",
       "correct_answer_index": 0,
       "correct_answer_text": null,
       "module": 1,
@@ -22092,7 +22092,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5307,
+      "id": 5601,
       "test_id": 52,
       "question_number": 13,
       "original_question_number": 13,
@@ -22109,7 +22109,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5308,
+      "id": 5602,
       "test_id": 52,
       "question_number": 14,
       "original_question_number": 14,
@@ -22126,7 +22126,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5309,
+      "id": 5603,
       "test_id": 52,
       "question_number": 15,
       "original_question_number": 15,
@@ -22143,13 +22143,13 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5310,
+      "id": 5604,
       "test_id": 52,
       "question_number": 16,
       "original_question_number": 16,
       "passage": null,
       "prompt": "\\[55 = \\frac{2K}{v2}\\]\n\nFor an object with a mass of 55 kilograms, the given equation relates the kinetic energy \\(K\\), in joules, of the object to the object’s speed \\(v\\), in meters per\n\nsecond, where \\(K\\) and \\(v\\) are positive. Which equation correctly expresses this object’s speed, in meters per second, in terms of the object’s kinetic energy,\n\nin joules?",
-      "options": "[\"\\\\(v = \\\\frac{2K}{552}\\\\)\",\"\\\\(v = \\\\frac{552}{2K}\\\\)\",\"\\\\(v = \\\\frac{r55}{2K}\\\\)\",\"\\\\(v = \\\\frac{r2K}{55}\\\\)\"]",
+      "options": "[\"\\\\(v = \\\\frac{2K}{552}\\\\)\",\"\\\\(v = \\\\frac{552}{2K}\\\\)\",\"\\\\(v = r\\\\frac{55}{2K}\\\\)\",\"\\\\(r\\n\\n^{D} v = \\\\frac{2K}{55}\\\\)\"]",
       "correct_answer_index": 3,
       "correct_answer_text": null,
       "module": 1,
@@ -22160,7 +22160,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5311,
+      "id": 5605,
       "test_id": 52,
       "question_number": 17,
       "original_question_number": 17,
@@ -22177,7 +22177,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5312,
+      "id": 5606,
       "test_id": 52,
       "question_number": 18,
       "original_question_number": 18,
@@ -22194,7 +22194,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5313,
+      "id": 5607,
       "test_id": 52,
       "question_number": 19,
       "original_question_number": 19,
@@ -22211,7 +22211,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5314,
+      "id": 5608,
       "test_id": 52,
       "question_number": 20,
       "original_question_number": 20,
@@ -22228,7 +22228,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5315,
+      "id": 5609,
       "test_id": 52,
       "question_number": 21,
       "original_question_number": 21,
@@ -22245,7 +22245,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5316,
+      "id": 5610,
       "test_id": 52,
       "question_number": 22,
       "original_question_number": 22,
@@ -22262,7 +22262,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5317,
+      "id": 5611,
       "test_id": 52,
       "question_number": 1,
       "original_question_number": 1,
@@ -22279,7 +22279,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5318,
+      "id": 5612,
       "test_id": 52,
       "question_number": 2,
       "original_question_number": 2,
@@ -22296,7 +22296,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5319,
+      "id": 5613,
       "test_id": 52,
       "question_number": 3,
       "original_question_number": 3,
@@ -22313,7 +22313,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5320,
+      "id": 5614,
       "test_id": 52,
       "question_number": 4,
       "original_question_number": 4,
@@ -22330,7 +22330,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5321,
+      "id": 5615,
       "test_id": 52,
       "question_number": 5,
       "original_question_number": 5,
@@ -22347,7 +22347,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5322,
+      "id": 5616,
       "test_id": 52,
       "question_number": 6,
       "original_question_number": 6,
@@ -22364,7 +22364,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5323,
+      "id": 5617,
       "test_id": 52,
       "question_number": 7,
       "original_question_number": 7,
@@ -22381,7 +22381,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5324,
+      "id": 5618,
       "test_id": 52,
       "question_number": 8,
       "original_question_number": 8,
@@ -22398,7 +22398,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5325,
+      "id": 5619,
       "test_id": 52,
       "question_number": 9,
       "original_question_number": 9,
@@ -22415,7 +22415,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5326,
+      "id": 5620,
       "test_id": 52,
       "question_number": 10,
       "original_question_number": 10,
@@ -22432,7 +22432,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5327,
+      "id": 5621,
       "test_id": 52,
       "question_number": 11,
       "original_question_number": 11,
@@ -22449,7 +22449,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5328,
+      "id": 5622,
       "test_id": 52,
       "question_number": 12,
       "original_question_number": 12,
@@ -22466,7 +22466,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5329,
+      "id": 5623,
       "test_id": 52,
       "question_number": 13,
       "original_question_number": 13,
@@ -22483,7 +22483,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5330,
+      "id": 5624,
       "test_id": 52,
       "question_number": 14,
       "original_question_number": 14,
@@ -22500,7 +22500,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5331,
+      "id": 5625,
       "test_id": 52,
       "question_number": 15,
       "original_question_number": 15,
@@ -22517,7 +22517,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5332,
+      "id": 5626,
       "test_id": 52,
       "question_number": 16,
       "original_question_number": 16,
@@ -22534,7 +22534,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5333,
+      "id": 5627,
       "test_id": 52,
       "question_number": 17,
       "original_question_number": 17,
@@ -22551,7 +22551,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5334,
+      "id": 5628,
       "test_id": 52,
       "question_number": 18,
       "original_question_number": 18,
@@ -22568,7 +22568,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5335,
+      "id": 5629,
       "test_id": 52,
       "question_number": 19,
       "original_question_number": 19,
@@ -22585,7 +22585,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5336,
+      "id": 5630,
       "test_id": 52,
       "question_number": 20,
       "original_question_number": 20,
@@ -22602,7 +22602,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5337,
+      "id": 5631,
       "test_id": 52,
       "question_number": 21,
       "original_question_number": 21,
@@ -22619,7 +22619,7 @@
       "difficulty": "Medium"
     },
     {
-      "id": 5338,
+      "id": 5632,
       "test_id": 52,
       "question_number": 22,
       "original_question_number": 22,

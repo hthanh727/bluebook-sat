@@ -1330,7 +1330,7 @@
         "module": 1,
         "question_type": "mcq",
         "passage": null,
-        "prompt": "\\[\\sqrt{x}\\]\n\n\\(26 = \\frac{r1}{x}\\). What is the solution to the given equation?",
+        "prompt": "\\[\\sqrt{x} r\\]\n\n\\(26 = \\frac{1}{x}\\). What is the solution to the given equation?",
         "options": [
           "\\(\\frac{1}{26}\\)",
           "\\(26\\)",
@@ -1555,7 +1555,7 @@
         "module": 2,
         "question_type": "mcq",
         "passage": null,
-        "prompt": "The function \\(j\\) is defined by \\(j(x) = \\frac{8x + 4}{5p}\\), and the function \\(k\\) is defined by \\(k(x) = \\frac{j(x)p}{x + 2}\\), where \\(p\\) is a positive constant. What is the value of \\(k(7)\\)?",
+        "prompt": "( )\n\nThe function \\(j\\) is defined by \\(j(x) = \\frac{8x + 4}{5p}\\), and the function \\(k\\) is defined by \\(k(x) = \\frac{jxp}{x + 2}\\), where \\(p\\) is a positive constant. What is the value of \\(k(7)\\)?",
         "options": [
           "\\(\\frac{28}{5}\\)",
           "\\(\\frac{4}{3}\\)",
@@ -1670,7 +1670,7 @@
         "module": 2,
         "question_type": "mcq",
         "passage": null,
-        "prompt": "\\(G\\frac{7}{a temperature increased by 16.80 kelvins, by how much did the temperature increase, in degrees G?4}(x) = (x - 250) + 28\\). The function \\(G\\) gives the temperature, in degrees on a laboratory scale G, that corresponds to a temperature of \\(x\\) kelvins. If",
+        "prompt": "\\(G(x) = \\frac{7}{4}(x - 250) + 28\\). The function \\(G\\) gives the temperature, in degrees on a laboratory scale G, that corresponds to a temperature of \\(x\\) kelvins. If\n\na temperature increased by 16.80 kelvins, by how much did the temperature increase, in degrees G?",
         "options": [
           "\\(29.40\\)",
           "\\(437.00\\)",
@@ -1713,9 +1713,9 @@
         "prompt": "What is the \\(x\\)-intercept of the graph of \\(px + 18y = 3\\) in the \\(xy\\)-plane, where \\(p\\) is a positive constant?",
         "options": [
           "\\((p, 0)\\)",
-          "\\(\\frac{\u00123}{p}, 0)\\)",
-          "\\(\\frac{\u0010 p}{18}, 0)\\)",
-          "\\(\\frac{\u0012 1}{18}, 0)\\)"
+          "\\((\\frac{3}{p}, 0)\\)",
+          "\\((\\frac{p}{18}, 0)\\)",
+          "\\((\\frac{1}{18}, 0)\\)"
         ],
         "correct_answer_index": 1,
         "correct_answer_text": null,
@@ -1767,7 +1767,7 @@
         "passage": null,
         "prompt": "\\(5xy + 8xt - 22yt = 0\\). In the given equation, \\(x\\) and \\(y\\) are positive and \\(x < y\\). Which equation correctly expresses \\(t\\) in terms of \\(x\\) and \\(y\\)?",
         "options": [
-          "\\(t = \\frac{xy}{4(y -x)}\\)",
+          "\\(t = \\frac{xy}{4(y -x}\n\n)\\)",
           "\\(t = \\frac{1}{4}\\)",
           "\\(t = \\frac{5xy}{8x -22y}\\)",
           "\\(t = \\frac{5xy}{22y -8x}\\)"
@@ -1785,7 +1785,7 @@
         "module": 2,
         "question_type": "mcq",
         "passage": null,
-        "prompt": "\\(f(x) = (1.06)^{3}^{-}^{5}^{x}\\). The function \\(f\\) is defined by the given equation. The equation can be rewritten as \\(f(x) = a(1 - \\frac{p\u0011}{100}^{x}\\), where \\(a\\) and \\(p\\) are\n\nconstants. Which of the following is closest to the value of \\(p\\)?",
+        "prompt": "\\(f(x) = (1.06)^{3}^{-}^{5}^{x}\\). The function \\(f\\) is defined by the given equation. The equation can be rewritten as \\(f(x) = a(1 - \\frac{p}{100})^{x}\\), where \\(a\\) and \\(p\\) are\n\nconstants. Which of the following is closest to the value of \\(p\\)?",
         "options": [
           "\\(75\\)",
           "\\(52\\)",
@@ -3151,7 +3151,7 @@
         "module": 1,
         "question_type": "mcq",
         "passage": null,
-        "prompt": "\\[\\frac{n}{The given equation relates the quantities36}-12m + = -3k\\]\n\n\\(m\\), \\(n\\), and \\(k\\). Which equation correctly expresses \\(n\\) in terms of \\(m\\) and \\(k\\)?",
+        "prompt": "\\[-12m + \\frac{n}{36} = -3k\\]\n\nThe given equation relates the quantities \\(m\\), \\(n\\), and \\(k\\). Which equation correctly expresses \\(n\\) in terms of \\(m\\) and \\(k\\)?",
         "options": [
           "\\(n = -3k + 12m + 36\\)",
           "\\(n = -2k -12m -36\\)",
@@ -3235,8 +3235,8 @@
         "options": [
           "\\(18 cos(Q)\\)",
           "\\(18 cos(S)\\)",
-          "\\(\\frac{18}{cos(Q)}\\)",
-          "\\(\\frac{18}{cos(S)}\\)"
+          "\\(\\frac{18}{cos(Q}\n\n)\\)",
+          "\\(\\frac{18}{cos(S}\n\n)\\)"
         ],
         "correct_answer_index": 3,
         "correct_answer_text": null,
@@ -3586,7 +3586,7 @@
           "\\(A = (w + 7.25)(w + 7.25)\\)",
           "\\(A = 4(7.25w)\\)",
           "\\(A = (7.25w)(7.25w)\\)",
-          "\\(A = \\frac{\u00127.25\u0013 \u0012}{w}\\frac{7.25\u0013}{w}\\)"
+          "\\(A = (\\frac{7.25}{w}) (\\frac{7.25}{w})\\)"
         ],
         "correct_answer_index": 2,
         "correct_answer_text": null,
@@ -3601,7 +3601,7 @@
         "module": 2,
         "question_type": "mcq",
         "passage": null,
-        "prompt": "\\[\\frac{x}{4}+ \\frac{y}{10}= \\frac{13}{10}\\]\n\nAn engineer connects resistors in series. The resistors in the series have a total resistance of \\(\\frac{13}{The equation above represents this situation.10}\\)ohms. There are \\(x\\) resistors of type A, each with a\n\nresistance of \\(a\\) ohms, and \\(y\\) resistors of type B, each with a resistance of \\(b\\) ohms. According to the equation,\n\nwhat is the positive difference between \\(a\\) and \\(b\\)?",
+        "prompt": "\\[\\frac{x}{4}+ \\frac{y}{10} = \\frac{13}{10}\\]\n\nAn engineer connects resistors in series. The resistors in the series have a total resistance of \\(\\frac{13}{10}\\) ohms. There are \\(x\\) resistors of type A, each with a\n\nresistance of \\(a\\) ohms, and \\(y\\) resistors of type B, each with a resistance of \\(b\\) ohms. The equation above represents this situation. According to the equation,\n\nwhat is the positive difference between \\(a\\) and \\(b\\)?",
         "options": [
           "\\(\\frac{3}{20}\\)",
           "\\(\\frac{7}{20}\\)",
@@ -3621,7 +3621,7 @@
         "module": 2,
         "question_type": "mcq",
         "passage": null,
-        "prompt": "Consider the following system of inequalities:\n\n\\[48 -6x\\]\n\n\\[\\frac{yy <}{Which inequality represents the possible values of6}> 10\\]\n\n\\(x\\) for all solutions \\((x, y)\\) that satisfy the system in the \\(xy\\)-plane?",
+        "prompt": "Consider the following system of inequalities:\n\n\\[< 48 -6x\\]\n\n\\[\\frac{yy}{6}> 10\\]\n\nWhich inequality represents the possible values of \\(x\\) for all solutions \\((x, y)\\) that satisfy the system in the \\(xy\\)-plane?",
         "options": [
           "\\(x > 2\\)",
           "\\(x < 2\\)",
@@ -3691,7 +3691,7 @@
         "module": 2,
         "question_type": "mcq",
         "passage": null,
-        "prompt": "\\[\\frac{9}{The function5}F(x) = (x -273.15) + 32\\]\n\n\\(F\\) gives the temperature, in degrees Fahrenheit, that corresponds to a temperature of \\(x\\) kelvins. If a temperature increased by 2.10 kelvins,\n\nby how much did the temperature increase, in degrees Fahrenheit?",
+        "prompt": "\\[F(x) = \\frac{9}{5}(x -273.15) + 32\\]\n\nThe function \\(F\\) gives the temperature, in degrees Fahrenheit, that corresponds to a temperature of \\(x\\) kelvins. If a temperature increased by 2.10 kelvins,\n\nby how much did the temperature increase, in degrees Fahrenheit?",
         "options": [
           "\\(3.78\\)",
           "\\(35.78\\)",
@@ -3846,7 +3846,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "vironmental salinity changes during tidal cycles. How, then, do they _______ in-\nternal salt levels? Some organisms maintain high concentrations of phosphates\nthat allow them to affect the concentration of internal electrolytes—including\nsalt—in response to external changes. It may be that coastal foraminifera do\nthe same.",
+        "passage": "Single-celled foraminifera inhabiting coastal waters experience significant en-\nvironmental salinity changes during tidal cycles. How, then, do they _______ in-\nternal salt levels? Some organisms maintain high concentrations of phosphates\nthat allow them to affect the concentration of internal electrolytes—including\nsalt—in response to external changes. It may be that coastal foraminifera do\nthe same.",
         "prompt": "Which choice completes the text with the most logical and precise word or phrase?",
         "options": [
           "counteract",
@@ -3866,7 +3866,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "concentrate on people who live above sea level, researchers Suleiman A. Al-\nSweedan and Moath Alhaj have instead chosen the _______ path in their recent\nwork of studying the blood of people who live below sea level, in locations\nsuch as the California towns of Westmorland and Thermal.",
+        "passage": "Though most studies of the effect of altitude on blood chemistry usually\nconcentrate on people who live above sea level, researchers Suleiman A. Al-\nSweedan and Moath Alhaj have instead chosen the _______ path in their recent\nwork of studying the blood of people who live below sea level, in locations\nsuch as the California towns of Westmorland and Thermal.",
         "prompt": "Which choice completes the text with the most logical and precise word or phrase?",
         "options": [
           "predictable",
@@ -3886,7 +3886,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "cybersecurity education programs.",
+        "passage": "While once _______ , basic computer security training that only teaches recog-\nnition of obvious scams cannot provide enough protection against today's\nsophisticated fake emails, which employ such subtle deception techniques\nthat many organizations now require their staff to complete comprehensive\ncybersecurity education programs.",
         "prompt": "Which choice completes the text with the most logical and precise word or phrase?",
         "options": [
           "uncommon",
@@ -3906,7 +3906,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "and unadorned surfaces, the architects prioritized utility and simplicity over\ngrandeur.",
+        "passage": "The architectural firm's design for the new municipal library was deliber-\nately _______ ; by rejecting ornate embellishments in favor of clean lines\nand unadorned surfaces, the architects prioritized utility and simplicity over\ngrandeur.",
         "prompt": "Which choice completes the text with the most logical and precise word or phrase?",
         "options": [
           "austere",
@@ -3926,7 +3926,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "someone he intends to meet with about a business matter.\nHe was breathing hard but not because he had been galloping. On the contrary,\nsince he had approached near enough to his destination to believe he could\nhave seen smoke if there had been smoke, he had ridden slower and slower.\nNevertheless he now sat the horse before the gap in the fence, breathing hard\nenough through his nose and even sweating a little, looking at the sagging\nbroken-backed cabin set in its inevitable treeless and grassless plot and weath-\nered to the color of an old bee-hive, with that expression of tense and rapid\nspeculation of a man approaching a dud howitzer [artillery] shell.",
+        "passage": "The following text is adapted from the 1940 novel The Hamlet by William\nFaulkner. In Mississippi, a man is riding a horse toward the residence of\nsomeone he intends to meet with about a business matter.\nHe was breathing hard but not because he had been galloping. On the contrary,\nsince he had approached near enough to his destination to believe he could\nhave seen smoke if there had been smoke, he had ridden slower and slower.\nNevertheless he now sat the horse before the gap in the fence, breathing hard\nenough through his nose and even sweating a little, looking at the sagging\nbroken-backed cabin set in its inevitable treeless and grassless plot and weath-\nered to the color of an old bee-hive, with that expression of tense and rapid\nspeculation of a man approaching a dud howitzer [artillery] shell.",
         "prompt": "Which choice best states the main purpose of the text?",
         "options": [
           "To contrast the man’s desire to attend the meeting with his awareness of the risk involved in attending it",
@@ -3946,7 +3946,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "knowledge with hands-on environmental work. Arborists assess tree health\nand perform maintenance such as pruning to promote safety and prevent\nproblems. Forestry researchers collect data on growth patterns and biodiversity\nin the wild. Forest ecologists conduct field research and analyze ecosystems to\nunderstand how forests respond to changes in weather patterns. With this blend\nof scientific understanding and practical application, forestry professionals\naddress a variety of complex environmental challenges.",
+        "passage": "Modern forestry offers diverse career opportunities that integrate scientific\nknowledge with hands-on environmental work. Arborists assess tree health\nand perform maintenance such as pruning to promote safety and prevent\nproblems. Forestry researchers collect data on growth patterns and biodiversity\nin the wild. Forest ecologists conduct field research and analyze ecosystems to\nunderstand how forests respond to changes in weather patterns. With this blend\nof scientific understanding and practical application, forestry professionals\naddress a variety of complex environmental challenges.",
         "prompt": "Which choice best describes the main purpose of the text?",
         "options": [
           "To explain technological advances in modern forestry and demonstrate how they’ve transformed traditional practices",
@@ -3966,7 +3966,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "<u>that overloading these fragile ecosystems with industrial runoff can degrade</u>\n<u>microbial communities, ultimately compromising their filtration efficiency.</u>\nWithout strict municipal regulations on chemical discharge, the natural buffer-\ning capacity of such wetlands could permanently diminish.",
+        "passage": "Ecologist Dr. Elena Vance observed that urban wetlands filter pollutants at\nrates comparable to modern treatment facilities. <u>However, Vance cautions</u>\n<u>that overloading these fragile ecosystems with industrial runoff can degrade</u>\n<u>microbial communities, ultimately compromising their filtration efficiency.</u>\nWithout strict municipal regulations on chemical discharge, the natural buffer-\ning capacity of such wetlands could permanently diminish.",
         "prompt": "Which choice best describes the primary function of the underlined sentence in the overall structure of the text?",
         "options": [
           "It introduces a technical method for measuring chemical pollutants in urban watersheds.",
@@ -3986,7 +3986,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "and short cones in the retina help sense bright light and color. Olo can only\nbe seen by activating the medium cones. Fong and his team activated these\ncones by using a targeted laser technology to stimulate just the medium cone\ncells.",
+        "passage": "James Fong and his team claim to have discovered a new color, which they\nnamed olo. Olo is a very saturated blue-green color that can't be seen with\nthe human eye under natural conditions. In the human eye, long, medium,\nand short cones in the retina help sense bright light and color. Olo can only\nbe seen by activating the medium cones. Fong and his team activated these\ncones by using a targeted laser technology to stimulate just the medium cone\ncells.",
         "prompt": "According to the text, how can the color olo be seen?",
         "options": [
           "By activating only the medium cones in the retina",
@@ -4026,7 +4026,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "\"the influence of technology on the scale, the pace, or the pattern of human\naffairs\"; however, some critics assert that<u> cyberpunk is a literary movement</u>\n<u>that is in large part aesthetic rather than idea driven.</u>",
+        "passage": "Editor Jared Shurin's enormous 2023 anthology The Big Book of Cyberpunk\ncomprises 108 stories. Shurin's volume is chronologically expansive, fea-\nturing such stories as James Tiptree Jr.'s \"The Girl Who Was Plugged In\"\n(1973) and Erica Satifka's \"Act of Providence\" (2021). In his introduction,\nShurin defines cyberpunk as a subgenre of speculative fiction concerning\n\"the influence of technology on the scale, the pace, or the pattern of human\naffairs\"; however, some critics assert that<u> cyberpunk is a literary movement</u>\n<u>that is in large part aesthetic rather than idea driven.</u>",
         "prompt": "Which quotation from a literary critic would be the most effective evidence in support of the underlined claim?",
         "options": [
           "“Not all the stories anthologized in The Big Book of Cyberpunk were first published as stand-alone short stories in magazines or journals: for example, qntm’s 2021 story ‘Lena’ was originally self-published on the author’s site qntm.org.”",
@@ -4086,7 +4086,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "play, Odysseus and Neoptolemus must retrieve Philoctetes—a master archer\nwho is believed necessary for the Greeks to win the Trojan War—from a cave\non a deserted island where Odysseus and others had abandoned him with\na debilitating injury earlier in the war. Odysseus suggests that the plan for\nreturning with Philoctetes rests on Neoptolemus not having been part of the\ngroup that abandoned him:",
+        "passage": "Philoctetes is a play by Sophocles that was first performed in 409 BCE. In the\nplay, Odysseus and Neoptolemus must retrieve Philoctetes—a master archer\nwho is believed necessary for the Greeks to win the Trojan War—from a cave\non a deserted island where Odysseus and others had abandoned him with\na debilitating injury earlier in the war. Odysseus suggests that the plan for\nreturning with Philoctetes rests on Neoptolemus not having been part of the\ngroup that abandoned him:",
         "prompt": "Which quotation from Philoctetes most effectively illustrates the claim?",
         "options": [
           "“Since the prize of victory is so dear, / Endure it [acting deceitfully]— We’ll be just another day / But now, for one brief hour, devote thyself / To serve me without shame.”",
@@ -4106,7 +4106,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "larly described as autobiographical. That characterization is apt—there are\nmany parallels between the experiences of the novel's protagonist, Ferdinand\nBardamu, and those of Céline—but it should not be taken to mean that every\nperson or event depicted in Journey to the End of the Night has a real-life\nanalogue. Much of the novel is pure invention, and readers who neglect this\nfact and instead focus excessively on correspondences between the novel and\nCéline's life can thus _______",
+        "passage": "Louis-Ferdinand Céline's 1932 novel Journey to the End of the Night is regu-\nlarly described as autobiographical. That characterization is apt—there are\nmany parallels between the experiences of the novel's protagonist, Ferdinand\nBardamu, and those of Céline—but it should not be taken to mean that every\nperson or event depicted in Journey to the End of the Night has a real-life\nanalogue. Much of the novel is pure invention, and readers who neglect this\nfact and instead focus excessively on correspondences between the novel and\nCéline's life can thus _______",
         "prompt": "Which choice most logically completes the text?",
         "options": [
           "fail to appreciate how much creativity Céline shows in the book.",
@@ -4126,7 +4126,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "convenience and immediacy, expecting next-day delivery. In response to this\nchallenge and others, such as the increasing volume of parcels to be delivered,\ndelivery companies are continually looking for ways to make last-mile delivery\nmore efficient. One advance in last-mile delivery is the use of self-service\nlockers (containers where consumers can pick up their parcels using a unique\ncode). This approach, while promising, also introduces new obstacles (e.g.,\nconvenient placement of self-service lockers is challenging). It is therefore\nlikely that _______",
+        "passage": "Last-mile delivery, the final stage in the delivery of products to customers,\nis subject to increasing pressure as consumers place greater emphasis on\nconvenience and immediacy, expecting next-day delivery. In response to this\nchallenge and others, such as the increasing volume of parcels to be delivered,\ndelivery companies are continually looking for ways to make last-mile delivery\nmore efficient. One advance in last-mile delivery is the use of self-service\nlockers (containers where consumers can pick up their parcels using a unique\ncode). This approach, while promising, also introduces new obstacles (e.g.,\nconvenient placement of self-service lockers is challenging). It is therefore\nlikely that _______",
         "prompt": "Which choice most logically completes the text?",
         "options": [
           "delivery companies will need to keep experimenting with new ideas for last-mile delivery if they hope to keep pace with consumers’ expectations.",
@@ -4146,7 +4146,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "September.",
+        "passage": "With an average summer temperature of 82.5 degrees Fahrenheit, Nicosia is\none European _______ many travelers recommend, especially from June to\nSeptember.",
         "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
         "options": [
           "city, which",
@@ -4166,7 +4166,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "As nanotechnology evolves, medical technology _______ to evolve as well.",
+        "passage": "Nanoengineers have developed synthesized mesoporous silica nanoparticles\nthat are used to transport genes and medicines to specific cells in the body.\nAs nanotechnology evolves, medical technology _______ to evolve as well.",
         "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
         "options": [
           "had likely continued",
@@ -4186,7 +4186,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "the demanding pointe work that became increasingly common in early 20th-\ncentury ballet, internationally known ballerina Anna Pavlova redesigned her\npointe shoes. The modifications she made—adding a stiffened leather sole\nand hardened toe _______ began the modernization of ballet's iconic footwear.",
+        "passage": "To more easily balance the weight of her body on her toes while performing\nthe demanding pointe work that became increasingly common in early 20th-\ncentury ballet, internationally known ballerina Anna Pavlova redesigned her\npointe shoes. The modifications she made—adding a stiffened leather sole\nand hardened toe _______ began the modernization of ballet's iconic footwear.",
         "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
         "options": [
           "box,",
@@ -4206,7 +4206,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "cient games was _______ provide entertainment during leisure time, to reflect\ncultural beliefs, and to develop strategic thinking skills among players.",
+        "passage": "Archaeological evidence indicates that board games have existed in human\nsocieties for at least five millennia, with examples discovered in the tombs\nof ancient Egypt and the ruins of Mesopotamia. The purpose of these an-\ncient games was _______ provide entertainment during leisure time, to reflect\ncultural beliefs, and to develop strategic thinking skills among players.",
         "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
         "options": [
           "threefold. To",
@@ -4226,7 +4226,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "Shady Solís's hypothesis about the Peruvian site's _______ nearly 5,000 years\nago, the ancient city preceded the Olmec civilization to the north by a full\nmillennium, a revelation that fundamentally altered our understanding of\nurban development in the Western Hemisphere.",
+        "passage": "Extensive radiocarbon dating of reed samples from Caral confirmed Ruth\nShady Solís's hypothesis about the Peruvian site's _______ nearly 5,000 years\nago, the ancient city preceded the Olmec civilization to the north by a full\nmillennium, a revelation that fundamentally altered our understanding of\nurban development in the Western Hemisphere.",
         "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
         "options": [
           "age, built",
@@ -4246,7 +4246,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "discovered compounds that led to the creation of vibrant artificial colorants.\nCommercial applications of this new synthetic dye technology—beginning\nwith the purple dye called mauve, discovered by William Perkin in 1856—\n_______ responsible for launching what one science historian calls a \"manu-\nfacturing revolution based on chemistry.\"",
+        "passage": "Chemists investigating the properties of coal tar in the mid-nineteenth century\ndiscovered compounds that led to the creation of vibrant artificial colorants.\nCommercial applications of this new synthetic dye technology—beginning\nwith the purple dye called mauve, discovered by William Perkin in 1856—\n_______ responsible for launching what one science historian calls a \"manu-\nfacturing revolution based on chemistry.\"",
         "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
         "options": [
           "was",
@@ -4266,7 +4266,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "which radiates upward. This causes the air near the ground to cool. _______\ntiny water droplets begin to form as the cooling air reaches its dew point and\ncan no longer hold its moisture as invisible vapor. Finally, as more droplets\naccumulate, a visible layer of fog develops close to the ground.",
+        "passage": "How does a clear evening become foggy? First, the ground releases heat,\nwhich radiates upward. This causes the air near the ground to cool. _______\ntiny water droplets begin to form as the cooling air reaches its dew point and\ncan no longer hold its moisture as invisible vapor. Finally, as more droplets\naccumulate, a visible layer of fog develops close to the ground.",
         "prompt": "Which choice completes the text with the most logical transition?",
         "options": [
           "Similarly,",
@@ -4286,7 +4286,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "plex partnerships with microscopic organisms for survival. The researchers\nfound that special fungi called endophytes live inside tree leaves and serve as\na defense mechanism. _______ these endophytes help by fighting off diseases\nand boosting the tree's immune system.",
+        "passage": "Scientists studying forest restoration have discovered that trees depend on com-\nplex partnerships with microscopic organisms for survival. The researchers\nfound that special fungi called endophytes live inside tree leaves and serve as\na defense mechanism. _______ these endophytes help by fighting off diseases\nand boosting the tree's immune system.",
         "prompt": "Which choice completes the text with the most logical transition?",
         "options": [
           "In conclusion,",
@@ -4306,7 +4306,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "nated in the Pontic-Caspian steppe roughly 6,000 years ago. _______ , recent\nancient genomic analyses combined with phylogenetic linguistic modeling\nhave provided compelling evidence supporting an earlier agricultural origin\nsouth of the Caucasus.",
+        "passage": "For decades, historical linguists hypothesized that Proto-Indo-European origi-\nnated in the Pontic-Caspian steppe roughly 6,000 years ago. _______ , recent\nancient genomic analyses combined with phylogenetic linguistic modeling\nhave provided compelling evidence supporting an earlier agricultural origin\nsouth of the Caucasus.",
         "prompt": "Which choice completes the text with the most logical transition?",
         "options": [
           "In addition",
@@ -4326,7 +4326,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "• Pistol shrimp are small marine crustaceans that hunt using a specialized\noversized claw.\n• When the claw snaps shut rapidly, it pushes water through a narrow\ngroove at extreme speeds.\n• This high-speed water jet creates a bubble that pops forcefully near the\nshrimp's prey.\n• The popping bubble generates shock waves powerful enough to stun\nsmall fish.",
+        "passage": "While researching a topic, a student has taken the following notes:\n• Pistol shrimp are small marine crustaceans that hunt using a specialized\noversized claw.\n• When the claw snaps shut rapidly, it pushes water through a narrow\ngroove at extreme speeds.\n• This high-speed water jet creates a bubble that pops forcefully near the\nshrimp's prey.\n• The popping bubble generates shock waves powerful enough to stun\nsmall fish.",
         "prompt": "The student wants to introduce pistol shrimp to an audience unfamiliar with these crustaceans. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
         "options": [
           "Some crustaceans use a specialized claw to create high-speed water jets and a bubble that stuns the small fish they prey on.",
@@ -4346,7 +4346,7 @@
         "section": "reading",
         "module": 1,
         "question_type": "mcq",
-        "passage": "• Elizabeth Catlett (1915–2012) was a celebrated African American artist.\n• She is best known for creating sculptures and prints that explore the\nBlack experience.\n• Standing Mother and Child is a 1980 sculpture by Catlett.\n• New Generation is a 1992 print by Catlett.",
+        "passage": "While researching a topic, a student has taken the following notes:\n• Elizabeth Catlett (1915–2012) was a celebrated African American artist.\n• She is best known for creating sculptures and prints that explore the\nBlack experience.\n• Standing Mother and Child is a 1980 sculpture by Catlett.\n• New Generation is a 1992 print by Catlett.",
         "prompt": "The student wants to provide an example of one of Catlett’s sculptures. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
         "options": [
           "The print New Generation was created by celebrated artist Elizabeth Catlett in 1992.",
@@ -4386,7 +4386,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "warehouses to be immediately transferred to trucks for delivery to their final\ndestinations. Some centers are so efficient that even the largest delivery trucks\ncan be filled in a matter of minutes.",
+        "passage": "To maximize _______ , package distribution centers employ advanced schedul-\ning systems and strategic staging areas that allow for goods received from\nwarehouses to be immediately transferred to trucks for delivery to their final\ndestinations. Some centers are so efficient that even the largest delivery trucks\ncan be filled in a matter of minutes.",
         "prompt": "Which choice completes the text with the most logical and precise word or phrase?",
         "options": [
           "throughput",
@@ -4406,7 +4406,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "_______ influence production schedules, allowing rapid solution generation\nfor manufacturing planning problems. The algorithms help identify efficient\nproduction schedules by processing those quantifiable inputs (e.g., demand\npatterns and capacity constraints) without exhaustively testing all possible\nscenarios.",
+        "passage": "Researchers have developed algorithms that take into account how various\n_______ influence production schedules, allowing rapid solution generation\nfor manufacturing planning problems. The algorithms help identify efficient\nproduction schedules by processing those quantifiable inputs (e.g., demand\npatterns and capacity constraints) without exhaustively testing all possible\nscenarios.",
         "prompt": "Which choice completes the text with the most logical and precise word or phrase?",
         "options": [
           "optimizations",
@@ -4426,7 +4426,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "portrayals that often serve as _______ : as the Phoenix, Jean Grey loses control\nof a force and destroys an entire planet, showing the corrupting influence of\npower.",
+        "passage": "Marvel Girl's ability to lift modest loads with her mind is illustrative of the\nlamentably lackluster powers bestowed on many female superheroes, but\neven those with more formidable powers have been subject to unflattering\nportrayals that often serve as _______ : as the Phoenix, Jean Grey loses control\nof a force and destroys an entire planet, showing the corrupting influence of\npower.",
         "prompt": "Which choice completes the text with the most logical and precise word or phrase?",
         "options": [
           "venerations",
@@ -4446,7 +4446,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "<u>arc trajectory back to the Sun's surface.</u> High-resolution images show these\neruptions produce thin streams of hot gas moving at speeds between 55 and\n200 kilometers per second. Although these are impressive speeds, they are not\nsufficient to overcome the confining forces of the Sun's gravity and magnetic\nfield, so the material is pulled back down.",
+        "passage": "Research on minor solar eruptions in magnetically quiet regions revealed an\ninteresting pattern. <u>Material expelled during these events follows a narrow</u>\n<u>arc trajectory back to the Sun's surface.</u> High-resolution images show these\neruptions produce thin streams of hot gas moving at speeds between 55 and\n200 kilometers per second. Although these are impressive speeds, they are not\nsufficient to overcome the confining forces of the Sun's gravity and magnetic\nfield, so the material is pulled back down.",
         "prompt": "Which choice best describes the function of the underlined sentence in the text as a whole?",
         "options": [
           "It describes a natural phenomenon that is explained later in the text.",
@@ -4466,7 +4466,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "Blue Hole near San Salvador Island, blue holes are large underwater sinkholes:\npits filled with dark blue water that contrasts with lighter blue shallower\nwaters surrounding them. The formation of blue holes typically involves\nseveral natural processes, including the dissolution of limestone or other\nrocks. Currently, the deepest blue hole on record is the Taam Ja' Blue Hole in\nChetumal Bay, Mexico, which is reported by Laura Carrillo and colleagues\nas extending at least 420 meters below sea level.",
+        "passage": "With examples ranging from Dean's Blue Hole in the Bahamas to Watling's\nBlue Hole near San Salvador Island, blue holes are large underwater sinkholes:\npits filled with dark blue water that contrasts with lighter blue shallower\nwaters surrounding them. The formation of blue holes typically involves\nseveral natural processes, including the dissolution of limestone or other\nrocks. Currently, the deepest blue hole on record is the Taam Ja' Blue Hole in\nChetumal Bay, Mexico, which is reported by Laura Carrillo and colleagues\nas extending at least 420 meters below sea level.",
         "prompt": "Which choice best describes the overall structure of the text?",
         "options": [
           "It describes the appearance of a particular type of sinkhole, compares the formations of two sinkholes of that type, and then names the researchers who discovered the deepest known sinkhole of that type.",
@@ -4486,7 +4486,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "Rabindranath Tagore's 1921 nonfiction book Glimpses of Bengal.\nText 1\nThe wood I walk in on this mild May day, with the young yellow-brown\nfoliage of the oaks between me and the blue sky, the white star-flowers and\nthe blue-eyed speedwell and the ground ivy at my feet, what grove of tropic\npalms, what strange ferns or splendid broad-petalled blossoms, could ever\nthrill such deep and delicate fibres within me as this home scene?\nText 2\nMy feelings seem to be those of our ancient earth in the daily ecstasy of its\nsun-kissed life; my own consciousness seems to stream through each blade of\ngrass, each sucking root, to rise with the sap through the trees, to break out\nwith joyous thrills in the waving fields of corn, in the rustling palm leaves.",
+        "passage": "Text 1 is from George Eliot's 1860 novel The Mill on the Floss. Text 2 is from\nRabindranath Tagore's 1921 nonfiction book Glimpses of Bengal.\nText 1\nThe wood I walk in on this mild May day, with the young yellow-brown\nfoliage of the oaks between me and the blue sky, the white star-flowers and\nthe blue-eyed speedwell and the ground ivy at my feet, what grove of tropic\npalms, what strange ferns or splendid broad-petalled blossoms, could ever\nthrill such deep and delicate fibres within me as this home scene?\nText 2\nMy feelings seem to be those of our ancient earth in the daily ecstasy of its\nsun-kissed life; my own consciousness seems to stream through each blade of\ngrass, each sucking root, to rise with the sap through the trees, to break out\nwith joyous thrills in the waving fields of corn, in the rustling palm leaves.",
         "prompt": "Which choice best describes a notable difference in how the references to palm trees function in Text 1 and Text 2?",
         "options": [
           "While the narrator of Text 1 and the author of Text 2 both refer to metaphorical palm trees, only the narrator of Text 1 suggests that the palm trees are representative of home.",
@@ -4506,7 +4506,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "riddles of early medieval England contain \"implicit vestiges\" of an interactive\nperformance context, scholar Jill Frederick argues. Locative phrases (e.g.,\n\"here\" and \"now\") scattered throughout the riddles indicate the space shared\nby their speakers and audiences; the common refrain \"say what I am called\"\ninvites a verbalized response; and the conflation of many of the riddles' speak-\ners with their solutions (typically animals, objects, or natural phenomena)\nsuggests a form of dramatic impersonation perhaps meant to entertain during\npublic gatherings.",
+        "passage": "Primarily encountered by modern readers as inert written texts, the vernacular\nriddles of early medieval England contain \"implicit vestiges\" of an interactive\nperformance context, scholar Jill Frederick argues. Locative phrases (e.g.,\n\"here\" and \"now\") scattered throughout the riddles indicate the space shared\nby their speakers and audiences; the common refrain \"say what I am called\"\ninvites a verbalized response; and the conflation of many of the riddles' speak-\ners with their solutions (typically animals, objects, or natural phenomena)\nsuggests a form of dramatic impersonation perhaps meant to entertain during\npublic gatherings.",
         "prompt": "Which choice best states the main idea of the text?",
         "options": [
           "It is reasonable to conclude based on textual evidence from the vernacular riddles of early medieval England that they were mainly performed at large public gatherings, though documentation of the locations in which they were performed is unlikely to exist.",
@@ -4526,7 +4526,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "pronunciation of the s consonant replaced the Castilian pronunciation.",
+        "passage": "In the Mexican dialect of Spanish, the consonant s is pronounced with greater\ntension in the tongue than it is in Castilian, the dominant dialect in Spain,\nresulting in a sharper sound. Margarita Hidalgo, a linguist at San Diego\nState University, argues that Mexican Spanish acquired this pronunciation\nfrom Nahuatl, the language of the Nahua people in Mexico: as the Spanish\ncolonizers of Mexico incorporated Nahuatl words into their speech, and as\nmore and more Nahuas spoke Spanish as a second language, the Nahuatl\npronunciation of the s consonant replaced the Castilian pronunciation.",
         "prompt": "Information in the text best supports which statement about the consonant s?",
         "options": [
           "The pronunciation of this consonant is the principal difference between the Mexican and Castilian dialects of Spanish.",
@@ -4546,7 +4546,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "seasons. While these crops are known for increasing biodiversity, Axel Don\nand his coauthor argued in a 2015 study that cover crops' role in supporting\nsoil carbon sequestration deserves more attention. Cover crops remove carbon\ndioxide (CO2) from the air and convert it to organic compounds; some of\nthese compounds are stored in the soil as soil organic carbon (SOC), which\ncontributes to the buildup of SOC stocks over time. Based on data from\nnumerous farm fields, Don and his coauthor concluded that cover crops con-\ntribute meaningfully to soil carbon sequestration and, if widely adopted, could\nhelp offset agricultural emissions of atmospheric CO2 and other greenhouse\ngases.",
+        "passage": "Cover crops, such as teff, are planted by many farmers between main growing\nseasons. While these crops are known for increasing biodiversity, Axel Don\nand his coauthor argued in a 2015 study that cover crops' role in supporting\nsoil carbon sequestration deserves more attention. Cover crops remove carbon\ndioxide (CO2) from the air and convert it to organic compounds; some of\nthese compounds are stored in the soil as soil organic carbon (SOC), which\ncontributes to the buildup of SOC stocks over time. Based on data from\nnumerous farm fields, Don and his coauthor concluded that cover crops con-\ntribute meaningfully to soil carbon sequestration and, if widely adopted, could\nhelp offset agricultural emissions of atmospheric CO2 and other greenhouse\ngases.",
         "prompt": "Which finding, if true, would be most consistent with Don and his coauthor’s conclusion?",
         "options": [
           "Teff captures considerably more CO2 in fields where it is the sole cover crop compared with fields where it is grown alongside other species of cover crops.",
@@ -4566,7 +4566,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "some modularity in that different language tasks activate these areas to varying\ndegrees, comprehension also invokes other areas of the brain more strongly\nassociated with nonlinguistic functions. For example, understanding a de-\nscription of a person performing physical actions might call on parts of the\nlistener's brain associated with sensory-motor functions, whereas a highly\nemotive account will likely activate areas associated with affective processing.\nThus, beyond the areas most strongly associated with linguistic functions,",
+        "passage": "While the brain regions most strongly associated with language tasks have\nsome modularity in that different language tasks activate these areas to varying\ndegrees, comprehension also invokes other areas of the brain more strongly\nassociated with nonlinguistic functions. For example, understanding a de-\nscription of a person performing physical actions might call on parts of the\nlistener's brain associated with sensory-motor functions, whereas a highly\nemotive account will likely activate areas associated with affective processing.\nThus, beyond the areas most strongly associated with linguistic functions,",
         "prompt": "Which choice most logically completes the text?",
         "options": [
           "the specific combination of brain regions involved in comprehending speech is likely contingent on the total context in which the speech is embedded.",
@@ -4586,7 +4586,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "mining is permitted, but the area's biodiversity is poorly understood. The vast\nmajority of invertebrate species found in a recent survey of the CCZ were\nhitherto unknown to scientists, and sampling for animal life has been highly\nconcentrated in the eastern part of the zone. Some species like Psychropotes\ndyscrita were identified both morphologically and molecularly (using DNA\nanalysis), whereas Discantenna metallica and other species for which molec-\nular sampling was impracticable were identified solely based on physical\nmorphology. Since molecular analysis does not require distinguishing subtle\nphysiological differences, it is _______",
+        "passage": "The Clarion-Clipperton Zone (CCZ) is an expanse of abyssal plain and\nseamounts (underwater mountains) between Hawai'i and Mexico in which\nmining is permitted, but the area's biodiversity is poorly understood. The vast\nmajority of invertebrate species found in a recent survey of the CCZ were\nhitherto unknown to scientists, and sampling for animal life has been highly\nconcentrated in the eastern part of the zone. Some species like Psychropotes\ndyscrita were identified both morphologically and molecularly (using DNA\nanalysis), whereas Discantenna metallica and other species for which molec-\nular sampling was impracticable were identified solely based on physical\nmorphology. Since molecular analysis does not require distinguishing subtle\nphysiological differences, it is _______",
         "prompt": "Which choice most logically completes the text?",
         "options": [
           "more frequently used for identifying species with physiological character- istics like those of Psychropotes dyscrita than morphological analysis is.",
@@ -4606,7 +4606,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "Paleontologists historically hypothesized that sauropod dinosaurs held their\nlong necks vertically aloft like modern giraffes, allowing them to browse\nundisturbed foliage at the tops of towering forest canopies.\nText 2\nBiomechanical simulations conducted by Dr. Raymond Kent suggest that\nsauropod cervical vertebrae lacked the dorsal articulation required for sus-\ntained vertical posture. Kent asserts that sauropods instead swept their necks\nhorizontally to forage broad swaths of low vegetation with minimal locomo-\ntion.",
+        "passage": "Text 1\nPaleontologists historically hypothesized that sauropod dinosaurs held their\nlong necks vertically aloft like modern giraffes, allowing them to browse\nundisturbed foliage at the tops of towering forest canopies.\nText 2\nBiomechanical simulations conducted by Dr. Raymond Kent suggest that\nsauropod cervical vertebrae lacked the dorsal articulation required for sus-\ntained vertical posture. Kent asserts that sauropods instead swept their necks\nhorizontally to forage broad swaths of low vegetation with minimal locomo-\ntion.",
         "prompt": "Based on the texts, how would the author of Text 2 most likely respond to the hypothesis discussed in Text 1?",
         "options": [
           "By arguing that giraffes and sauropods share identical vertebral morphol- ogy.",
@@ -4626,7 +4626,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "conspecifics (other members of the same species) in an organism's immediate\nsurroundings, enabling the organism to avoid competition with conspecifics\nfor the resources; RSA is widely believed to play a crucial role in maintaining\necological stability. Among tree species in the Barro Colorado Island plot\n◦\n(latitude 9.15N) and other tropical forest sites, there is little correlation\nbetween conspecific aggregation and the abundance of a given species in the\nwider local area, so RSA is expected, but in the Fenglin Nature Reserve (lati-\n◦\ntude 48.08N) and other temperate forest sites, the aggregation-abundance\ncorrelation for tree species is strongly negative. Mathematical modeling sug-\ngests, however, that ecological niche distinction may mitigate the apparent\nrisk to temperate ecological stability engendered by this pattern: _______",
+        "passage": "Rare species advantage (RSA) describes the situation in which there are few\nconspecifics (other members of the same species) in an organism's immediate\nsurroundings, enabling the organism to avoid competition with conspecifics\nfor the resources; RSA is widely believed to play a crucial role in maintaining\necological stability. Among tree species in the Barro Colorado Island plot\n◦\n(latitude 9.15N) and other tropical forest sites, there is little correlation\nbetween conspecific aggregation and the abundance of a given species in the\nwider local area, so RSA is expected, but in the Fenglin Nature Reserve (lati-\n◦\ntude 48.08N) and other temperate forest sites, the aggregation-abundance\ncorrelation for tree species is strongly negative. Mathematical modeling sug-\ngests, however, that ecological niche distinction may mitigate the apparent\nrisk to temperate ecological stability engendered by this pattern: _______",
         "prompt": "Which choice most logically completes the text?",
         "options": [
           "as a tree species in temperate forests becomes more abundant, individuals of that species are more likely to be found near conspecifics, enabling abundant species to exploit localized resources to a greater extent than rare species can.",
@@ -4646,7 +4646,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "strategies during the planning stage. As a result, the project is more likely to\nsucceed.",
+        "passage": "A premortem is an exercise in which teams imagine their project has already\nfailed, then brainstorm possible reasons for that failure. Despite its appar-\nent pessimism, _______ prompting teams to proactively develop mitigation\nstrategies during the planning stage. As a result, the project is more likely to\nsucceed.",
         "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
         "options": [
           "effective uncovering of potential problems by the team in this activity is done early,",
@@ -4666,7 +4666,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "mous for breaking the four-minute-mile barrier at Oxford's Iffley Road Track\nin 1954, _______ confined to the realm of athletics: Bannister also became a\npioneering neurologist in the field of autonomic disorders—conditions affect-\ning involuntary nervous system responses—and established the field's first\nspecialized scientific journal.",
+        "passage": "The trailblazing achievements of Roger Bannister, the English track star fa-\nmous for breaking the four-minute-mile barrier at Oxford's Iffley Road Track\nin 1954, _______ confined to the realm of athletics: Bannister also became a\npioneering neurologist in the field of autonomic disorders—conditions affect-\ning involuntary nervous system responses—and established the field's first\nspecialized scientific journal.",
         "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
         "options": [
           "isn’t",
@@ -4686,7 +4686,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "versatile repertoire of acrobatic feats. Her specialized skills included standing\non the wing of a flying aircraft and shooting a bow and arrow at a _______\nperfect balance during aerial maneuvers, such as vertical loops; and even\nwalking across the wing as an aircraft flew at full speed beneath a bridge.",
+        "passage": "As one of aviation's earliest female stunt performers, Gladys Ingle developed a\nversatile repertoire of acrobatic feats. Her specialized skills included standing\non the wing of a flying aircraft and shooting a bow and arrow at a _______\nperfect balance during aerial maneuvers, such as vertical loops; and even\nwalking across the wing as an aircraft flew at full speed beneath a bridge.",
         "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
         "options": [
           "target; maintaining",
@@ -4706,7 +4706,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "consistent and seemingly deliberate placement of petroglyphs (rock carvings)\nnear water analyzed several sites on Caribbean islands. They discovered that\nmany of the pools near petroglyphs had consistent water levels year-round,\ncreating perfect reflecting surfaces for the carved symbols on the rocks.",
+        "passage": "During a recent investigation, archaeologists _______ an explanation for the\nconsistent and seemingly deliberate placement of petroglyphs (rock carvings)\nnear water analyzed several sites on Caribbean islands. They discovered that\nmany of the pools near petroglyphs had consistent water levels year-round,\ncreating perfect reflecting surfaces for the carved symbols on the rocks.",
         "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
         "options": [
           "had sought",
@@ -4726,7 +4726,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "Cobain's minor-key vocals from \"Smells Like Teen Spirit\" over the Jackson\n5's major-key blues progression from \"Rockin' _______ by inserting the grunge\nsinger's vocal melody as pitch-shifted \"blue notes\" within the pop-soul group's\nharmonic framework, creates an intensified \"bluesy\" effect and subverts the\nexpectations of listeners familiar with either musical source.",
+        "passage": "For his mash-up \"Smells Like Rockin' Robin,\" DJ Mark Vidler layered Kurt\nCobain's minor-key vocals from \"Smells Like Teen Spirit\" over the Jackson\n5's major-key blues progression from \"Rockin' _______ by inserting the grunge\nsinger's vocal melody as pitch-shifted \"blue notes\" within the pop-soul group's\nharmonic framework, creates an intensified \"bluesy\" effect and subverts the\nexpectations of listeners familiar with either musical source.",
         "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
         "options": [
           "Robin,” a technique that",
@@ -4746,7 +4746,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "Carver revolutionized farming practices in the American _______ promoting\nsystematic crop rotation techniques that replenished essential nitrogen in\ndepleted soils.",
+        "passage": "During the late nineteenth century, agricultural chemist George Washington\nCarver revolutionized farming practices in the American _______ promoting\nsystematic crop rotation techniques that replenished essential nitrogen in\ndepleted soils.",
         "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
         "options": [
           "South, by",
@@ -4766,7 +4766,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "2016aps was a supernova (the explosion of a massive _______ in the constella-\ntion Draco, 3.6 billion light-years from Earth, the transient yet powerful blast\npropelled particles and debris into space at extremely high speeds.",
+        "passage": "Named for the year in which it was detected by English astronomers, SN\n2016aps was a supernova (the explosion of a massive _______ in the constella-\ntion Draco, 3.6 billion light-years from Earth, the transient yet powerful blast\npropelled particles and debris into space at extremely high speeds.",
         "prompt": "Which choice completes the text so that it conforms to the conventions of Standard English?",
         "options": [
           "star). Occurring",
@@ -4786,7 +4786,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "panies in North America and Europe is a result of several factors, including\nthe country's investments in technical education, but the most serendipitous is\nIndia's large number of English speakers. English is spoken by more people\nin India—129 million—than in any nation except the US. _______ only about\n10% of Indians speak English.",
+        "passage": "India's prominence as a supplier of information technology services to com-\npanies in North America and Europe is a result of several factors, including\nthe country's investments in technical education, but the most serendipitous is\nIndia's large number of English speakers. English is spoken by more people\nin India—129 million—than in any nation except the US. _______ only about\n10% of Indians speak English.",
         "prompt": "Which choice completes the text with the most logical transition?",
         "options": [
           "However, English is not the first language for most English speakers in India;",
@@ -4806,7 +4806,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "fecal analysis to determine the ratio of three plant subtypes (graminoids, forbs,\nand browse) within the diets of North American ungulates. The researchers\ndid not perform this analysis on all such ungulates, _______ they focused\nexclusively on elk in Wyoming.",
+        "passage": "In a 1993 study by Vales and Peek, the researchers used microhistological\nfecal analysis to determine the ratio of three plant subtypes (graminoids, forbs,\nand browse) within the diets of North American ungulates. The researchers\ndid not perform this analysis on all such ungulates, _______ they focused\nexclusively on elk in Wyoming.",
         "prompt": "Which choice completes the text with the most logical transition?",
         "options": [
           "for instance;",
@@ -4826,7 +4826,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "strings. _______ under the Hornbostel-Sachs system, the saraswati veena is a\nchordophone.",
+        "passage": "The Hornbostel-Sachs system classifies musical instruments by how they\nproduce sound. For example, an instrument that is popular in India called\nthe saraswati veena produces sound primarily through the vibration of its\nstrings. _______ under the Hornbostel-Sachs system, the saraswati veena is a\nchordophone.",
         "prompt": "Which choice completes the text with the most logical transition?",
         "options": [
           "Furthermore,",
@@ -4846,7 +4846,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "the version later published in book form. _______ as scholar Philip Allingham\nnotes, serialized texts were the versions in which the nineteenth-century\nreadership first \"saw itself and its world reflected, and to which it responded,\noften with great emotion.\"",
+        "passage": "Between February 1876 and September 1876, George Eliot's novel Daniel\nDeronda was serialized in eight parts in Blackwood's Magazine. Scholars\ntypically regard the serial version of Eliot's novel as less authoritative than\nthe version later published in book form. _______ as scholar Philip Allingham\nnotes, serialized texts were the versions in which the nineteenth-century\nreadership first \"saw itself and its world reflected, and to which it responded,\noften with great emotion.\"",
         "prompt": "Which choice completes the text with the most logical transition?",
         "options": [
           "Accordingly, they emphasize the appeal of the serial version for Victorian audiences;",
@@ -4866,7 +4866,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "• The Highpointers Club is a hiking club.\n• One of the main goals among club members is to reach the highest\npoints in all fifty US states.\n• Those who achieve this are called 50 Completers.\n• In Suk Han became a 50 Completer on November 15, 2013.\n• The highest point in Wisconsin is Timms Hill, at 1,951 ft.\n• The highest point in Wyoming is Gannett Peak, at 13,809 ft.",
+        "passage": "While researching a topic, a student has taken the following notes:\n• The Highpointers Club is a hiking club.\n• One of the main goals among club members is to reach the highest\npoints in all fifty US states.\n• Those who achieve this are called 50 Completers.\n• In Suk Han became a 50 Completer on November 15, 2013.\n• The highest point in Wisconsin is Timms Hill, at 1,951 ft.\n• The highest point in Wyoming is Gannett Peak, at 13,809 ft.",
         "prompt": "Which choice most effectively uses information from the given sentences to explain the 50 Completers hiking challenge to a new audience?",
         "options": [
           "If you are looking for a new hiking challenge, consider joining the High- pointers Club, as did In Suk Han, a hiker who successfully reached the highest point in every US state.",
@@ -4886,7 +4886,7 @@
         "section": "reading",
         "module": 2,
         "question_type": "mcq",
-        "passage": "• Enhanced rock weathering (ERW) is a method of spreading crushed\nbasalt on farmland to capture carbon dioxide (CO2) and improve soil\nhealth.\n• ERW increases crop yields and removes harmful CO2 from the air.\n• ERW offers a low-cost, low-tech alternative to expensive, energy-\nintensive carbon capture methods.\n• The CO2 captured by ERW becomes stable bicarbonate in soil water,\nwhich eventually streams into the ocean to remain safely stored for\nhundreds of years.\n• ERW can improve rural economies by reducing farmers' need for fertil-\nizers and increasing their earnings from carbon credits.",
+        "passage": "While researching a topic, a student has taken the following notes:\n• Enhanced rock weathering (ERW) is a method of spreading crushed\nbasalt on farmland to capture carbon dioxide (CO2) and improve soil\nhealth.\n• ERW increases crop yields and removes harmful CO2 from the air.\n• ERW offers a low-cost, low-tech alternative to expensive, energy-\nintensive carbon capture methods.\n• The CO2 captured by ERW becomes stable bicarbonate in soil water,\nwhich eventually streams into the ocean to remain safely stored for\nhundreds of years.\n• ERW can improve rural economies by reducing farmers' need for fertil-\nizers and increasing their earnings from carbon credits.",
         "prompt": "The student wants to explain why ERW is a superior method for capturing CO2. Which choice most effectively uses relevant information from the notes to accomplish this goal?",
         "options": [
           "ERW improves soil health and helps farmers increase their income from selling carbon credits.",
@@ -4967,7 +4967,7 @@
           "\\(29(x^{2} + 1)\\)",
           "\\(29(x^{2} + 29)\\)",
           "\\(29(29x^{2} + 1)\\)",
-          "\\(29(x^{2} + \\frac{1\u0013}{29}\\)"
+          "\\(29(x^{2} + \\frac{1}{29})\\)"
         ],
         "correct_answer_index": 0,
         "correct_answer_text": null,
@@ -5037,7 +5037,7 @@
         "module": 1,
         "question_type": "mcq",
         "passage": null,
-        "prompt": "Triangle \\(XY Z\\), where \\(A\\), \\(B\\) correspond to \\(X\\), \\(Y\\), and In triangle \\(ABC\\), the length of \\(AB\\) is \\(180\\) and\n\nthe length of \\(\\frac{ABC is similar to triangle}{BC}\\)is \\(900\\). In triangle \\(XY Z\\), the length of \\(\\frac{, and C}{Y Z}\\)is \\(80\\). What is the length of \\(\\frac{Z, respectively.}{XY ?}\\)",
+        "prompt": "Triangle \\(ABC\\) is similar to triangle \\(XY Z\\), where \\(A\\), \\(B\\) correspond to \\(X\\), \\(Y\\), and \\(Z\\), respectively. In triangle \\(ABC\\), the length of \\(AB\\) is \\(180\\) and\n\nthe length of \\(\\frac{}{BC}\\)is \\(900\\). In triangle \\(XY Z\\), the length of \\(\\frac{, and C}{Y Z}\\)is \\(80\\). What is the length of \\(XY\\)?",
         "options": [
           "\\(288\\)",
           "\\(196\\)",
@@ -5121,7 +5121,7 @@
         "options": [
           "\\((21, 0)\\)",
           "\\((0, -21)\\)",
-          "\\((0, \\frac{21\u0013}{b}\\)",
+          "\\((0, \\frac{21}{b})\\)",
           "\\((-\\frac{b}{a}, 0)\\)"
         ],
         "correct_answer_index": 0,
@@ -5191,8 +5191,8 @@
         "options": [
           "\\(v = \\frac{2K}{552}\\)",
           "\\(v = \\frac{552}{2K}\\)",
-          "\\(v = \\frac{r55}{2K}\\)",
-          "\\(v = \\frac{r2K}{55}\\)"
+          "\\(v = r\\frac{55}{2K}\\)",
+          "\\(r\n\n^{D} v = \\frac{2K}{55}\\)"
         ],
         "correct_answer_index": 3,
         "correct_answer_text": null,
